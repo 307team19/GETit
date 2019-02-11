@@ -22,7 +22,10 @@ class SignUpForm extends Component {
 
 	onSignUpButtonPressed() {
 		const {email, password} = this.state;
-		firebase.auth().createUserWithEmailAndPassword(email, password);
+		firebase.auth().createUserWithEmailAndPassword(email, password)
+			.catch((text) => {
+				console.log(text)
+			});
 
 	}
 

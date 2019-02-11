@@ -12,7 +12,7 @@ class LoginPage extends Component {
         const {email, password} = this.state;
         console.log("here");
 
-        firebase.auth().createUserWithEmailAndPassword(email, password);
+        firebase.auth().signInWithEmailAndPassword(email, password);
     }
 
     render() {
