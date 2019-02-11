@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { View, Text} from 'react-native';
 import { TextInput } from 'react-native-paper';
+import firebase from 'firebase';
 import { Button } from 'react-native-paper';
 
 //class component which handles data
@@ -11,10 +12,19 @@ import { Button } from 'react-native-paper';
  * Gets user data in the form for sign up
  */
 class SignUpForm extends Component {
-
 	state = {
-		text: ''
+		text: '',
+		email: '',
+		password: ''
+
 	};
+
+
+	onSignUpButtonPressed() {
+		const {email, password} = this.state;
+		firebase.auth().createUserWithEmailAndPassword(email, password);
+
+	}
 
 	//render() method is automatically called whenever we call setState or during initialization
 	render() {
@@ -34,12 +44,17 @@ class SignUpForm extends Component {
 					style = {styles.textInputStyle}
 					label='Email'
 					mode='outlined'
+					value={this.state.email}
+					onChangeText={textString => this.setState({ email: textString })}
+
 				/>
 				<TextInput
 					style = {styles.textInputStyle}
 					label='Password'
 					mode='outlined'
 					secureTextEntry
+					value={this.state.password}
+					onChangeText={textString => this.setState({ password: textString })}
 				/>
 				<TextInput
 					style = {styles.textInputStyle}
@@ -49,7 +64,7 @@ class SignUpForm extends Component {
 				<Button
 					style = {styles.buttonContainedStyle}
 					mode="contained"
-					onPress={() => console.log('Pressed')}>
+					onPress={this.onSignUpButtonPressed.bind(this)}>
 					Sign up
 				</Button>
 			</View>
