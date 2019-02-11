@@ -16,7 +16,7 @@ const AppNavigator = createStackNavigator(
     signup: SignUpForm
   },
   {
-    initialRouteName: "login"
+    initialRouteName: "signup"
   }
   
 );

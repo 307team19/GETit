@@ -3,19 +3,14 @@ import React from 'react';
 import {Text, TouchableOpacity, TouchableHighlight} from 'react-native';
 
 const Button = ({propPress, children}) => {
-    const propPress = () => {
-        
-    }
+    
     const {buttonStyle, TextStyle} = styles;
     return (
-        //<TouchableOpacity onPress={propsPress} style={buttonStyle}>
         <TouchableOpacity onPress={propPress} style={buttonStyle}>
             <Text style={TextStyle}>
                 {children}
             </Text>
-        </TouchableOpacity>
-        //<TouchableHighlight>
-        //</TouchableHighlight>
+        </TouchableOpacity> 
     );
 };
 

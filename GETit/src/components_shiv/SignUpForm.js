@@ -27,11 +27,10 @@ class SignUpForm extends Component {
 				console.log(text)
 			});
 
-			this.props.navigation.navigate('login')
+		this.props.navigation.navigate('login')
 
 	}
 
-	//render() method is automatically called whenever we call setState or during initialization
 	render() {
 		return (
 			<View style = {styles.viewStyle}>

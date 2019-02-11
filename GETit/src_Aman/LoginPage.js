@@ -7,16 +7,10 @@ class LoginPage extends Component {
 
     state = {email: '', password: ''};
 
-    onLoginButtonPressed() {
-        const {email, password} = this.state;
-        console.log("here");
-
-        firebase.auth().signInWithEmailAndPassword(email, password);
-    }
+    
 
     render() {
 
-    
 
         return (
             <View style={styles.containerStyle}>
@@ -59,7 +53,9 @@ class LoginPage extends Component {
 
 
                     <CardSection>
-                        <Button propPress={() => this.props.navigation.navigate('signup')}>
+                        <Button propPress = {()=>{
+                             this.props.navigation.navigate('signup')
+                        }} >
                             Create an account
                         </Button>
                     </CardSection>
