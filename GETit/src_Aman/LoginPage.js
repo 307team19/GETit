@@ -46,7 +46,9 @@ class LoginPage extends Component {
 
 
                     <CardSection>
-                        <Button>
+                        <Button propPress = {()=>{
+                             this.props.navigation.navigate('tabscreen')
+                        }}>
                             Log in
                         </Button>
                     </CardSection>
