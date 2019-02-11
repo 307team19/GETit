@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { View, Text} from 'react-native';
 import { TextInput } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
 //class component which handles data
 //has render function which returns same thing as functional component
@@ -38,12 +39,19 @@ class SignUpForm extends Component {
 					style = {styles.textInputStyle}
 					label='Password'
 					mode='outlined'
+					secureTextEntry
 				/>
 				<TextInput
 					style = {styles.textInputStyle}
 					label='Phone Number'
 					mode='outlined'
 				/>
+				<Button
+					style = {styles.buttonContainedStyle}
+					mode="contained"
+					onPress={() => console.log('Pressed')}>
+					Sign up
+				</Button>
 			</View>
 		);
 	};
@@ -59,6 +67,13 @@ const styles = {
 
 	textInputStyle: {
 		marginBottom: 12
+	},
+
+	buttonContainedStyle: {
+		height: 50,
+		justifyContent: 'center',
+		backgroundColor: '#1eaaf1',
+		marginTop: 4
 	}
 };
 
