@@ -39,10 +39,17 @@ const AppNavigator = createStackNavigator({
    {
     login: LoginPage,
     signup: SignUpForm,
+    tabs: TabNavigator,
   },
   {
     initialRouteName: "login"
   }
+});
+
+const TabNavigator = createBottomTabNavigator({
+  account: MyAccount,
+  requests: Requests,
+  orders: Orders,
 });
 
 export default createAppContainer(AppNavigator);
