@@ -1,74 +1,62 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- * @lint-ignore-every XPLATJSCOPYRIGHT1
- */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import {ScrollView, AppRegistry, Text} from "react-native";
+import {name as appName} from './app.json';
+import Header from './src/components_shiv/Header'
+import firebase from 'firebase';
+import {Provider as PaperProvider} from 'react-native-paper';
 import SignUpForm from './src/components_shiv/SignUpForm';
 import LoginPage from './src_Aman/LoginPage'
+import {Platform, StyleSheet, View} from 'react-native';
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-type Props = {};
  class App extends Component<Props> {
+
+   componentWillMount(): void {
+        firebase.initializeApp({
+                apiKey: "AIzaSyDsvcAofBVbHl5SK93WWRdlArc72dqRLg0",
+                authDomain: "getit-a4be5.firebaseapp.com",
+                databaseURL: "https://getit-a4be5.firebaseio.com",
+                projectId: "getit-a4be5",
+                storageBucket: "getit-a4be5.appspot.com",
+                messagingSenderId: "472187757547"
+            }
+        );
+    }
+
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to GETit!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
+            <PaperProvider>
+                <ScrollView style={styles.backgroundStyle}>
+                    <Header headerText={'GETit Sign Up Page'}/>
+                    <SignUpForm/>
+                    <LoginPage/>
+                </ScrollView>
+            </PaperProvider>
+        );
   }
 
 
  }
 
-const AppNavigator = createStackNavigator({
-   {
-    login: LoginPage,
-    signup: SignUpForm,
-    tabs: TabNavigator,
-  },
-  {
-    initialRouteName: "login"
-  }
-});
+// const AppNavigator = createStackNavigator({
+//   {
+//     login: LoginPage,
+//     signup: SignUpForm,
+//   },
+  
+// });
 
-const TabNavigator = createBottomTabNavigator({
-  account: MyAccount,
-  requests: Requests,
-  orders: Orders,
-});
 
-export default createAppContainer(AppNavigator);
+// export default createAppContainer(AppNavigator);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+export default App
+
+const styles = {
+
+    backgroundStyle: {
+        backgroundColor: '#ffffff',
+        flex: 1
+    }
+};

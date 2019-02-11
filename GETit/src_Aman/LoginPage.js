@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {View, Image, Text} from 'react-native';
 import firebase from 'firebase';
-// import {CardSection} from "./Components_Aman";
 import {Button, Card, CardSection, Input} from "./Components_Aman";
 
 class LoginPage extends Component {
@@ -50,17 +49,14 @@ class LoginPage extends Component {
 
 
                     <CardSection>
-                        <Button 
-                        propPress={this.onLoginButtonPressed.bind(this)}
-                        onPress={() => this.props.navigation.navigate('tabsreen')
-                        >
+                        <Button>
                             Log in
                         </Button>
                     </CardSection>
 
 
                     <CardSection>
-                        <Button onPress={() => this.props.navigation.navigate('signup')>
+                        <Button onPress={() => this.props.navigation.navigate('signup')}>
                             Create an account
                         </Button>
                     </CardSection>
