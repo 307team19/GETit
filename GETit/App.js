@@ -40,18 +40,21 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 
  }
 
-// const AppNavigator = createStackNavigator({
-//   {
-//     login: LoginPage,
-//     signup: SignUpForm,
-//   },
+const AppNavigator = createStackNavigator(
+  {
+    login: LoginPage,
+    signup: SignUpForm,
+  },
+  {
+    initialRouteName: "login"
+  }
   
-// });
+);
 
 
-// export default createAppContainer(AppNavigator);
+export default createAppContainer(AppNavigator);
 
-export default App
+
 
 const styles = {
 
