@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db12f496-bf91-41c1-b179-cb7c35b06c8f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/GETit/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/android/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GETit/src_Aman/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GETit/src_Aman/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GETit/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GETit/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,10 +21,34 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GETit/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="150">
+              <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
               <folding>
-                <element signature="e#60#101#0" expanded="true" />
+                <element signature="e#59#84#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GETit/src_Aman/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="19" lean-forward="true" selection-end-line="20" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -37,6 +62,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/GETit/src_Aman/App.js" />
+        <option value="$PROJECT_DIR$/GETit/src_Aman/Login.js" />
         <option value="$PROJECT_DIR$/GETit/index.js" />
       </list>
     </option>
@@ -48,7 +75,7 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="257" />
+    <option name="x" value="30" />
     <option name="y" value="40" />
     <option name="width" value="868" />
     <option name="height" value="810" />
@@ -58,7 +85,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -71,10 +97,17 @@
               <item name="GETit" type="462c0819:PsiDirectoryNode" />
               <item name="GETit" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="GETit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GETit" type="462c0819:PsiDirectoryNode" />
+              <item name="GETit" type="462c0819:PsiDirectoryNode" />
+              <item name="src_Aman" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -107,15 +140,18 @@
       <option name="presentableId" value="Default" />
       <updated>1549603926709</updated>
       <workItem from="1549603927970" duration="65000" />
-      <workItem from="1549604564132" duration="942000" />
+      <workItem from="1549604564132" duration="1215000" />
+      <workItem from="1549700953840" duration="14000" />
+      <workItem from="1549839137225" duration="302000" />
+      <workItem from="1549848235452" duration="480000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1007000" />
+    <option name="totallyTimeSpent" value="2076000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="257" y="40" width="868" height="810" extended-state="0" />
+    <frame x="30" y="40" width="868" height="810" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24911453" />
@@ -141,12 +177,35 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/GETit/App.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src_Aman/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="19" lean-forward="true" selection-end-line="20" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="150">
+          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
           <folding>
-            <element signature="e#60#101#0" expanded="true" />
+            <element signature="e#59#84#0" expanded="true" />
           </folding>
         </state>
       </provider>
