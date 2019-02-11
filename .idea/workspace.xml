@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db12f496-bf91-41c1-b179-cb7c35b06c8f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/CardSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/CardSection.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GETit/src_Aman/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src_Aman/LoginPage.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -31,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GETit/src_Aman/LoginPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+            <state relative-caret-position="318">
+              <caret line="62" column="14" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -48,20 +48,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Card.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/CardSection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+            <state relative-caret-position="210">
+              <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -78,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+            <state relative-caret-position="191">
+              <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -113,12 +110,12 @@
         <option value="$PROJECT_DIR$/GETit/src_Aman/App.js" />
         <option value="$PROJECT_DIR$/GETit/src_Aman/Login.js" />
         <option value="$PROJECT_DIR$/GETit/index.js" />
-        <option value="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/CardSection.js" />
         <option value="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/index.js" />
         <option value="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Input.js" />
         <option value="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Card.js" />
-        <option value="$PROJECT_DIR$/GETit/src_Aman/LoginPage.js" />
         <option value="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js" />
+        <option value="$PROJECT_DIR$/GETit/src_Aman/LoginPage.js" />
+        <option value="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/CardSection.js" />
       </list>
     </option>
   </component>
@@ -209,12 +206,12 @@
       <workItem from="1549604564132" duration="1215000" />
       <workItem from="1549700953840" duration="14000" />
       <workItem from="1549839137225" duration="302000" />
-      <workItem from="1549848235452" duration="3676000" />
+      <workItem from="1549848235452" duration="4114000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5272000" />
+    <option name="totallyTimeSpent" value="5710000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="586" y="41" width="868" height="810" extended-state="0" />
@@ -266,23 +263,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/CardSection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Input.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
@@ -296,30 +276,44 @@
     <entry file="file://$PROJECT_DIR$/GETit/src_Aman/img/logo.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Card.js">
+    <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        <state relative-caret-position="191">
+          <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src_Aman/LoginPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+        <state relative-caret-position="318">
+          <caret line="62" column="14" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js">
+    <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Card.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+        <state>
+          <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/CardSection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

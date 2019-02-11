@@ -49,15 +49,14 @@ class LoginPage extends Component {
 
 
                     <CardSection>
-                        <Text style={styles.orStyle}>
-                            or
-                        </Text>
+                        <Button>
+                            Create an account
+                        </Button>
                     </CardSection>
-
 
                     <CardSection>
                         <Button>
-                            Create an account
+                            Forgot your password
                         </Button>
                     </CardSection>
                 </Card>
