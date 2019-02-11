@@ -8,7 +8,20 @@ import {Provider as PaperProvider} from 'react-native-paper';
 import SignUpForm from './src/components_shiv/SignUpForm';
 import LoginPage from './src_Aman/LoginPage'
 import {Platform, StyleSheet, View} from 'react-native';
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createBottomTabNavigator, createStackNavigator, createAppContainer } from "react-navigation";
+
+const AppNavigator = createStackNavigator(
+  {
+    login: LoginPage,
+    signup: SignUpForm
+  },
+  {
+    initialRouteName: "login"
+  }
+  
+);
+
+const AppContainer = createAppContainer(AppNavigator)
 
  class App extends Component<Props> {
 
@@ -25,36 +38,30 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
     }
 
 
-  render() {
-    return (
-            <PaperProvider>
-                <ScrollView style={styles.backgroundStyle}>
-                    <Header headerText={'GETit Sign Up Page'}/>
-                    <SignUpForm/>
-                    <LoginPage/>
-                </ScrollView>
-            </PaperProvider>
-        );
+  // render() {
+  //   return (
+  //           <PaperProvider>
+  //               <ScrollView style={styles.backgroundStyle}>
+  //                   <Header headerText={'GETit Sign Up Page'}/>
+  //                   <SignUpForm/>
+  //                   <LoginPage/>
+  //               </ScrollView>
+  //           </PaperProvider>
+  //       );
+  // }
+
+  render(){
+    return(
+<AppContainer/>
+    )
+     
+    }
   }
 
 
- }
+ 
 
-const AppNavigator = createStackNavigator(
-  {
-    login: LoginPage,
-    signup: SignUpForm,
-  },
-  {
-    initialRouteName: "login"
-  }
-  
-);
-
-
-export default createAppContainer(AppNavigator);
-
-
+ export default App
 
 const styles = {
 

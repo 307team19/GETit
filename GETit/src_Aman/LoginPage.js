@@ -15,6 +15,9 @@ class LoginPage extends Component {
     }
 
     render() {
+
+    
+
         return (
             <View style={styles.containerStyle}>
                 <Card>
@@ -56,7 +59,7 @@ class LoginPage extends Component {
 
 
                     <CardSection>
-                        <Button onPress={() => this.props.navigation.navigate('signup')}>
+                        <Button propPress={() => this.props.navigation.navigate('signup')}>
                             Create an account
                         </Button>
                     </CardSection>
