@@ -50,20 +50,23 @@ class LoginPage extends Component {
 
 
                     <CardSection>
-                        <Button propPress={this.onLoginButtonPressed.bind(this)}>
+                        <Button 
+                        propPress={this.onLoginButtonPressed.bind(this)}
+                        onPress={() => this.props.navigation.navigate('tabsreen')
+                        >
                             Log in
                         </Button>
                     </CardSection>
 
 
                     <CardSection>
-                        <Button>
+                        <Button onPress={() => this.props.navigation.navigate('signup')>
                             Create an account
                         </Button>
                     </CardSection>
 
                     <CardSection>
-                        <Button>
+                        <Button >
                             Forgot your password
                         </Button>
                     </CardSection>
