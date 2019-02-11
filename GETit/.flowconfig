@@ -28,6 +28,10 @@ node_modules/react-native/flow-github/
 
 [options]
 emoji=true
+module.file_ext=.js
+module.file_ext=.native.js
+module.file_ext=.android.js
+module.file_ext=.ios.js
 
 esproposal.optional_chaining=enable
 esproposal.nullish_coalescing=enable
