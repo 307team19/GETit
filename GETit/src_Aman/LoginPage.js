@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, Text} from 'react-native';
 // import {CardSection} from "./Components_Aman";
-import {Card, CardSection, Input} from "./Components_Aman";
+import {Button, Card, CardSection, Input} from "./Components_Aman";
 
 class LoginPage extends Component {
 
@@ -31,18 +31,34 @@ class LoginPage extends Component {
 
 
                     <CardSection>
+                        <Input
+                            label="Password:"
+                            value={this.state.password}
+                            onChangeText={password => this.setState({password})}
+                            placeholder="******"
+                            secureTextEntry={true}
+                        />
                     </CardSection>
 
 
                     <CardSection>
+                        <Button>
+                            Log in
+                        </Button>
                     </CardSection>
 
 
                     <CardSection>
+                        <Text style={styles.orStyle}>
+                            or
+                        </Text>
                     </CardSection>
 
 
                     <CardSection>
+                        <Button>
+                            Create an account
+                        </Button>
                     </CardSection>
                 </Card>
             </View>
@@ -61,6 +77,11 @@ const styles = {
         width: 150,
         alignItems:'center',
         flex:1
+    },
+    orStyle:{
+        textAlignVertical: 'center',
+        textAlign: 'center',
+        fontSize: 10
     }
 }
 

@@ -23,14 +23,14 @@ const styles = {
         backgroundColor: '#fff',
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#007aff',
+        borderColor: '#1eaaf1',
         marginLeft: 5,
         marginRight: 5
     },
     TextStyle:{
         alignSelf: 'center',
         fontSize: 16,
-        color: '#007aff',
+        color: '#1eaaf1',
         fontWeight: 'bold',
         // marginTop: 10,
         paddingTop: 10,

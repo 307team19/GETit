@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db12f496-bf91-41c1-b179-cb7c35b06c8f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Card.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/CardSection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Input.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GETit/src_Aman/img/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GETit/src_Aman/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src_Aman/LoginPage.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -34,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GETit/src_Aman/LoginPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="362">
+              <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -84,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+            <state relative-caret-position="461">
+              <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -121,10 +115,10 @@
         <option value="$PROJECT_DIR$/GETit/index.js" />
         <option value="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/CardSection.js" />
         <option value="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/index.js" />
-        <option value="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js" />
         <option value="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Input.js" />
         <option value="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Card.js" />
         <option value="$PROJECT_DIR$/GETit/src_Aman/LoginPage.js" />
+        <option value="$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js" />
       </list>
     </option>
   </component>
@@ -135,7 +129,7 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="587" />
+    <option name="x" value="586" />
     <option name="y" value="41" />
     <option name="width" value="868" />
     <option name="height" value="810" />
@@ -162,6 +156,13 @@
               <item name="GETit" type="462c0819:PsiDirectoryNode" />
               <item name="GETit" type="462c0819:PsiDirectoryNode" />
               <item name="src_Aman" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GETit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GETit" type="462c0819:PsiDirectoryNode" />
+              <item name="GETit" type="462c0819:PsiDirectoryNode" />
+              <item name="src_Aman" type="462c0819:PsiDirectoryNode" />
+              <item name="Components_Aman" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -208,15 +209,15 @@
       <workItem from="1549604564132" duration="1215000" />
       <workItem from="1549700953840" duration="14000" />
       <workItem from="1549839137225" duration="302000" />
-      <workItem from="1549848235452" duration="2901000" />
+      <workItem from="1549848235452" duration="3676000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4497000" />
+    <option name="totallyTimeSpent" value="5272000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="587" y="41" width="868" height="810" extended-state="0" />
+    <frame x="586" y="41" width="868" height="810" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24911453" />
@@ -282,16 +283,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Input.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
@@ -317,10 +308,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src_Aman/LoginPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="362">
+          <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src_Aman/Components_Aman/Button.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
