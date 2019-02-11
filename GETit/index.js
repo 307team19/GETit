@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, AppRegistry, Text } from "react-native";
+import { ScrollView, AppRegistry, Text } from "react-native";
 import { name as appName } from './app.json';
 import Header from './src/components_shiv/Header'
 import { Provider as PaperProvider } from 'react-native-paper';
 import SignUpForm from './src/components_shiv/SignUpForm';
+import LoginPage from './src_Aman/LoginPage'
 
 //functional component which returns some JSX for viewing
 const App = () => {
@@ -12,10 +13,11 @@ const App = () => {
 	return (
 
 		<PaperProvider>
-			<View style = {styles.backgroundStyle}>
+			<ScrollView style = {styles.backgroundStyle}>
 				<Header headerText={'GETit Sign Up Page'}/>
 				<SignUpForm/>
-			</View>
+				<LoginPage/>
+			</ScrollView>
 		</PaperProvider>
 	);
 };
