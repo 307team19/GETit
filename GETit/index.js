@@ -29,4 +29,3 @@ const styles = {
 };
 
 AppRegistry.registerComponent(appName, () => App);
-
