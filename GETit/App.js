@@ -29,7 +29,9 @@ type Props = {};
       </View>
     );
   }
-}
+
+
+ }
 
 const AppNavigator = createStackNavigator({
   Home: {

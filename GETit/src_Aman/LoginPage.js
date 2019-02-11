@@ -1,11 +1,19 @@
 import React, {Component} from 'react';
 import {View, Image, Text} from 'react-native';
+import firebase from 'firebase';
 // import {CardSection} from "./Components_Aman";
 import {Button, Card, CardSection, Input} from "./Components_Aman";
 
 class LoginPage extends Component {
 
-    state = { email: '', password: ''};
+    state = {email: '', password: ''};
+
+    onLoginButtonPressed() {
+        const {email, password} = this.state;
+        console.log("here");
+
+        firebase.auth().createUserWithEmailAndPassword(email, password);
+    }
 
     render() {
         return (
@@ -42,7 +50,7 @@ class LoginPage extends Component {
 
 
                     <CardSection>
-                        <Button>
+                        <Button propPress={this.onLoginButtonPressed.bind(this)}>
                             Log in
                         </Button>
                     </CardSection>
@@ -66,18 +74,18 @@ class LoginPage extends Component {
 }
 
 const styles = {
-    containerStyle:{
-        paddingTop:20,
-        flex:1,
-        backgroundColor:'white'
+    containerStyle: {
+        paddingTop: 20,
+        flex: 1,
+        backgroundColor: 'white'
     },
-    logoStyle:{
-        height:160,
+    logoStyle: {
+        height: 160,
         width: 150,
-        alignItems:'center',
-        flex:1
+        alignItems: 'center',
+        flex: 1
     },
-    orStyle:{
+    orStyle: {
         textAlignVertical: 'center',
         textAlign: 'center',
         fontSize: 10
