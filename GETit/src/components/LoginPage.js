@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
-import {View, Image, Text} from 'react-native';
-import firebase from 'firebase';
-import {Button, Card, CardSection, Input} from "./Components_Aman";
+import {Image, View} from 'react-native';
+import {Button, Card, CardSection, Input} from "./common";
 
 class LoginPage extends Component {
 
     state = {email: '', password: ''};
 
-    
 
     render() {
-
 
         return (
             <View style={styles.containerStyle}>
@@ -18,7 +15,7 @@ class LoginPage extends Component {
                     <CardSection>
                         <Image
                             style={styles.logoStyle}
-                            source={require('./img/logo.png')}
+                            source={require('../img/logo.png')}
                             resizeMode='contain'
                         />
                     </CardSection>
@@ -44,10 +41,9 @@ class LoginPage extends Component {
                         />
                     </CardSection>
 
-
                     <CardSection>
-                        <Button propPress = {()=>{
-                             this.props.navigation.navigate('tabscreen')
+                        <Button propPress={() => {
+                            this.props.navigation.navigate('tabscreen')
                         }}>
                             Log in
                         </Button>
@@ -55,15 +51,15 @@ class LoginPage extends Component {
 
 
                     <CardSection>
-                        <Button propPress = {()=>{
-                             this.props.navigation.navigate('signup')
-                        }} >
+                        <Button propPress={() => {
+                            this.props.navigation.navigate('signup')
+                        }}>
                             Create an account
                         </Button>
                     </CardSection>
 
                     <CardSection>
-                        <Button >
+                        <Button>
                             Forgot your password
                         </Button>
                     </CardSection>
