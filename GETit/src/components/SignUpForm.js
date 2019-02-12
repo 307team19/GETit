@@ -11,6 +11,9 @@ import firebase from 'firebase';
  * Gets user data in the form for sign up
  */
 class SignUpForm extends Component {
+    static navigationOptions = {
+        title: 'Sign Up',
+    };
     state = {
         text: '',
         email: '',
@@ -26,7 +29,7 @@ class SignUpForm extends Component {
                 console.log(text)
             });
 
-        this.props.navigation.navigate('login')
+        this.props.navigation.navigate('tabscreen')
 
     }
 

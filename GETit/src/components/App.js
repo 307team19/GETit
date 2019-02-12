@@ -6,10 +6,13 @@ import MyAccount from './MyAccount'
 import Orders from './Orders'
 import Requests from './Requests'
 import {createAppContainer, createBottomTabNavigator, createStackNavigator} from "react-navigation";
+import {View} from 'react-native';
 
 const AppNavigator = createStackNavigator(
     {
-        login: LoginPage,
+        login: {
+            screen: LoginPage,
+        },
         signup: SignUpForm,
         tabscreen: createBottomTabNavigator({
             orders: Orders,
@@ -19,13 +22,25 @@ const AppNavigator = createStackNavigator(
 
     },
     {
-        initialRouteName: "signup"
-    }
+        initialRouteName: "login",
+        defaultNavigationOptions: {
+            title: 'GETit',
+            headerStyle: {
+                backgroundColor: '#1eaaf1',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                fontSize: 20
+            },
+        },
+    },
+
 );
 
 const AppContainer = createAppContainer(AppNavigator)
 
 class App extends Component<Props> {
+
 
     componentWillMount(): void {
         firebase.initializeApp({
@@ -42,7 +57,9 @@ class App extends Component<Props> {
 
     render() {
         return (
-            <AppContainer/>
+            <View style={{flex: 1}}>
+                <AppContainer/>
+            </View>
         )
 
     }

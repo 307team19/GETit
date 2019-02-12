@@ -3,6 +3,11 @@ import {Image, View} from 'react-native';
 import {Button, Card, CardSection, Input} from "./common";
 
 class LoginPage extends Component {
+    static navigationOptions = {
+        title: 'GETit',
+        headerBackTitle: 'Login'
+    };
+
 
     state = {email: '', password: ''};
 
@@ -11,6 +16,7 @@ class LoginPage extends Component {
 
         return (
             <View style={styles.containerStyle}>
+                {/*<Header headerText={"GETit"} />*/}
                 <Card>
                     <CardSection>
                         <Image
