@@ -3,19 +3,19 @@ import React from 'react';
 import {Text, TouchableOpacity, TouchableHighlight} from 'react-native';
 
 const Button = ({propPress, children}) => {
-    
+
     const {buttonStyle, TextStyle} = styles;
     return (
         <TouchableOpacity onPress={propPress} style={buttonStyle}>
             <Text style={TextStyle}>
                 {children}
             </Text>
-        </TouchableOpacity> 
+        </TouchableOpacity>
     );
 };
 
 const styles = {
-    buttonStyle:{
+    buttonStyle: {
         flex: 1,
         alignSelf: 'stretch',
         backgroundColor: '#fff',
@@ -25,7 +25,7 @@ const styles = {
         marginLeft: 5,
         marginRight: 5
     },
-    TextStyle:{
+    TextStyle: {
         alignSelf: 'center',
         fontSize: 16,
         color: '#1eaaf1',
@@ -36,4 +36,4 @@ const styles = {
     }
 };
 
-export { Button };
+export {Button};
