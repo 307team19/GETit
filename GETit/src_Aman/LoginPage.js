@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Image, Text} from 'react-native';
+import {View, Image, Text, ScrollView} from 'react-native';
 import firebase from 'firebase';
 import {Button, Card, CardSection, Input} from "./Components_Aman";
 
@@ -13,6 +13,7 @@ class LoginPage extends Component {
 
 
         return (
+            <ScrollView>
             <View style={styles.containerStyle}>
                 <Card>
                     <CardSection>
@@ -69,6 +70,7 @@ class LoginPage extends Component {
                     </CardSection>
                 </Card>
             </View>
+            </ScrollView>
         );
     }
 }

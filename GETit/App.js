@@ -13,14 +13,15 @@ import Requests from './src/components_shiv/Requests'
 import {Platform, StyleSheet, View} from 'react-native';
 import { createBottomTabNavigator, createStackNavigator, createAppContainer } from "react-navigation";
 
+
 const AppNavigator = createStackNavigator(
   {
     login: LoginPage,
     signup: SignUpForm,
     tabscreen: createBottomTabNavigator({
       orders: Orders,
-      myaccount: MyAccount,
       requests: Requests,
+      myaccount: MyAccount,
     })
 
   },
