@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import {Button, TextInput} from 'react-native-paper';
 import firebase from 'firebase';
 
@@ -35,45 +35,47 @@ class SignUpForm extends Component {
 
     render() {
         return (
-            <View style={styles.viewStyle}>
-                <TextInput
-                    style={styles.textInputStyle}
-                    label='Name'
-                    mode='outlined'
-                />
-                <TextInput
-                    style={styles.textInputStyle}
-                    label='Username'
-                    mode='outlined'
-                />
-                <TextInput
-                    style={styles.textInputStyle}
-                    label='Email'
-                    mode='outlined'
-                    value={this.state.email}
-                    onChangeText={textString => this.setState({email: textString})}
+            <ScrollView>
+                <View style={styles.viewStyle}>
+                    <TextInput
+                        style={styles.textInputStyle}
+                        label='Name'
+                        mode='outlined'
+                    />
+                    <TextInput
+                        style={styles.textInputStyle}
+                        label='Username'
+                        mode='outlined'
+                    />
+                    <TextInput
+                        style={styles.textInputStyle}
+                        label='Email'
+                        mode='outlined'
+                        value={this.state.email}
+                        onChangeText={textString => this.setState({email: textString})}
 
-                />
-                <TextInput
-                    style={styles.textInputStyle}
-                    label='Password'
-                    mode='outlined'
-                    secureTextEntry
-                    value={this.state.password}
-                    onChangeText={textString => this.setState({password: textString})}
-                />
-                <TextInput
-                    style={styles.textInputStyle}
-                    label='Phone Number'
-                    mode='outlined'
-                />
-                <Button
-                    style={styles.buttonContainedStyle}
-                    mode="contained"
-                    onPress={this.onSignUpButtonPressed.bind(this)}>
-                    Sign up
-                </Button>
-            </View>
+                    />
+                    <TextInput
+                        style={styles.textInputStyle}
+                        label='Password'
+                        mode='outlined'
+                        secureTextEntry
+                        value={this.state.password}
+                        onChangeText={textString => this.setState({password: textString})}
+                    />
+                    <TextInput
+                        style={styles.textInputStyle}
+                        label='Phone Number'
+                        mode='outlined'
+                    />
+                    <Button
+                        style={styles.buttonContainedStyle}
+                        mode="contained"
+                        onPress={this.onSignUpButtonPressed.bind(this)}>
+                        Sign up
+                    </Button>
+                </View>
+            </ScrollView>
         );
     };
 }

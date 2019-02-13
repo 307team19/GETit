@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, View} from 'react-native';
+import {Image, View, ScrollView} from 'react-native';
 import {Button, Card, CardSection, Input} from "./common";
 
 class LoginPage extends Component {
@@ -15,62 +15,64 @@ class LoginPage extends Component {
     render() {
 
         return (
-            <View style={styles.containerStyle}>
-                {/*<Header headerText={"GETit"} />*/}
-                <Card>
-                    <CardSection>
-                        <Image
-                            style={styles.logoStyle}
-                            source={require('../img/logo.png')}
-                            resizeMode='contain'
-                        />
-                    </CardSection>
+            <ScrollView>
+                <View style={styles.containerStyle}>
+                    {/*<Header headerText={"GETit"} />*/}
+                    <Card>
+                        <CardSection>
+                            <Image
+                                style={styles.logoStyle}
+                                source={require('../img/logo.png')}
+                                resizeMode='contain'
+                            />
+                        </CardSection>
 
 
-                    <CardSection>
-                        <Input
-                            label="Email ID:"
-                            value={this.state.email}
-                            onChangeText={email => this.setState({email})}
-                            placeholder="john@purdue.edu"
-                        />
-                    </CardSection>
+                        <CardSection>
+                            <Input
+                                label="Email ID:"
+                                value={this.state.email}
+                                onChangeText={email => this.setState({email})}
+                                placeholder="john@purdue.edu"
+                            />
+                        </CardSection>
 
 
-                    <CardSection>
-                        <Input
-                            label="Password:"
-                            value={this.state.password}
-                            onChangeText={password => this.setState({password})}
-                            placeholder="******"
-                            secureTextEntry={true}
-                        />
-                    </CardSection>
+                        <CardSection>
+                            <Input
+                                label="Password:"
+                                value={this.state.password}
+                                onChangeText={password => this.setState({password})}
+                                placeholder="******"
+                                secureTextEntry={true}
+                            />
+                        </CardSection>
 
-                    <CardSection>
-                        <Button propPress={() => {
-                            this.props.navigation.navigate('tabscreen')
-                        }}>
-                            Log in
-                        </Button>
-                    </CardSection>
+                        <CardSection>
+                            <Button propPress={() => {
+                                this.props.navigation.navigate('tabscreen')
+                            }}>
+                                Log in
+                            </Button>
+                        </CardSection>
 
 
-                    <CardSection>
-                        <Button propPress={() => {
-                            this.props.navigation.navigate('signup')
-                        }}>
-                            Create an account
-                        </Button>
-                    </CardSection>
+                        <CardSection>
+                            <Button propPress={() => {
+                                this.props.navigation.navigate('signup')
+                            }}>
+                                Create an account
+                            </Button>
+                        </CardSection>
 
-                    <CardSection>
-                        <Button>
-                            Forgot your password
-                        </Button>
-                    </CardSection>
-                </Card>
-            </View>
+                        <CardSection>
+                            <Button>
+                                Forgot your password
+                            </Button>
+                        </CardSection>
+                    </Card>
+                </View>
+            </ScrollView>
         );
     }
 }
