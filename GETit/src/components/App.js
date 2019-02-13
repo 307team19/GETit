@@ -37,7 +37,7 @@ const AppNavigator = createStackNavigator(
 
 );
 
-const AppContainer = createAppContainer(AppNavigator)
+const AppContainer = createAppContainer(AppNavigator);
 
 class App extends Component<Props> {
 
