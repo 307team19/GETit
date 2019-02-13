@@ -3,7 +3,7 @@ import {View, ScrollView} from 'react-native';
 import {Button, TextInput} from 'react-native-paper';
 import firebase from 'firebase';
 import {Provider as PaperProvider} from 'react-native-paper';
-// import fonts from 'react-native-paper';
+import paperTheme from './common/paperTheme'
 
 //class component which handles data
 //has render function which returns same thing as functional component
@@ -37,7 +37,7 @@ class SignUpForm extends Component {
 
     render() {
         return (
-            <PaperProvider theme={styles.paperTheme}>
+            <PaperProvider theme={paperTheme}>
                 <ScrollView>
                     <View style={styles.viewStyle}>
                         <TextInput
@@ -99,31 +99,7 @@ const styles = {
     buttonContainedStyle: {
         height: 50,
         justifyContent: 'center',
-        backgroundColor: '#1eaaf1',
         marginTop: 4
-    },
-
-    paperTheme: {
-        dark: false,
-        roundness: 4,
-        colors: {
-            primary: '#1eaaf1',
-            accent: '#005cf1',
-            background: '#ffffff',
-            surface: '#ffffff',
-            error: '#B00020',
-            text: '#000000',
-            disabled: '#000000',
-            placeholder: '#000000',
-            backdrop: '#000000',
-            notification: '#e46eef',
-        },
-        fonts : {
-            regular: 'HelveticaNeue',
-            medium: 'HelveticaNeue-Medium',
-            light: 'HelveticaNeue-Light',
-            thin: 'HelveticaNeue-Thin',
-        }
     }
 };
 
