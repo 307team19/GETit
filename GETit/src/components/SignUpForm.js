@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, ScrollView} from 'react-native';
-import {Button, TextInput} from 'react-native-paper';
+import {Button, TextInput, Text} from 'react-native-paper';
 import firebase from 'firebase';
 import {Provider as PaperProvider} from 'react-native-paper';
 import paperTheme from './common/paperTheme'
@@ -13,9 +13,11 @@ import paperTheme from './common/paperTheme'
  * Gets user data in the form for sign up
  */
 class SignUpForm extends Component {
+    
     static navigationOptions = {
         title: 'Sign Up',
     };
+
     state = {
         text: '',
         email: '',
@@ -75,7 +77,7 @@ class SignUpForm extends Component {
                             style={styles.buttonContainedStyle}
                             mode="contained"
                             onPress={this.onSignUpButtonPressed.bind(this)}>
-                            Sign up
+                            <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>SIGN UP</Text>
                         </Button>
                     </View>
                 </ScrollView>
@@ -97,7 +99,7 @@ const styles = {
     },
 
     buttonContainedStyle: {
-        height: 50,
+        height: 47,
         justifyContent: 'center',
         marginTop: 4
     }
