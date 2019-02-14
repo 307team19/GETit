@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Image, View, ScrollView, Text} from 'react-native';
-import {Button, Card, CardSection, Input} from "./common";
-import {Provider as PaperProvider, TextInput} from 'react-native-paper';
+import { Card, CardSection, Input} from "./common";
+import {Provider as PaperProvider, TextInput,Button} from 'react-native-paper';
 import paperTheme from './common/paperTheme'
 
 class LoginPage extends Component {
@@ -20,7 +20,7 @@ class LoginPage extends Component {
             <PaperProvider theme={paperTheme}>
                 <ScrollView>
                     <View style={styles.containerStyle}>
-                        {/*<Header headerText={"GETit"} />*/}
+                       
                         <Card>
                             <CardSection>
                                 <Image
@@ -32,12 +32,7 @@ class LoginPage extends Component {
 
 
                             <CardSection>
-                                {/*<Input*/}
-                                    {/*label="Email ID:"*/}
-                                    {/*value={this.state.email}*/}
-                                    {/*onChangeText={email => this.setState({email})}*/}
-                                    {/*placeholder="john@purdue.edu"*/}
-                                {/*/>*/}
+                                
                                 <TextInput
                                     style={styles.textInputStyle}
                                     label='Email'
@@ -50,13 +45,7 @@ class LoginPage extends Component {
 
 
                             <CardSection>
-                                {/*<Input*/}
-                                    {/*label="Password:"*/}
-                                    {/*value={this.state.password}*/}
-                                    {/*onChangeText={password => this.setState({password})}*/}
-                                    {/*placeholder="******"*/}
-                                    {/*secureTextEntry={true}*/}
-                                {/*/>*/}
+                                
                                 <TextInput
                                     style={styles.textInputStyle}
                                     label='Password'
@@ -67,37 +56,44 @@ class LoginPage extends Component {
                                 />
                             </CardSection>
 
-                            <CardSection>
-                                <Button propPress={() => {
+                            <CardSection style = {{flex: 1}}>
+                                <Button 
+                                propPress={() => {
                                     this.props.navigation.navigate('tabscreen')
-                                }}>
+                                }}
+                                style={{...styles.buttonContainedStyle, margin: 0}}
+                                mode="contained"
+                                >
                                     <Text style={styles.TextStyle}>
-                                        Log in
+                                        LOG IN
                                     </Text>
                                 </Button>
                             </CardSection>
 
 
-                            <CardSection>
-                                <Button propPress={() => {
+                            <CardSection style = {{ justifyContent: 'space-around' }}>
+                                <Button 
+                                propPress={() => {
                                     this.props.navigation.navigate('signup')
-                                }}>
-                                    <Text style={styles.TextStyle}>
-                                        Create an account
+                                }}
+                                style={styles.buttonContainedStyle}
+                                mode="contained"
+                                >
+                                    <Text style={{fontSize: 11, fontWeight: 'bold', color: 'white'}}>
+                                        CREATE ACCOUNT
                                     </Text>
                                 </Button>
-                                <Button>
-                                    <Text style={styles.TextStyle}>
-                                        Forgot password
+                                <Button
+                                style={styles.buttonContainedStyle}
+                                mode="contained"
+                                >
+                                    <Text style={{fontSize: 11, fontWeight: 'bold', color: 'white'}}>
+                                        FORGOT PASSWORD
                                     </Text>
                                 </Button>
                             </CardSection>
 
-                            {/*<CardSection>*/}
-                                {/*<Button>*/}
-                                    {/*Forgot your password*/}
-                                {/*</Button>*/}
-                            {/*</CardSection>*/}
+                            
                         </Card>
                     </View>
                 </ScrollView>
@@ -129,8 +125,17 @@ const styles = {
         fontSize: 10
     },
     TextStyle: {
+        fontSize: 20,
         fontWeight: 'bold',
+        color: 'white'
 
+    },
+
+    buttonContainedStyle: {
+        height: 47,
+        justifyContent: 'center',
+        margin: 3,
+        flex: 1,
     }
 }
 
