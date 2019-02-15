@@ -28,6 +28,8 @@ class SignUpForm extends Component {
     accountName: '', // [Android] specifies an account name on the device that should be used
     iosClientId: '472187757547-uhlv7ubeu6kepvok0o2d8gv9ihpj9puo.apps.googleusercontent.com', // [iOS] optional, if you want to specify the client ID of type iOS (otherwise, it is taken from GoogleService-Info.plist)
     });
+
+    
    }
     
     static navigationOptions = {
@@ -37,7 +39,8 @@ class SignUpForm extends Component {
     state = {
         text: '',
         email: '',
-        password: ''
+        password: '',
+        userInfo: {},
 
     };
 
@@ -54,22 +57,16 @@ class SignUpForm extends Component {
     }
 
     signIn = async () => {
-  try {
-    await GoogleSignin.hasPlayServices();
-    const userInfo = await GoogleSignin.signIn();
-    this.setState({ userInfo });
-  } catch (error) {
-    if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-      // user cancelled the login flow
-    } else if (error.code === statusCodes.IN_PROGRESS) {
-      // operation (f.e. sign in) is in progress already
-    } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-      // play services not available or outdated
-    } else {
-      // some other error happened
+        
+    try {
+        await GoogleSignin.hasPlayServices();
+        const userInfo = await GoogleSignin.signIn();
+        this.setState({ userInfo });
+        console.log(this.state.userInfo)
+    } catch (error) {
+        console.log(error)
     }
-  }
-};
+    };
 
     render() {
         return (
