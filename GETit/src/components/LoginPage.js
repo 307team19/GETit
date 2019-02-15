@@ -58,7 +58,7 @@ class LoginPage extends Component {
 
                             <CardSection style = {{flex: 1}}>
                                 <Button 
-                                propPress={() => {
+                                onPress={() => {
                                     this.props.navigation.navigate('tabscreen')
                                 }}
                                 style={{...styles.buttonContainedStyle, margin: 0}}
@@ -73,7 +73,7 @@ class LoginPage extends Component {
 
                             <CardSection style = {{ justifyContent: 'space-around' }}>
                                 <Button 
-                                propPress={() => {
+                                onPress={() => {
                                     this.props.navigation.navigate('signup')
                                 }}
                                 style={styles.buttonContainedStyle}
