@@ -2,24 +2,25 @@ import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import {Button} from 'react-native-paper';
 import firebase from 'firebase';
-import { GoogleSignin } from 'react-native-google-signin';
+import {GoogleSignin} from 'react-native-google-signin';
 
 class MyAccount extends Component {
     signOut = async () => {
 
 
-        firebase.auth().signOut().then(async function() {
+        firebase.auth().signOut().then(async function () {
             console.log("inside here")
-        try {
-            await GoogleSignin.revokeAccess();
-            await GoogleSignin.signOut();
+            try {
+                await GoogleSignin.revokeAccess();
+                await GoogleSignin.signOut();
             } catch (error) {
-            console.error(error);
+                console.error(error);
             }
-        }).catch(function(error) {
-        
+            //TODO: this is not reaching here cz of Revoke Access
+            this.props.navigate("login");
+        }).catch(function (error) {
+
         });
-   
 
 
     };
@@ -39,9 +40,9 @@ class MyAccount extends Component {
                 <Text>MyAccount Screen</Text>
                 <Text>MyAccount Screen</Text>
                 <Button
-                onPress = {this.signOut}
+                    onPress={this.signOut}
                 >
-                Sign Out
+                    Sign Out
                 </Button>
             </View>
 
