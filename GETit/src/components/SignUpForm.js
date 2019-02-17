@@ -63,6 +63,12 @@ class SignUpForm extends Component {
         const userInfo = await GoogleSignin.signIn();
         this.setState({ userInfo });
         console.log(this.state.userInfo)
+      var credential = firebase.auth.GoogleAuthProvider.credential(this.state.userInfo.idToken);
+       firebase.auth().signInAndRetrieveDataWithCredential(credential).catch(function(error) {
+           console.log(error.message)
+           console.log(error.email)
+      });
+   
     } catch (error) {
         console.log(error)
     }
