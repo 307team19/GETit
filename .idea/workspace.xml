@@ -2,10 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eadc908c-1f83-4bbd-83dd-656b58f67d0a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GETit/src/img/profile_placeholder.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/GETit.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/GETit.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Headers/Public/GoogleSignIn/GoogleSignIn/GIDAuthentication.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Headers/Public/GoogleSignIn/GoogleSignIn/GIDGoogleUser.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Headers/Public/GoogleSignIn/GoogleSignIn/GIDProfileData.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Headers/Public/GoogleSignIn/GoogleSignIn/GIDSignIn.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Headers/Public/GoogleSignIn/GoogleSignIn/GIDSignInButton.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Headers/Public/GoogleSignIn/GoogleSignIn/GoogleSignIn.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Manifest.lock" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/Pods/Manifest.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Pods.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/Pods/Pods.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/GTMOAuth2/GTMOAuth2.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/GTMOAuth2/GTMOAuth2.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETit-tvOSTests/Pods-GETit-tvOSTests.debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETit-tvOSTests/Pods-GETit-tvOSTests.debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETit-tvOSTests/Pods-GETit-tvOSTests.release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETit-tvOSTests/Pods-GETit-tvOSTests.release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETit/Pods-GETit-resources.sh" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETit/Pods-GETit-resources.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETit/Pods-GETit.debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETit/Pods-GETit.debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETit/Pods-GETit.release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETit/Pods-GETit.release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETitTests/Pods-GETitTests.debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETitTests/Pods-GETitTests.debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETitTests/Pods-GETitTests.release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/Pods/Target Support Files/Pods-GETitTests/Pods-GETitTests.release.xcconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GETit/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GETit/src/components/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GETit/src/components/common/paperTheme.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/common/paperTheme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/src/components/MyAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/MyAccount.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="847">
-              <caret line="62" column="9" lean-forward="true" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+            <state relative-caret-position="613">
+              <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -30,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/LoginPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+            <state relative-caret-position="1000">
+              <caret line="107" column="16" lean-forward="true" selection-start-line="107" selection-start-column="16" selection-end-line="107" selection-end-column="16" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -45,7 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/common/CardSection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="285">
+              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -56,8 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/SignUpForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-922">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="489">
+              <caret line="124" column="30" lean-forward="true" selection-start-line="124" selection-start-column="30" selection-end-line="124" selection-end-column="30" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -65,22 +86,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GETit/src/components/common/Button.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GETit/src/components/MyAccount.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="222">
+              <caret line="66" column="22" lean-forward="true" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GETit/src/components/common/paperTheme.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -103,6 +116,7 @@
         <option value="$PROJECT_DIR$/GETit/src/components/SignUpForm.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/common/paperTheme.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/LoginPage.js" />
+        <option value="$PROJECT_DIR$/GETit/src/components/MyAccount.js" />
       </list>
     </option>
   </component>
@@ -114,14 +128,15 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1320" />
-    <option name="height" value="813" />
+    <option name="width" value="784" />
+    <option name="height" value="811" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -162,11 +177,17 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components_shiv" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="GETit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GETit" type="462c0819:PsiDirectoryNode" />
+              <item name="GETit" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -176,6 +197,11 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/GETit/src/img" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -206,17 +232,17 @@
       <workItem from="1550088408002" duration="92000" />
       <workItem from="1550126283225" duration="95000" />
       <workItem from="1550134193813" duration="1417000" />
+      <workItem from="1550439110710" duration="3531000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9815000" />
+    <option name="totallyTimeSpent" value="13346000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1320" height="813" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="784" height="811" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20092379" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3420708" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -229,7 +255,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286908" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5003524" side_tool="true" visible="true" weight="0.041608877" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5003524" side_tool="true" visible="true" weight="0.04172462" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -274,32 +300,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/common/paperTheme.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="847">
-          <caret line="62" column="9" lean-forward="true" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/common/CardSection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/common/Button.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -309,20 +309,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/SignUpForm.js">
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/common/paperTheme.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-922">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="240">
+          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="613">
+          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/SignUpForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="124" column="30" lean-forward="true" selection-start-line="124" selection-start-column="30" selection-end-line="124" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/common/CardSection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/LoginPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+        <state relative-caret-position="1000">
+          <caret line="107" column="16" lean-forward="true" selection-start-line="107" selection-start-column="16" selection-end-line="107" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/MyAccount.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="66" column="22" lean-forward="true" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
