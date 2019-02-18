@@ -5,6 +5,12 @@ import firebase from 'firebase';
 import {Provider as PaperProvider} from 'react-native-paper';
 import { GoogleSignin, GoogleSigninButton,  statusCodes  } from 'react-native-google-signin';
 import paperTheme from './common/paperTheme'
+import {StackActions, NavigationActions} from 'react-navigation';
+
+const resetAction = StackActions.reset({
+    index: 0,
+    actions: [NavigationActions.navigate({ routeName: 'tabscreen' })],
+});
 
 //class component which handles data
 //has render function which returns same thing as functional component
@@ -52,7 +58,7 @@ class SignUpForm extends Component {
                 console.log(text)
             });
 
-        this.props.navigation.navigate('tabscreen')
+        this.props.navigation.dispatch(resetAction);
 
     }
 
@@ -76,7 +82,7 @@ class SignUpForm extends Component {
                        console.log("  Photo URL: " + profile.photoURL);
                    });
                }
-               this.props.navigation.navigate("tabscreen");
+               this.props.navigation.dispatch(resetAction);
            })
            .catch(function(error) {
            console.log(error.message)
