@@ -533,9 +533,10 @@
     pirates "^4.0.0"
     source-map-support "^0.5.9"
 
-"@babel/runtime@^7.0.0":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.3.1":
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.3.1.tgz#574b03e8e8a9898eaf4a872a92ea20b7846f6f2a"
+  integrity sha512-7jGW8ppV0ant637pIqAcFfQDDH1orEPGJb8aXfUozuCU3QqX7rX4DA8iwrbPrR1hcH0FTTHz47yQnk+bl5xHQA==
   dependencies:
     regenerator-runtime "^0.12.0"
 
@@ -4372,6 +4373,11 @@ react-native-gesture-handler@^1.0.15, react-native-gesture-handler@~1.0.14:
 react-native-google-signin@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-1.1.0.tgz#173d981c937f3262b5d0804d989593e4fd29da0d"
+
+react-native-image-picker@^0.28.0:
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-0.28.0.tgz#e3f26df170ea932e9c0404624fbced2f59a300e3"
+  integrity sha512-lQfdOyC1mQ/pvfEaUGdoodO1A1clg9kf6YC1WdbWhA6XK+joBd9GQYf8SaCf6/7vM25U4ib+6ux4yvnrS1pOqQ==
 
 react-native-paper@^2.11.0:
   version "2.11.0"
