@@ -3,6 +3,7 @@ import {Text, View, ScrollView} from 'react-native';
 import { Button, Provider as PaperProvider, TextInput } from 'react-native-paper';
 import paperTheme from './common/paperTheme';
 import { GoogleSigninButton } from "react-native-google-signin";
+import firebase from 'firebase';
 
 class PasswordReset extends Component {
 
@@ -25,7 +26,15 @@ class PasswordReset extends Component {
 						/>
 						<Button
 							style={styles.buttonContainedStyle}
-							mode="contained">
+							mode="contained"
+							onPress={()=>{
+								firebase.auth().sendPasswordResetEmail(this.state.email).then(function() {
+								console.log("Email sent")
+								}).catch(function(error) {
+								console.log("Email not sent")
+								});
+							}}
+							>
 							<Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>Reset Password</Text>
 						</Button>
 					</View>
