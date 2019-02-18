@@ -10,6 +10,7 @@ import LoginPage from './src_Aman/LoginPage'
 import MyAccount from './src/components_shiv/MyAccount'
 import Orders from './src/components_shiv/Orders'
 import Requests from './src/components_shiv/Requests'
+import PasswordReset from './src/components_shiv/PasswordReset'
 import {Platform, StyleSheet, View} from 'react-native';
 import { createBottomTabNavigator, createStackNavigator, createAppContainer } from "react-navigation";
 
@@ -18,6 +19,7 @@ const AppNavigator = createStackNavigator(
   {
     login: LoginPage,
     signup: SignUpForm,
+   
     tabscreen: createBottomTabNavigator({
       orders: Orders,
       requests: Requests,

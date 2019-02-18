@@ -120,6 +120,9 @@ class LoginPage extends Component {
                                 <Button
                                     style={styles.buttonContainedStyle}
                                     mode="contained"
+                                    onPress={() => {
+                                        this.props.navigation.navigate('passreset')
+                                    }}
                                 >
                                     <Text style={{fontSize: 11, fontWeight: 'bold', color: 'white'}}>
                                         FORGOT PASSWORD

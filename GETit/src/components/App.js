@@ -5,6 +5,7 @@ import LoginPage from './LoginPage'
 import MyAccount from './MyAccount'
 import Orders from './Orders'
 import Requests from './Requests'
+import PasswordReset from './PasswordReset'
 import {createAppContainer, createBottomTabNavigator, createStackNavigator} from "react-navigation";
 import {View} from 'react-native';
 
@@ -14,6 +15,7 @@ const AppNavigator = createStackNavigator(
             screen: LoginPage,
         },
         signup: SignUpForm,
+        passreset: PasswordReset,
         tabscreen: createBottomTabNavigator({
             orders: Orders,
             myaccount: MyAccount,
