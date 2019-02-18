@@ -18,6 +18,19 @@ const resetAction = StackActions.reset({
 });
 
 class MyAccount extends Component {
+
+    state={ disabledEmail: true,
+            email: 'hi@hi.com',
+            buttonEmail: 'Edit',
+            disabledPhNo: true,
+            PhNo: '123-456-7890',
+            buttonPhNo: 'Edit',
+            disabledAddr: true,
+            Addr: '100 State St, West Lafayette',
+            buttonAddr: 'Edit',
+            name: 'Purdue Pete'
+    };
+
     signOut = async () => {
 
         const user = firebase.auth().currentUser;
@@ -62,6 +75,39 @@ class MyAccount extends Component {
 
     };
 
+    onEditEmailPressed() {
+        if(this.state.buttonEmail.toString().localeCompare('Edit')==0){
+            this.setState({disabledEmail:false});
+            //this.setState({email: ''});
+            this.setState({buttonEmail: 'Accept'});
+        }else{
+            this.setState({disabledEmail: true});
+            this.setState({buttonEmail: 'Edit'});
+        }
+    }
+
+    onEditPhNoPressed() {
+        if(this.state.buttonPhNo.toString().localeCompare('Edit')==0){
+            this.setState({disabledPhNo:false});
+            //this.setState({email: ''});
+            this.setState({buttonPhNo: 'Accept'});
+        }else{
+            this.setState({disabledPhNo: true});
+            this.setState({buttonPhNo: 'Edit'});
+        }
+    }
+
+    onEditAddrPressed() {
+        if(this.state.buttonAddr.toString().localeCompare('Edit')==0){
+            this.setState({disabledAddr:false});
+            //this.setState({email: ''});
+            this.setState({buttonAddr: 'Accept'});
+        }else{
+            this.setState({disabledAddr: true});
+            this.setState({buttonAddr: 'Edit'});
+        }
+    }
+
     render() {
 
 
@@ -80,20 +126,29 @@ class MyAccount extends Component {
                         </CardSection>
 
                         <CardSection>
+                            <Text style={styles.textStyle}>
+                                Welcome {this.state.name}!
+                            </Text>
+                        </CardSection>
+
+                        <CardSection>
                             <TextInput
                                 style={styles.textInputStyle}
-                                label='Email@email.com'
+                                label='email'
                                 mode='outlined'
                                 // placeholder="current email"
-                                disabled='false'
-                                //value={this.state.email}
+                                disabled={this.state.disabledEmail}
+                                value={this.state.email}
+                                onChangeText={textString => this.setState({email: textString})}
                             />
                             <Button
                                 style={styles.buttonContainedStyle}
+                                // onPress={disabled => this.setState({disabled: false})}
+                                onPress={this.onEditEmailPressed.bind(this)}
                                 // mode="contained"
                             >
                                 <Text>
-                                    Edit
+                                    {this.state.buttonEmail}
                                 </Text>
                             </Button>
                         </CardSection>
@@ -104,15 +159,17 @@ class MyAccount extends Component {
                                 label='123-456-7890'
                                 mode='outlined'
                                 // placeholder="current email"
-                                disabled='false'
-                                //value={this.state.email}
+                                disabled={this.state.disabledPhNo}
+                                value={this.state.PhNo}
+                                onChangeText={textString => this.setState({PhNo: textString})}
                             />
                             <Button
                                 style={styles.buttonContainedStyle}
+                                onPress={this.onEditPhNoPressed.bind(this)}
                                 // mode="contained"
                             >
                                 <Text>
-                                    Edit
+                                    {this.state.buttonPhNo}
                                 </Text>
                             </Button>
                         </CardSection>
@@ -123,15 +180,18 @@ class MyAccount extends Component {
                                 label='Address'
                                 mode='outlined'
                                 // placeholder="current email"
-                                disabled='false'
+                                disabled={this.state.disabledAddr}
+                                value={this.state.Addr}
+                                onChangeText={textString => this.setState({Addr: textString})}
                                 //value={this.state.email}
                             />
                             <Button
                                 style={styles.buttonContainedStyle}
+                                onPress={this.onEditAddrPressed.bind(this)}
                                 // mode="contained"
                             >
                                 <Text>
-                                    Edit
+                                    {this.state.buttonAddr}
                                 </Text>
                             </Button>
                         </CardSection>
@@ -162,6 +222,11 @@ const styles = {
     },
     buttonContainedStyle: {
         justifyContent: 'center',
+        flex: 1
+    },
+    textStyle: {
+        textAlign: 'center',
+        fontWeight: 'bold',
         flex: 1
     }
 }
