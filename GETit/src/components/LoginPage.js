@@ -99,7 +99,7 @@ class LoginPage extends Component {
                                     mode="contained"
                                 >
                                     <Text style={styles.TextStyle}>
-                                        LOG IN HERE
+                                        LOG IN
                                     </Text>
                                 </Button>
                             </CardSection>

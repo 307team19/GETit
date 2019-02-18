@@ -7,6 +7,7 @@ import {GoogleSignin} from 'react-native-google-signin';
 import {CardSection} from "./common"
 import paperTheme from './common/paperTheme'
 import {StackActions, NavigationActions} from 'react-navigation';
+import ImagePicker from 'react-native-image-picker';
 
 
 // import {Image} from "react-native-paper/typings/components/Avatar";
