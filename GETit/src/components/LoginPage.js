@@ -4,6 +4,12 @@ import {Card, CardSection} from "./common";
 import firebase from 'firebase';
 import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
 import paperTheme from './common/paperTheme'
+import {StackActions, NavigationActions} from 'react-navigation';
+
+const resetAction = StackActions.reset({
+    index: 0,
+    actions: [NavigationActions.navigate({ routeName: 'tabscreen' })],
+});
 
 class LoginPage extends Component {
     static navigationOptions = {
@@ -13,6 +19,8 @@ class LoginPage extends Component {
 
 
     state = {email: '', password: ''};
+
+
 
     onLoginButtonPressed() {
         const {email, password} = this.state;
@@ -28,7 +36,7 @@ class LoginPage extends Component {
                             console.log("  Photo URL: " + profile.photoURL);
                         });
                     }
-                    this.props.navigation.navigate('tabscreen');
+                    this.props.navigation.dispatch(resetAction);
 
                 }
             )
@@ -91,7 +99,7 @@ class LoginPage extends Component {
                                     mode="contained"
                                 >
                                     <Text style={styles.TextStyle}>
-                                        LOG IN HERE
+                                        LOG IN
                                     </Text>
                                 </Button>
                             </CardSection>
