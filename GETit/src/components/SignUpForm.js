@@ -43,26 +43,42 @@ class SignUpForm extends Component {
     };
 
     state = {
-        text: '',
+        firstName: '',
         email: '',
         password: '',
-        userInfo: {},
+        phoneNumber: '',
+        lastName: '',
+        userInfo: '',
 
     };
 
 
-    onSignUpButtonPressed() {
-        const {email, password} = this.state;
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .catch((text) => {
-                console.log(text)
-            });
+    async onSignUpButtonPressed() {
+
+        
+
+        const {email, password,phoneNumber,firstName, lastName} = this.state;
+          await firebase.auth().createUserWithEmailAndPassword(email, password)
+            var rootRef = firebase.database().ref();
+            var userRef = firebase.database().ref("users/"+firebase.auth().currentUser.uid+"/");
+            userRef.set({
+                email,
+                phoneNumber,
+                firstName,
+                lastName,
+            }).then((data)=>{
+               console.log('Synchronization succeeded');
+            }).catch((error)=>{
+                console.log(error)
+            })
 
         this.props.navigation.dispatch(resetAction);
 
     }
 
     signIn = async () => {
+
+        
         
     try {
         await GoogleSignin.hasPlayServices();
@@ -75,18 +91,36 @@ class SignUpForm extends Component {
                const user = firebase.auth().currentUser;
                if (user != null) {
                    user.providerData.forEach(function (profile) {
-                       console.log("Sign-in provider: " + profile.providerId);
-                       console.log("  Provider-specific UID: " + profile.uid);
-                       console.log("  Name: " + profile.displayName);
-                       console.log("  Email: " + profile.email);
-                       console.log("  Photo URL: " + profile.photoURL);
-                   });
-               }
-               this.props.navigation.dispatch(resetAction);
+
+                       console.log(profile)
+                       
+
+            var rootRef = firebase.database().ref();
+            var userRef = firebase.database().ref("users/"+profile.uid+"/");
+            userRef.set({
+                email: profile.email,
+                photoURL: profile.photoURL,
+                name: profile.displayName,
+                phoneNumber: profile.phoneNumber,
+            }).then((data)=>{
+               console.log('Synchronization succeeded');
+            }).catch((error)=>{
+                console.log(error)
+            })
+
+               
            })
-           .catch(function(error) {
-           console.log(error.message)
-      });
+           
+           
+
+
+                   
+               }
+
+               this.props.navigation.dispatch(resetAction);
+               });
+
+            
    
     } catch (error) {
         console.log(error)
@@ -100,13 +134,17 @@ class SignUpForm extends Component {
                     <View style={styles.viewStyle}>
                         <TextInput
                             style={styles.textInputStyle}
-                            label='Name'
+                            label='First Name'
                             mode='outlined'
+                            value={this.state.firstName}
+                            onChangeText={textString => this.setState({firstName: textString})}
                         />
                         <TextInput
                             style={styles.textInputStyle}
-                            label='Username'
+                            label='Last Name'
                             mode='outlined'
+                            value={this.state.lastName}
+                            onChangeText={textString => this.setState({lastName: textString})}
                         />
                         <TextInput
                             style={styles.textInputStyle}
@@ -128,6 +166,8 @@ class SignUpForm extends Component {
                             style={styles.textInputStyle}
                             label='Phone Number'
                             mode='outlined'
+                            value={this.state.phoneNumber}
+                            onChangeText={textString => this.setState({phoneNumber: textString})}
                         />
                         <Button
                             style={styles.buttonContainedStyle}
