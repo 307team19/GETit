@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {Image, ScrollView, Text, TouchableOpacity, View, CameraRoll} from 'react-native';
 import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
 import firebase from 'firebase';
 
@@ -16,6 +16,15 @@ const resetAction = StackActions.reset({
     index: 0,
     actions: [NavigationActions.navigate({ routeName: 'login' })],
 });
+
+const options = {
+  title: 'Select Avatar',
+  customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+};
 
 class MyAccount extends Component {
 
@@ -111,6 +120,30 @@ class MyAccount extends Component {
         }
     }
 
+    onImageButtonPressed(){
+    ImagePicker.showImagePicker(options, (response) => {
+  console.log('Response = ', response);
+
+  if (response.didCancel) {
+    console.log('User cancelled image picker');
+  } else if (response.error) {
+    console.log('ImagePicker Error: ', response.error);
+  } else if (response.customButton) {
+    console.log('User tapped custom button: ', response.customButton);
+  } else {
+    const source = { uri: response.uri };
+
+    // You can also display the image using data:
+    // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+    this.setState({
+      avatarSource: source,
+    });
+  }
+});
+      
+    }
+
     render() {
 
 
@@ -119,7 +152,10 @@ class MyAccount extends Component {
                 <ScrollView>
                     <View>
                         <CardSection>
-                            <TouchableOpacity style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                            <TouchableOpacity 
+                            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+                            onPress = {this.onImageButtonPressed.bind(this)}
+                            >
                                 <Image
                                     source={require('../img/profile_placeholder.png')}
                                     style={styles.profilePicStyle}
