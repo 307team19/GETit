@@ -19,6 +19,7 @@ const resetAction = StackActions.reset({
 
 class MyAccount extends Component {
 
+
     state={ disabledEmail: true,
             email: 'hi@hi.com',
             buttonEmail: 'Edit',
@@ -83,6 +84,8 @@ class MyAccount extends Component {
         }else{
             this.setState({disabledEmail: true});
             this.setState({buttonEmail: 'Edit'});
+
+
         }
     }
 
