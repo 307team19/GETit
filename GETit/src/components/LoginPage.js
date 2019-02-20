@@ -5,6 +5,7 @@ import firebase from 'firebase';
 import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
 import paperTheme from './common/paperTheme'
 import {StackActions, NavigationActions} from 'react-navigation';
+import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 
 const resetAction = StackActions.reset({
     index: 0,
@@ -45,9 +46,28 @@ class LoginPage extends Component {
             });
     }
 
-    onLoginSucces() {
+   signIn = async () => {
 
-    }
+
+        try {
+            await GoogleSignin.hasPlayServices();
+            const userInfo = await GoogleSignin.signIn();
+            this.setState({userInfo});
+            console.log(this.state.userInfo)
+            var credential = firebase.auth.GoogleAuthProvider.credential(this.state.userInfo.idToken);
+            firebase.auth().signInAndRetrieveDataWithCredential(credential)
+                .then(() => {
+                
+            this.props.navigation.navigate('tabscreen');
+                }).catch((error)=>{
+                    console.log(error)
+                })
+
+
+        } catch (error) {
+            console.log(error)
+        }
+    };
 
 
     render() {
@@ -128,8 +148,18 @@ class LoginPage extends Component {
                                         FORGOT PASSWORD
                                     </Text>
                                 </Button>
+                            
                             </CardSection>
 
+                            <CardSection style={{justifyContent: 'space-around'}}>
+                                <GoogleSigninButton
+                            style={{ height: 48, justifyContent: 'center',flex: 1}}
+                            size={GoogleSigninButton.Size.Wide}
+                            color={GoogleSigninButton.Color.Dark}
+                            onPress={this.signIn}
+                            disabled={false}
+                            />
+                            </CardSection>
 
                         </Card>
                     </View>
