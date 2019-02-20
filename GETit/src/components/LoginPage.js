@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, ScrollView, Text, View} from 'react-native';
+import {Image, ScrollView, Text, View, Alert} from 'react-native';
 import {Card, CardSection} from "./common";
 import firebase from 'firebase';
 import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
@@ -42,7 +42,20 @@ class LoginPage extends Component {
                 }
             )
             .catch(error => {
-                console.log(error)
+                Alert.alert(
+            'Oops!',
+            error.message,
+            [
+                {
+                text: 'OK',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+                },
+                
+            ],
+            {cancelable: false},
+            );
+            console.log(error)
             });
     }
 
