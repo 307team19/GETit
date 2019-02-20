@@ -11,14 +11,6 @@ const resetAction = StackActions.reset({
     actions: [NavigationActions.navigate({routeName: 'tabscreen'})],
 });
 
-//class component which handles data
-//has render function which returns same thing as functional component
-//but outside of that render function, we can do some stuff with data also
-
-/**
- * Gets user data in the form for sign up
- */
-
 
 class SignUpForm extends Component {
 
@@ -105,8 +97,11 @@ class SignUpForm extends Component {
             var credential = firebase.auth.GoogleAuthProvider.credential(this.state.userInfo.idToken);
             firebase.auth().signInAndRetrieveDataWithCredential(credential)
                 .then(() => {
-                    this.props.navigation.navigate('createUser');
-                });
+                
+            this.props.navigation.navigate('createUser');
+                }).catch((error)=>{
+                    console.log(error)
+                })
 
 
         } catch (error) {
@@ -182,7 +177,7 @@ class SignUpForm extends Component {
                             <Text style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>SIGN UP</Text>
                         </Button>
                         <GoogleSigninButton
-                            style={{width: 192, height: 48}}
+                            style={{ height: 48, justifyContent: 'center',flex: 1, margin: 10}}
                             size={GoogleSigninButton.Size.Wide}
                             color={GoogleSigninButton.Color.Dark}
                             onPress={this.signIn}
