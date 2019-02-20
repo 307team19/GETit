@@ -8,6 +8,7 @@ import Requests from './Requests'
 import PasswordReset from './PasswordReset'
 import {createAppContainer, createBottomTabNavigator, createStackNavigator} from "react-navigation";
 import {View} from 'react-native';
+import CreateUser from "./CreateUser";
 
 const AppNavigator = createStackNavigator(
     {
@@ -15,12 +16,14 @@ const AppNavigator = createStackNavigator(
             screen: LoginPage,
         },
         signup: SignUpForm,
+        createUser: CreateUser,
         passreset: PasswordReset,
         tabscreen: createBottomTabNavigator({
             orders: Orders,
             myaccount: MyAccount,
             requests: Requests,
-        })
+        }),
+
 
     },
     {
@@ -36,7 +39,6 @@ const AppNavigator = createStackNavigator(
             },
         },
     },
-
 );
 
 const AppContainer = createAppContainer(AppNavigator);
