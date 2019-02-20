@@ -80,8 +80,6 @@ class MyAccount extends Component {
 
             //TODO: this is not reaching here cz of Revoke Access
 
-        }).catch(function (error) {
-
         });
 
 
