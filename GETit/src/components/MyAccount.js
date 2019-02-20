@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {Image, ScrollView, Text, TouchableOpacity, View, CameraRoll} from 'react-native';
+import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
 import firebase from 'firebase';
 
 import {GoogleSignin} from 'react-native-google-signin';
 import {CardSection} from "./common"
 import paperTheme from './common/paperTheme'
-import {StackActions, NavigationActions} from 'react-navigation';
+import {NavigationActions, StackActions} from 'react-navigation';
 import ImagePicker from 'react-native-image-picker';
 
 
@@ -14,31 +14,33 @@ import ImagePicker from 'react-native-image-picker';
 
 const resetAction = StackActions.reset({
     index: 0,
-    actions: [NavigationActions.navigate({ routeName: 'login' })],
+    actions: [NavigationActions.navigate({routeName: 'login'})],
 });
 
 const options = {
-  title: 'Select Avatar',
-  customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
-  storageOptions: {
-    skipBackup: true,
-    path: 'images',
-  },
+    title: 'Select Avatar',
+    customButtons: [{name: 'fb', title: 'Choose Photo from Facebook'}],
+    storageOptions: {
+        skipBackup: true,
+        path: 'images',
+    },
 };
 
 class MyAccount extends Component {
 
 
-    state={ disabledEmail: true,
-            email: 'hi@hi.com',
-            buttonEmail: 'Edit',
-            disabledPhNo: true,
-            PhNo: '123-456-7890',
-            buttonPhNo: 'Edit',
-            disabledAddr: true,
-            Addr: '100 State St, West Lafayette',
-            buttonAddr: 'Edit',
-            name: 'Purdue Pete'
+    state = {
+        disabledEmail: true,
+        email: 'hi@hi.com',
+        buttonEmail: 'Edit',
+        disabledPhNo: true,
+        PhNo: '123-456-7890',
+        buttonPhNo: 'Edit',
+        disabledAddr: true,
+        Addr: '100 State St, West Lafayette',
+        buttonAddr: 'Edit',
+        name: 'Purdue Pete',
+        imageSource: ''
     };
 
     signOut = async () => {
@@ -86,11 +88,11 @@ class MyAccount extends Component {
     };
 
     onEditEmailPressed() {
-        if(this.state.buttonEmail.toString().localeCompare('Edit')==0){
-            this.setState({disabledEmail:false});
+        if (this.state.buttonEmail.toString().localeCompare('Edit') == 0) {
+            this.setState({disabledEmail: false});
             //this.setState({email: ''});
             this.setState({buttonEmail: 'Accept'});
-        }else{
+        } else {
             this.setState({disabledEmail: true});
             this.setState({buttonEmail: 'Edit'});
 
@@ -99,49 +101,49 @@ class MyAccount extends Component {
     }
 
     onEditPhNoPressed() {
-        if(this.state.buttonPhNo.toString().localeCompare('Edit')==0){
-            this.setState({disabledPhNo:false});
+        if (this.state.buttonPhNo.toString().localeCompare('Edit') == 0) {
+            this.setState({disabledPhNo: false});
             //this.setState({email: ''});
             this.setState({buttonPhNo: 'Accept'});
-        }else{
+        } else {
             this.setState({disabledPhNo: true});
             this.setState({buttonPhNo: 'Edit'});
         }
     }
 
     onEditAddrPressed() {
-        if(this.state.buttonAddr.toString().localeCompare('Edit')==0){
-            this.setState({disabledAddr:false});
+        if (this.state.buttonAddr.toString().localeCompare('Edit') == 0) {
+            this.setState({disabledAddr: false});
             //this.setState({email: ''});
             this.setState({buttonAddr: 'Accept'});
-        }else{
+        } else {
             this.setState({disabledAddr: true});
             this.setState({buttonAddr: 'Edit'});
         }
     }
 
-    onImageButtonPressed(){
-    ImagePicker.showImagePicker(options, (response) => {
-  console.log('Response = ', response);
+    onImageButtonPressed() {
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
 
-  if (response.didCancel) {
-    console.log('User cancelled image picker');
-  } else if (response.error) {
-    console.log('ImagePicker Error: ', response.error);
-  } else if (response.customButton) {
-    console.log('User tapped custom button: ', response.customButton);
-  } else {
-    const source = { uri: response.uri };
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                const source = {uri: response.uri};
 
-    // You can also display the image using data:
-    // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+                // You can also display the image using data:
+                // const source = { uri: 'data:image/jpeg;base64,' + response.data };
 
-    this.setState({
-      avatarSource: source,
-    });
-  }
-});
-      
+                this.setState({
+                    imageSource: source,
+                });
+            }
+        });
+
     }
 
     render() {
@@ -152,12 +154,12 @@ class MyAccount extends Component {
                 <ScrollView>
                     <View>
                         <CardSection>
-                            <TouchableOpacity 
-                            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-                            onPress = {this.onImageButtonPressed.bind(this)}
+                            <TouchableOpacity
+                                style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
+                                onPress={this.onImageButtonPressed.bind(this)}
                             >
                                 <Image
-                                    source={require('../img/profile_placeholder.png')}
+                                    source={this.state.imageSource || require('../img/profile_placeholder.png')}
                                     style={styles.profilePicStyle}
                                     resizeMode='contain'
                                 />
