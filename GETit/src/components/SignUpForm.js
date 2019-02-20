@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, View, Alert} from 'react-native';
 import {Button, Provider as PaperProvider, Text, TextInput} from 'react-native-paper';
 import firebase from 'firebase';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
@@ -58,7 +58,25 @@ class SignUpForm extends Component {
 
 
         const {email, password, phoneNumber, firstName, lastName} = this.state;
+        try{
         await firebase.auth().createUserWithEmailAndPassword(email, password)
+        }catch(err){
+            Alert.alert(
+            'Oops!',
+            err.message,
+            [
+                {
+                text: 'OK',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+                },
+                
+            ],
+            {cancelable: false},
+            );
+            console.log(err)
+        }
+        
         var rootRef = firebase.database().ref();
         var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/");
         userRef.set({
