@@ -33,7 +33,7 @@ class MyAccount extends Component {
 		email: '',
 		buttonEdit: 'Edit',
 		disabledPhNo: true,
-		PhNo: '',
+		phoneNumber: '',
 		// buttonPhNo: 'Edit',
 		disabledAddr: true,
 		Addr: '',
@@ -88,6 +88,7 @@ class MyAccount extends Component {
 	};
 
 	onEditPressed() {
+		const phoneNumber = this.state.phoneNumber;
 		if (this.state.buttonEdit.toString().localeCompare('Edit') == 0) {
 			// this.setState({disabledEmail: false});
 			this.setState({disabledPhNo: false});
@@ -99,6 +100,16 @@ class MyAccount extends Component {
 			this.setState({disabledPhNo: true});
 			// this.setState({disabledAddr: true});
 			this.setState({buttonEdit: 'Edit'});
+
+			var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/");
+			userRef.set({
+				phoneNumber: phoneNumber
+			}).then((data) => {
+				console.log('Synchronization succeeded');
+			}).catch((error) => {
+				console.log(error)
+			})
+
 		}
 	}
 
@@ -157,7 +168,7 @@ class MyAccount extends Component {
 			.then(response => {
 				this.setState({user: response.val()});
 				this.setState({email: this.state.user.email});
-				this.setState({PhNo: this.state.user.phoneNumber});
+				this.setState({phoneNumber: this.state.user.phoneNumber});
 				this.setState({fName: this.state.user.firstName});
 				this.setState({lName: this.state.user.lastName});
 			});
@@ -227,8 +238,8 @@ class MyAccount extends Component {
 								mode='outlined'
 								// placeholder="current email"
 								disabled={this.state.disabledPhNo}
-								value={this.state.PhNo}
-								onChangeText={textString => this.setState({PhNo: textString})}
+								value={this.state.phoneNumber}
+								onChangeText={textString => this.setState({phoneNumber: textString})}
 							/>
 						</CardSection>
 
@@ -246,18 +257,30 @@ class MyAccount extends Component {
 							{/*//value={this.state.email}*/}
 							{/*>*/}
 							<Surface style={styles.surface}>
-								<Text>
-									Address:
-								</Text>
 								<Text onPress={() => {
 									console.log("here text");
 									this.props.navigation.navigate('addresses');
 
 								}}>
+									Address:
+								</Text>
+								<Text >
 									{this.state.Addr}
 								</Text>
 							</Surface>
 							{/*</TextInput>*/}
+						</CardSection>
+
+						<CardSection>
+						<Button
+							style={styles.buttonContainedStyle}
+							onPress={this.onEditPressed.bind(this)}
+							// mode="contained"
+						>
+							<Text>
+								{this.state.buttonEdit}
+							</Text>
+						</Button>
 						</CardSection>
 
 						<CardSection>
