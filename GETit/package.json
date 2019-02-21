@@ -10,7 +10,7 @@
     "@babel/runtime": "^7.3.1",
     "firebase": "^5.0.3",
     "react": "16.6.3",
-    "react-native": "0.58.4",
+    "react-native": "^0.58.4",
     "react-native-gesture-handler": "^1.0.15",
     "react-native-google-signin": "^1.1.0",
     "react-native-image-picker": "^0.28.0",
