@@ -31,13 +31,13 @@ class MyAccount extends Component {
     state = {
         disabledEmail: true,
         email: 'hi@hi.com',
-        buttonEmail: 'Edit',
+        buttonEdit: 'Edit',
         disabledPhNo: true,
         PhNo: '123-456-7890',
-        buttonPhNo: 'Edit',
+        // buttonPhNo: 'Edit',
         disabledAddr: true,
         Addr: '100 State St, West Lafayette',
-        buttonAddr: 'Edit',
+        // buttonAddr: 'Edit',
         name: 'Purdue Pete',
         imageSource: ''
     };
@@ -84,40 +84,42 @@ class MyAccount extends Component {
 
     };
 
-    onEditEmailPressed() {
-        if (this.state.buttonEmail.toString().localeCompare('Edit') == 0) {
-            this.setState({disabledEmail: false});
-            //this.setState({email: ''});
-            this.setState({buttonEmail: 'Accept'});
-        } else {
-            this.setState({disabledEmail: true});
-            this.setState({buttonEmail: 'Edit'});
-
-
-        }
-    }
-
-    onEditPhNoPressed() {
-        if (this.state.buttonPhNo.toString().localeCompare('Edit') == 0) {
+    onEditPressed() {
+        if (this.state.buttonEdit.toString().localeCompare('Edit') == 0) {
+            // this.setState({disabledEmail: false});
             this.setState({disabledPhNo: false});
-            //this.setState({email: ''});
-            this.setState({buttonPhNo: 'Accept'});
+            this.setState({disabledAddr: false});
+            this.setState({buttonEdit: 'Accept'});
         } else {
+            // this.setState({disabledEmail: true});
+            // this.setState({buttonEmail: 'Edit'});
             this.setState({disabledPhNo: true});
-            this.setState({buttonPhNo: 'Edit'});
+            this.setState({disabledAddr: true});
+            this.setState({buttonEdit: 'Edit'});
         }
     }
 
-    onEditAddrPressed() {
-        if (this.state.buttonAddr.toString().localeCompare('Edit') == 0) {
-            this.setState({disabledAddr: false});
-            //this.setState({email: ''});
-            this.setState({buttonAddr: 'Accept'});
-        } else {
-            this.setState({disabledAddr: true});
-            this.setState({buttonAddr: 'Edit'});
-        }
-    }
+    // onEditPhNoPressed() {
+    //     if (this.state.buttonPhNo.toString().localeCompare('Edit') == 0) {
+    //         this.setState({disabledPhNo: false});
+    //         //this.setState({email: ''});
+    //         this.setState({buttonPhNo: 'Accept'});
+    //     } else {
+    //         this.setState({disabledPhNo: true});
+    //         this.setState({buttonPhNo: 'Edit'});
+    //     }
+    // }
+    //
+    // onEditAddrPressed() {
+    //     if (this.state.buttonAddr.toString().localeCompare('Edit') == 0) {
+    //         this.setState({disabledAddr: false});
+    //         //this.setState({email: ''});
+    //         this.setState({buttonAddr: 'Accept'});
+    //     } else {
+    //         this.setState({disabledAddr: true});
+    //         this.setState({buttonAddr: 'Edit'});
+    //     }
+    // }
 
     onImageButtonPressed() {
         ImagePicker.showImagePicker(options, (response) => {
@@ -179,16 +181,6 @@ class MyAccount extends Component {
                                 value={this.state.email}
                                 onChangeText={textString => this.setState({email: textString})}
                             />
-                            <Button
-                                style={styles.buttonContainedStyle}
-                                // onPress={disabled => this.setState({disabled: false})}
-                                onPress={this.onEditEmailPressed.bind(this)}
-                                // mode="contained"
-                            >
-                                <Text>
-                                    {this.state.buttonEmail}
-                                </Text>
-                            </Button>
                         </CardSection>
 
                         <CardSection>
@@ -201,15 +193,6 @@ class MyAccount extends Component {
                                 value={this.state.PhNo}
                                 onChangeText={textString => this.setState({PhNo: textString})}
                             />
-                            <Button
-                                style={styles.buttonContainedStyle}
-                                onPress={this.onEditPhNoPressed.bind(this)}
-                                // mode="contained"
-                            >
-                                <Text>
-                                    {this.state.buttonPhNo}
-                                </Text>
-                            </Button>
                         </CardSection>
 
                         <CardSection>
@@ -223,15 +206,18 @@ class MyAccount extends Component {
                                 onChangeText={textString => this.setState({Addr: textString})}
                                 //value={this.state.email}
                             />
+                        </CardSection>
                             <Button
                                 style={styles.buttonContainedStyle}
-                                onPress={this.onEditAddrPressed.bind(this)}
+                                onPress={this.onEditPressed.bind(this)}
                                 // mode="contained"
                             >
                                 <Text>
-                                    {this.state.buttonAddr}
+                                    {this.state.buttonEdit}
                                 </Text>
                             </Button>
+                        <CardSection>
+
                         </CardSection>
 
                         <CardSection>
