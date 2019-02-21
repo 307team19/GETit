@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
-import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
+import {Button, Provider as PaperProvider, Surface, TextInput} from 'react-native-paper';
 import firebase from 'firebase';
 
 import {GoogleSignin} from 'react-native-google-signin';
@@ -143,6 +143,10 @@ class MyAccount extends Component {
 
     }
 
+    onAddressButtonPressed() {
+
+    }
+
     render() {
 
 
@@ -213,25 +217,31 @@ class MyAccount extends Component {
                         </CardSection>
 
                         <CardSection>
-                            <TextInput
-                                style={styles.textInputStyle}
-                                label='Address'
-                                mode='outlined'
-                                // placeholder="current email"
-                                disabled={this.state.disabledAddr}
-                                value={this.state.Addr}
-                                onChangeText={textString => this.setState({Addr: textString})}
-                                //value={this.state.email}
-                            />
-                            <Button
-                                style={styles.buttonContainedStyle}
-                                onPress={this.onEditAddrPressed.bind(this)}
-                                // mode="contained"
-                            >
+                            {/*<TextInput*/}
+                            {/*style={styles.textInputStyle}*/}
+                            {/*onPress={() => console.log("here")}*/}
+                            {/*label='Address'*/}
+                            {/*mode='outlined'*/}
+                            {/*// placeholder="current email"*/}
+                            {/*disabled={this.state.disabledAddr}*/}
+                            {/*value={this.state.Addr}*/}
+                            {/*onChangeText={textString => this.setState({Addr: textString})}*/}
+
+                            {/*//value={this.state.email}*/}
+                            {/*>*/}
+                            <Surface style={styles.surface}>
                                 <Text>
-                                    {this.state.buttonAddr}
+                                    Address:
                                 </Text>
-                            </Button>
+                                <Text onPress={() => {
+                                    console.log("here text");
+                                    this.props.navigation.navigate('addresses');
+
+                                }}>
+                                    {this.state.Addr}
+                                </Text>
+                            </Surface>
+                            {/*</TextInput>*/}
                         </CardSection>
 
                         <CardSection>
@@ -266,6 +276,13 @@ const styles = {
         textAlign: 'center',
         fontWeight: 'bold',
         flex: 1
+    },
+    surface: {
+        padding: 8,
+        flex: 1,
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
+        elevation: 4,
     }
 }
 
