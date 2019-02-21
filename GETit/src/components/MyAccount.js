@@ -38,8 +38,8 @@ class MyAccount extends Component {
 		disabledAddr: true,
 		Addr: '',
 		// buttonAddr: 'Edit',
-		fName: '',
-		lName: '',
+		firstName: '',
+		lastName: '',
 		imageSource: '',
 		user: '',
 		uid: ''
@@ -88,7 +88,7 @@ class MyAccount extends Component {
 	};
 
 	onEditPressed() {
-		const phoneNumber = this.state.phoneNumber;
+		const {email, phoneNumber, firstName, lastName} = this.state;
 		if (this.state.buttonEdit.toString().localeCompare('Edit') == 0) {
 			// this.setState({disabledEmail: false});
 			this.setState({disabledPhNo: false});
@@ -101,8 +101,13 @@ class MyAccount extends Component {
 			// this.setState({disabledAddr: true});
 			this.setState({buttonEdit: 'Edit'});
 
+
+			/*TODO FIX THIS ASAP*/
 			var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/");
 			userRef.set({
+				email: email,
+				firstName: firstName,
+				lastName: lastName,
 				phoneNumber: phoneNumber
 			}).then((data) => {
 				console.log('Synchronization succeeded');
@@ -169,8 +174,8 @@ class MyAccount extends Component {
 				this.setState({user: response.val()});
 				this.setState({email: this.state.user.email});
 				this.setState({phoneNumber: this.state.user.phoneNumber});
-				this.setState({fName: this.state.user.firstName});
-				this.setState({lName: this.state.user.lastName});
+				this.setState({firstName: this.state.user.firstName});
+				this.setState({lastName: this.state.user.lastName});
 			});
 		firebase.database().ref('/users/' + u + '/addresses').once('value')
 			.then(response => {
