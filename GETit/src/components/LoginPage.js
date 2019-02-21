@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
-import {Image, ScrollView, Text, View, Alert} from 'react-native';
+import {Alert, Image, ScrollView, Text, View} from 'react-native';
 import {Card, CardSection} from "./common";
 import firebase from 'firebase';
 import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
 import paperTheme from './common/paperTheme'
-import {StackActions, NavigationActions} from 'react-navigation';
+import {NavigationActions, StackActions} from 'react-navigation';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 
 const resetAction = StackActions.reset({
     index: 0,
-    actions: [NavigationActions.navigate({ routeName: 'tabscreen' })],
+    actions: [NavigationActions.navigate({routeName: 'tabscreen'})],
 });
 
 class LoginPage extends Component {
@@ -20,7 +20,6 @@ class LoginPage extends Component {
 
 
     state = {email: '', password: ''};
-
 
 
     onLoginButtonPressed() {
@@ -43,23 +42,23 @@ class LoginPage extends Component {
             )
             .catch(error => {
                 Alert.alert(
-            'Oops!',
-            error.message,
-            [
-                {
-                text: 'OK',
-                onPress: () => console.log('Cancel Pressed'),
-                style: 'cancel',
-                },
-                
-            ],
-            {cancelable: false},
-            );
-            console.log(error)
+                    'Oops!',
+                    error.message,
+                    [
+                        {
+                            text: 'OK',
+                            onPress: () => console.log('Cancel Pressed'),
+                            style: 'cancel',
+                        },
+
+                    ],
+                    {cancelable: false},
+                );
+                console.log(error)
             });
     }
 
-   signIn = async () => {
+    signIn = async () => {
 
 
         try {
@@ -70,11 +69,11 @@ class LoginPage extends Component {
             var credential = firebase.auth.GoogleAuthProvider.credential(this.state.userInfo.idToken);
             firebase.auth().signInAndRetrieveDataWithCredential(credential)
                 .then(() => {
-                
-            this.props.navigation.navigate('tabscreen');
-                }).catch((error)=>{
-                    console.log(error)
-                })
+
+                    this.props.navigation.navigate('tabscreen');
+                }).catch((error) => {
+                console.log(error)
+            })
 
 
         } catch (error) {
@@ -161,17 +160,17 @@ class LoginPage extends Component {
                                         FORGOT PASSWORD
                                     </Text>
                                 </Button>
-                            
+
                             </CardSection>
 
                             <CardSection style={{justifyContent: 'space-around'}}>
                                 <GoogleSigninButton
-                            style={{ height: 48, justifyContent: 'center',flex: 1}}
-                            size={GoogleSigninButton.Size.Wide}
-                            color={GoogleSigninButton.Color.Dark}
-                            onPress={this.signIn}
-                            disabled={false}
-                            />
+                                    style={{height: 48, justifyContent: 'center', flex: 1}}
+                                    size={GoogleSigninButton.Size.Wide}
+                                    color={GoogleSigninButton.Color.Dark}
+                                    onPress={this.signIn}
+                                    disabled={false}
+                                />
                             </CardSection>
 
                         </Card>
