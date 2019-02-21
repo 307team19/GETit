@@ -30,7 +30,7 @@ class MyAccount extends Component {
 
     state = {
         disabledEmail: true,
-        email: 'hi@hi.com',
+        email: '',
         buttonEdit: 'Edit',
         disabledPhNo: true,
         PhNo: '123-456-7890',
@@ -39,7 +39,9 @@ class MyAccount extends Component {
         Addr: '100 State St, West Lafayette',
         // buttonAddr: 'Edit',
         name: 'Purdue Pete',
-        imageSource: ''
+        imageSource: '',
+        user: '',
+        uid: ''
     };
 
     signOut = async () => {
@@ -88,13 +90,13 @@ class MyAccount extends Component {
         if (this.state.buttonEdit.toString().localeCompare('Edit') == 0) {
             // this.setState({disabledEmail: false});
             this.setState({disabledPhNo: false});
-            this.setState({disabledAddr: false});
+            // this.setState({disabledAddr: false});
             this.setState({buttonEdit: 'Accept'});
         } else {
             // this.setState({disabledEmail: true});
             // this.setState({buttonEmail: 'Edit'});
             this.setState({disabledPhNo: true});
-            this.setState({disabledAddr: true});
+            // this.setState({disabledAddr: true});
             this.setState({buttonEdit: 'Edit'});
         }
     }
@@ -145,8 +147,25 @@ class MyAccount extends Component {
 
     }
 
+    componentWillMount() {
+        this.setState({uid: firebase.auth().currentUser.uid});
+        // console.log(this.state.uid);
+        // console.log(this.state);
+        const u=firebase.auth().currentUser.uid;
+        firebase.database().ref('/users/'+u+'/').once('value')
+            .then(response => {
+                this.setState({user: response.val()})
+                this.state({email: this.state.user.email})
+            });
+            //.then(response => console.log(response.val()));
+        // console.log(this.state);
+        // console.log('hello');
+        // this.setState({email: this.state.user.email})
+    }
+
     render() {
 
+        // console.log(this.state);
 
         return (
             <PaperProvider theme={paperTheme}>
@@ -167,7 +186,7 @@ class MyAccount extends Component {
 
                         <CardSection>
                             <Text style={styles.textStyle}>
-                                Welcome {this.state.name}!
+                                Welcome {this.state.user.firstName}
                             </Text>
                         </CardSection>
 
