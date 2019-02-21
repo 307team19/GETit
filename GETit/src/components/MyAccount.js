@@ -6,7 +6,7 @@ import firebase from 'firebase';
 import { GoogleSignin } from 'react-native-google-signin';
 import { CardSection } from "./common"
 import paperTheme from './common/paperTheme'
-import { NavigationActions, StackActions } from 'react-navigation';
+import { NavigationActions, StackActions, NavigationEvents } from 'react-navigation';
 import ImagePicker from 'react-native-image-picker';
 
 
@@ -161,6 +161,11 @@ class MyAccount extends Component {
 				this.setState({fName: this.state.user.firstName});
 				this.setState({lName: this.state.user.lastName});
 			});
+		firebase.database().ref('/users/' + u + '/addresses').once('value')
+			.then(response => {
+				this.setState({Addr: response.val().address});
+
+			});
 	}
 
 	//.then(response => console.log(response.val()));
@@ -174,6 +179,14 @@ class MyAccount extends Component {
 
 		return (
 			<PaperProvider theme={paperTheme}>
+				<NavigationEvents onDidFocus={() => {
+					const user = firebase.auth().currentUser.uid;
+					firebase.database().ref('/users/' + user + '/addresses').once('value')
+						.then(response => {
+							this.setState({Addr: response.val().address});
+
+						});
+				}}/>
 				<ScrollView>
 					<View>
 						<CardSection>
