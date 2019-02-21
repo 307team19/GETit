@@ -33,12 +33,13 @@ class MyAccount extends Component {
         email: '',
         buttonEdit: 'Edit',
         disabledPhNo: true,
-        PhNo: '123-456-7890',
+        PhNo: '',
         // buttonPhNo: 'Edit',
         disabledAddr: true,
-        Addr: '100 State St, West Lafayette',
+        Addr: '',
         // buttonAddr: 'Edit',
-        name: 'Purdue Pete',
+        fName: '',
+        lName: '',
         imageSource: '',
         user: '',
         uid: ''
@@ -154,8 +155,11 @@ class MyAccount extends Component {
         const u=firebase.auth().currentUser.uid;
         firebase.database().ref('/users/'+u+'/').once('value')
             .then(response => {
-                this.setState({user: response.val()})
-                this.state({email: this.state.user.email})
+                this.setState({user: response.val()});
+                this.setState({email: this.state.user.email});
+                this.setState({PhNo: this.state.user.phoneNumber});
+                this.setState({fName: this.state.user.firstName});
+                this.setState({lName: this.state.user.lastName});
             });
             //.then(response => console.log(response.val()));
         // console.log(this.state);
@@ -186,7 +190,7 @@ class MyAccount extends Component {
 
                         <CardSection>
                             <Text style={styles.textStyle}>
-                                Welcome {this.state.user.firstName}
+                                Welcome {this.state.fName}
                             </Text>
                         </CardSection>
 
@@ -205,7 +209,7 @@ class MyAccount extends Component {
                         <CardSection>
                             <TextInput
                                 style={styles.textInputStyle}
-                                label='123-456-7890'
+                                label='phone number'
                                 mode='outlined'
                                 // placeholder="current email"
                                 disabled={this.state.disabledPhNo}
