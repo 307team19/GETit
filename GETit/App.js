@@ -12,18 +12,45 @@ import Orders from './src/components_shiv/Orders'
 import Requests from './src/components_shiv/Requests'
 import PasswordReset from './src/components_shiv/PasswordReset'
 import {Platform, StyleSheet, View} from 'react-native';
-import { createBottomTabNavigator, createStackNavigator, createAppContainer } from "react-navigation";
+import { createMaterialTopTabNavigator, createBottomTabNavigator, createStackNavigator, createAppContainer } from "react-navigation";
 
+
+// const AppNavigator = createStackNavigator(
+//   {
+//     login: LoginPage,
+//     signup: SignUpForm,
+   
+//     tabscreen: createBottomTabNavigator({
+//       orders: Orders,
+//       requests: Requests,
+//       myaccount: MyAccount,
+//     },
+//     {
+//       order: ['orders','requests','myaccount'],
+//       swipeEnabled: true,
+//     })
+
+//   },
+//   {
+//     initialRouteName: "signup"
+//   }
+  
+// );
 
 const AppNavigator = createStackNavigator(
   {
     login: LoginPage,
     signup: SignUpForm,
    
-    tabscreen: createBottomTabNavigator({
+    tabscreen: createMaterialTopTabNavigator({
       orders: Orders,
       requests: Requests,
       myaccount: MyAccount,
+    },
+    {
+      order: ['orders','requests','myaccount'],
+      swipeEnabled: true,
+      tabBarPosition: 'top',
     })
 
   },

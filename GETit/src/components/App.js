@@ -6,7 +6,7 @@ import MyAccount from './MyAccount'
 import Orders from './Orders'
 import Requests from './Requests'
 import PasswordReset from './PasswordReset'
-import {createAppContainer, createBottomTabNavigator, createStackNavigator} from "react-navigation";
+import {createMaterialTopTabNavigator, createAppContainer, createBottomTabNavigator, createStackNavigator} from "react-navigation";
 import {View} from 'react-native';
 import CreateUser from "./CreateUser";
 
@@ -18,11 +18,24 @@ const AppNavigator = createStackNavigator(
         signup: SignUpForm,
         createUser: CreateUser,
         passreset: PasswordReset,
-        tabscreen: createBottomTabNavigator({
+        tabscreen: createMaterialTopTabNavigator({
             orders: Orders,
             myaccount: MyAccount,
             requests: Requests,
+        },{
+            order: ['orders','requests','myaccount'],
+            swipeEnabled: true,
+            tabBarPosition: 'bottom',
+            tabBarOptions: {
+                labelStyle: {
+                    fontSize: 12,
+                },
+                style: {
+                    backgroundColor: '#1eaaf1',
+                },
+                }
         }),
+        
 
 
     },
