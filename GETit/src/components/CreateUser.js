@@ -65,6 +65,8 @@ class CreateUser extends Component {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             phoneNumber: this.state.phoneNumber,
+            addresses: {"no address": "no address"},
+            address: "no address"
         }).then((data) => {
             console.log('Synchronization succeeded');
         }).catch((error) => {

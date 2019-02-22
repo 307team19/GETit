@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Provider as PaperProvider, Surface, TextInput} from 'react-native-paper';
-import {Image, ScrollView, Text, TouchableOpacity, View, Platform} from 'react-native';
+import {Image, Platform, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import firebase from 'firebase';
 import RNFetchBlob from 'rn-fetch-blob'
 import {GoogleSignin} from 'react-native-google-signin';
@@ -27,23 +27,25 @@ const options = {
 
 class MyAccount extends Component {
 
-    componentWillMount(){
-        const currUserUID = firebase.auth().currentUser.uid;
-        firebase.database().ref('/users/'+currUserUID+'/').once('value')
-        .then((response)=>{
 
-            console.log("did mount" +response.val().photoURL)
-            this.setState({
-                email: response.val().email,
-                firstName: response.val().firstName,
-                lastName: response.val().lastName,
-                phoneNumber: response.val().phoneNumber,
-                imageSource: response.val().photoURL
-            })
-            
-        })
+    componentWillMount() {
+        this.setState({uid: firebase.auth().currentUser.uid});
+        // console.log(this.state.uid);
+        // console.log(this.state);
+        const u = firebase.auth().currentUser.uid;
+        firebase.database().ref('/users/' + u + '/').once('value')
+            .then(response => {
+                this.setState({user: response.val()});
+                this.setState({email: this.state.user.email});
+                this.setState({phoneNumber: this.state.user.phoneNumber});
+                this.setState({firstName: this.state.user.firstName});
+                this.setState({lastName: this.state.user.lastName});
+                this.setState({addresses: this.state.user.addresses});
+                this.setState({photoURL: this.state.user.photoURL});
+                this.setState({address: this.state.user.address});
+            });
+
     }
-
 
     state = {
         disabledEmail: true,
@@ -140,7 +142,7 @@ class MyAccount extends Component {
 
     onImageButtonPressed() {
         ImagePicker.showImagePicker(options, (response) => {
-            
+
 
             if (response.didCancel) {
                 console.log('User cancelled image picker');
@@ -149,90 +151,71 @@ class MyAccount extends Component {
             } else if (response.customButton) {
                 console.log('User tapped custom button: ', response.customButton);
             } else {
-               
+
 
                 // You can also display the image using data:
                 // const source = { uri: 'data:image/jpeg;base64,' + response.data };
 
                 this.setState({
-                    imageSource: response.uri,
+                    photoURL: response.uri,
                 });
 
-                
 
                 //code for uploading to firebase storage.
 
-                const Blob = RNFetchBlob.polyfill.Blob
-                const fs = RNFetchBlob.fs
-                window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
-                window.Blob = Blob
+                const Blob = RNFetchBlob.polyfill.Blob;
+                const fs = RNFetchBlob.fs;
+                window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
+                window.Blob = Blob;
 
-                    
-                        const uploadUri = Platform.OS === 'ios' ? (this.state.imageSource).replace('file://', '') : this.state.imageSource
-                        let uploadBlob = null
-                        const imageRef = firebase.storage().ref('posts').child(`${this.state.imageSource}`)
-                        fs.readFile(uploadUri, 'base64')
-                        .then((data) => {
-                            return Blob.build(data, { type: `image/jpg;BASE64` })
-                        })
-                        .then((blob) => {
-                            uploadBlob = blob
-                            return imageRef.put(blob, { contentType: 'image/jpg' })
-                        })
-                        .then(() => {
-                            uploadBlob.close()
-                            return imageRef.getDownloadURL()
-                        })
-                        .then((url) => {
-                                console.log("down")
-                                console.log("users/" + firebase.auth().currentUser.uid + "/")
-                                var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/");
-                                userRef.set({
-                                    email: this.state.email,
-                                    firstName: this.state.firstName,
-                                    lastName: this.state.lastName,
-                                    phoneNumber: this.state.phoneNumber,
-                                    photoURL: url,
-                                }).then((data) => {
-                                    console.log('Synchronization succeeded');
-                                }).catch((error) => {
-                                    console.log(error)
-                                })
-                                console.log(url)
-                                this.setState({
-                                    imageSource: url,
-                                });
-                        })
-                        .catch((error) => {
+
+                const uploadUri = Platform.OS === 'ios' ? (this.state.photoURL).replace('file://', '') : this.state.photoURL
+                let uploadBlob = null
+                const imageRef = firebase.storage().ref('posts').child(`${this.state.photoURL}`)
+                fs.readFile(uploadUri, 'base64')
+                    .then((data) => {
+                        return Blob.build(data, {type: `image/jpg;BASE64`})
+                    })
+                    .then((blob) => {
+                        uploadBlob = blob
+                        return imageRef.put(blob, {contentType: 'image/jpg'})
+                    })
+                    .then(() => {
+                        uploadBlob.close()
+                        return imageRef.getDownloadURL()
+                    })
+                    .then((url) => {
+                        console.log("down")
+                        console.log("users/" + firebase.auth().currentUser.uid + "/")
+                        var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/");
+                        userRef.set({
+                            email: this.state.email,
+                            firstName: this.state.firstName,
+                            lastName: this.state.lastName,
+                            phoneNumber: this.state.phoneNumber,
+                            photoURL: url,
+                            addresses: this.state.addresses,
+                            address: this.state.address
+                        }).then((data) => {
+                            console.log('Synchronization succeeded');
+                        }).catch((error) => {
                             console.log(error)
                         })
+                        console.log(url)
+                        this.setState({
+                            photoURL: url,
+                        });
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
 
-            
-                
 
             }
         });
 
     }
 
-    componentWillMount() {
-        this.setState({uid: firebase.auth().currentUser.uid});
-        // console.log(this.state.uid);
-        // console.log(this.state);
-        const u = firebase.auth().currentUser.uid;
-        firebase.database().ref('/users/' + u + '/').once('value')
-            .then(response => {
-                this.setState({user: response.val()});
-                this.setState({email: this.state.user.email});
-                this.setState({phoneNumber: this.state.user.phoneNumber});
-                this.setState({firstName: this.state.user.firstName});
-                this.setState({lastName: this.state.user.lastName});
-                this.setState({addresses: this.state.user.addresses});
-                this.setState({photoURL: this.state.user.photoURL});
-                this.setState({address: this.state.user.address});
-            });
-
-    }
 
     render() {
 
@@ -258,7 +241,7 @@ class MyAccount extends Component {
                                 onPress={this.onImageButtonPressed.bind(this)}
                             >
                                 <Image
-                                    source={{uri: this.state.imageSource}} 
+                                    source={{uri: this.state.photoURL}}
                                     style={styles.profilePicStyle}
                                     resizeMode='contain'
                                 />
@@ -296,18 +279,6 @@ class MyAccount extends Component {
                         </CardSection>
 
                         <CardSection>
-                            {/*<TextInput*/}
-                            {/*style={styles.textInputStyle}*/}
-                            {/*onPress={() => console.log("here")}*/}
-                            {/*label='Address'*/}
-                            {/*mode='outlined'*/}
-                            {/*// placeholder="current email"*/}
-                            {/*disabled={this.state.disabledAddr}*/}
-                            {/*value={this.state.Addr}*/}
-                            {/*onChangeText={textString => this.setState({Addr: textString})}*/}
-
-                            {/*//value={this.state.email}*/}
-                            {/*>*/}
                             <Surface style={styles.surface}>
                                 <Text onPress={() => {
                                     console.log("here text");
@@ -320,14 +291,12 @@ class MyAccount extends Component {
                                     {this.state.address}
                                 </Text>
                             </Surface>
-                            {/*</TextInput>*/}
                         </CardSection>
 
                         <CardSection>
                             <Button
                                 style={styles.buttonContainedStyle}
                                 onPress={this.onEditPressed.bind(this)}
-                                // mode="contained"
                             >
                                 <Text>
                                     {this.state.buttonEdit}
@@ -349,34 +318,33 @@ class MyAccount extends Component {
     }
 }
 
-const
-    styles = {
-        profilePicStyle: {
-            height: 150,
-            width: 150,
-            alignItems: 'center',
-            flex: 1
-        },
-        textInputStyle: {
-            flex: 8
-        },
-        buttonContainedStyle: {
-            justifyContent: 'center',
-            flex: 1
-        },
-        textStyle: {
-            textAlign: 'center',
-            fontWeight: 'bold',
-            flex: 1
-        },
-        surface: {
-            padding: 8,
-            flex: 1,
-            justifyContent: 'flex-start',
-            flexDirection: 'row',
-            elevation: 4,
-        }
+const styles = {
+    profilePicStyle: {
+        height: 150,
+        width: 150,
+        alignItems: 'center',
+        flex: 1
+    },
+    textInputStyle: {
+        flex: 8
+    },
+    buttonContainedStyle: {
+        justifyContent: 'center',
+        flex: 1
+    },
+    textStyle: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        flex: 1
+    },
+    surface: {
+        padding: 8,
+        flex: 1,
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
+        elevation: 4,
     }
+};
 
 
 export default MyAccount;

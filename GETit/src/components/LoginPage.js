@@ -97,7 +97,7 @@ class LoginPage extends Component {
             firebase.auth().signInAndRetrieveDataWithCredential(credential)
                 .then(() => {
 
-                    this.props.navigation.navigate('tabscreen');
+                    this.props.navigation.dispatch(resetAction);
                 }).catch((error) => {
                 console.log(error)
             })

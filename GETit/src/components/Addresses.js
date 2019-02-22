@@ -4,7 +4,6 @@ import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
 import {CardSection} from "./common";
 import {Text, View} from "react-native";
 import firebase from "firebase";
-import {NavigationActions, StackActions, NavigationEvents} from 'react-navigation';
 
 class Addresses extends Component {
 
@@ -18,7 +17,7 @@ class Addresses extends Component {
         addresses: '',
         photoURL: '',
         address: '',
-        addressInput:''
+        addressInput: ''
     };
 
     componentWillMount() {
@@ -44,9 +43,11 @@ class Addresses extends Component {
         const {email, phoneNumber, firstName, lastName, addresses, photoURL, addressesObj} = this.state;
 
         var adds = [];
-        Object.keys(this.state.addressesObj).forEach((key, index) => (
-                adds.push(this.state.addressesObj[key])
-            )
+        Object.keys(this.state.addressesObj).forEach((key, index) => {
+                if (key !== "no address") {
+                    adds.push(this.state.addressesObj[key]);
+                }
+            }
         );
 
 
