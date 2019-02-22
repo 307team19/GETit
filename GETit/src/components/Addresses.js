@@ -26,17 +26,12 @@ class Addresses extends Component {
         firebase.database().ref('/users/' + u + '/').once('value')
             .then(response => {
                 this.setState({user: response.val()});
-                this.setState({addressesObj: this.state.user.addresses});
-            });
-
-        firebase.database().ref('/users/' + u + '/').once('value')
-            .then(response => {
-                this.setState({user: response.val()});
                 this.setState({email: this.state.user.email});
                 this.setState({phoneNumber: this.state.user.phoneNumber});
                 this.setState({firstName: this.state.user.firstName});
                 this.setState({lastName: this.state.user.lastName});
                 this.setState({addresses: this.state.user.addresses});
+                this.setState({addressesObj: this.state.user.addresses});
                 this.setState({photoURL: this.state.user.photoURL});
                 this.setState({address: this.state.user.address});
                 this.setState({addressInput: ''});
@@ -69,7 +64,9 @@ class Addresses extends Component {
                         address: item
                     }).then((data) => {
                         console.log('Synchronization succeeded');
+                        this.props.navigation.navigate('myaccount');
                     });
+
                 }}> {item}</Text>
             )
         );
@@ -85,25 +82,23 @@ class Addresses extends Component {
                         style={styles.textInputStyle}
                         label='Add new Address'
                         mode='outlined'
-                        // placeholder="current email"
-                        disabled={this.state.disabledPhNo}
                         value={this.state.addressInput}
                         onChangeText={textString => this.setState({addressInput: textString})}
                     />
                     <Button
                         style={styles.buttonContainedStyle}
                         onPress={() => {
+                            var temp = this.state.addressInput;
                             this.setState({address: this.state.addressInput});
-                            this.setState({addressesObj: {...this.state.addressesObj, [temp]: this.state.address}});
+                            this.setState({addressesObj: {...this.state.addressesObj, [temp]: temp}});
                             var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/addresses/");
-                            var address = this.state.address;
-                            userRef.push(address).then((data) => {
+                            userRef.push(temp).then((data) => {
                                 console.log('Synchronization succeeded');
                             }).catch((error) => {
                                 console.log(error)
                             });
-                            this.setState({address: ''});
-                            this.props.navigation.navigate('myaccount');
+                            this.setState({addressInput: ''});
+
                         }}
                     >
                         <Text>

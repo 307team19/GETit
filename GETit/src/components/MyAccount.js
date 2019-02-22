@@ -6,7 +6,7 @@ import firebase from 'firebase';
 import {GoogleSignin} from 'react-native-google-signin';
 import {CardSection} from "./common"
 import paperTheme from './common/paperTheme'
-import {NavigationActions, StackActions, NavigationEvents} from 'react-navigation';
+import {NavigationActions, NavigationEvents, StackActions} from 'react-navigation';
 import ImagePicker from 'react-native-image-picker';
 
 
@@ -88,8 +88,8 @@ class MyAccount extends Component {
     };
 
     onEditPressed() {
-        const {email, phoneNumber, firstName, lastName, addresses, photoURL} = this.state;
-        if (this.state.buttonEdit.toString().localeCompare('Edit') == 0) {
+        const {email, phoneNumber, firstName, lastName, addresses, photoURL, address} = this.state;
+        if (this.state.buttonEdit.toString().localeCompare('Edit') === 0) {
             // this.setState({disabledEmail: false});
             this.setState({disabledPhNo: false});
             // this.setState({disabledAddr: false});
@@ -110,7 +110,8 @@ class MyAccount extends Component {
                 lastName: lastName,
                 phoneNumber: phoneNumber,
                 addresses: addresses,
-                photoURL: photoURL
+                photoURL: photoURL,
+                address: address
             }).then((data) => {
                 console.log('Synchronization succeeded');
             }).catch((error) => {
@@ -119,28 +120,6 @@ class MyAccount extends Component {
 
         }
     }
-
-    // onEditPhNoPressed() {
-    //     if (this.state.buttonPhNo.toString().localeCompare('Edit') == 0) {
-    //         this.setState({disabledPhNo: false});
-    //         //this.setState({email: ''});
-    //         this.setState({buttonPhNo: 'Accept'});
-    //     } else {
-    //         this.setState({disabledPhNo: true});
-    //         this.setState({buttonPhNo: 'Edit'});
-    //     }
-    // }
-    //
-    // onEditAddrPressed() {
-    //     if (this.state.buttonAddr.toString().localeCompare('Edit') == 0) {
-    //         this.setState({disabledAddr: false});
-    //         //this.setState({email: ''});
-    //         this.setState({buttonAddr: 'Accept'});
-    //     } else {
-    //         this.setState({disabledAddr: true});
-    //         this.setState({buttonAddr: 'Edit'});
-    //     }
-    // }
 
     onImageButtonPressed() {
         ImagePicker.showImagePicker(options, (response) => {
@@ -185,11 +164,6 @@ class MyAccount extends Component {
 
     }
 
-    //.then(response => console.log(response.val()));
-    // console.log(this.state);
-    // console.log('hello');
-    // this.setState({email: this.state.user.email})
-
     render() {
 
         // console.log(this.state);
@@ -201,7 +175,7 @@ class MyAccount extends Component {
                     const user = firebase.auth().currentUser.uid;
                     firebase.database().ref('/users/' + user + '/').once('value')
                         .then(response => {
-                           this.setState({user: response.val()});
+                            this.setState({user: response.val()});
                             this.setState({address: response.val().address});
 
                         });
