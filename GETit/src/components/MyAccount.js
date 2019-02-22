@@ -230,6 +230,7 @@ class MyAccount extends Component {
                         .then(response => {
                             this.setState({user: response.val()});
                             this.setState({address: response.val().address});
+                            this.setState({addresses: response.val().addresses});
 
                         });
                 }}/>
