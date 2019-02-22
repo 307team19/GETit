@@ -42,6 +42,7 @@ class CreateUser extends Component {
         }
 
         const fullName = pro.displayName.split(" ");
+        
 
         this.setState({
             email: pro.email,

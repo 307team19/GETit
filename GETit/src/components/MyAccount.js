@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {Button, Provider as PaperProvider, Surface, TextInput} from 'react-native-paper';
+import {Image, ScrollView, Text, TouchableOpacity, View, Platform} from 'react-native';
 import firebase from 'firebase';
-
+import RNFetchBlob from 'rn-fetch-blob'
 import {GoogleSignin} from 'react-native-google-signin';
 import {CardSection} from "./common"
 import paperTheme from './common/paperTheme'
@@ -26,6 +26,23 @@ const options = {
 };
 
 class MyAccount extends Component {
+
+    componentWillMount(){
+        const currUserUID = firebase.auth().currentUser.uid;
+        firebase.database().ref('/users/'+currUserUID+'/').once('value')
+        .then((response)=>{
+
+            console.log("did mount" +response.val().photoURL)
+            this.setState({
+                email: response.val().email,
+                firstName: response.val().firstName,
+                lastName: response.val().lastName,
+                phoneNumber: response.val().phoneNumber,
+                imageSource: response.val().photoURL
+            })
+            
+        })
+    }
 
 
     state = {
@@ -123,7 +140,7 @@ class MyAccount extends Component {
 
     onImageButtonPressed() {
         ImagePicker.showImagePicker(options, (response) => {
-            console.log('Response = ', response);
+            
 
             if (response.didCancel) {
                 console.log('User cancelled image picker');
@@ -132,14 +149,67 @@ class MyAccount extends Component {
             } else if (response.customButton) {
                 console.log('User tapped custom button: ', response.customButton);
             } else {
-                const source = {uri: response.uri};
+               
 
                 // You can also display the image using data:
                 // const source = { uri: 'data:image/jpeg;base64,' + response.data };
 
                 this.setState({
-                    imageSource: source,
+                    imageSource: response.uri,
                 });
+
+                
+
+                //code for uploading to firebase storage.
+
+                const Blob = RNFetchBlob.polyfill.Blob
+                const fs = RNFetchBlob.fs
+                window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
+                window.Blob = Blob
+
+                    
+                        const uploadUri = Platform.OS === 'ios' ? (this.state.imageSource).replace('file://', '') : this.state.imageSource
+                        let uploadBlob = null
+                        const imageRef = firebase.storage().ref('posts').child(`${this.state.imageSource}`)
+                        fs.readFile(uploadUri, 'base64')
+                        .then((data) => {
+                            return Blob.build(data, { type: `image/jpg;BASE64` })
+                        })
+                        .then((blob) => {
+                            uploadBlob = blob
+                            return imageRef.put(blob, { contentType: 'image/jpg' })
+                        })
+                        .then(() => {
+                            uploadBlob.close()
+                            return imageRef.getDownloadURL()
+                        })
+                        .then((url) => {
+                                console.log("down")
+                                console.log("users/" + firebase.auth().currentUser.uid + "/")
+                                var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/");
+                                userRef.set({
+                                    email: this.state.email,
+                                    firstName: this.state.firstName,
+                                    lastName: this.state.lastName,
+                                    phoneNumber: this.state.phoneNumber,
+                                    photoURL: url,
+                                }).then((data) => {
+                                    console.log('Synchronization succeeded');
+                                }).catch((error) => {
+                                    console.log(error)
+                                })
+                                console.log(url)
+                                this.setState({
+                                    imageSource: url,
+                                });
+                        })
+                        .catch((error) => {
+                            console.log(error)
+                        })
+
+            
+                
+
             }
         });
 
@@ -188,7 +258,7 @@ class MyAccount extends Component {
                                 onPress={this.onImageButtonPressed.bind(this)}
                             >
                                 <Image
-                                    source={this.state.imageSource || require('../img/profile_placeholder.png')}
+                                    source={{uri: this.state.imageSource}} 
                                     style={styles.profilePicStyle}
                                     resizeMode='contain'
                                 />
