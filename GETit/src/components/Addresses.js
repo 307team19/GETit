@@ -2,22 +2,23 @@ import React, {Component} from 'react';
 import paperTheme from './common/paperTheme';
 import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
 import {CardSection} from "./common";
-import {Text, View, FlatList} from "react-native";
+import {Text, View} from "react-native";
 import firebase from "firebase";
-
+import {NavigationActions, StackActions, NavigationEvents} from 'react-navigation';
 
 class Addresses extends Component {
 
     state = {
         user: '',
         addressesObj: {},
-        email:'',
+        email: '',
         phoneNumber: '',
         firstName: '',
-        lastName:'',
+        lastName: '',
         addresses: '',
-        photoURL:'',
+        photoURL: '',
         address: '',
+        addressInput:''
     };
 
     componentWillMount() {
@@ -38,6 +39,7 @@ class Addresses extends Component {
                 this.setState({addresses: this.state.user.addresses});
                 this.setState({photoURL: this.state.user.photoURL});
                 this.setState({address: this.state.user.address});
+                this.setState({addressInput: ''});
             });
 
     }
@@ -64,7 +66,7 @@ class Addresses extends Component {
                         phoneNumber: phoneNumber,
                         addresses: addressesObj,
                         photoURL: photoURL,
-                        address: {item}
+                        address: item
                     }).then((data) => {
                         console.log('Synchronization succeeded');
                     });
@@ -85,13 +87,13 @@ class Addresses extends Component {
                         mode='outlined'
                         // placeholder="current email"
                         disabled={this.state.disabledPhNo}
-                        value={this.state.address}
-                        onChangeText={textString => this.setState({address: textString})}
+                        value={this.state.addressInput}
+                        onChangeText={textString => this.setState({addressInput: textString})}
                     />
                     <Button
                         style={styles.buttonContainedStyle}
                         onPress={() => {
-                            var temp = this.state.address;
+                            this.setState({address: this.state.addressInput});
                             this.setState({addressesObj: {...this.state.addressesObj, [temp]: this.state.address}});
                             var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/addresses/");
                             var address = this.state.address;
@@ -101,6 +103,7 @@ class Addresses extends Component {
                                 console.log(error)
                             });
                             this.setState({address: ''});
+                            this.props.navigation.navigate('myaccount');
                         }}
                     >
                         <Text>

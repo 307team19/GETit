@@ -34,10 +34,8 @@ class MyAccount extends Component {
         buttonEdit: 'Edit',
         disabledPhNo: true,
         phoneNumber: '',
-        // buttonPhNo: 'Edit',
         disabledAddr: true,
         address: '',
-        // buttonAddr: 'Edit',
         firstName: '',
         lastName: '',
         imageSource: '',
@@ -225,7 +223,7 @@ class MyAccount extends Component {
 
                         <CardSection>
                             <Text style={styles.textStyle}>
-                                Welcome {this.state.fName}
+                                Welcome {this.state.firstName}
                             </Text>
                         </CardSection>
 
