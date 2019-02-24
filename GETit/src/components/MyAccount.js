@@ -279,20 +279,24 @@ class MyAccount extends Component {
                             />
                         </CardSection>
 
-                        <CardSection>
-                            <Surface style={styles.surface}>
-                                <Text onPress={() => {
+                            <TouchableOpacity
+                                style={{flex: 1, width: null}}
+                                onPress={() => {
                                     console.log("here text");
-                                    this.props.navigation.navigate('addresses');
-
-                                }}>
-                                    Address:
-                                </Text>
-                                <Text>
-                                    {this.state.address}
-                                </Text>
-                            </Surface>
-                        </CardSection>
+                                    this.props.navigation.navigate('addresses');}}>
+                                <TextInput
+                                    style={styles.textInputStyle}
+                                    label='Address'
+                                    pointerEvents="none"
+                                    mode='outlined'
+                                    onPress={() => {
+                                        console.log("here text");
+                                        this.props.navigation.navigate('addresses');}}
+                                    disabled={true}
+                                    value={this.state.address}
+                                    onChangeText={textString => this.setState({phoneNumber: textString})}
+                                />
+                            </TouchableOpacity>
 
                         <CardSection>
                             <Button
