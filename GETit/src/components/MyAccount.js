@@ -236,26 +236,20 @@ class MyAccount extends Component {
                 }}/>
                 <ScrollView>
                     <View>
-                        <CardSection>
                             <TouchableOpacity
                                 style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
-                                onPress={this.onImageButtonPressed.bind(this)}
-                            >
+                                onPress={this.onImageButtonPressed.bind(this)}>
                                 <Image
                                     source={{uri: this.state.photoURL}}
                                     style={styles.profilePicStyle}
                                     resizeMode='contain'
                                 />
                             </TouchableOpacity>
-                        </CardSection>
 
-                        <CardSection>
                             <Text style={styles.textStyle}>
                                 Welcome {this.state.firstName}
                             </Text>
-                        </CardSection>
 
-                        <CardSection>
                             <TextInput
                                 style={styles.textInputStyle}
                                 label='email'
@@ -265,9 +259,7 @@ class MyAccount extends Component {
                                 value={this.state.email}
                                 onChangeText={textString => this.setState({email: textString})}
                             />
-                        </CardSection>
 
-                        <CardSection>
                             <TextInput
                                 style={styles.textInputStyle}
                                 label='phone number'
@@ -277,7 +269,6 @@ class MyAccount extends Component {
                                 value={this.state.phoneNumber}
                                 onChangeText={textString => this.setState({phoneNumber: textString})}
                             />
-                        </CardSection>
 
                             <TouchableOpacity
                                 style={{flex: 1, width: null}}
@@ -298,7 +289,6 @@ class MyAccount extends Component {
                                 />
                             </TouchableOpacity>
 
-                        <CardSection>
                             <Button
                                 style={styles.buttonContainedStyle}
                                 onPress={this.onEditPressed.bind(this)}
@@ -307,15 +297,11 @@ class MyAccount extends Component {
                                     {this.state.buttonEdit}
                                 </Text>
                             </Button>
-                        </CardSection>
-
-                        <CardSection>
                             <Button
                                 style={styles.buttonContainedStyle}
                                 onPress={this.signOut}>
                                 Sign Out
                             </Button>
-                        </CardSection>
                     </View>
                 </ScrollView>
             </PaperProvider>
@@ -331,9 +317,11 @@ const styles = {
         flex: 1
     },
     textInputStyle: {
+        margin: 10,
         flex: 8
     },
     buttonContainedStyle: {
+        margin: 10,
         justifyContent: 'center',
         flex: 1
     },
