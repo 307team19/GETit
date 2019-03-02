@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {Button, Provider as PaperProvider, Surface, TextInput} from 'react-native-paper';
+import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
 import {Image, Platform, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import firebase from 'firebase';
 import RNFetchBlob from 'rn-fetch-blob'
 import {GoogleSignin} from 'react-native-google-signin';
-import {CardSection} from "./common"
 import paperTheme from './common/paperTheme'
 import {NavigationActions, NavigationEvents, StackActions} from 'react-navigation';
 import ImagePicker from 'react-native-image-picker';
@@ -233,75 +232,78 @@ class MyAccount extends Component {
                             this.setState({addresses: response.val().addresses});
 
                         });
-                }}/>
+                }}
+                />
                 <ScrollView>
                     <View>
-                            <TouchableOpacity
-                                style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
-                                onPress={this.onImageButtonPressed.bind(this)}>
-                                <Image
-                                    source={{uri: this.state.photoURL}}
-                                    style={styles.profilePicStyle}
-                                    resizeMode='contain'
-                                />
-                            </TouchableOpacity>
+                        <TouchableOpacity
+                            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
+                            onPress={this.onImageButtonPressed.bind(this)}>
+                            <Image
+                                source={{uri: this.state.photoURL}}
+                                style={styles.profilePicStyle}
+                                resizeMode='contain'
+                            />
+                        </TouchableOpacity>
 
-                            <Text style={styles.textStyle}>
-                                Welcome {this.state.firstName}
-                            </Text>
+                        <Text style={styles.textStyle}>
+                            Welcome {this.state.firstName}
+                        </Text>
 
+                        <TextInput
+                            style={styles.textInputStyle}
+                            label='email'
+                            mode='outlined'
+                            // placeholder="current email"
+                            disabled={this.state.disabledEmail}
+                            value={this.state.email}
+                            onChangeText={textString => this.setState({email: textString})}
+                        />
+
+                        <TextInput
+                            style={styles.textInputStyle}
+                            label='phone number'
+                            mode='outlined'
+                            // placeholder="current email"
+                            disabled={this.state.disabledPhNo}
+                            value={this.state.phoneNumber}
+                            onChangeText={textString => this.setState({phoneNumber: textString})}
+                        />
+
+                        <TouchableOpacity
+                            style={{flex: 1, width: null}}
+                            onPress={() => {
+                                console.log("here text");
+                                this.props.navigation.navigate('addresses');
+                            }}>
                             <TextInput
                                 style={styles.textInputStyle}
-                                label='email'
+                                label='Address'
+                                pointerEvents="none"
                                 mode='outlined'
-                                // placeholder="current email"
-                                disabled={this.state.disabledEmail}
-                                value={this.state.email}
-                                onChangeText={textString => this.setState({email: textString})}
-                            />
-
-                            <TextInput
-                                style={styles.textInputStyle}
-                                label='phone number'
-                                mode='outlined'
-                                // placeholder="current email"
-                                disabled={this.state.disabledPhNo}
-                                value={this.state.phoneNumber}
-                                onChangeText={textString => this.setState({phoneNumber: textString})}
-                            />
-
-                            <TouchableOpacity
-                                style={{flex: 1, width: null}}
                                 onPress={() => {
                                     console.log("here text");
-                                    this.props.navigation.navigate('addresses');}}>
-                                <TextInput
-                                    style={styles.textInputStyle}
-                                    label='Address'
-                                    pointerEvents="none"
-                                    mode='outlined'
-                                    onPress={() => {
-                                        console.log("here text");
-                                        this.props.navigation.navigate('addresses');}}
-                                    disabled={true}
-                                    value={this.state.address}
-                                    onChangeText={textString => this.setState({phoneNumber: textString})}
-                                />
-                            </TouchableOpacity>
+                                    this.props.navigation.navigate('addresses');
+                                }}
+                                disabled={true}
+                                value={this.state.address}
+                                onChangeText={textString => this.setState({phoneNumber: textString})}
+                            />
+                        </TouchableOpacity>
 
-                            <Button
-                                style={styles.buttonContainedStyle}
-                                onPress={this.onEditPressed.bind(this)}
-                            >
-                                <Text>
-                                    {this.state.buttonEdit}
-                                </Text>
-                            </Button>
-                            <Button
-                                style={styles.buttonContainedStyle}
-                                onPress={this.signOut}>
-                                Sign Out
-                            </Button>
+                        <Button
+                            style={styles.buttonContainedStyle}
+                            onPress={this.onEditPressed.bind(this)}
+                        >
+                            <Text>
+                                {this.state.buttonEdit}
+                            </Text>
+                        </Button>
+                        <Button
+                            style={styles.buttonContainedStyle}
+                            onPress={this.signOut}>
+                            Sign Out
+                        </Button>
                     </View>
                 </ScrollView>
             </PaperProvider>
