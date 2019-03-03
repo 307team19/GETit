@@ -19,13 +19,6 @@ class Requests extends Component {
                         this.props.navigation.navigate('addRequest');
                     }}
                 />
-                <Text>Requests Screen</Text>
-                <Text>Requests Screen</Text>
-                <Text>Requests Screen</Text>
-                <Text>Requests Screen</Text>
-                <Text>Requests Screen</Text>
-                <Text>Requests Screen</Text>
-                <Text>Requests Screen</Text>
             </View>
 
         );
