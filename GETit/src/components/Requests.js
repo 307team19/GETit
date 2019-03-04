@@ -21,17 +21,21 @@ class Requests extends Component {
     }
 
     renderItem = ( {item} ) => (
-        
-         <ListItem
-            title={
-                <View style = {{backgroundColor: 'yellow'}}>
-                 <Text>{item.item}</Text>
-                </View>
-            }
-            subtitle={item.description}
-            rightTitle={item.price}
+        <Card style = {styles.topCard} elevation = {5}>
+            <Card.Content style = {{margin: 10, flex: 1,}}>
+                         <ListItem
+                                title={
+                                    <View style = {{backgroundColor: 'yellow'}}>
+                                    <Text>{item.item}</Text>
+                                    </View>
+                                }
+                                subtitle={item.description}
+                                rightTitle={item.price}
             
-          />
+                         />
+            </Card.Content>
+         </Card>  
+         
         
     )
 
@@ -53,12 +57,16 @@ class Requests extends Component {
 
 
         return (
+          <View style={{flex:1}}>
             <FlatList
               data = {adds}
               renderItem = {this.renderItem}
               keyExtractor={this.keyExtractor}
              />
+            </View>
+         
             )
+         
     
     }
 
@@ -73,12 +81,12 @@ class Requests extends Component {
               })
                 }}
                 />
-                <Card style = {styles.topCard}>
+                <Card style = {styles.topCard} elevation = {5}>
                     <Card.Title title="CURRENT REQUESTS"  />
                     <Card.Content style = {{margin: 10, flex: 1,}}>
                          {this.loadRequests()}
                     </Card.Content>
-                </Card>
+                </Card>  
                 <FAB
                     icon={"add"}
                     small
