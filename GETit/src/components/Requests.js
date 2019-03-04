@@ -1,16 +1,92 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
-import {FAB} from 'react-native-paper'
-
+import {Text, View, FlatList} from 'react-native';
+import {FAB, Card} from 'react-native-paper'
+import firebase from "firebase";
+import { ListItem } from 'react-native-elements'
+import { NavigationEvents} from 'react-navigation';
 
 class Requests extends Component {
 
+    state = {
+        requestsObj: []
+    }
 
-    render() {
+
+    componentWillMount(){
+        firebase.database().ref('/').once('value').then(response => {
+                this.setState({requestsObj: response.val().requests})
+        })
+        
+         
+    }
+
+    renderItem = ( {item} ) => (
+        <Card style = {styles.topCard} elevation = {5}>
+            <Card.Content style = {{margin: 10, flex: 1,}}>
+                         <ListItem
+                                title={
+                                    <View style = {{backgroundColor: 'yellow'}}>
+                                    <Text>{item.item}</Text>
+                                    </View>
+                                }
+                                subtitle={item.description}
+                                rightTitle={item.price}
+            
+                         />
+            </Card.Content>
+         </Card>  
+         
+        
+    )
+
+    
+    
+ 
+        
+      
+
+    loadRequests = () =>{
+        
+        var adds = [];
+        Object.keys(this.state.requestsObj).forEach((key, index) => {
+                    adds.push(this.state.requestsObj[key]);
+            }
+        );
+
+        keyExtractor = (item, index) => index
 
 
         return (
+          <View style={{flex:1}}>
+            <FlatList
+              data = {adds}
+              renderItem = {this.renderItem}
+              keyExtractor={this.keyExtractor}
+             />
+            </View>
+         
+            )
+         
+    
+    }
+
+    render() {
+
+        return (
+
             <View style={{flex: 1}}>
+              <NavigationEvents onDidFocus={() => {
+                    firebase.database().ref('/').once('value').then(response => {
+                    this.setState({requestsObj: response.val().requests})
+              })
+                }}
+                />
+                <Card style = {styles.topCard} elevation = {5}>
+                    <Card.Title title="CURRENT REQUESTS"  />
+                    <Card.Content style = {{margin: 10, flex: 1,}}>
+                         {this.loadRequests()}
+                    </Card.Content>
+                </Card>  
                 <FAB
                     icon={"add"}
                     small
@@ -19,13 +95,6 @@ class Requests extends Component {
                         this.props.navigation.navigate('addRequest');
                     }}
                 />
-                <Text>Requests Screen</Text>
-                <Text>Requests Screen</Text>
-                <Text>Requests Screen</Text>
-                <Text>Requests Screen</Text>
-                <Text>Requests Screen</Text>
-                <Text>Requests Screen</Text>
-                <Text>Requests Screen</Text>
             </View>
 
         );
@@ -39,6 +108,13 @@ const styles = {
         right: 0,
         bottom: 0,
     },
+
+    topCard: {
+        margin: 10,
+        flex: 1.5,
+    },
+
+
 };
 
 
