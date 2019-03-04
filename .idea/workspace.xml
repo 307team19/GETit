@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eadc908c-1f83-4bbd-83dd-656b58f67d0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GETit/src/components/RequestHistory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GETit/src/components/MyAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/MyAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/src/components/RequestHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/RequestHistory.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,13 +17,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/RequestHistory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+            <state relative-caret-position="306">
+              <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GETit/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-419">
+              <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GETit/src/components/LoginPage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="213" column="6" lean-forward="true" selection-start-line="208" selection-end-line="213" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GETit/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="59" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,19 +89,19 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/GETit/App.js" />
         <option value="$PROJECT_DIR$/GETit/babel.config.js" />
         <option value="$PROJECT_DIR$/GETit/.flowconfig" />
         <option value="$PROJECT_DIR$/GETit/src/components_shiv/Header.js" />
         <option value="$PROJECT_DIR$/GETit/src/components_shiv/SignUpForm.js" />
-        <option value="$PROJECT_DIR$/GETit/index.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/App.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/SignUpForm.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/common/paperTheme.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/LoginPage.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/Addresses.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/MyAccount.js" />
+        <option value="$PROJECT_DIR$/GETit/App.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/RequestHistory.js" />
+        <option value="$PROJECT_DIR$/GETit/index.js" />
       </list>
     </option>
   </component>
@@ -165,12 +198,12 @@
       <workItem from="1550459322182" duration="3398000" />
       <workItem from="1550726485621" duration="6685000" />
       <workItem from="1550784155533" duration="8579000" />
-      <workItem from="1551662336160" duration="498000" />
+      <workItem from="1551662336160" duration="1090000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34777000" />
+    <option name="totallyTimeSpent" value="35369000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -215,18 +248,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components_shiv/Header.js" />
     <entry file="file://$PROJECT_DIR$/GETit/src/components_shiv/SignUpForm.js" />
-    <entry file="file://$PROJECT_DIR$/GETit/App.js" />
     <entry file="file://$PROJECT_DIR$/GETit/src_Aman/LoginPage.js" />
-    <entry file="file://$PROJECT_DIR$/GETit/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="50" lean-forward="true" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/app.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -254,13 +276,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="736" selection-start-line="736" selection-end-line="736" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/LoginPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="135" column="98" selection-start-line="135" selection-start-column="98" selection-end-line="135" selection-end-column="98" />
         </state>
       </provider>
     </entry>
@@ -332,12 +347,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/RequestHistory.js">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/react.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        <state relative-caret-position="242">
+          <caret line="298" column="8" selection-start-line="298" selection-start-column="8" selection-end-line="298" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-419">
+          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/RequestHistory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/LoginPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="213" column="6" lean-forward="true" selection-start-line="208" selection-end-line="213" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="59" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>

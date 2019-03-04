@@ -46,8 +46,6 @@ const AppNavigator = createStackNavigator(
                 swipeEnabled: true,
                 tabBarPosition: 'top',
             }),
-
-
     },
     {
         initialRouteName: "signup"
@@ -70,14 +68,11 @@ class App extends Component<Props> {
         );
     }
 
-
     render() {
         return (
             <AppContainer/>
         )
-
     }
 }
-
 
 export default App
