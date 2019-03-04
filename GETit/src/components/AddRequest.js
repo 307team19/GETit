@@ -43,7 +43,7 @@ class AddRequest extends Component {
     }
 
     addRequest = () => {
-        var userRef = firebase.database().ref("requests/" + firebase.auth().currentUser.uid + "/");
+        var userRef = firebase.database().ref("requests/" + this.state.item + "/");
 
         userRef.set({
             item: this.state.item,
