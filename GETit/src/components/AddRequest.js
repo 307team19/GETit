@@ -20,7 +20,8 @@ class AddRequest extends Component {
         price: '',
         description: '',
         selectedAddress: '',
-        instructions: ''
+        instructions: '',
+        link: '',
     };
 
     componentWillMount(): void {
@@ -116,6 +117,13 @@ class AddRequest extends Component {
                     mode='outlined'
                     value={this.state.instructions}
                     onChangeText={textString => this.setState({instructions: textString})}
+                />
+                <TextInput
+                    style={{margin: 10}}
+                    label='Link'
+                    mode='outlined'
+                    value={this.state.link}
+                    onChangeText={textString => this.setState({link: textString})}
                 />
                 <Button onPress={this.addRequest}>
                     Add Request
