@@ -39,7 +39,7 @@ class AddRequest extends Component {
 
                 });
 
-        
+
             });
 
     }
@@ -58,10 +58,12 @@ class AddRequest extends Component {
             address: this.state.address,
         }).then((data) => {
             console.log('Synchronization succeeded');
+            this.props.navigation.goBack();
+
         }).catch((error) => {
             console.log(error)
         })
-    }
+    };
 
 
     render() {
@@ -106,7 +108,7 @@ class AddRequest extends Component {
                     value={this.state.description}
                     onChangeText={textString => this.setState({description: textString})}
                 />
-                <Button onPress =  {this.addRequest}>
+                <Button onPress={this.addRequest}>
                     Add Request
                 </Button>
             </PaperProvider>
