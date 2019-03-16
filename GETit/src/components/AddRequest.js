@@ -19,7 +19,8 @@ class AddRequest extends Component {
         item: '',
         price: '',
         description: '',
-        selectedAddress: ''
+        selectedAddress: '',
+        instructions: ''
     };
 
     componentWillMount(): void {
@@ -56,6 +57,7 @@ class AddRequest extends Component {
             email: this.state.email,
             phoneNumber: this.state.phoneNumber,
             address: this.state.address,
+      //      instructions: this.state.instructions,
         }).then((data) => {
             console.log('Synchronization succeeded');
             this.props.navigation.goBack();
@@ -107,6 +109,13 @@ class AddRequest extends Component {
                     mode='outlined'
                     value={this.state.description}
                     onChangeText={textString => this.setState({description: textString})}
+                />
+                <TextInput
+                    style={{margin: 10}}
+                    label='Special Instructions'
+                    mode='outlined'
+                    value={this.state.instructions}
+                    onChangeText={textString => this.setState({instructions: textString})}
                 />
                 <Button onPress={this.addRequest}>
                     Add Request
