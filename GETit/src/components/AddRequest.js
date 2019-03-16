@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import paperTheme from './common/paperTheme'
-import {Button, Provider as PaperProvider, Surface, TextInput} from 'react-native-paper';
+import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
 import firebase from "firebase";
+import {Dropdown} from 'react-native-material-dropdown'
 
 class AddRequest extends Component {
 
@@ -17,7 +18,8 @@ class AddRequest extends Component {
         address: '',
         item: '',
         price: '',
-        description: ''
+        description: '',
+        selectedAddress: ''
     };
 
     componentWillMount(): void {
@@ -61,28 +63,44 @@ class AddRequest extends Component {
         })
     }
 
+
     render() {
+
+        var adds = [];
+        Object.keys(this.state.addresses).forEach((key, index) => {
+                if (key !== "no address") {
+                    adds.push({
+                        value: this.state.addresses[key]
+                    });
+                }
+            }
+        );
 
         return (
             <PaperProvider theme={paperTheme}>
-                <View style={{ flexDirection: 'row', margin: 10}}>
+                <View style={{flexDirection: 'row', margin: 10}}>
                     <TextInput
-                        style={{flex: 3, margin:10}}
+                        style={{flex: 3, margin: 10}}
                         label='Item'
                         mode='outlined'
                         value={this.state.item}
                         onChangeText={textString => this.setState({item: textString})}
                     />
                     <TextInput
-                        style={{flex: 1, margin:10}}
+                        style={{flex: 1, margin: 10}}
                         label='Price'
                         mode='outlined'
                         value={this.state.price}
                         onChangeText={textString => this.setState({price: textString})}
                     />
                 </View>
+                <Dropdown
+                    label='Addresses'
+                    data={adds}
+                    containerStyle={{margin: 10}}
+                />
                 <TextInput
-                    style={{margin:10}}
+                    style={{margin: 10}}
                     label='Description'
                     mode='outlined'
                     value={this.state.description}

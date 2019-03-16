@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ScrollView, View, Alert} from 'react-native';
+import {Alert, ScrollView, View} from 'react-native';
 import {Button, Provider as PaperProvider, Text, TextInput} from 'react-native-paper';
 import firebase from 'firebase';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
@@ -50,28 +50,28 @@ class SignUpForm extends Component {
 
 
         const {email, password, phoneNumber, firstName, lastName} = this.state;
-        try{
-        await firebase.auth().createUserWithEmailAndPassword(email, password)
-        }catch(err){
+        try {
+            await firebase.auth().createUserWithEmailAndPassword(email, password)
+        } catch (err) {
             Alert.alert(
-            'Oops!',
-            err.message,
-            [
-                {
-                text: 'OK',
-                onPress: () => console.log('Cancel Pressed'),
-                style: 'cancel',
-                },
-                
-            ],
-            {cancelable: false},
+                'Oops!',
+                err.message,
+                [
+                    {
+                        text: 'OK',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+
+                ],
+                {cancelable: false},
             );
             console.log(err)
         }
-        
+
         var rootRef = firebase.database().ref();
         var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/");
-       
+
         userRef.set({
             email,
             phoneNumber,
@@ -101,11 +101,11 @@ class SignUpForm extends Component {
             var credential = firebase.auth.GoogleAuthProvider.credential(this.state.userInfo.idToken);
             firebase.auth().signInAndRetrieveDataWithCredential(credential)
                 .then(() => {
-                
-            this.props.navigation.navigate('createUser');
-                }).catch((error)=>{
-                    console.log(error)
-                })
+
+                    this.props.navigation.navigate('createUser');
+                }).catch((error) => {
+                console.log(error)
+            })
 
 
         } catch (error) {
@@ -181,7 +181,7 @@ class SignUpForm extends Component {
                             <Text style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>SIGN UP</Text>
                         </Button>
                         <GoogleSigninButton
-                            style={{ height: 48, justifyContent: 'center',flex: 1, margin: 10}}
+                            style={{height: 48, justifyContent: 'center', flex: 1, margin: 10}}
                             size={GoogleSigninButton.Size.Wide}
                             color={GoogleSigninButton.Color.Dark}
                             onPress={this.signIn}

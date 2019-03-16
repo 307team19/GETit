@@ -43,7 +43,7 @@ class LoginPage extends Component {
 
 
     }
-    
+
 
     onLoginButtonPressed() {
         const {email, password} = this.state;
