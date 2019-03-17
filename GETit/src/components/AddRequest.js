@@ -47,16 +47,18 @@ class AddRequest extends Component {
     addRequest = () => {
         var userRef = firebase.database().ref("requests/" + this.state.item + "/");
 
-        userRef.set({
-            item: this.state.item,
-            price: this.state.price,
-            description: this.state.description,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email,
-            phoneNumber: this.state.phoneNumber,
-            address: this.state.address,
-        }).then((data) => {
+        userRef.set(
+            {
+                item: this.state.item,
+                price: this.state.price,
+                description: this.state.description,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                email: this.state.email,
+                phoneNumber: this.state.phoneNumber,
+                address: this.state.address
+            }
+        ).then((data) => {
             console.log('Synchronization succeeded');
             this.props.navigation.goBack();
 
@@ -104,6 +106,8 @@ class AddRequest extends Component {
                     label='Addresses'
                     data={adds}
                     containerStyle={{margin: 10}}
+                    value={this.state.address}
+                    onChangeText={text => this.setState({address: text})}
                 />
                 <TextInput
                     style={{margin: 10}}
