@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {FlatList, Text, View, Linking} from 'react-native';
-import { WebView } from 'react-native-webview';
 import {Card, FAB, Button} from 'react-native-paper'
 import firebase from "firebase";
 import {ListItem} from 'react-native-elements'
@@ -36,7 +35,10 @@ class Requests extends Component {
                         <View style={{flex: 1}}>
                             <Text>{item.description}</Text>
                             <Button onPress={()=>{
-                                Linking.openURL(item.link).catch((err) => console.error('An error occurred', err));
+                                if(item.link){
+                                    console.log("LINK: "+ item.link)
+                                    Linking.openURL(item.link).catch((err) => console.error('An error occurred', err));
+                                }                        
                             }}>
                                 Open link
                             </Button>
