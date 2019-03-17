@@ -293,6 +293,18 @@ class MyAccount extends Component {
 
                         <Button
                             style={styles.buttonContainedStyle}
+                            // onPress={this.onEditPressed.bind(this)}
+                            onPress={() => {
+                                console.log("here text");
+                                this.props.navigation.navigate('requestHistory');
+                            }}
+                        >
+                            <Text>
+                                Request History
+                            </Text>
+                        </Button>
+                        <Button
+                            style={styles.buttonContainedStyle}
                             onPress={this.onEditPressed.bind(this)}
                         >
                             <Text>

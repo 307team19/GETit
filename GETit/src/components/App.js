@@ -11,6 +11,7 @@ import {View} from 'react-native';
 import CreateUser from "./CreateUser";
 import Addresses from "./Addresses";
 import AddRequest from "./AddRequest"
+import RequestHistory from "./RequestHistory";
 
 const AppNavigator = createStackNavigator(
     {
@@ -22,6 +23,7 @@ const AppNavigator = createStackNavigator(
         passreset: PasswordReset,
         addresses: Addresses,
         addRequest: AddRequest,
+        requestHistory: RequestHistory,
         tabscreen: createMaterialTopTabNavigator({
             orders: Orders,
             myaccount: MyAccount,
