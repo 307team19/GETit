@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {FlatList, Text, View} from 'react-native';
-import {Card, FAB} from 'react-native-paper'
+import {FlatList, Text, View, Linking} from 'react-native';
+import { WebView } from 'react-native-webview';
+import {Card, FAB, Button} from 'react-native-paper'
 import firebase from "firebase";
 import {ListItem} from 'react-native-elements'
 import {NavigationEvents} from 'react-navigation';
@@ -20,19 +21,27 @@ class Requests extends Component {
 
     }
 
+    openLink = () =>{
+
+    }
+
     renderItem = ({item}) => (
         <Card style={styles.topCard} elevation={5}>
             <Card.Content style={{margin: 10, flex: 1,}}>
                 <ListItem
                     title={
-                        <View style={{backgroundColor: 'yellow'}}>
+                        <View style={{backgroundColor: 'yellow', flex: 1}}>
                             <Text>{item.item}</Text>
                         </View>
                     }
                     subtitle={
-                        <View>
+                        <View style={{flex: 1}}>
                             <Text>{item.description}</Text>
-                            <Text>{item.link}</Text>
+                            <Button onPress={()=>{
+                                Linking.openURL(item.link).catch((err) => console.error('An error occurred', err));
+                            }}>
+                                Open link
+                            </Button>
                         </View>
                     }
                     rightTitle={item.price}

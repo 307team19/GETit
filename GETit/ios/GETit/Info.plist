@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSExceptionDomains</key>
-	<string>iOS App transport security access</string>
-	<key>NSCameraUsageDescription</key>
-	<string>We require your permission to access the camera</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We require your permission to access the photo library</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We require your permission to access the photo library</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -56,8 +48,16 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>We require your permission to access the camera</string>
+	<key>NSExceptionDomains</key>
+	<string>iOS App transport security access</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We require your permission to access the photo library</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We require your permission to access the photo library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
