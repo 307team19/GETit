@@ -78,6 +78,10 @@ class AddRequest extends Component {
             }
         );
 
+        adds.push({
+            value: 'Current Location'
+        });
+
         return (
             <PaperProvider theme={paperTheme}>
                 <View style={{flexDirection: 'row', margin: 10}}>
