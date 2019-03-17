@@ -47,24 +47,50 @@ class AddRequest extends Component {
     addRequest = () => {
         var userRef = firebase.database().ref("requests/" + this.state.item + "/");
 
-        userRef.set(
-            {
-                item: this.state.item,
-                price: this.state.price,
-                description: this.state.description,
-                firstName: this.state.firstName,
-                lastName: this.state.lastName,
-                email: this.state.email,
-                phoneNumber: this.state.phoneNumber,
-                address: this.state.address
-            }
-        ).then((data) => {
-            console.log('Synchronization succeeded');
-            this.props.navigation.goBack();
+        //TODO this code is creepy, edit address separately
 
-        }).catch((error) => {
-            console.log(error)
-        })
+        if(this.state.address === 'Current Location')
+        {
+            userRef.set(
+                {
+                    item: this.state.item,
+                    price: this.state.price,
+                    description: this.state.description,
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    email: this.state.email,
+                    phoneNumber: this.state.phoneNumber,
+                    address: 'SET AS CURRENT LOCATION AFTER GETTING'
+                }
+            ).then((data) => {
+                console.log('Synchronization succeeded');
+                this.props.navigation.goBack();
+
+            }).catch((error) => {
+                console.log(error)
+            })
+        }
+        else
+        {
+            userRef.set(
+                {
+                    item: this.state.item,
+                    price: this.state.price,
+                    description: this.state.description,
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    email: this.state.email,
+                    phoneNumber: this.state.phoneNumber,
+                    address: this.state.address
+                }
+            ).then((data) => {
+                console.log('Synchronization succeeded');
+                this.props.navigation.goBack();
+
+            }).catch((error) => {
+                console.log(error)
+            })
+        }
     };
 
 
