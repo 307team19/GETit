@@ -12,6 +12,7 @@
     "react": "16.6.3",
     "react-native": "^0.58.6",
     "react-native-elements": "^1.1.0",
+    "react-native-geocoding": "^0.3.0",
     "react-native-gesture-handler": "^1.0.15",
     "react-native-get-location": "^1.1.2",
     "react-native-google-signin": "^1.1.0",

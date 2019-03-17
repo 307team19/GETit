@@ -5,6 +5,7 @@ import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
 import firebase from "firebase";
 import {Dropdown} from 'react-native-material-dropdown'
 import GetLocation from 'react-native-get-location'
+import Geocoder from 'react-native-geocoding';
 
 class AddRequest extends Component {
 
@@ -116,8 +117,16 @@ class AddRequest extends Component {
         timeout: 15000,
         })
         .then(location => {
-            console.log(location);
-        })
+        
+            Geocoder.init('AIzaSyCHBBlV3gi1aqRrbhTQbLlmofdYgl-jMtc');
+            Geocoder.from(location.latitude, location.longitude)
+            .then(json => {
+               var addressComponent = json.results[0].formatted_address;
+               console.log(addressComponent);
+             
+            })
+            .catch(error => console.warn(error.origin));
+            })
         .catch(error => {
             const { code, message } = error;
             console.warn(code, message);
