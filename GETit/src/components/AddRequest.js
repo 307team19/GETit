@@ -49,6 +49,8 @@ class AddRequest extends Component {
     addRequest = () => {
         var userRef = firebase.database().ref("requests/" + this.state.item + "/");
 
+        console.log("link: "+ this.state.link)
+
         userRef.set({
             item: this.state.item,
             price: this.state.price,
@@ -58,6 +60,8 @@ class AddRequest extends Component {
             email: this.state.email,
             phoneNumber: this.state.phoneNumber,
             address: this.state.address,
+            link: this.state.link,
+            instructions: this.state.instructions,
       //      instructions: this.state.instructions,
         }).then((data) => {
             console.log('Synchronization succeeded');

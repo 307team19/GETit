@@ -29,7 +29,12 @@ class Requests extends Component {
                             <Text>{item.item}</Text>
                         </View>
                     }
-                    subtitle={item.description}
+                    subtitle={
+                        <View>
+                            <Text>{item.description}</Text>
+                            <Text>{item.link}</Text>
+                        </View>
+                    }
                     rightTitle={item.price}
 
                 />
@@ -42,7 +47,8 @@ class Requests extends Component {
 
     loadRequests = () => {
 
-        var adds = [];
+        if(this.state.requestsObj){
+             var adds = [];
         Object.keys(this.state.requestsObj).forEach((key, index) => {
                 adds.push(this.state.requestsObj[key]);
             }
@@ -62,6 +68,15 @@ class Requests extends Component {
 
         )
 
+        }else {
+             return (
+            <View style={{flex: 1}}>
+                <Text>NO REQUESTS</Text>
+            </View>
+
+        )
+        } 
+       
 
     };
 
