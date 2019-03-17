@@ -4,6 +4,7 @@ import paperTheme from './common/paperTheme'
 import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
 import firebase from "firebase";
 import {Dropdown} from 'react-native-material-dropdown'
+import GetLocation from 'react-native-get-location'
 
 class AddRequest extends Component {
 
@@ -109,6 +110,18 @@ class AddRequest extends Component {
         adds.push({
             value: 'Current Location'
         });
+
+        GetLocation.getCurrentPosition({
+        enableHighAccuracy: true,
+        timeout: 15000,
+        })
+        .then(location => {
+            console.log(location);
+        })
+        .catch(error => {
+            const { code, message } = error;
+            console.warn(code, message);
+        })
 
         return (
             <PaperProvider theme={paperTheme}>
