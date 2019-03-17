@@ -4,6 +4,8 @@ import paperTheme from './common/paperTheme'
 import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
 import firebase from "firebase";
 import {Dropdown} from 'react-native-material-dropdown'
+import GetLocation from 'react-native-get-location'
+import Geocoder from 'react-native-geocoding';
 
 class AddRequest extends Component {
 
@@ -19,7 +21,8 @@ class AddRequest extends Component {
         item: '',
         price: '',
         description: '',
-        selectedAddress: ''
+        selectedAddress: '',
+        GPSLocation: ''
     };
 
     componentWillMount(): void {
@@ -49,8 +52,7 @@ class AddRequest extends Component {
 
         //TODO this code is creepy, edit address separately
 
-        if(this.state.address === 'Current Location')
-        {
+        if (this.state.address === 'Current Location') {
             userRef.set(
                 {
                     item: this.state.item,
@@ -60,7 +62,7 @@ class AddRequest extends Component {
                     lastName: this.state.lastName,
                     email: this.state.email,
                     phoneNumber: this.state.phoneNumber,
-                    address: 'SET AS CURRENT LOCATION AFTER GETTING'
+                    address: this.state.GPSLocation
                 }
             ).then((data) => {
                 console.log('Synchronization succeeded');
@@ -69,9 +71,7 @@ class AddRequest extends Component {
             }).catch((error) => {
                 console.log(error)
             })
-        }
-        else
-        {
+        } else {
             userRef.set(
                 {
                     item: this.state.item,
@@ -109,6 +109,27 @@ class AddRequest extends Component {
         adds.push({
             value: 'Current Location'
         });
+
+        GetLocation.getCurrentPosition({
+            enableHighAccuracy: true,
+            timeout: 15000,
+        })
+            .then(location => {
+
+                Geocoder.init('AIzaSyCHBBlV3gi1aqRrbhTQbLlmofdYgl-jMtc');
+                Geocoder.from(location.latitude, location.longitude)
+                    .then(json => {
+                        var addressComponent = json.results[0].formatted_address;
+                        console.log(addressComponent);
+                        this.setState({GPSLocation: addressComponent})
+
+                    })
+                    .catch(error => console.warn(error.origin));
+            })
+            .catch(error => {
+                const {code, message} = error;
+                console.warn(code, message);
+            })
 
         return (
             <PaperProvider theme={paperTheme}>
