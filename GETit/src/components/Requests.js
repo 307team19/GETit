@@ -21,9 +21,7 @@ class Requests extends Component {
 
     }
 
-    openLink = () =>{
-
-    }
+    
 
     renderItem = ({item}) => (
         <Card style={styles.topCard} elevation={5}>
