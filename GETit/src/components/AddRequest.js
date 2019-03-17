@@ -22,10 +22,12 @@ class AddRequest extends Component {
         price: '',
         description: '',
         selectedAddress: '',
-        GPSLocation: ''
+        GPSLocation: '',
+        instructions: '',
+        link: '',
     };
 
-    componentWillMount(): void {
+    componentWillMount() {
 
         const u = firebase.auth().currentUser.uid;
         firebase.database().ref('/users/' + u + '/').once('value')
@@ -62,7 +64,9 @@ class AddRequest extends Component {
                     lastName: this.state.lastName,
                     email: this.state.email,
                     phoneNumber: this.state.phoneNumber,
-                    address: this.state.GPSLocation
+                    address: this.state.GPSLocation,
+                    link: this.state.link,
+                    instructions: this.state.instructions,
                 }
             ).then((data) => {
                 console.log('Synchronization succeeded');
@@ -81,7 +85,9 @@ class AddRequest extends Component {
                     lastName: this.state.lastName,
                     email: this.state.email,
                     phoneNumber: this.state.phoneNumber,
-                    address: this.state.address
+                    address: this.state.address,
+                    link: this.state.link,
+                    instructions: this.state.instructions,
                 }
             ).then((data) => {
                 console.log('Synchronization succeeded');
@@ -162,6 +168,20 @@ class AddRequest extends Component {
                     mode='outlined'
                     value={this.state.description}
                     onChangeText={textString => this.setState({description: textString})}
+                />
+                <TextInput
+                    style={{margin: 10}}
+                    label='Special Instructions'
+                    mode='outlined'
+                    value={this.state.instructions}
+                    onChangeText={textString => this.setState({instructions: textString})}
+                />
+                <TextInput
+                    style={{margin: 10}}
+                    label='Link'
+                    mode='outlined'
+                    value={this.state.link}
+                    onChangeText={textString => this.setState({link: textString})}
                 />
                 <Button onPress={this.addRequest}>
                     Add Request

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {FlatList, Text, View} from 'react-native';
-import {Card, FAB} from 'react-native-paper'
+import {FlatList, Text, View, Linking} from 'react-native';
+import {Card, FAB, Button} from 'react-native-paper'
 import firebase from "firebase";
 import {ListItem} from 'react-native-elements'
 import {NavigationEvents} from 'react-navigation';
@@ -20,16 +20,30 @@ class Requests extends Component {
 
     }
 
+    
+
     renderItem = ({item}) => (
         <Card style={styles.topCard} elevation={5}>
             <Card.Content style={{margin: 10, flex: 1,}}>
                 <ListItem
                     title={
-                        <View style={{backgroundColor: 'yellow'}}>
+                        <View style={{backgroundColor: 'yellow', flex: 1}}>
                             <Text>{item.item}</Text>
                         </View>
                     }
-                    subtitle={item.description}
+                    subtitle={
+                        <View style={{flex: 1}}>
+                            <Text>{item.description}</Text>
+                            <Button onPress={()=>{
+                                if(item.link){
+                                    console.log("LINK: "+ item.link)
+                                    Linking.openURL(item.link).catch((err) => console.error('An error occurred', err));
+                                }                        
+                            }}>
+                                Open link
+                            </Button>
+                        </View>
+                    }
                     rightTitle={item.price}
 
                 />
@@ -42,7 +56,8 @@ class Requests extends Component {
 
     loadRequests = () => {
 
-        var adds = [];
+        if(this.state.requestsObj){
+             var adds = [];
         Object.keys(this.state.requestsObj).forEach((key, index) => {
                 adds.push(this.state.requestsObj[key]);
             }
@@ -62,6 +77,15 @@ class Requests extends Component {
 
         )
 
+        }else {
+             return (
+            <View style={{flex: 1}}>
+                <Text>NO REQUESTS</Text>
+            </View>
+
+        )
+        } 
+       
 
     };
 

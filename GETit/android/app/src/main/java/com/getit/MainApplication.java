@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.github.douglasjunior.reactNativeGetLocation.ReactNativeGetLocationPackage;
+import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import com.imagepicker.ImagePickerPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
@@ -30,6 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new ReactNativeGetLocationPackage(),
+            new RNCWebViewPackage(),
             new RNFetchBlobPackage(),
             new ImagePickerPackage(),
             new RNGoogleSigninPackage(),

@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -52,6 +53,7 @@
 		C095A39698E64A248D1835A0 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1DA9CDDA0B14BB8A2FBD986 /* SimpleLineIcons.ttf */; };
 		C710253C221BFF1200D3113E /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7102517221BFEF000D3113E /* libRCTCameraRoll.a */; };
 		C7102611221C0F8E00D3113E /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7102610221C0F7400D3113E /* libRNImagePicker.a */; };
+		C77A4712223E4AF8000CAF0E /* libRNCWebView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C77A470B223E4AC8000CAF0E /* libRNCWebView.a */; };
 		C7B2D45A221EA6B900E77DF1 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B2D454221EA69700E77DF1 /* libRNFetchBlob.a */; };
 		D79BCC6333A94D7C814BA83D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D1EFC2E3DF74B02BDBBFFF7 /* Zocial.ttf */; };
 		D9EDA236DCC34298ADF3A91F /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8BC52A876D4BD394F277B7 /* libRNVectorIcons-tvOS.a */; };
@@ -383,6 +385,13 @@
 			remoteGlobalIDString = A5AF7CE21FAA17C900C5BDC0;
 			remoteInfo = ReactNativeGetLocationLibrary;
 		};
+		C77A470A223E4AC8000CAF0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C77A46E0223E4AC8000CAF0E /* RNCWebView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNCWebView;
+		};
 		C78309A622169DDC00FA2558 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 212D242404964C658CE296F8 /* RNGoogleSignin.xcodeproj */;
@@ -455,6 +464,7 @@
 		C1DA9CDDA0B14BB8A2FBD986 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		C710250D221BFEEA00D3113E /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		C710260B221C0F5F00D3113E /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
+		C77A46E0223E4AC8000CAF0E /* RNCWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCWebView.xcodeproj; path = "../node_modules/react-native-webview/ios/RNCWebView.xcodeproj"; sourceTree = "<group>"; };
 		C7B2D429221EA69600E77DF1 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFetchBlob.xcodeproj; path = "../node_modules/rn-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; };
 		CD35C9E154D946D199833851 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		CE304E7C4EF04A4C9170D126 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
@@ -480,6 +490,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C77A4712223E4AF8000CAF0E /* libRNCWebView.a in Frameworks */,
 				C7B2D45A221EA6B900E77DF1 /* libRNFetchBlob.a in Frameworks */,
 				C7102611221C0F8E00D3113E /* libRNImagePicker.a in Frameworks */,
 				C710253C221BFF1200D3113E /* libRCTCameraRoll.a in Frameworks */,
@@ -734,6 +745,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				C77A46E0223E4AC8000CAF0E /* RNCWebView.xcodeproj */,
 				C7B2D429221EA69600E77DF1 /* RNFetchBlob.xcodeproj */,
 				C710260B221C0F5F00D3113E /* RNImagePicker.xcodeproj */,
 				C710250D221BFEEA00D3113E /* RCTCameraRoll.xcodeproj */,
@@ -823,6 +835,14 @@
 			isa = PBXGroup;
 			children = (
 				C760B5EE223EDEEE004F0A79 /* libReactNativeGetLocationLibrary.a */,
+				);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C77A46E1223E4AC8000CAF0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C77A470B223E4AC8000CAF0E /* libRNCWebView.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -948,6 +968,9 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = UES3CL6253;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -1026,6 +1049,10 @@
 				{
 					ProductGroup = C760B5EA223EDEEE004F0A79 /* Products */;
 					ProjectRef = 03D9504F14434CB6917806FB /* ReactNativeGetLocation.xcodeproj */;
+				},
+				{
+					ProductGroup = C77A46E1223E4AC8000CAF0E /* Products */;
+					ProjectRef = C77A46E0223E4AC8000CAF0E /* RNCWebView.xcodeproj */;
 				},
 				{
 					ProductGroup = C7B2D42A221EA69600E77DF1 /* Products */;
@@ -1358,6 +1385,13 @@
 			fileType = archive.ar;
 			path = libReactNativeGetLocationLibrary.a;
 			remoteRef = C760B5ED223EDEEE004F0A79 /* PBXContainerItemProxy */;
+				sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C77A470B223E4AC8000CAF0E /* libRNCWebView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCWebView.a;
+			remoteRef = C77A470A223E4AC8000CAF0E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		C78309A722169DDC00FA2558 /* libRNGoogleSignin.a */ = {
@@ -1681,6 +1715,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = UES3CL6253;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
@@ -1688,6 +1723,7 @@
 					"$(SRCROOT)/../node_modules/react-native/libraries/CameraRoll",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios/RNImagePicker",
 					"$(SRCROOT)/../node_modules/react-native-get-location/ios/ReactNativeGetLocationLibrary",
+					"$(SRCROOT)/../node_modules/react-native-webview/ios",
 				);
 				INFOPLIST_FILE = GETit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1696,7 +1732,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = GETit222;
 				PRODUCT_NAME = GETit;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1708,6 +1744,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UES3CL6253;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
@@ -1715,6 +1752,7 @@
 					"$(SRCROOT)/../node_modules/react-native/libraries/CameraRoll",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios/RNImagePicker",
 					"$(SRCROOT)/../node_modules/react-native-get-location/ios/ReactNativeGetLocationLibrary",
+					"$(SRCROOT)/../node_modules/react-native-webview/ios",
 				);
 				INFOPLIST_FILE = GETit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1723,7 +1761,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = GETit222;
 				PRODUCT_NAME = GETit;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
