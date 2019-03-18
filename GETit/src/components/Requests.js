@@ -8,11 +8,19 @@ import {NavigationEvents} from 'react-navigation';
 class Requests extends Component {
 
     state = {
+        email: '',
         requestsObj: []
     };
 
 
     componentWillMount() {
+        const u = firebase.auth().currentUser.uid;
+        firebase.database().ref('/users/' + u + '/').once('value')
+            .then(response => {
+                this.setState({
+                    email: response.val().email,
+                });
+            });
         firebase.database().ref('/').once('value').then(response => {
             this.setState({requestsObj: response.val().requests})
         })
@@ -59,7 +67,9 @@ class Requests extends Component {
         if(this.state.requestsObj){
              var adds = [];
         Object.keys(this.state.requestsObj).forEach((key, index) => {
-                adds.push(this.state.requestsObj[key]);
+                if(this.state.requestsObj[key].email===this.state.email) {
+                    adds.push(this.state.requestsObj[key]);
+                }
             }
         );
 
