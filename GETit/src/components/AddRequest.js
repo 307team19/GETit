@@ -183,12 +183,22 @@ class AddRequest extends Component {
                     value={this.state.link}
                     onChangeText={textString => this.setState({link: textString})}
                 />
-                <Button onPress={this.addRequest}>
+                <Button
+                    onPress={this.addRequest}
+                    style={styles.buttonContainedStyle}>
                     Add Request
                 </Button>
             </PaperProvider>
         );
     }
 }
+
+const styles = {
+    buttonContainedStyle: {
+        margin: 10,
+        justifyContent: 'center',
+        flex: 1
+    },
+};
 
 export default AddRequest;

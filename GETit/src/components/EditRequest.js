@@ -9,7 +9,20 @@ import Geocoder from 'react-native-geocoding';
 class EditRequest extends Component {
 
 	state = {
-		mainItem: {}
+		email: '',
+		phoneNumber: '',
+		firstName: '',
+		lastName: '',
+		addresses: {},
+		photoURL: '',
+		address: '',
+		item: '',
+		price: '',
+		description: '',
+		selectedAddress: '',
+		GPSLocation: '',
+		instructions: '',
+		link: '',
 	};
 
 	//request item passed in props as item
@@ -17,7 +30,12 @@ class EditRequest extends Component {
 	componentWillMount() {
 		console.log("in edit requests");
 		var requestItem = this.props.navigation.state.params.requestItem;
-		this.state.mainItem = requestItem;
+		this.setState(requestItem);
+		console.log(this.state);
+	}
+
+	confirmChanges(){
+		console.log("confirm changes");
 		console.log(this.state);
 	}
 
@@ -36,14 +54,14 @@ class EditRequest extends Component {
 						style={{flex: 3, margin: 10}}
 						label='Item'
 						mode='outlined'
-						value='Item'
+						value={this.state.item}
 						onChangeText={textString => this.setState({item: textString})}
 					/>
 					<TextInput
 						style={{flex: 1, margin: 10}}
 						label='Price'
 						mode='outlined'
-						value='Price'
+						value={this.state.price}
 						onChangeText={textString => this.setState({price: textString})}
 					/>
 				</View>
@@ -51,32 +69,32 @@ class EditRequest extends Component {
 					label='Addresses'
 					data={adds}
 					containerStyle={{margin: 10}}
-					value='Address'
+					value={this.state.address}
 					onChangeText={text => this.setState({address: text})}
 				/>
 				<TextInput
 					style={{margin: 10}}
 					label='Description'
 					mode='outlined'
-					value='Description'
+					value={this.state.description}
 					onChangeText={textString => this.setState({description: textString})}
 				/>
 				<TextInput
 					style={{margin: 10}}
 					label='Special Instructions'
 					mode='outlined'
-					value='Instructions'
+					value={this.state.instructions}
 					onChangeText={textString => this.setState({instructions: textString})}
 				/>
 				<TextInput
 					style={{margin: 10}}
 					label='Link'
 					mode='outlined'
-					value='https://google.com'
+					value={this.state.link}
 					onChangeText={textString => this.setState({link: textString})}
 				/>
-				<Button>
-					Edit Request
+				<Button onPress={this.confirmChanges()} >
+					Confirm Changes
 				</Button>
 			</PaperProvider>
 		);
