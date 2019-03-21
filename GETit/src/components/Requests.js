@@ -52,8 +52,8 @@ class Requests extends Component {
 
                             <Button onPress={()=>
                                 {
-                                    console.log("Edit Request navigate");
-                                    this.props.navigation.navigate('editRequest');
+                                    // console.log("Edit Request navigate");
+                                    this.props.navigation.navigate('editRequest', {requestItem: item});
                                 }
                             }>
                                 Edit
@@ -62,7 +62,6 @@ class Requests extends Component {
                         </View>
                     }
                     rightTitle={item.price}
-
                 />
             </Card.Content>
         </Card>
