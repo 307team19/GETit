@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, LayoutAnimation} from 'react-native';
 import paperTheme from './common/paperTheme'
-import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
+import {Button, Provider as PaperProvider, TextInput, Text} from 'react-native-paper';
 import firebase from "firebase";
 import {Dropdown} from 'react-native-material-dropdown'
 import GetLocation from 'react-native-get-location'
@@ -26,6 +26,7 @@ class AddRequest extends Component {
         GPSLocation: '',
         instructions: '',
         link: '',
+        showCurrLoc: false,
     };
 
     componentWillMount() {
@@ -145,6 +146,20 @@ class AddRequest extends Component {
         }
     };
 
+    shouldShowCurrLoc = () =>{
+
+        if(this.state.showCurrLoc == false){
+            return {
+            margin: 0, height: 0 , fontSize: 16
+            }
+        }else{
+            return {
+            margin: 10, height: 17 , fontSize: 16
+            }
+        }
+        
+    }
+
 
     render() {
 
@@ -174,10 +189,19 @@ class AddRequest extends Component {
                     containerStyle={{margin: 10}}
                     value={this.state.address}
                     onChangeText={text => {
-                            this.setState({address: text})
+                            if(text == 'Current Location'){
+                                this.setState({address: this.state.GPSLocation,showCurrLoc: true})
+                            }else{
+
+                                this.setState({address: text, showCurrLoc: false})
+                            }
+                            
                         
                     }}
                 />
+                <View>
+                    <Text style = {this.shouldShowCurrLoc()} numberOfLines={2} ellipsizeMode = 'tail'>Current location: ${this.state.GPSLocation}</Text>
+                </View>
                 <TextInput
                     style={{margin: 10}}
                     label='Description'
