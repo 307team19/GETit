@@ -28,8 +28,6 @@ class Requests extends Component {
 
     }
 
-    
-
     renderItem = ({item}) => (
         <Card style={styles.topCard} elevation={5}>
             <Card.Content style={{margin: 10, flex: 1,}}>
@@ -49,7 +47,18 @@ class Requests extends Component {
                                 }                        
                             }}>
                                 Open link
+
                             </Button>
+
+                            <Button onPress={()=>
+                                {
+                                    console.log("Edit Request navigate");
+                                    this.props.navigation.navigate('editRequest');
+                                }
+                            }>
+                                Edit
+                            </Button>
+
                         </View>
                     }
                     rightTitle={item.price}

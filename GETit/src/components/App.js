@@ -12,6 +12,7 @@ import CreateUser from "./CreateUser";
 import Addresses from "./Addresses";
 import AddRequest from "./AddRequest"
 import RequestHistory from "./RequestHistory";
+import EditRequest from "./EditRequest";
 
 const AppNavigator = createStackNavigator(
     {
@@ -24,6 +25,7 @@ const AppNavigator = createStackNavigator(
         addresses: Addresses,
         addRequest: AddRequest,
         requestHistory: RequestHistory,
+        editRequest: EditRequest,
         tabscreen: createMaterialTopTabNavigator({
             orders: Orders,
             myaccount: MyAccount,
