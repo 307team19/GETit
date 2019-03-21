@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, LayoutAnimation} from 'react-native';
 import paperTheme from './common/paperTheme'
-import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
+import {Button, Provider as PaperProvider, TextInput, Text} from 'react-native-paper';
 import firebase from "firebase";
 import {Dropdown} from 'react-native-material-dropdown'
 import GetLocation from 'react-native-get-location'
@@ -16,6 +16,7 @@ class AddRequest extends Component {
         firstName: '',
         lastName: '',
         addresses: {},
+        data: [],
         photoURL: '',
         address: '',
         item: '',
@@ -25,6 +26,7 @@ class AddRequest extends Component {
         GPSLocation: '',
         instructions: '',
         link: '',
+        showCurrLoc: false,
     };
 
     componentWillMount() {
@@ -44,6 +46,51 @@ class AddRequest extends Component {
 
                 });
 
+           
+        var adds = [];
+        Object.keys(this.state.addresses).forEach((key, index) => {
+                if (key !== "no address") {
+                    adds.push({
+                        value: this.state.addresses[key]
+                    });
+                   
+                    
+                }
+            }
+        );
+
+        adds.push({
+            value: 'Current Location'
+        });
+
+        
+
+        GetLocation.getCurrentPosition({
+            enableHighAccuracy: true,
+            timeout: 15000,
+        })
+            .then(location => {
+
+                Geocoder.init('AIzaSyCHBBlV3gi1aqRrbhTQbLlmofdYgl-jMtc');
+                Geocoder.from(location.latitude, location.longitude)
+                    .then(json => {
+                        var addressComponent = json.results[0].formatted_address;
+                        console.log(addressComponent);
+                        this.setState({GPSLocation: addressComponent})
+
+                    })
+                    .catch(error => console.warn(error.origin));
+            })
+            .catch(error => {
+                const {code, message} = error;
+                console.warn(code, message);
+            })
+            
+            
+           
+            
+
+            this.setState({data: adds})
 
             });
 
@@ -99,43 +146,24 @@ class AddRequest extends Component {
         }
     };
 
+    shouldShowCurrLoc = () =>{
+
+        if(this.state.showCurrLoc == false){
+            return {
+            margin: 0, height: 0 , fontSize: 16
+            }
+        }else{
+            return {
+            margin: 10, height: 17 , fontSize: 16
+            }
+        }
+        
+    }
+
 
     render() {
 
-        var adds = [];
-        Object.keys(this.state.addresses).forEach((key, index) => {
-                if (key !== "no address") {
-                    adds.push({
-                        value: this.state.addresses[key]
-                    });
-                }
-            }
-        );
-
-        adds.push({
-            value: 'Current Location'
-        });
-
-        GetLocation.getCurrentPosition({
-            enableHighAccuracy: true,
-            timeout: 15000,
-        })
-            .then(location => {
-
-                Geocoder.init('AIzaSyCHBBlV3gi1aqRrbhTQbLlmofdYgl-jMtc');
-                Geocoder.from(location.latitude, location.longitude)
-                    .then(json => {
-                        var addressComponent = json.results[0].formatted_address;
-                        console.log(addressComponent);
-                        this.setState({GPSLocation: addressComponent})
-
-                    })
-                    .catch(error => console.warn(error.origin));
-            })
-            .catch(error => {
-                const {code, message} = error;
-                console.warn(code, message);
-            })
+       
 
         return (
             <PaperProvider theme={paperTheme}>
@@ -157,11 +185,23 @@ class AddRequest extends Component {
                 </View>
                 <Dropdown
                     label='Addresses'
-                    data={adds}
+                    data={this.state.data}
                     containerStyle={{margin: 10}}
                     value={this.state.address}
-                    onChangeText={text => this.setState({address: text})}
+                    onChangeText={text => {
+                            if(text == 'Current Location'){
+                                this.setState({address: this.state.GPSLocation,showCurrLoc: true})
+                            }else{
+
+                                this.setState({address: text, showCurrLoc: false})
+                            }
+                            
+                        
+                    }}
                 />
+                <View>
+                    <Text style = {this.shouldShowCurrLoc()} numberOfLines={2} ellipsizeMode = 'tail'>Current location: ${this.state.GPSLocation}</Text>
+                </View>
                 <TextInput
                     style={{margin: 10}}
                     label='Description'

@@ -8,28 +8,6 @@ import {ListItem} from "react-native-elements";
 
 class RequestHistory extends Component {
 
-	// state = {requests: [
-	// 		{
-	// 			item: 'Yo',
-	// 			price: '123.45',
-	// 			descr: 'Description 1',
-	// 			addr: 'Address 1'
-	// 		},
-	// 		{
-	// 			item: 'Lo',
-	// 			price:'67.98',
-	// 			descr: 'Description 2',
-	// 			addr: 'Address 2'
-	// 		}
-	// 	]};
-	//
-	// renderRequestHistory() {
-	//
-	// 	renderedList = this.state.requests.map(temp => <RequestComponent key = {temp.item} request = {temp}/>);
-	//
-	// 	return renderedList;
-	// }
-
 	state = {
 		email: "",
 		requests: []
@@ -114,17 +92,6 @@ class RequestHistory extends Component {
 						{this.loadRequests()}
 					</Card.Content>
 				</Card>
-				{/*<Text>{this.state.email}</Text>*/}
-				{/*/!*{this.renderRequestHistory()}*!/*/}
-				{/*<Button*/}
-					{/*style={styles.buttonContainedStyle}*/}
-					{/*onPress={this.onButtonPressed.bind(this)}*/}
-				{/*>*/}
-					{/*<Text>*/}
-						{/*Console log*/}
-					{/*</Text>*/}
-				{/*</Button>*/}
-
 			</ScrollView>
 		);
 	}
