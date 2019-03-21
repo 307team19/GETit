@@ -97,7 +97,9 @@ class AddRequest extends Component {
     }
 
     addRequest = () => {
-        var userRef = firebase.database().ref("requests/" + this.state.item + "/");
+        var refpush = firebase.database().ref("requests/").push()
+        var unikey = refpush.key
+        var userRef = firebase.database().ref("requests/" + unikey + "/");
 
         //TODO this code is creepy, edit address separately
 

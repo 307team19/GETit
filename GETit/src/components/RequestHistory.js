@@ -33,6 +33,10 @@ class RequestHistory extends Component {
 
 	}
 
+	reorder=()=>{
+		
+	}
+
 	renderItem = ({item}) => (
 		<Card style={styles.topCard} elevation={5}>
 			<Card.Content style={{margin: 10, flex: 1}}>
@@ -53,6 +57,9 @@ class RequestHistory extends Component {
                             }}>
                                 Open link
                             </Button>
+							<Button onPress={this.reorder()}>
+							   Reorder
+							</Button>
                         </View>
 					}
 					rightTitle={item.price}
