@@ -8,14 +8,17 @@ import Geocoder from 'react-native-geocoding';
 
 class EditRequest extends Component {
 
-	requestItem: *;
+	state = {
+		mainItem: {}
+	};
 
 	//request item passed in props as item
 
 	componentWillMount() {
 		console.log("in edit requests");
-		this.requestItem = this.props.navigation.state.params.requestItem;
-		console.log(this.requestItem);
+		var requestItem = this.props.navigation.state.params.requestItem;
+		this.state.mainItem = requestItem;
+		console.log(this.state);
 	}
 
 	render()
