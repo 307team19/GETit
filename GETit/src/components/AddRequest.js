@@ -97,7 +97,9 @@ class AddRequest extends Component {
     }
 
     addRequest = () => {
-        var userRef = firebase.database().ref("requests/" + this.state.item + "/");
+        var refpush = firebase.database().ref("requests/").push()
+        var unikey = refpush.key
+        var userRef = firebase.database().ref("requests/" + unikey + "/");
 
         //TODO this code is creepy, edit address separately
 
@@ -149,10 +151,12 @@ class AddRequest extends Component {
     shouldShowCurrLoc = () =>{
 
         if(this.state.showCurrLoc == false){
+            
             return {
             margin: 0, height: 0 , fontSize: 16
             }
         }else{
+        
             return {
             margin: 10, height: 17 , fontSize: 16
             }
