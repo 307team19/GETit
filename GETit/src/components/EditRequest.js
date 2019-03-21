@@ -3,8 +3,7 @@ import {View} from "react-native";
 import paperTheme from "./common/paperTheme";
 import { Button, Provider as PaperProvider, TextInput } from "react-native-paper";
 import { Dropdown } from "react-native-material-dropdown";
-import GetLocation from 'react-native-get-location';
-import Geocoder from 'react-native-geocoding';
+import firebase from "firebase";
 
 class EditRequest extends Component {
 
@@ -25,23 +24,35 @@ class EditRequest extends Component {
 		link: '',
 	};
 
-	//request item passed in props as item
+	//TODO: request item passed in props as item, change to request ID ASAP
 
 	componentWillMount() {
 		console.log("in edit requests");
+
+		//getting request details
 		var requestItem = this.props.navigation.state.params.requestItem;
 		this.setState(requestItem);
 		console.log(this.state);
 	}
 
-	confirmChanges(){
+	confirmChanges = () => {
 		console.log("confirm changes");
-		console.log(this.state);
-	}
+
+		firebase.database().ref('/requests/'+ this.state.item + "/").update({
+			address: this.state.address,
+			description: this.state.description,
+			instructions: this.state.instructions,
+			link: this.state.link,
+			price: this.state.price
+		})
+
+		//TODO: REDO ENTIRE FIREBASE IMPLEMENTATION HERE WITH REQUEST ID
+	};
 
 	render()
 	{
 		var adds = [];
+		//TODO: GET ADDRESSES AND PUT IN ARRAY
 
 		adds.push({
 			value: 'Current Location'
@@ -93,7 +104,7 @@ class EditRequest extends Component {
 					value={this.state.link}
 					onChangeText={textString => this.setState({link: textString})}
 				/>
-				<Button onPress={this.confirmChanges()} >
+				<Button onPress={this.confirmChanges}>
 					Confirm Changes
 				</Button>
 			</PaperProvider>
