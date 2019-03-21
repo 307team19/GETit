@@ -149,10 +149,12 @@ class AddRequest extends Component {
     shouldShowCurrLoc = () =>{
 
         if(this.state.showCurrLoc == false){
+            
             return {
             margin: 0, height: 0 , fontSize: 16
             }
         }else{
+        
             return {
             margin: 10, height: 17 , fontSize: 16
             }
