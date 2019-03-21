@@ -24,7 +24,7 @@ class EditRequest extends Component {
 		link: '',
 	};
 
-	//TODO: request item passed in props as item, change to request ID ASAP
+	//TODO: REDO ENTIRE FIREBASE IMPLEMENTATION HERE WITH REQUEST ID
 
 	componentWillMount() {
 		console.log("in edit requests");
@@ -45,8 +45,12 @@ class EditRequest extends Component {
 			link: this.state.link,
 			price: this.state.price
 		})
+	};
 
-		//TODO: REDO ENTIRE FIREBASE IMPLEMENTATION HERE WITH REQUEST ID
+	cancelRequest = () => {
+		console.log("cancel order");
+
+		firebase.database().ref('/requests/'+ this.state.item + "/").remove();
 	};
 
 	render()
@@ -66,6 +70,7 @@ class EditRequest extends Component {
 						label='Item'
 						mode='outlined'
 						value={this.state.item}
+						disabled={true}
 						onChangeText={textString => this.setState({item: textString})}
 					/>
 					<TextInput
@@ -106,6 +111,9 @@ class EditRequest extends Component {
 				/>
 				<Button onPress={this.confirmChanges}>
 					Confirm Changes
+				</Button>
+				<Button onPress={this.cancelRequest}>
+					Cancel Order
 				</Button>
 			</PaperProvider>
 		);
