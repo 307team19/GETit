@@ -116,6 +116,7 @@ class AddRequest extends Component {
                     address: this.state.GPSLocation,
                     link: this.state.link,
                     instructions: this.state.instructions,
+                    unikey: unikey,
                 }
             ).then((data) => {
                 console.log('Synchronization succeeded');
@@ -137,6 +138,7 @@ class AddRequest extends Component {
                     address: this.state.address,
                     link: this.state.link,
                     instructions: this.state.instructions,
+                    unikey: unikey,
                 }
             ).then((data) => {
                 console.log('Synchronization succeeded');

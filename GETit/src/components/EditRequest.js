@@ -22,6 +22,7 @@ class EditRequest extends Component {
 		GPSLocation: '',
 		instructions: '',
 		link: '',
+		unikey: '',
 	};
 
 	//TODO: REDO ENTIRE FIREBASE IMPLEMENTATION HERE WITH REQUEST ID
@@ -38,7 +39,7 @@ class EditRequest extends Component {
 	confirmChanges = () => {
 		console.log("confirm changes");
 
-		firebase.database().ref('/requests/'+ this.state.item + "/").update({
+		firebase.database().ref('/requests/'+ this.state.unikey + "/").update({
 			address: this.state.address,
 			description: this.state.description,
 			instructions: this.state.instructions,
