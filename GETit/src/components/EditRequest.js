@@ -44,13 +44,18 @@ class EditRequest extends Component {
 			instructions: this.state.instructions,
 			link: this.state.link,
 			price: this.state.price
-		})
+		}).then(this.popToRequests);
 	};
 
 	cancelRequest = () => {
 		console.log("cancel order");
 
-		firebase.database().ref('/requests/'+ this.state.item + "/").remove();
+		firebase.database().ref('/requests/'+ this.state.item + "/").remove().then(
+			this.popToRequests);
+	};
+
+	popToRequests = () => {
+		this.props.navigation.navigate('requests');
 	};
 
 	render()
