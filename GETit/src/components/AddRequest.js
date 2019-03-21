@@ -16,6 +16,7 @@ class AddRequest extends Component {
         firstName: '',
         lastName: '',
         addresses: {},
+        data: [],
         photoURL: '',
         address: '',
         item: '',
@@ -44,6 +45,51 @@ class AddRequest extends Component {
 
                 });
 
+           
+        var adds = [];
+        Object.keys(this.state.addresses).forEach((key, index) => {
+                if (key !== "no address") {
+                    adds.push({
+                        value: this.state.addresses[key]
+                    });
+                   
+                    
+                }
+            }
+        );
+
+        adds.push({
+            value: 'Current Location'
+        });
+
+        
+
+        GetLocation.getCurrentPosition({
+            enableHighAccuracy: true,
+            timeout: 15000,
+        })
+            .then(location => {
+
+                Geocoder.init('AIzaSyCHBBlV3gi1aqRrbhTQbLlmofdYgl-jMtc');
+                Geocoder.from(location.latitude, location.longitude)
+                    .then(json => {
+                        var addressComponent = json.results[0].formatted_address;
+                        console.log(addressComponent);
+                        this.setState({GPSLocation: addressComponent})
+
+                    })
+                    .catch(error => console.warn(error.origin));
+            })
+            .catch(error => {
+                const {code, message} = error;
+                console.warn(code, message);
+            })
+            
+            
+           
+            
+
+            this.setState({data: adds})
 
             });
 
@@ -102,40 +148,7 @@ class AddRequest extends Component {
 
     render() {
 
-        var adds = [];
-        Object.keys(this.state.addresses).forEach((key, index) => {
-                if (key !== "no address") {
-                    adds.push({
-                        value: this.state.addresses[key]
-                    });
-                }
-            }
-        );
-
-        adds.push({
-            value: 'Current Location'
-        });
-
-        GetLocation.getCurrentPosition({
-            enableHighAccuracy: true,
-            timeout: 15000,
-        })
-            .then(location => {
-
-                Geocoder.init('AIzaSyCHBBlV3gi1aqRrbhTQbLlmofdYgl-jMtc');
-                Geocoder.from(location.latitude, location.longitude)
-                    .then(json => {
-                        var addressComponent = json.results[0].formatted_address;
-                        console.log(addressComponent);
-                        this.setState({GPSLocation: addressComponent})
-
-                    })
-                    .catch(error => console.warn(error.origin));
-            })
-            .catch(error => {
-                const {code, message} = error;
-                console.warn(code, message);
-            })
+       
 
         return (
             <PaperProvider theme={paperTheme}>
@@ -157,10 +170,13 @@ class AddRequest extends Component {
                 </View>
                 <Dropdown
                     label='Addresses'
-                    data={adds}
+                    data={this.state.data}
                     containerStyle={{margin: 10}}
                     value={this.state.address}
-                    onChangeText={text => this.setState({address: text})}
+                    onChangeText={text => {
+                            this.setState({address: text})
+                        
+                    }}
                 />
                 <TextInput
                     style={{margin: 10}}
