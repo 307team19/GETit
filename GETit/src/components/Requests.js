@@ -129,7 +129,7 @@ class Requests extends Component {
                     small
                     style={styles.fab}
                     onPress={() => {
-                        this.props.navigation.navigate('addRequest');
+                        this.props.navigation.navigate('addRequest',{requestItem: null});
                     }}
                 />
             </View>
