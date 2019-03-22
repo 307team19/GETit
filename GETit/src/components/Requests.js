@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {FlatList, Linking, Text, View} from 'react-native';
-import {Button, Card, FAB} from 'react-native-paper'
+import {FlatList, Linking, Text, View, TouchableOpacity} from 'react-native';
+import {Card, FAB} from 'react-native-paper'
 import firebase from "firebase";
 import {ListItem} from 'react-native-elements'
 import {NavigationEvents} from 'react-navigation';
@@ -32,15 +32,32 @@ class Requests extends Component {
     shouldDisplayOpenLink = (item) =>{
      if(item.link == ''){
 		 return {
-			 height: 0
+			height: 0
 		 }
 	 }else {
 		 return {
-			 height: 35
+			flex: 1,
+            alignSelf: 'stretch',
+            backgroundColor: '#fff',
+            borderRadius: 5,
+            borderWidth: 1,
+            borderColor: '#007aff',
+            marginLeft: 5,
+            marginRight: 5,
+            marginBottom: 5,
+			height: 35
 		 }
 	 }
 
 	}
+
+    shouldShowText = (item) =>{
+        if(item.link == ''){
+		 return ''
+	 }else {
+		 return 'Open Link'
+	 }
+    }
 
     renderItem = ({item}) => (
         // <Card style={{margin: 10,flex: 1, padding: 0}} elevation={5}>
@@ -107,6 +124,35 @@ class Requests extends Component {
                 <View style = {{margin: 3, flex: 1}}>
                         <Text style = {{textAlign: 'center', fontStyle: 'italic'}} >[{item.instructions}]</Text>       
                 </View>
+
+                <View style = {{ flex: 1}}>
+                <TouchableOpacity 
+                style = {this.shouldDisplayOpenLink(item)} 
+                onPress={()=>{
+                                if(item.link){
+                                    console.log("LINK: "+ item.link)
+                                    Linking.openURL(item.link).catch((error => alert("Link is not valid\n" + item.link)))
+                                }
+                }}>
+                   <Text style = {styles.textStyle}>{this.shouldShowText(item)}</Text>
+                </TouchableOpacity> 
+                </View>
+
+                <View style = {{ flex: 1}}>
+                <TouchableOpacity 
+                style = {styles.buttonStyle} 
+                onPress={()=>
+                                {
+                                    item.addresses = this.state.addresses
+                                    this.props.navigation.navigate('editRequest', {requestItem: item});
+                                }
+                }>
+                   <Text style = {styles.textStyle}>Edit</Text>
+                </TouchableOpacity> 
+                </View>
+                                
+                   
+                
 
                 
 
@@ -197,6 +243,26 @@ const styles = {
     topCard: {
         margin: 10,
         flex: 1.5,
+    },
+
+    textStyle: {
+         alignSelf: 'center',
+         color: '#007aff',
+         fontSize: 16,
+         fontWeight: '600',
+         paddingTop: 10,
+         paddingBottom: 10,
+    },
+
+    buttonStyle: {
+        flex: 1,
+        alignSelf: 'stretch',
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#007aff',
+        marginLeft: 5,
+        marginRight: 5,
     },
 
 
