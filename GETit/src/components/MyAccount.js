@@ -267,7 +267,9 @@ class MyAccount extends Component {
                             // placeholder="current email"
                             disabled={this.state.disabledPhNo}
                             value={this.state.phoneNumber}
-                            onChangeText={textString => this.setState({phoneNumber: textString})}
+                            keyboardType = 'numeric'
+
+                            onChangeText={textString => this.setState({phoneNumber: textString.replace(/[^0-9]/g, '')})}
                         />
 
                         <TouchableOpacity
