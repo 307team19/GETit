@@ -60,7 +60,7 @@ class EditRequest extends Component {
 	cancelRequest = () => {
 		console.log("cancel order");
 
-		firebase.database().ref('/requests/'+ this.state.item + "/").remove().then(
+		firebase.database().ref('/requests/'+ this.state.unikey + "/").remove().then(
 			this.popToRequests);
 	};
 
