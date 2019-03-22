@@ -88,23 +88,20 @@ class Requests extends Component {
         //     </Card.Content>
         // </Card>
 
-        <Card style={{margin: 7,flex: 1, padding: 6}} elevation={5}>
+        <Card style={{margin: 7,flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
             <View>
                 <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
                     <View style = {{flex: 0.75}}>
                         <Text style = {{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>{item.item}</Text>
                     </View>
-                    <View style = {{flex: 0.25, paddingTop: 9}}>
-                        <Text style = {{textAlign: 'center'}}>${item.price}</Text>
+                    <View style = {{flex: 0.25, paddingTop: 8}}>
+                        <Text style = {{textAlign: 'center', fontSize: 20}}>${item.price}</Text>
                     </View>
                 </View>
-                
-                   
-                <View>
-                        <Text>HEYYYY</Text>
-                        <Text>HEYYYY</Text>
-                        <Text>HEYYYY</Text>
-                        <Text>HEYYYY</Text>
+
+
+                <View style = {{margin: 3, flex: 1}}>
+                        <Text style = {{textAlign: 'center'}} >{item.description}</Text>       
                 </View>
                     
             </View> 
@@ -163,7 +160,7 @@ class Requests extends Component {
                 }}
                 />
                 <Card style={styles.topCard} elevation={5}>
-                    <Card.Title title="CURRENT REQUESTS"/>
+                    <Card.Title title="CURRENT REQUESTS"  titleStyle = {{textAlign: 'center'}}/>
                     <Card.Content style={{flex: 1}}>
                         {this.loadRequests()}
                     </Card.Content>
