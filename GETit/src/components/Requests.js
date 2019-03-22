@@ -19,6 +19,7 @@ class Requests extends Component {
             .then(response => {
                 this.setState({
                     email: response.val().email,
+                    addresses: response.val().addresses,
                 });
             });
         firebase.database().ref('/').once('value').then(response => {
@@ -27,6 +28,19 @@ class Requests extends Component {
 
 
     }
+
+    shouldDisplayOpenLink = (item) =>{
+     if(item.link == ''){
+		 return {
+			 height: 0
+		 }
+	 }else {
+		 return {
+			 height: 35
+		 }
+	 }
+
+	}
 
     renderItem = ({item}) => (
         <Card style={styles.topCard} elevation={5}>
@@ -45,7 +59,7 @@ class Requests extends Component {
                             <View style={{flex: 1}}>
                                 <Text>{"Instructions: " + item.instructions}</Text>
                             </View>
-                            <Button onPress={()=>{
+                            <Button style = {this.shouldDisplayOpenLink(item)} onPress={()=>{
                                 if(item.link){
                                     console.log("LINK: "+ item.link)
                                     Linking.openURL(item.link).catch((err) => console.error('An error occurred', err));
@@ -53,10 +67,14 @@ class Requests extends Component {
                             }}>
                                 Open link
                             </Button>
-                            <Button onPress={() => {
-                                // console.log("Edit Request navigate");
-                                this.props.navigation.navigate('editRequest', {requestItem: item});
-                            }
+
+                            <Button onPress={()=>
+                                {
+                                    // console.log("Edit Request navigate");
+                                    // console.log(item)
+                                    item.addresses = this.state.addresses
+                                    this.props.navigation.navigate('editRequest', {requestItem: item});
+                                }
                             }>
                                 Edit
                             </Button>
