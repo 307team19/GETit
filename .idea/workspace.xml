@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eadc908c-1f83-4bbd-83dd-656b58f67d0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GETit/src/components/Requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/Requests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/src/components/RequestHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/RequestHistory.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,23 +15,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GETit/src/components/SignUpForm.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/RequestHistory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="618">
-              <caret line="157" selection-start-line="157" selection-end-line="157" selection-end-column="30" />
+            <state relative-caret-position="386">
+              <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -39,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/Requests.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+            <state relative-caret-position="384">
+              <caret line="52" column="31" lean-forward="true" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -71,6 +60,7 @@
       <find>nan</find>
       <find>price</find>
       <find>cancel</find>
+      <find>color</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -88,7 +78,6 @@
         <option value="$PROJECT_DIR$/GETit/src/components/LoginPage.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/Addresses.js" />
         <option value="$PROJECT_DIR$/GETit/App.js" />
-        <option value="$PROJECT_DIR$/GETit/src/components/RequestHistory.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/RequestComponent.js" />
         <option value="$PROJECT_DIR$/GETit/index.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/App.js" />
@@ -96,6 +85,7 @@
         <option value="$PROJECT_DIR$/GETit/src/components/MyAccount.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/EditRequest.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/Requests.js" />
+        <option value="$PROJECT_DIR$/GETit/src/components/RequestHistory.js" />
       </list>
     </option>
   </component>
@@ -114,7 +104,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,6 +141,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -213,11 +203,12 @@
       <workItem from="1551662336160" duration="3426000" />
       <workItem from="1552845934993" duration="1802000" />
       <workItem from="1553191180438" duration="3472000" />
+      <workItem from="1553232544951" duration="87000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52577000" />
+    <option name="totallyTimeSpent" value="52797000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -354,31 +345,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/SignUpForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/common/Card.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="30" selection-start-line="30" selection-end-line="30" selection-end-column="16" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/RequestHistory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="157" selection-start-line="157" selection-end-line="157" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -394,16 +366,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/Requests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -441,6 +403,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="71" column="5" lean-forward="true" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/SignUpForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/Requests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="52" column="31" lean-forward="true" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/RequestHistory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

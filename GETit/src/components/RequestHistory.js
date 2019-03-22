@@ -68,24 +68,23 @@ class RequestHistory extends Component {
                 console.log(error)
             })
     } 
-	
-
+    
 	renderItem = ({item}) => (
 		<Card style={styles.topCard} elevation={5}>
 			<Card.Content style={{margin: 10, flex: 1}}>
 				<ListItem
 					title={
-						<View style={{backgroundColor: 'yellow'}}>
-							<Text>{item.item}</Text>
+						<View>
+							<Text>{"Item: " + item.item}</Text>
 						</View>
 					}
 					subtitle={
 						 <View style={{flex: 1}}>
-                            <View style={{backgroundColor: 'orange', flex: 1}}>
-                                <Text>{item.description}</Text>
+                            <View style={{flex: 1}}>
+                                <Text>{"Description: " + item.description}</Text>
                             </View>
-                            <View style={{backgroundColor: 'green', flex: 1}}>
-                                <Text>{item.instructions}</Text>
+                            <View style={{flex: 1}}>
+                                <Text>{"Instructions: " + item.instructions}</Text>
                             </View>
                             <Button onPress={()=>{
                                 if(item.link){
