@@ -60,51 +60,7 @@ class Requests extends Component {
     }
 
     renderItem = ({item}) => (
-        // <Card style={{margin: 10,flex: 1, padding: 0}} elevation={5}>
-        //     <Card.Content style={{ flex: 1}}>
-        //         <ListItem
-        //             title={
-        //                 <View>
-        //                     <Text style = {{fontSize: 30, textAlign: 'center',fontWeight: 'bold',}}>{item.item}</Text>
-        //                 </View>
-        //             }
-        //             subtitle={
-        //                 <View style={{flex: 1}}>
-        //                      <View style={{flex: 1}}>
-        //                         <Text>{"Description: " + item.description}</Text>
-        //                     </View>
-        //                     <View style={{flex: 1}}>
-        //                         <Text>{"Instructions: " + item.instructions}</Text>
-        //                     </View>
-        //                     <Button style = {this.shouldDisplayOpenLink(item)} onPress={()=>{
-        //                         if(item.link){
-        //                             console.log("LINK: "+ item.link)
-        //                             Linking.openURL(item.link).catch((error => alert("Link is not valid\n" + item.link)))
-        //                         }
-        //                     }}>
-        //                         Open link
-        //                     </Button>
-
-        //                     <Button onPress={()=>
-        //                         {
-        //                             item.addresses = this.state.addresses
-        //                             this.props.navigation.navigate('editRequest', {requestItem: item});
-        //                         }
-        //                     }>
-        //                         Edit
-        //                     </Button>
-        //                 </View>
-        //             }
-                    
-        //             rightTitle={
-        //                 <View>
-        //                     <Text>$ {item.price}</Text>
-        //                 </View>
-        //             }
-        //         />
-        //     </Card.Content>
-        // </Card>
-
+        
         <Card style={{margin: 7,flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
             <View>
                 <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', borderBottomColor: 'black', borderBottomWidth: 1,}}>

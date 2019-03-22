@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Text, ScrollView, View, FlatList, Linking} from 'react-native';
+import {Text, ScrollView, View, FlatList, Linking, TouchableOpacity} from 'react-native';
 import RequestComponent from './RequestComponent'
 import firebase from 'firebase';
-import {Button, Card} from "react-native-paper";
+import { Card} from "react-native-paper";
 import {ListItem} from "react-native-elements";
 
 
@@ -72,53 +72,123 @@ class RequestHistory extends Component {
 	shouldDisplayOpenLink = (item) =>{
      if(item.link == ''){
 		 return {
-			 height: 0
+			height: 0
 		 }
 	 }else {
 		 return {
-			 height: 35
+			flex: 1,
+            alignSelf: 'stretch',
+            backgroundColor: '#fff',
+            borderRadius: 5,
+            borderWidth: 1,
+            borderColor: '#007aff',
+            marginLeft: 5,
+            marginRight: 5,
+            marginBottom: 5,
+			height: 35
 		 }
 	 }
 
 	}
 
-	renderItem = ({item}) => (
-		<Card style={styles.topCard} elevation={5}>
-			<Card.Content style={{margin: 10, flex: 1}}>
-				<ListItem
-					title={
-						<View>
-							<Text>{"Item: " + item.item}</Text>
-						</View>
-					}
-					subtitle={
-						 <View style={{flex: 1}}>
-                            <View style={{flex: 1}}>
-                                <Text>{"Description: " + item.description}</Text>
-                            </View>
-                            <View style={{flex: 1}}>
-                                <Text>{"Instructions: " + item.instructions}</Text>
-                            </View>
-                            <Button style = {this.shouldDisplayOpenLink(item)} onPress={()=>{
-                                if(item.link){g
-                                    console.log("LINK: "+ item.link)
-									Linking.openURL(item.link).catch((error => alert("Link is not valid\n" + item.link)))
-								}
-                            }}>
-                                Open link
-                            </Button>
-							<Button onPress={()=>{
-								this.props.navigation.navigate('addRequest', {requestItem: item})
-							}}>
-							   Reorder
-							</Button>
-                        </View>
-					}
-					rightTitle={item.price}
+	shouldShowText = (item) =>{
+        if(item.link == ''){
+		 return ''
+	 }else {
+		 return 'Open Link'
+	 }
+    }
 
-				/>
-			</Card.Content>
-		</Card>
+	renderItem = ({item}) => (
+		// <Card style={styles.topCard} elevation={5}>
+		// 	<Card.Content style={{margin: 10, flex: 1}}>
+		// 		<ListItem
+		// 			title={
+		// 				<View>
+		// 					<Text>{"Item: " + item.item}</Text>
+		// 				</View>
+		// 			}
+		// 			subtitle={
+		// 				 <View style={{flex: 1}}>
+        //                     <View style={{flex: 1}}>
+        //                         <Text>{"Description: " + item.description}</Text>
+        //                     </View>
+        //                     <View style={{flex: 1}}>
+        //                         <Text>{"Instructions: " + item.instructions}</Text>
+        //                     </View>
+        //                     <Button style = {this.shouldDisplayOpenLink(item)} onPress={()=>{
+        //                         if(item.link){g
+        //                             console.log("LINK: "+ item.link)
+		// 							Linking.openURL(item.link).catch((error => alert("Link is not valid\n" + item.link)))
+		// 						}
+        //                     }}>
+        //                         Open link
+        //                     </Button>
+		// 					<Button onPress={()=>{
+		// 						this.props.navigation.navigate('addRequest', {requestItem: item})
+		// 					}}>
+		// 					   Reorder
+		// 					</Button>
+        //                 </View>
+		// 			}
+		// 			rightTitle={item.price}
+
+		// 		/>
+		// 	</Card.Content>
+		// </Card>
+
+		<Card style={{margin: 7,flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
+            <View>
+                <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', borderBottomColor: 'black', borderBottomWidth: 1,}}>
+                    <View style = {{flex: 0.75}}>
+                        <Text style = {{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>{item.item}</Text>
+                    </View>
+                    <View style = {{flex: 0.25, paddingTop: 8}}>
+                        <Text style = {{textAlign: 'center', fontSize: 20}}>${item.price}</Text>
+                    </View>
+                </View>
+
+
+                <View style = {{margin: 3, flex: 1}}>
+                        <Text style = {{textAlign: 'center'}} >{item.description}</Text>       
+                </View>
+
+                <View style = {{margin: 3, flex: 1}}>
+                        <Text style = {{textAlign: 'center', fontStyle: 'italic'}} >[{item.instructions}]</Text>       
+                </View>
+
+                <View style = {{ flex: 1}}>
+                <TouchableOpacity 
+                style = {this.shouldDisplayOpenLink(item)} 
+                onPress={()=>{
+                                if(item.link){
+                                    console.log("LINK: "+ item.link)
+                                    Linking.openURL(item.link).catch((error => alert("Link is not valid\n" + item.link)))
+                                }
+                }}>
+                   <Text style = {styles.textStyle}>{this.shouldShowText(item)}</Text>
+                </TouchableOpacity> 
+                </View>
+
+                <View style = {{ flex: 1}}>
+                <TouchableOpacity 
+                style = {styles.buttonStyle} 
+                onPress={()=>{
+								this.props.navigation.navigate('addRequest', {requestItem: item})
+				}}
+				>
+                   <Text style = {styles.textStyle}>Reorder</Text>
+                </TouchableOpacity> 
+                </View>
+                                
+                   
+                
+
+                
+
+                    
+            </View> 
+        </Card>
 
 
 	);
@@ -176,15 +246,37 @@ class RequestHistory extends Component {
 }
 
 const styles = {
+
 	containerStyle: {
 		paddingTop: 20,
 		flex: 1,
 		backgroundColor: 'white'
 	},
+
 	topCard: {
 		margin: 10,
 		flex: 1.5,
 	},
+
+	textStyle: {
+         alignSelf: 'center',
+         color: '#007aff',
+         fontSize: 16,
+         fontWeight: '600',
+         paddingTop: 10,
+         paddingBottom: 10,
+    },
+
+    buttonStyle: {
+        flex: 1,
+        alignSelf: 'stretch',
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#007aff',
+        marginLeft: 5,
+        marginRight: 5,
+    },
 };
 
 export default RequestHistory;
