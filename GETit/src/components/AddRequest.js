@@ -136,7 +136,7 @@ class AddRequest extends Component {
                     }
                 ).then((data) => {
                     console.log('Synchronization succeeded');
-                    this.props.navigation.goBack();
+                    this.props.navigation.navigate('requests')
 
                 }).catch((error) => {
                     console.log(error)
@@ -158,7 +158,7 @@ class AddRequest extends Component {
                     }
                 ).then((data) => {
                     console.log('Synchronization succeeded');
-                    this.props.navigation.goBack();
+                    this.props.navigation.navigate('requests')
 
                 }).catch((error) => {
                     console.log(error)
