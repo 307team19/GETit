@@ -90,7 +90,7 @@ class Requests extends Component {
 
         <Card style={{margin: 7,flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
             <View>
-                <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+                <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', borderBottomColor: 'black', borderBottomWidth: 1,}}>
                     <View style = {{flex: 0.75}}>
                         <Text style = {{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>{item.item}</Text>
                     </View>
@@ -103,6 +103,13 @@ class Requests extends Component {
                 <View style = {{margin: 3, flex: 1}}>
                         <Text style = {{textAlign: 'center'}} >{item.description}</Text>       
                 </View>
+
+                <View style = {{margin: 3, flex: 1}}>
+                        <Text style = {{textAlign: 'center', fontStyle: 'italic'}} >[{item.instructions}]</Text>       
+                </View>
+
+                
+
                     
             </View> 
         </Card>
