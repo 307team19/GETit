@@ -19,6 +19,7 @@ class Requests extends Component {
             .then(response => {
                 this.setState({
                     email: response.val().email,
+                    addresses: response.val().addresses,
                 });
             });
         firebase.database().ref('/').once('value').then(response => {
@@ -71,6 +72,8 @@ class Requests extends Component {
                             <Button onPress={()=>
                                 {
                                     // console.log("Edit Request navigate");
+                                    // console.log(item)
+                                    item.addresses = this.state.addresses
                                     this.props.navigation.navigate('editRequest', {requestItem: item});
                                 }
                             }>
