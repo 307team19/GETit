@@ -42,8 +42,11 @@ class Requests extends Component {
                             <Text>{item.description}</Text>
                             <Button onPress={()=>{
                                 if(item.link){
-                                    console.log("LINK: "+ item.link)
-                                    Linking.openURL(item.link).catch((err) => console.error('An error occurred', err));
+                                    console.log("LINK: "+ item.link);
+                                    Linking.openURL(item.link).catch(
+                                        alert("Link is not valid:" + item.link)
+
+                                );
                                 }                        
                             }}>
                                 Open link
