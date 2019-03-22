@@ -97,56 +97,67 @@ class AddRequest extends Component {
     }
 
     addRequest = () => {
-        var refpush = firebase.database().ref("requests/").push()
-        var unikey = refpush.key
-        var userRef = firebase.database().ref("requests/" + unikey + "/");
 
-        //TODO this code is creepy, edit address separately
+        if(isNaN(this.state.price)) {
+            alert("Price is not a number!");
+        }
+        else if(!this.state.price || !this.state.item)
+        {
+            alert("Price and item fields cannot be empty!");
+        }
+        else {
 
-        if (this.state.address === 'Current Location') {
-            userRef.set(
-                {
-                    item: this.state.item,
-                    price: this.state.price,
-                    description: this.state.description,
-                    firstName: this.state.firstName,
-                    lastName: this.state.lastName,
-                    email: this.state.email,
-                    phoneNumber: this.state.phoneNumber,
-                    address: this.state.GPSLocation,
-                    link: this.state.link,
-                    instructions: this.state.instructions,
-                    unikey: unikey,
-                }
-            ).then((data) => {
-                console.log('Synchronization succeeded');
-                this.props.navigation.goBack();
+            var refpush = firebase.database().ref("requests/").push()
+            var unikey = refpush.key
+            var userRef = firebase.database().ref("requests/" + unikey + "/");
 
-            }).catch((error) => {
-                console.log(error)
-            })
-        } else {
-            userRef.set(
-                {
-                    item: this.state.item,
-                    price: this.state.price,
-                    description: this.state.description,
-                    firstName: this.state.firstName,
-                    lastName: this.state.lastName,
-                    email: this.state.email,
-                    phoneNumber: this.state.phoneNumber,
-                    address: this.state.address,
-                    link: this.state.link,
-                    instructions: this.state.instructions,
-                    unikey: unikey,
-                }
-            ).then((data) => {
-                console.log('Synchronization succeeded');
-                this.props.navigation.goBack();
+            //TODO this code is creepy, edit address separately
 
-            }).catch((error) => {
-                console.log(error)
-            })
+            if (this.state.address === 'Current Location') {
+                userRef.set(
+                    {
+                        item: this.state.item,
+                        price: this.state.price,
+                        description: this.state.description,
+                        firstName: this.state.firstName,
+                        lastName: this.state.lastName,
+                        email: this.state.email,
+                        phoneNumber: this.state.phoneNumber,
+                        address: this.state.GPSLocation,
+                        link: this.state.link,
+                        instructions: this.state.instructions,
+                        unikey: unikey,
+                    }
+                ).then((data) => {
+                    console.log('Synchronization succeeded');
+                    this.props.navigation.goBack();
+
+                }).catch((error) => {
+                    console.log(error)
+                })
+            } else {
+                userRef.set(
+                    {
+                        item: this.state.item,
+                        price: this.state.price,
+                        description: this.state.description,
+                        firstName: this.state.firstName,
+                        lastName: this.state.lastName,
+                        email: this.state.email,
+                        phoneNumber: this.state.phoneNumber,
+                        address: this.state.address,
+                        link: this.state.link,
+                        instructions: this.state.instructions,
+                        unikey: unikey,
+                    }
+                ).then((data) => {
+                    console.log('Synchronization succeeded');
+                    this.props.navigation.goBack();
+
+                }).catch((error) => {
+                    console.log(error)
+                })
+            }
         }
     };
 
@@ -166,10 +177,7 @@ class AddRequest extends Component {
         
     }
 
-
     render() {
-
-       
 
         return (
             <PaperProvider theme={paperTheme}>
@@ -186,7 +194,9 @@ class AddRequest extends Component {
                         label='Price'
                         mode='outlined'
                         value={this.state.price}
-                        onChangeText={textString => this.setState({price: textString})}
+                        keyboardType = 'numeric'
+                        maxLength={5}
+                        onChangeText={textString => this.setState({price: textString.replace(/[^0-9.]/g, '')})}
                     />
                 </View>
                 <Dropdown
@@ -201,8 +211,6 @@ class AddRequest extends Component {
 
                                 this.setState({address: text, showCurrLoc: false})
                             }
-                            
-                        
                     }}
                 />
                 <View>

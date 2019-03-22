@@ -39,13 +39,22 @@ class EditRequest extends Component {
 	confirmChanges = () => {
 		console.log("confirm changes");
 
-		firebase.database().ref('/requests/'+ this.state.unikey + "/").update({
-			address: this.state.address,
-			description: this.state.description,
-			instructions: this.state.instructions,
-			link: this.state.link,
-			price: this.state.price
-		}).then(this.popToRequests);
+		if(isNaN(this.state.price)) {
+			alert("Price is not a number!");
+		}
+		else if(!this.state.price || !this.state.item)
+		{
+			alert("Price and item fields cannot be empty!");
+		}
+		else {
+			firebase.database().ref('/requests/'+ this.state.unikey + "/").update({
+				address: this.state.address,
+				description: this.state.description,
+				instructions: this.state.instructions,
+				link: this.state.link,
+				price: this.state.price
+			}).then(this.popToRequests);
+		}
 	};
 
 	cancelRequest = () => {
@@ -84,7 +93,10 @@ class EditRequest extends Component {
 						label='Price'
 						mode='outlined'
 						value={this.state.price}
-						onChangeText={textString => this.setState({price: textString})}
+						disabled={true}
+						keyboardType = 'numeric'
+						maxLength={5}
+						onChangeText={textString => this.setState({price: textString.replace(/[^0-9.]/g, '')})}
 					/>
 				</View>
 				<Dropdown
