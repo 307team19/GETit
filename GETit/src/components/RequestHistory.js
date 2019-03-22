@@ -81,7 +81,12 @@ class RequestHistory extends Component {
 					}
 					subtitle={
 						 <View style={{flex: 1}}>
-                            <Text>{item.description}</Text>
+                            <View style={{backgroundColor: 'orange', flex: 1}}>
+                                <Text>{item.description}</Text>
+                            </View>
+                            <View style={{backgroundColor: 'green', flex: 1}}>
+                                <Text>{item.instructions}</Text>
+                            </View>
                             <Button onPress={()=>{
                                 if(item.link){
                                     console.log("LINK: "+ item.link)
