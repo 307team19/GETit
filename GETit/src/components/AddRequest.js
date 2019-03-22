@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {View, LayoutAnimation} from 'react-native';
+import {View} from 'react-native';
 import paperTheme from './common/paperTheme'
-import {Button, Provider as PaperProvider, TextInput, Text} from 'react-native-paper';
+import {Button, Provider as PaperProvider, Text, TextInput} from 'react-native-paper';
 import firebase from "firebase";
 import {Dropdown} from 'react-native-material-dropdown'
 import GetLocation from 'react-native-get-location'
@@ -32,7 +32,7 @@ class AddRequest extends Component {
     componentWillMount() {
 
         var requestItem = this.props.navigation.state.params.requestItem;
-        
+
         const u = firebase.auth().currentUser.uid;
         firebase.database().ref('/users/' + u + '/').once('value')
             .then(response => {
@@ -48,55 +48,51 @@ class AddRequest extends Component {
 
                 });
 
-        if(requestItem!=null){
-            this.setState(requestItem)
-        }
-
-           
-        var adds = [];
-        Object.keys(this.state.addresses).forEach((key, index) => {
-                if (key !== "no address") {
-                    adds.push({
-                        value: this.state.addresses[key]
-                    });
-                   
-                    
+                if (requestItem != null) {
+                    this.setState(requestItem)
                 }
-            }
-        );
 
-        adds.push({
-            value: 'Current Location'
-        });
 
-        
+                var adds = [];
+                Object.keys(this.state.addresses).forEach((key, index) => {
+                        if (key !== "no address") {
+                            adds.push({
+                                value: this.state.addresses[key]
+                            });
 
-        GetLocation.getCurrentPosition({
-            enableHighAccuracy: true,
-            timeout: 15000,
-        })
-            .then(location => {
 
-                Geocoder.init('AIzaSyCHBBlV3gi1aqRrbhTQbLlmofdYgl-jMtc');
-                Geocoder.from(location.latitude, location.longitude)
-                    .then(json => {
-                        var addressComponent = json.results[0].formatted_address;
-                        console.log(addressComponent);
-                        this.setState({GPSLocation: addressComponent})
+                        }
+                    }
+                );
 
+                adds.push({
+                    value: 'Current Location'
+                });
+
+
+                GetLocation.getCurrentPosition({
+                    enableHighAccuracy: true,
+                    timeout: 15000,
+                })
+                    .then(location => {
+
+                        Geocoder.init('AIzaSyCHBBlV3gi1aqRrbhTQbLlmofdYgl-jMtc');
+                        Geocoder.from(location.latitude, location.longitude)
+                            .then(json => {
+                                var addressComponent = json.results[0].formatted_address;
+                                console.log(addressComponent);
+                                this.setState({GPSLocation: addressComponent})
+
+                            })
+                            .catch(error => console.warn(error.origin));
                     })
-                    .catch(error => console.warn(error.origin));
-            })
-            .catch(error => {
-                const {code, message} = error;
-                console.warn(code, message);
-            })
-            
-            
-           
-            
+                    .catch(error => {
+                        const {code, message} = error;
+                        console.warn(code, message);
+                    })
 
-            this.setState({data: adds})
+
+                this.setState({data: adds})
 
             });
 
@@ -104,14 +100,11 @@ class AddRequest extends Component {
 
     addRequest = () => {
 
-        if(isNaN(this.state.price)) {
+        if (isNaN(this.state.price)) {
             alert("Price is not a number!");
-        }
-        else if(!this.state.price || !this.state.item)
-        {
+        } else if (!this.state.price || !this.state.item) {
             alert("Price and item fields cannot be empty!");
-        }
-        else {
+        } else {
 
             var refpush = firebase.database().ref("requests/").push()
             var unikey = refpush.key
@@ -167,20 +160,20 @@ class AddRequest extends Component {
         }
     };
 
-    shouldShowCurrLoc = () =>{
+    shouldShowCurrLoc = () => {
 
-        if(this.state.showCurrLoc == false){
-            
+        if (this.state.showCurrLoc == false) {
+
             return {
-            margin: 0, height: 0 , fontSize: 16
+                margin: 0, height: 0, fontSize: 16
             }
-        }else{
-        
+        } else {
+
             return {
-            margin: 10, height: 17 , fontSize: 16
+                margin: 10, height: 17, fontSize: 16
             }
         }
-        
+
     }
 
     render() {
@@ -200,7 +193,7 @@ class AddRequest extends Component {
                         label='Price'
                         mode='outlined'
                         value={this.state.price}
-                        keyboardType = 'numeric'
+                        keyboardType='numeric'
                         maxLength={5}
                         onChangeText={textString => this.setState({price: textString.replace(/[^0-9.]/g, '')})}
                     />
@@ -211,16 +204,17 @@ class AddRequest extends Component {
                     containerStyle={{margin: 10}}
                     value={this.state.address}
                     onChangeText={text => {
-                            if(text == 'Current Location'){
-                                this.setState({address: this.state.GPSLocation,showCurrLoc: true})
-                            }else{
+                        if (text == 'Current Location') {
+                            this.setState({address: this.state.GPSLocation, showCurrLoc: true})
+                        } else {
 
-                                this.setState({address: text, showCurrLoc: false})
-                            }
+                            this.setState({address: text, showCurrLoc: false})
+                        }
                     }}
                 />
                 <View>
-                    <Text style = {this.shouldShowCurrLoc()} numberOfLines={2} ellipsizeMode = 'tail'>Current location: ${this.state.GPSLocation}</Text>
+                    <Text style={this.shouldShowCurrLoc()} numberOfLines={2} ellipsizeMode='tail'>Current location:
+                        ${this.state.GPSLocation}</Text>
                 </View>
                 <TextInput
                     style={{margin: 10}}

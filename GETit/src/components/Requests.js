@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {FlatList, Text, View, Linking} from 'react-native';
-import {Card, FAB, Button} from 'react-native-paper'
+import {FlatList, Linking, Text, View} from 'react-native';
+import {Button, Card, FAB} from 'react-native-paper'
 import firebase from "firebase";
 import {ListItem} from 'react-native-elements'
 import {NavigationEvents} from 'react-navigation';
@@ -40,24 +40,22 @@ class Requests extends Component {
                     subtitle={
                         <View style={{flex: 1}}>
                             <Text>{item.description}</Text>
-                            <Button onPress={()=>{
-                                if(item.link){
-                                    console.log("LINK: "+ item.link);
-                                    Linking.openURL(item.link).catch(
-                                        alert("Link is not valid:" + item.link)
+                            <Button onPress={() => {
+                                if (item.link) {
+                                    console.log("LINK: " + item.link);
+                                    Linking.openURL(item.link).catch((error => alert("Link is not valid\n" + item.link))
 
-                                );
-                                }                        
+                                    );
+                                }
                             }}>
                                 Open link
 
                             </Button>
 
-                            <Button onPress={()=>
-                                {
-                                    // console.log("Edit Request navigate");
-                                    this.props.navigation.navigate('editRequest', {requestItem: item});
-                                }
+                            <Button onPress={() => {
+                                // console.log("Edit Request navigate");
+                                this.props.navigation.navigate('editRequest', {requestItem: item});
+                            }
                             }>
                                 Edit
                             </Button>
@@ -75,38 +73,38 @@ class Requests extends Component {
 
     loadRequests = () => {
 
-        if(this.state.requestsObj){
-             var adds = [];
-        Object.keys(this.state.requestsObj).forEach((key, index) => {
-                if(this.state.requestsObj[key].email===this.state.email) {
-                    adds.push(this.state.requestsObj[key]);
+        if (this.state.requestsObj) {
+            var adds = [];
+            Object.keys(this.state.requestsObj).forEach((key, index) => {
+                    if (this.state.requestsObj[key].email === this.state.email) {
+                        adds.push(this.state.requestsObj[key]);
+                    }
                 }
-            }
-        );
+            );
 
-        keyExtractor = (item, index) => index
+            keyExtractor = (item, index) => index
 
 
-        return (
-            <View style={{flex: 1}}>
-                <FlatList
-                    data={adds}
-                    renderItem={this.renderItem}
-                    keyExtractor={this.keyExtractor}
-                />
-            </View>
+            return (
+                <View style={{flex: 1}}>
+                    <FlatList
+                        data={adds}
+                        renderItem={this.renderItem}
+                        keyExtractor={this.keyExtractor}
+                    />
+                </View>
 
-        )
+            )
 
-        }else {
-             return (
-            <View style={{flex: 1}}>
-                <Text>NO REQUESTS</Text>
-            </View>
+        } else {
+            return (
+                <View style={{flex: 1}}>
+                    <Text>NO REQUESTS</Text>
+                </View>
 
-        )
-        } 
-       
+            )
+        }
+
 
     };
 
@@ -132,7 +130,7 @@ class Requests extends Component {
                     small
                     style={styles.fab}
                     onPress={() => {
-                        this.props.navigation.navigate('addRequest',{requestItem: null});
+                        this.props.navigation.navigate('addRequest', {requestItem: null});
                     }}
                 />
             </View>
