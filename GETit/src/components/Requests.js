@@ -28,6 +28,19 @@ class Requests extends Component {
 
     }
 
+    shouldDisplayOpenLink = (item) =>{
+     if(item.link == ''){
+		 return {
+			 height: 0
+		 }
+	 }else {
+		 return {
+			 height: 35
+		 }
+	 }
+
+	}
+
     renderItem = ({item}) => (
         <Card style={styles.topCard} elevation={5}>
             <Card.Content style={{margin: 10, flex: 1,}}>
@@ -45,7 +58,7 @@ class Requests extends Component {
                             <View style={{backgroundColor: 'green', flex: 1}}>
                                 <Text>{item.instructions}</Text>
                             </View>
-                            <Button onPress={()=>{
+                            <Button style = {this.shouldDisplayOpenLink(item)} onPress={()=>{
                                 if(item.link){
                                     console.log("LINK: "+ item.link)
                                     Linking.openURL(item.link).catch((err) => console.error('An error occurred', err));
