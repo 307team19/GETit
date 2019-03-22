@@ -109,29 +109,37 @@ class RequestHistory extends Component {
 
 	loadRequests = () => {
 
-		var adds = [];
-		Object.keys(this.state.requests).forEach((key, index) => {
-				console.log(this.state.requests[key])
-				console.log(this.state.requests[key].email)
-				if(this.state.requests[key].email===this.state.email) {
-					adds.push(this.state.requests[key]);
+		if(this.state.requests) {
+			var adds = [];
+			Object.keys(this.state.requests).forEach((key, index) => {
+					console.log(this.state.requests[key])
+					console.log(this.state.requests[key].email)
+					if (this.state.requests[key].email === this.state.email) {
+						adds.push(this.state.requests[key]);
+					}
 				}
-			}
-		);
+			);
 
-		keyExtractor = (item, index) => index
+			keyExtractor = (item, index) => index
 
 
-		return (
-			<View style={{flex: 1}}>
-				<FlatList
-					data={adds}
-					renderItem={this.renderItem}
-					keyExtractor={this.keyExtractor}
-				/>
-			</View>
+			return (
+				<View style={{flex: 1}}>
+					<FlatList
+						data={adds}
+						renderItem={this.renderItem}
+						keyExtractor={this.keyExtractor}
+					/>
+				</View>
 
-		)
+			)
+		}else{
+			return(
+				<View style={{flex: 1}}>
+					<Text>NO REQUESTS</Text>
+				</View>
+			)
+		}
 
 
 	};
