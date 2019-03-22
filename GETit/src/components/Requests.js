@@ -62,8 +62,8 @@ class Requests extends Component {
                             <Button style = {this.shouldDisplayOpenLink(item)} onPress={()=>{
                                 if(item.link){
                                     console.log("LINK: "+ item.link)
-                                    Linking.openURL(item.link).catch((err) => console.error('An error occurred', err));
-                                }                        
+                                    Linking.openURL(item.link).catch((error => alert("Link is not valid\n" + item.link)))
+                                }
                             }}>
                                 Open link
                             </Button>
