@@ -31,6 +31,8 @@ class AddRequest extends Component {
 
     componentWillMount() {
 
+        var requestItem = this.props.navigation.state.params.requestItem;
+        
         const u = firebase.auth().currentUser.uid;
         firebase.database().ref('/users/' + u + '/').once('value')
             .then(response => {
@@ -45,6 +47,10 @@ class AddRequest extends Component {
                     addresses: response.val().addresses,
 
                 });
+
+        if(requestItem!=null){
+            this.setState(requestItem)
+        }
 
            
         var adds = [];
@@ -130,7 +136,7 @@ class AddRequest extends Component {
                     }
                 ).then((data) => {
                     console.log('Synchronization succeeded');
-                    this.props.navigation.goBack();
+                    this.props.navigation.navigate('requests')
 
                 }).catch((error) => {
                     console.log(error)
@@ -152,7 +158,7 @@ class AddRequest extends Component {
                     }
                 ).then((data) => {
                     console.log('Synchronization succeeded');
-                    this.props.navigation.goBack();
+                    this.props.navigation.navigate('requests')
 
                 }).catch((error) => {
                     console.log(error)

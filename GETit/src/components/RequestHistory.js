@@ -31,11 +31,44 @@ class RequestHistory extends Component {
 		});
 		console.log(this.state.requests);
 
+		
+
+		
+
 	}
 
-	reorder=()=>{
+	reorder=(item)=>{
 		
-	}
+		var refpush = firebase.database().ref("requests/").push()
+        var unikey = refpush.key
+        var userRef = firebase.database().ref("requests/" + unikey + "/");
+
+        //TODO this code is creepy, edit address separately
+
+        
+            userRef.set(
+                {
+                    item: item.item,
+                    price: item.price,
+                    description: item.description,
+                    firstName: item.firstName,
+                    lastName: item.lastName,
+                    email: item.email,
+                    phoneNumber: item.phoneNumber,
+                    address: item.address,
+                    link: item.link,
+                    instructions: item.instructions,
+                    unikey: unikey,
+                }
+            ).then((data) => {
+                console.log('Synchronization succeeded');
+                //this.props.navigation.goBack();
+
+            }).catch((error) => {
+                console.log(error)
+            })
+    } 
+	
 
 	renderItem = ({item}) => (
 		<Card style={styles.topCard} elevation={5}>
@@ -57,7 +90,9 @@ class RequestHistory extends Component {
                             }}>
                                 Open link
                             </Button>
-							<Button onPress={this.reorder()}>
+							<Button onPress={()=>{
+								this.props.navigation.navigate('addRequest', {requestItem: item})
+							}}>
 							   Reorder
 							</Button>
                         </View>
