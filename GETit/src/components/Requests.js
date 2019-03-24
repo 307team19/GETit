@@ -5,6 +5,7 @@ import firebase from "firebase";
 import PushNotification from 'react-native-push-notification'
 import {NavigationEvents} from 'react-navigation';
 import Dialog, {DialogContent} from 'react-native-popup-dialog';
+import DropdownAlert from 'react-native-dropdownalert';
 
 class Requests extends Component {
 
@@ -14,6 +15,14 @@ class Requests extends Component {
         visible: true
     };
 
+    fetchData = async () => {
+        try {
+            await fetch('https://mywebsite.com/endpoint/');
+        } catch (error) {
+            console.log(" error:  here-" + error);
+            this.dropdown.alertWithType('error', 'Error', error.message);
+        }
+    };
 
     componentWillMount() {
         const u = firebase.auth().currentUser.uid;
@@ -56,6 +65,11 @@ class Requests extends Component {
             message: "My Notification Message", // (required)
             // date: new Date(Date.now() + (0 * 1000))
         });
+
+
+    }
+
+    componentDidMount(): void {
 
 
     }
@@ -224,9 +238,11 @@ class Requests extends Component {
                     small
                     style={styles.fab}
                     onPress={() => {
+                        this.dropdown.alertWithType('success', 'Error', 'this');
                         this.props.navigation.navigate('addRequest', {requestItem: null});
                     }}
                 />
+                <DropdownAlert ref={ref => this.dropdown = ref} />
             </View>
 
         );
