@@ -11,7 +11,7 @@ class Requests extends Component {
     state = {
         email: '',
         requestsObj: [],
-        visible: true
+        visible: false
     };
 
 
@@ -23,11 +23,10 @@ class Requests extends Component {
                     email: response.val().email,
                     addresses: response.val().addresses,
                 });
-            });
+            })
         firebase.database().ref('/').once('value').then(response => {
             this.setState({requestsObj: response.val().requests})
-        });
-
+        })
 
         PushNotification.configure({
             onNotification: function (notification) {
@@ -40,23 +39,32 @@ class Requests extends Component {
                 sound: true
             },
             popInitialNotification: true,
-
             requestPermissions: true,
         });
 
-        // firebase.database().ref('/requests/')
-        //     .onUpdate((snapshot, context) => {
-        //             PushNotification.localNotification(
-        //
-        //             )
-        //         }
-        //     );
-        PushNotification.localNotification({
-            title: "My Notification Title", // (optional)
-            message: "My Notification Message", // (required)
-            // date: new Date(Date.now() + (0 * 1000))
-        });
+        firebase.database().ref('/requests/').on('value',(snapshot)=>{
 
+
+            const obj = snapshot.val()
+
+            
+
+            if(obj){
+            Object.keys(obj).forEach((key, index) => {
+                    
+                    if (obj[key].completed == true && obj[key].email == this.state.email ) {
+                        console.log("obj[key].item + " is completed"")
+                        PushNotification.localNotification({
+                        title: "Notification from GETit", // (optional)
+                        message: obj[key].item + " is completed", // (required)
+                    });
+                    }
+                }
+            );
+            }
+            
+        
+        })
 
     }
 
@@ -194,19 +202,6 @@ class Requests extends Component {
         return (
 
             <View style={{flex: 1}}>
-                <Dialog
-                    visible={this.state.visible}
-                    rounded
-                    overlayOpacity = {0}
-                    dialogStyle={{marginTop: -300}}
-                    onTouchOutside={() => {
-                        this.setState({visible: false});
-                    }}
-                >
-                    <DialogContent >
-                        <Text>Hey</Text>
-                    </DialogContent>
-                </Dialog>
                 <NavigationEvents onDidFocus={() => {
                     firebase.database().ref('/').once('value').then(response => {
                         this.setState({requestsObj: response.val().requests})

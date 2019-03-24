@@ -29,8 +29,6 @@ class MyAccount extends Component {
 
     componentWillMount() {
         this.setState({uid: firebase.auth().currentUser.uid});
-        // console.log(this.state.uid);
-        // console.log(this.state);
         const u = firebase.auth().currentUser.uid;
         firebase.database().ref('/users/' + u + '/').once('value')
             .then(response => {
@@ -43,7 +41,6 @@ class MyAccount extends Component {
                 this.setState({photoURL: this.state.user.photoURL});
                 this.setState({address: this.state.user.address});
             });
-
     }
 
     state = {
