@@ -27,6 +27,7 @@ class AddRequest extends Component {
         instructions: '',
         link: '',
         showCurrLoc: false,
+        completed: false
     };
 
     componentWillMount() {
@@ -126,6 +127,7 @@ class AddRequest extends Component {
                         link: this.state.link,
                         instructions: this.state.instructions,
                         unikey: unikey,
+                        completed: this.state.completed
                     }
                 ).then((data) => {
                     console.log('Synchronization succeeded');
@@ -148,6 +150,7 @@ class AddRequest extends Component {
                         link: this.state.link,
                         instructions: this.state.instructions,
                         unikey: unikey,
+                        completed: this.state.completed
                     }
                 ).then((data) => {
                     console.log('Synchronization succeeded');
