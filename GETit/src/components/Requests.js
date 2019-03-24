@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
-import {FlatList, Linking, Text, TouchableOpacity, View, PushNotificationIOS} from 'react-native';
+import {FlatList, Linking, PushNotificationIOS, Text, TouchableOpacity, View} from 'react-native';
 import {Card, FAB} from 'react-native-paper'
 import firebase from "firebase";
 import PushNotification from 'react-native-push-notification'
 import {NavigationEvents} from 'react-navigation';
+import Dialog, {DialogContent} from 'react-native-popup-dialog';
 
 class Requests extends Component {
 
     state = {
         email: '',
-        requestsObj: []
+        requestsObj: [],
+        visible: true
     };
 
 
@@ -26,12 +28,16 @@ class Requests extends Component {
             this.setState({requestsObj: response.val().requests})
         });
 
-        
 
         PushNotification.configure({
             onNotification: function (notification) {
                 console.log('NOTIFICATION:', notification);
                 notification.finish(PushNotificationIOS.FetchResult.NoData);
+            },
+            permissions: {
+                alert: true,
+                badge: true,
+                sound: true
             },
             popInitialNotification: true,
 
@@ -45,10 +51,10 @@ class Requests extends Component {
         //             )
         //         }
         //     );
-        PushNotification.localNotificationSchedule({
-            title: "My Notification Title",
-            message: "My Notification Message",
-            date: new Date(Date.now() + (10 * 1000))
+        PushNotification.localNotification({
+            title: "My Notification Title", // (optional)
+            message: "My Notification Message", // (required)
+            // date: new Date(Date.now() + (0 * 1000))
         });
 
 
@@ -88,6 +94,7 @@ class Requests extends Component {
 
         <Card style={{margin: 7, flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
             <View>
+
                 <View style={{
                     flex: 1,
                     flexDirection: 'row',
@@ -156,7 +163,7 @@ class Requests extends Component {
                 }
             );
 
-            keyExtractor = (item, index) => index
+            keyExtractor = (item, index) => index;
 
 
             return (
@@ -187,6 +194,19 @@ class Requests extends Component {
         return (
 
             <View style={{flex: 1}}>
+                <Dialog
+                    visible={this.state.visible}
+                    rounded
+                    overlayOpacity = {0}
+                    dialogStyle={{marginTop: -300}}
+                    onTouchOutside={() => {
+                        this.setState({visible: false});
+                    }}
+                >
+                    <DialogContent >
+                        <Text>Hey</Text>
+                    </DialogContent>
+                </Dialog>
                 <NavigationEvents onDidFocus={() => {
                     firebase.database().ref('/').once('value').then(response => {
                         this.setState({requestsObj: response.val().requests})
