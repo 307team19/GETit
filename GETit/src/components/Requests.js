@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {FlatList, Linking, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, Linking, Text, TouchableOpacity, View, PushNotificationIOS} from 'react-native';
 import {Card, FAB} from 'react-native-paper'
 import firebase from "firebase";
+import PushNotification from 'react-native-push-notification'
 import {NavigationEvents} from 'react-navigation';
 
 class Requests extends Component {
@@ -25,7 +26,7 @@ class Requests extends Component {
             this.setState({requestsObj: response.val().requests})
         });
 
-        var PushNotification = require('react-native-push-notification');
+        
 
         PushNotification.configure({
             onNotification: function (notification) {
@@ -44,9 +45,10 @@ class Requests extends Component {
         //             )
         //         }
         //     );
-        PushNotification.localNotification({
+        PushNotification.localNotificationSchedule({
             title: "My Notification Title",
             message: "My Notification Message",
+            date: new Date(Date.now() + (10 * 1000))
         });
 
 
