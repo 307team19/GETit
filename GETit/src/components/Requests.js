@@ -62,7 +62,7 @@ class Requests extends Component {
             Object.keys(obj).forEach((key, index) => {
                     
                     if (obj[key].completed == true && obj[key].email == this.state.email ) {
-                        console.log("obj[key].item + " is completed"")
+                         this.dropdown.alertWithType('success', 'Notification from GETit', obj[key].item + " is completed");
                         PushNotification.localNotification({
                         title: "Notification from GETit", // (optional)
                         message: obj[key].item + " is completed", // (required)
@@ -233,7 +233,7 @@ class Requests extends Component {
                     small
                     style={styles.fab}
                     onPress={() => {
-                        this.dropdown.alertWithType('success', 'Error', 'this');
+                       
                         this.props.navigation.navigate('addRequest', {requestItem: null});
                     }}
                 />
