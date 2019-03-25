@@ -13,6 +13,9 @@ import Addresses from "./Addresses";
 import AddRequest from "./AddRequest"
 import RequestHistory from "./RequestHistory";
 import EditRequest from "./EditRequest";
+import DropdownAlert from 'react-native-dropdownalert';
+import DropDownHolder from './DropDownHandler'
+
 
 const AppNavigator = createStackNavigator(
     {
@@ -79,10 +82,12 @@ class App extends Component<Props> {
     }
 
 
+
     render() {
         return (
             <View style={{flex: 1}}>
                 <AppContainer/>
+                <DropdownAlert ref={ref => DropDownHolder.setDropDown(ref)}/>
             </View>
         )
 

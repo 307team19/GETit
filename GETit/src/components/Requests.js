@@ -4,8 +4,9 @@ import {Card, FAB} from 'react-native-paper'
 import firebase from "firebase";
 import PushNotification from 'react-native-push-notification'
 import {NavigationEvents} from 'react-navigation';
-import Dialog, {DialogContent} from 'react-native-popup-dialog';
 import DropdownAlert from 'react-native-dropdownalert';
+import DropDownHandler from './DropDownHandler';
+
 
 class Requests extends Component {
 
@@ -15,14 +16,6 @@ class Requests extends Component {
         visible: false
     };
 
-    fetchData = async () => {
-        try {
-            await fetch('https://mywebsite.com/endpoint/');
-        } catch (error) {
-            console.log(" error:  here-" + error);
-            this.dropdown.alertWithType('error', 'Error', error.message);
-        }
-    };
 
     componentWillMount() {
         const u = firebase.auth().currentUser.uid;
@@ -51,28 +44,38 @@ class Requests extends Component {
             requestPermissions: true,
         });
 
-        firebase.database().ref('/requests/').on('value',(snapshot)=>{
+        firebase.database().ref('/requests/').on('child_changed', (snapshot) => {
 
 
             const obj = snapshot.val()
 
-            
 
-            if(obj){
-            Object.keys(obj).forEach((key, index) => {
-                    
-                    if (obj[key].completed == true && obj[key].email == this.state.email ) {
-                         this.dropdown.alertWithType('success', 'Notification from GETit', obj[key].item + " is completed");
-                        PushNotification.localNotification({
+            if (obj) {
+                // Object.keys(obj).forEach((key, index) => {
+                //
+                //         if (obj[key].completed === true && obj[key].email === this.state.email) {
+                //             console.log(obj[key].email);
+                //             DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit', obj[key].item + " is completed");
+                //             PushNotification.localNotification({
+                //                 title: "Notification from GETit", // (optional)
+                //                 message: obj[key].item + " is completed", // (required)
+                //                 foreground: true
+                //             });
+                //         }
+                //     }
+                // );
+
+                if (obj.completed === true && obj.email === this.state.email) {
+                    DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit', obj.item + " is completed");
+                    PushNotification.localNotification({
                         title: "Notification from GETit", // (optional)
-                        message: obj[key].item + " is completed", // (required)
+                        message: obj.item + " is completed", // (required)
+                        foreground: true
                     });
-                    }
                 }
-            );
             }
-            
-        
+
+
         })
 
     }
@@ -233,11 +236,11 @@ class Requests extends Component {
                     small
                     style={styles.fab}
                     onPress={() => {
-                       
+
                         this.props.navigation.navigate('addRequest', {requestItem: null});
                     }}
                 />
-                <DropdownAlert ref={ref => this.dropdown = ref} />
+
             </View>
 
         );
