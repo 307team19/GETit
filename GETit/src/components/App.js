@@ -13,6 +13,7 @@ import Addresses from "./Addresses";
 import AddRequest from "./AddRequest"
 import RequestHistory from "./RequestHistory";
 import EditRequest from "./EditRequest";
+import OrderDetails from "./OrderDetails"
 
 const AppNavigator = createStackNavigator(
     {
@@ -22,6 +23,7 @@ const AppNavigator = createStackNavigator(
         signup: SignUpForm,
         createUser: CreateUser,
         passreset: PasswordReset,
+        orderdetails: OrderDetails,
         addresses: Addresses,
         addRequest: AddRequest,
         requestHistory: RequestHistory,

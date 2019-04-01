@@ -105,7 +105,7 @@ class Orders extends Component {
                 <View style={{margin: 3, flex: 1}}>
                     <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{item.instructions}]</Text>
                 </View>
-                <View style={{flex: 1, flexDirection: 'row'}}>
+                <View style={{flex: 1, flexDirection: 'column'}}>
                     <TouchableOpacity
                         style={this.shouldDisplayOpenLink(item)}
                         onPress={() => {
@@ -119,7 +119,7 @@ class Orders extends Component {
                     <TouchableOpacity
                         style={styles.buttonStyle}
                         onPress={() => {
-                            //TODO: add order details UI page
+                            this.props.navigation.navigate('orderdetails',{details: item});
                         }}>
                         <Text style={styles.textStyle}>Details</Text>
                     </TouchableOpacity>
