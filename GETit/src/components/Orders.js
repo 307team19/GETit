@@ -111,6 +111,13 @@ class Orders extends Component {
                         }}>
                         <Text style = {styles.textStyle}>{this.shouldShowText(item)}</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity
+                        style = {styles.buttonStyle}
+                        onPress={()=>{
+                            //TODO: add order details UI page
+                        }}>
+                        <Text style = {styles.textStyle}>Details</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </Card>
