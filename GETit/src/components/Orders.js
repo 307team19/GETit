@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {FlatList, Linking, Text, TouchableOpacity, View} from 'react-native';
 import firebase from "firebase";
 import {NavigationEvents} from "react-navigation";
-import {Card, FAB} from "react-native-paper";
+import {Card} from "react-native-paper";
 
 class Orders extends Component {
 
@@ -22,7 +22,7 @@ class Orders extends Component {
             var adds = [];
             Object.keys(this.state.requests).forEach((key, index) => {
                     // if (this.state.requests[key].email === this.state.email) {
-                        adds.push(this.state.requests[key]);
+                    adds.push(this.state.requests[key]);
                     // }
                 }
             );
@@ -52,12 +52,12 @@ class Orders extends Component {
 
     };
 
-    shouldDisplayOpenLink = (item) =>{
-        if(item.link == ''){
+    shouldDisplayOpenLink = (item) => {
+        if (item.link == '') {
             return {
                 height: 0
             }
-        }else {
+        } else {
             return {
                 flex: 1,
                 alignSelf: 'stretch',
@@ -68,55 +68,60 @@ class Orders extends Component {
                 marginLeft: 5,
                 marginRight: 5,
                 marginBottom: 5,
-                height: 35
             }
         }
 
     }
 
-    shouldShowText = (item) =>{
-        if(item.link == ''){
+    shouldShowText = (item) => {
+        if (item.link == '') {
             return ''
-        }else {
+        } else {
             return 'Open Link'
         }
     }
 
     renderItem = ({item}) => (
 
-        <Card style={{margin: 7,flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
+        <Card style={{margin: 7, flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
             <View>
-                <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', borderBottomColor: 'black', borderBottomWidth: 1,}}>
-                    <View style = {{flex: 0.75}}>
-                        <Text style = {{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>{item.item}</Text>
+                <View style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
+                }}>
+                    <View style={{flex: 0.75}}>
+                        <Text style={{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>{item.item}</Text>
                     </View>
-                    <View style = {{flex: 0.25, paddingTop: 8}}>
-                        <Text style = {{textAlign: 'center', fontSize: 20}}>${item.price}</Text>
+                    <View style={{flex: 0.25, paddingTop: 8}}>
+                        <Text style={{textAlign: 'center', fontSize: 20}}>${item.price}</Text>
                     </View>
                 </View>
-                <View style = {{margin: 3, flex: 1}}>
-                    <Text style = {{textAlign: 'center'}} >{item.description}</Text>
+                <View style={{margin: 3, flex: 1}}>
+                    <Text style={{textAlign: 'center'}}>{item.description}</Text>
                 </View>
-                <View style = {{margin: 3, flex: 1}}>
-                    <Text style = {{textAlign: 'center', fontStyle: 'italic'}} >[{item.instructions}]</Text>
+                <View style={{margin: 3, flex: 1}}>
+                    <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{item.instructions}]</Text>
                 </View>
-                <View style = {{ flex: 1}}>
+                <View style={{flex: 1, flexDirection: 'row'}}>
                     <TouchableOpacity
-                        style = {this.shouldDisplayOpenLink(item)}
-                        onPress={()=>{
-                            if(item.link){
-                                console.log("LINK: "+ item.link)
+                        style={this.shouldDisplayOpenLink(item)}
+                        onPress={() => {
+                            if (item.link) {
+                                console.log("LINK: " + item.link)
                                 Linking.openURL(item.link).catch((error => alert("Link is not valid\n" + item.link)))
                             }
                         }}>
-                        <Text style = {styles.textStyle}>{this.shouldShowText(item)}</Text>
+                        <Text style={styles.textStyle}>{this.shouldShowText(item)}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style = {styles.buttonStyle}
-                        onPress={()=>{
+                        style={styles.buttonStyle}
+                        onPress={() => {
                             //TODO: add order details UI page
                         }}>
-                        <Text style = {styles.textStyle}>Details</Text>
+                        <Text style={styles.textStyle}>Details</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -136,7 +141,7 @@ class Orders extends Component {
                 }}
                 />
                 <Card style={styles.topCard} elevation={5}>
-                    <Card.Title title="AVAILABLE ORDERS"  titleStyle = {{textAlign: 'center'}}/>
+                    <Card.Title title="AVAILABLE ORDERS" titleStyle={{textAlign: 'center'}}/>
                     <Card.Content style={{flex: 1}}>
                         {this.loadRequests()}
                     </Card.Content>
@@ -170,6 +175,7 @@ const styles = {
         borderColor: '#007aff',
         marginLeft: 5,
         marginRight: 5,
+        marginBottom: 5,
     },
 
 
