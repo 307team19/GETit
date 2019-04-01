@@ -119,7 +119,7 @@ class Orders extends Component {
                     <TouchableOpacity
                         style={styles.buttonStyle}
                         onPress={() => {
-                            //TODO: add order details UI page
+                            this.props.navigation.navigate('orderdetails');
                         }}>
                         <Text style={styles.textStyle}>Details</Text>
                     </TouchableOpacity>
