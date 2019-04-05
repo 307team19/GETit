@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {FlatList, Linking, Text, TouchableOpacity, View} from 'react-native';
 import firebase from "firebase";
-import {NavigationEvents} from "react-navigation";
+import {NavigationEvents, StackNavigator} from "react-navigation";
 import {Card} from "react-native-paper";
 
 class Orders extends Component {
 
+   
     state = {
         requests: []
     };

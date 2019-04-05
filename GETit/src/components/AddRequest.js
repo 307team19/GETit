@@ -9,6 +9,11 @@ import Geocoder from 'react-native-geocoding';
 
 class AddRequest extends Component {
 
+     static navigationOptions = {
+        title: 'Add Request',
+    };
+
+
     state = {
         user: {},
         email: '',
