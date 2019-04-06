@@ -14,11 +14,18 @@ class Orders extends Component {
     
     state = {
         requests: [],
+        email:'',
         collapsedAll: true,
         collapsedMy: true
     };
 
     componentWillMount() {
+
+        const u = firebase.auth().currentUser.uid;
+        firebase.database().ref('/users/' + u + '/').once('value')
+            .then(response => {
+                this.setState({email: response.val().email,});
+            });
 
         firebase.database().ref('/').once('value').then(response => {
             this.setState({requests: response.val().requests})
@@ -30,9 +37,9 @@ class Orders extends Component {
         if (this.state.requests) {
             var adds = [];
             Object.keys(this.state.requests).forEach((key, index) => {
-                    // if (this.state.requests[key].email === this.state.email) {
+                    if (!(this.state.requests[key].email === this.state.email)) {
                     adds.push(this.state.requests[key]);
-                    // }
+                    }
                 }
             );
 
