@@ -8,6 +8,11 @@ import {ListItem} from "react-native-elements";
 
 class RequestHistory extends Component {
 
+	 static navigationOptions = {
+    title: 'Request History',
+  };
+
+
 	state = {
 		email: "",
 		requests: []
@@ -100,42 +105,7 @@ class RequestHistory extends Component {
     }
 
 	renderItem = ({item}) => (
-		// <Card style={styles.topCard} elevation={5}>
-		// 	<Card.Content style={{margin: 10, flex: 1}}>
-		// 		<ListItem
-		// 			title={
-		// 				<View>
-		// 					<Text>{"Item: " + item.item}</Text>
-		// 				</View>
-		// 			}
-		// 			subtitle={
-		// 				 <View style={{flex: 1}}>
-        //                     <View style={{flex: 1}}>
-        //                         <Text>{"Description: " + item.description}</Text>
-        //                     </View>
-        //                     <View style={{flex: 1}}>
-        //                         <Text>{"Instructions: " + item.instructions}</Text>
-        //                     </View>
-        //                     <Button style = {this.shouldDisplayOpenLink(item)} onPress={()=>{
-        //                         if(item.link){g
-        //                             console.log("LINK: "+ item.link)
-		// 							Linking.openURL(item.link).catch((error => alert("Link is not valid\n" + item.link)))
-		// 						}
-        //                     }}>
-        //                         Open link
-        //                     </Button>
-		// 					<Button onPress={()=>{
-		// 						this.props.navigation.navigate('addRequest', {requestItem: item})
-		// 					}}>
-		// 					   Reorder
-		// 					</Button>
-        //                 </View>
-		// 			}
-		// 			rightTitle={item.price}
-
-		// 		/>
-		// 	</Card.Content>
-		// </Card>
+	
 
 		<Card style={{margin: 7,flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
             <View>
@@ -235,7 +205,6 @@ class RequestHistory extends Component {
 		return (
 			<ScrollView style={styles.containerStyle}>
 				<Card style={styles.topCard} elevation={5}>
-					<Card.Title title="REQUEST HISTORY"/>
 					<Card.Content style={{margin: 10, flex: 1,}}>
 						{this.loadRequests()}
 					</Card.Content>

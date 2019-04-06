@@ -1,16 +1,22 @@
 import React, {Component} from 'react';
 import {FlatList, Linking, Text, TouchableOpacity, View} from 'react-native';
 import firebase from "firebase";
-import {NavigationEvents} from "react-navigation";
+import {NavigationEvents, StackNavigator} from "react-navigation";
 import {Card} from "react-native-paper";
 
 class Orders extends Component {
 
+
+    static navigationOptions = {
+        title: 'Orders',
+    };
+    
     state = {
         requests: []
     };
 
     componentWillMount() {
+
         firebase.database().ref('/').once('value').then(response => {
             this.setState({requests: response.val().requests})
         })
@@ -141,7 +147,6 @@ class Orders extends Component {
                 }}
                 />
                 <Card style={styles.topCard} elevation={5}>
-                    <Card.Title title="AVAILABLE ORDERS" titleStyle={{textAlign: 'center'}}/>
                     <Card.Content style={{flex: 1}}>
                         {this.loadRequests()}
                     </Card.Content>
