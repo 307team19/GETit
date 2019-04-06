@@ -15,6 +15,47 @@ import RequestHistory from "./RequestHistory";
 import EditRequest from "./EditRequest";
 import OrderDetails from "./OrderDetails"
 
+const TabNavigator = createMaterialTopTabNavigator({
+            orders: Orders,
+            myaccount: MyAccount,
+            requests: Requests,
+},
+{
+            order: ['orders', 'requests', 'myaccount'],
+            swipeEnabled: true,
+            tabBarPosition: 'bottom',
+            tabBarOptions: {
+                labelStyle: {
+                    fontSize: 12,
+                },
+                style: {
+                    backgroundColor: '#1eaaf1',
+                },
+            }
+        }
+)
+
+TabNavigator.navigationOptions = ({ navigation }) => {
+  const { routeName } = navigation.state.routes[navigation.state.index];
+
+  
+  if(routeName == "requests"){
+       return {
+             headerTitle: "Currents Requests",
+       };
+  }else if(routeName == "orders"){
+      return {
+             headerTitle: "Orders",
+       };
+  }else{
+      return {
+             headerTitle: "My Account",
+      };
+  }
+  
+ 
+};
+
 const AppNavigator = createStackNavigator(
     {
         login: {
@@ -28,23 +69,7 @@ const AppNavigator = createStackNavigator(
         addRequest: AddRequest,
         requestHistory: RequestHistory,
         editRequest: EditRequest,
-        tabscreen: createMaterialTopTabNavigator({
-            orders: Orders,
-            myaccount: MyAccount,
-            requests: Requests,
-        }, {
-            order: ['orders', 'requests', 'myaccount'],
-            swipeEnabled: true,
-            tabBarPosition: 'bottom',
-            tabBarOptions: {
-                labelStyle: {
-                    fontSize: 12,
-                },
-                style: {
-                    backgroundColor: '#1eaaf1',
-                },
-            }
-        }),
+        tabscreen: TabNavigator
 
 
     },
@@ -62,6 +87,8 @@ const AppNavigator = createStackNavigator(
         },
     },
 );
+
+
 
 const AppContainer = createAppContainer(AppNavigator);
 

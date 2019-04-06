@@ -12,8 +12,10 @@ class Requests extends Component {
         requestsObj: []
     };
 
+    
 
     componentWillMount() {
+        
         const u = firebase.auth().currentUser.uid;
         firebase.database().ref('/users/' + u + '/').once('value')
             .then(response => {
@@ -168,7 +170,6 @@ class Requests extends Component {
                 }}
                 />
                 <Card style={styles.topCard} elevation={5}>
-                    <Card.Title title="CURRENT REQUESTS"  titleStyle = {{textAlign: 'center'}}/>
                     <Card.Content style={{flex: 1}}>
                         {this.loadRequests()}
                     </Card.Content>

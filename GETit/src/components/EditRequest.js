@@ -34,7 +34,6 @@ class EditRequest extends Component {
 		showCurrLoc: false,
 	};
 
-    //TODO: REDO ENTIRE FIREBASE IMPLEMENTATION HERE WITH REQUEST ID
 
 	componentWillMount() {
 		
