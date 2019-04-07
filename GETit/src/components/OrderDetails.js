@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View, ScrollView, TouchableOpacity, Linking} from 'react-native';
+import {Button} from 'react-native-paper';
 import firebase from 'firebase';
 
 class OrderDetails extends Component {
@@ -63,8 +64,8 @@ class OrderDetails extends Component {
             return(
                 <View style={{marginLeft: '1%', marginRight: '1%' }}>
                    <Text style={{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>Price</Text>
-                   <View style = {{...styles.boxStyle, marginBottom: 3, backgroundColor: '#007aff', borderColor: '#007aff',}}>
-                        <Text numberOfLines={5} ellipsizeMode ={'tail'} style = {{ textAlign: 'center', fontSize: 30, margin: 3, fontWeight: 'bold', color: 'white'}}>${this.state.details.price}</Text>
+                   <View style = {{...styles.boxStyle, marginBottom: 3, borderColor: '#007aff',}}>
+                        <Text numberOfLines={5} ellipsizeMode ={'tail'} style = {{ textAlign: 'center', fontSize: 30, margin: 3, fontWeight: 'bold'}}>${this.state.details.price}</Text>
                    </View>     
                 </View>
             )
@@ -87,7 +88,6 @@ class OrderDetails extends Component {
       
     }
 
-	
 
 	render() {
 		return (
@@ -98,6 +98,11 @@ class OrderDetails extends Component {
                 {this.retView("email")}
                 {this.retView("price")}
                 {this.retView("link")}
+                <Button
+                    style={styles.buttonContainedStyle}
+                    mode="contained">
+                    Accept Order
+                </Button>
             </ScrollView>
 		);
 	};
@@ -117,6 +122,12 @@ const styles = {
         marginRight: 5,
        
     },
+    buttonContainedStyle: {
+        height: 47,
+        justifyContent: 'center',
+        margin: 3,
+        flex: 1,
+    }
 };
 
 export default OrderDetails;
