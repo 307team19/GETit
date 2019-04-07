@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {FlatList, Linking, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, Linking, Text, TouchableOpacity, View, ScrollView} from 'react-native';
 import firebase from "firebase";
 import {NavigationEvents, StackNavigator} from "react-navigation";
-import {Card} from "react-native-paper";
+import {Card, Button} from "react-native-paper";
+import Collapsible from 'react-native-collapsible';
 
 class Orders extends Component {
 
@@ -12,10 +13,19 @@ class Orders extends Component {
     };
     
     state = {
-        requests: []
+        requests: [],
+        email:'',
+        collapsedAll: true,
+        collapsedMy: true
     };
 
     componentWillMount() {
+
+        const u = firebase.auth().currentUser.uid;
+        firebase.database().ref('/users/' + u + '/').once('value')
+            .then(response => {
+                this.setState({email: response.val().email,});
+            });
 
         firebase.database().ref('/').once('value').then(response => {
             this.setState({requests: response.val().requests})
@@ -27,9 +37,9 @@ class Orders extends Component {
         if (this.state.requests) {
             var adds = [];
             Object.keys(this.state.requests).forEach((key, index) => {
-                    // if (this.state.requests[key].email === this.state.email) {
+                    if (!(this.state.requests[key].email === this.state.email)) {
                     adds.push(this.state.requests[key]);
-                    // }
+                    }
                 }
             );
 
@@ -136,6 +146,46 @@ class Orders extends Component {
 
     );
 
+    toggleExpandedAll = () => {
+        // if(this.state.collapsedMy==false){
+        //     this.setState({collapsedMy: !this.state.collapsedMy, collapsedAll: !this.state.collapsedAll})
+        // }else {
+        //     this.setState({collapsedAll: !this.state.collapsedAll});
+        // }
+        console.log("collapsedAll is "+this.state.collapsedAll);
+        console.log("collapsedMy is "+this.state.collapsedMy);
+        if(!this.state.collapsedAll){
+            this.setState({collapsedAll: true});
+        }else{
+            this.setState({collapsedAll: false});
+        }
+        // this.setState({collapsedAll: !this.state.collapsedAll});
+        console.log("collapsedAll is "+this.state.collapsedAll);
+        console.log("collapsedMy is "+this.state.collapsedMy);
+    };
+
+    toggleExpandedMy = () => {
+        // if(this.state.collapsedAll==false){
+        //     this.setState({collapsedAll: !this.state.collapsedAll, collapsedMy: !this.state.collapsedMy})
+        // }else {
+        //     this.setState({collapsedMy: !this.state.collapsedMy});
+        // }
+        console.log("collapsedAll is "+this.state.collapsedAll);
+        console.log("collapsedMy is "+this.state.collapsedMy);
+        if(this.state.collapsedMy==false){
+            this.setState({collapsedMy: true});
+        }else{
+            this.setState({collapsedMy: false});
+        }
+        // this.setState({collapsedMy: !this.state.collapsedMy});
+        // if(this.state.collapsedMy==false){
+        //     console.log("About to scroll");
+        //     this.refs.scroll.scrollToEnd();
+        // }
+        console.log("collapsedAll is "+this.state.collapsedAll);
+        console.log("collapsedMy is "+this.state.collapsedMy);
+    };
+
     render() {
 
         return (
@@ -147,9 +197,47 @@ class Orders extends Component {
                 }}
                 />
                 <Card style={styles.topCard} elevation={5}>
-                    <Card.Content style={{flex: 1}}>
-                        {this.loadRequests()}
-                    </Card.Content>
+                    <ScrollView ref="scroll">
+                        <Card>
+                            <View style={{alignItems: 'center'}, {backgroundColor:'#007aff'}}>
+                                <TouchableOpacity onPress={this.toggleExpandedAll} style={{flex:1}}>
+                                    <Text style={styles.textStyleTop}>
+                                        Available Orders
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+                        </Card>
+                        {/*<ScrollView>*/}
+                            <Collapsible collapsed={this.state.collapsedAll} align='center'>
+                                <Card.Content style={{flex: 1}}>
+                                    {this.loadRequests()}
+                                </Card.Content>
+                            </Collapsible>
+                        {/*</ScrollView>*/}
+                        <Card>
+                            <View style={{alignItems: 'center'}, {backgroundColor:'#007aff'}}>
+                                <TouchableOpacity onPress={this.toggleExpandedMy} style={{flex:1}}>
+                                    <Text style={styles.textStyleTop}>
+                                        My Orders
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+                        </Card>
+                        {/*<ScrollView>*/}
+                            <Collapsible collapsed={this.state.collapsedMy} align='center'>
+                                <Card.Content style={{flex: 1}}>
+                                    {this.loadRequests()}
+                                </Card.Content>
+                            </Collapsible>
+                        {/*</ScrollView>*/}
+                    </ScrollView>
+                    {/*<ScrollView>*/}
+                        {/*<Collapsible collapsed={this.state.collapsedMy} align='center'>*/}
+                            {/*<Card.Content style={{flex: 1}}>*/}
+                                {/*{this.loadRequests()}*/}
+                            {/*</Card.Content>*/}
+                        {/*</Collapsible>*/}
+                    {/*</ScrollView>*/}
                 </Card>
             </View>
         );
@@ -169,6 +257,16 @@ const styles = {
         fontWeight: '600',
         paddingTop: 10,
         paddingBottom: 10,
+    },
+
+    textStyleTop: {
+        textAlign: 'center',
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: '600',
+        paddingTop: 10,
+        paddingBottom: 10,
+        marginBottom: 0
     },
 
     buttonStyle: {
