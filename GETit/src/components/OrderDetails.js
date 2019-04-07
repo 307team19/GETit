@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Text, View, ScrollView, TouchableOpacity, Linking} from 'react-native';
-import {Button} from 'react-native-paper';
 import firebase from 'firebase';
 
 class OrderDetails extends Component {
@@ -74,7 +73,7 @@ class OrderDetails extends Component {
                return(
                 <View style={{marginLeft: '1%', marginRight: '1%' }}>
                    <TouchableOpacity 
-                   style = {{...styles.boxStyle, borderColor: '#0dc146', backgroundColor: '#0dc146'}}
+                   style = {{...styles.boxStyle, borderColor: '#0dc146', marginBottom: 3, backgroundColor: '#0dc146'}}
                    onPress = {()=>{
                        Linking.openURL(this.state.details.link).catch((error => alert("Link is not valid\n" + item.link)))
                    }}>
@@ -84,6 +83,19 @@ class OrderDetails extends Component {
             )
             }
             
+        }else if(item == "accept"){
+               return(
+                <View style={{marginLeft: '1%', marginRight: '1%' }}>
+                        <TouchableOpacity 
+                        style = {{...styles.boxStyle, borderColor: '#5500e9', marginBottom: 3, backgroundColor: '#5500e9'}}
+                        onPress = {()=>{
+                           
+                        }}>
+                                <Text numberOfLines={5} ellipsizeMode ={'tail'} style = {{ textAlign: 'center', fontSize: 30, margin: 3, fontWeight: 'bold', color: 'white'}}>Accept Order</Text>
+                        </TouchableOpacity>     
+                </View>
+               )
+
         }
       
     }
@@ -98,11 +110,7 @@ class OrderDetails extends Component {
                 {this.retView("email")}
                 {this.retView("price")}
                 {this.retView("link")}
-                <Button
-                    style={styles.buttonContainedStyle}
-                    mode="contained">
-                    Accept Order
-                </Button>
+                {this.retView("accept")}
             </ScrollView>
 		);
 	};
@@ -122,12 +130,7 @@ const styles = {
         marginRight: 5,
        
     },
-    buttonContainedStyle: {
-        height: 47,
-        justifyContent: 'center',
-        margin: 3,
-        flex: 1,
-    }
+   
 };
 
 export default OrderDetails;
