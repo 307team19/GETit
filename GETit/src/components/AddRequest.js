@@ -132,7 +132,8 @@ class AddRequest extends Component {
                         link: this.state.link,
                         instructions: this.state.instructions,
                         unikey: unikey,
-                        completed: this.state.completed
+                        completed: this.state.completed,
+                        acceptedBy: "",
                     }
                 ).then((data) => {
                     console.log('Synchronization succeeded');
@@ -155,7 +156,8 @@ class AddRequest extends Component {
                         link: this.state.link,
                         instructions: this.state.instructions,
                         unikey: unikey,
-                        completed: this.state.completed
+                        completed: this.state.completed,
+                        acceptedBy: "",
                     }
                 ).then((data) => {
                     console.log('Synchronization succeeded');
