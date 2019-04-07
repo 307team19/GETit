@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, ScrollView, TouchableOpacity, Linking} from 'react-native';
+import {Text, View, ScrollView, TouchableOpacity, Linking, Alert} from 'react-native';
 import firebase from 'firebase';
 
 class OrderDetails extends Component {
@@ -89,7 +89,20 @@ class OrderDetails extends Component {
                         <TouchableOpacity 
                         style = {{...styles.boxStyle, borderColor: '#5500e9', marginBottom: 3, backgroundColor: '#5500e9'}}
                         onPress = {()=>{
-                           
+                           Alert.alert(
+                                'Alert!',
+                                'Are you sure you want to Accept the order?',
+                                [
+                                    {text: 'Yes',
+                                     onPress: () => console.log('Yes pressed')
+                                    },
+                                    {
+                                    text: 'No',
+                                    onPress: () => console.log('No Pressed'),
+                                    style: 'cancel',
+                                    },
+                                ],
+                                );
                         }}>
                                 <Text numberOfLines={5} ellipsizeMode ={'tail'} style = {{ textAlign: 'center', fontSize: 30, margin: 3, fontWeight: 'bold', color: 'white'}}>Accept Order</Text>
                         </TouchableOpacity>     
