@@ -107,12 +107,7 @@ class Requests extends Component {
                    <Text style = {styles.textStyle}>Edit</Text>
                 </TouchableOpacity> 
                 </View>
-                                
-                   
-                
-
-                
-
+              
                     
             </View> 
         </Card>

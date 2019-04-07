@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View, ScrollView, TouchableOpacity, Linking, Alert} from 'react-native';
-import firebase from 'firebase';
+import firebase from "firebase";
 
 class OrderDetails extends Component {
 
@@ -94,7 +94,11 @@ class OrderDetails extends Component {
                                 'Are you sure you want to Accept the order?',
                                 [
                                     {text: 'Yes',
-                                     onPress: () => console.log('Yes pressed')
+                                     onPress: () => {
+                                        firebase.database().ref('/requests/' + this.state.details.unikey + "/").update({
+                                        acceptedBy: firebase.auth().currentUser.uid
+                                    })
+                                    }
                                     },
                                     {
                                     text: 'No',
