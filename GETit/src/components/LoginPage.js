@@ -130,6 +130,7 @@ class LoginPage extends Component {
                                     style={styles.textInputStyle}
                                     label='Email'
                                     mode='outlined'
+                                    testID="emailID"
                                     value={this.state.email}
                                     onChangeText={textString => this.setState({email: textString})}
 
@@ -143,6 +144,7 @@ class LoginPage extends Component {
                                     style={styles.textInputStyle}
                                     label='Password'
                                     mode='outlined'
+                                    testID="password"
                                     secureTextEntry
                                     value={this.state.password}
                                     onChangeText={textString => this.setState({password: textString})}
@@ -151,6 +153,7 @@ class LoginPage extends Component {
 
                             <CardSection style={{flex: 1}}>
                                 <Button
+                                    testID="loginButton"
                                     onPress={this.onLoginButtonPressed.bind(this)}
                                     style={{...styles.buttonContainedStyle, margin: 0}}
                                     mode="contained"
