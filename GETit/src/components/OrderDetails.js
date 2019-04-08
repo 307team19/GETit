@@ -13,6 +13,8 @@ class OrderDetails extends Component {
        this.setState({details: this.props.navigation.state.params.details})
     }
 
+    mapKey = 'AIzaSyDOhIL5sHTAm6rrVac5iCpOnEZU-7RkfK0';
+
     retView = (item) =>{
         if(item == "item"){ 
           return(
@@ -126,14 +128,17 @@ class OrderDetails extends Component {
                 {this.retView("email")}
                 {this.retView("price")}
                 {this.retView("link")}
-                {this.retView("accept")}
                 <View>
                     <Image
                         style = {styles.imageStyle}
                         source={{
-                            uri: 'https://maps.googleapis.com/maps/api/staticmap?center=Earhart+Hall&zoom=17&scale=2&size=500x500&maptype=roadmap&key=AIzaSyDOhIL5sHTAm6rrVac5iCpOnEZU-7RkfK0&format=jpg&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7CEarhart+Hall'
+                            uri: 'https://maps.googleapis.com/maps/api/staticmap?center='
+                            + this.state.details.address + '&zoom=17&scale=2&size=500x500&maptype=roadmap&key='
+                            + this.mapKey + '&format=jpg&visual_refresh=true'
+                            + '&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C' + this.state.details.address
                     }}/>
                 </View>
+                {this.retView("accept")}
             </ScrollView>
 		);
 	};
