@@ -131,7 +131,7 @@ class OrderDetails extends Component {
                     <Image
                         style = {styles.imageStyle}
                         source={{
-                            uri: 'https://www.mapquestapi.com/staticmap/v5/map?key=g3ysgsJ0g5D0GS3QyLb6fU9jvo1osSAn&center=Boston,MA&size=500,500&zoom=17'
+                            uri: 'https://maps.googleapis.com/maps/api/staticmap?center=Earhart+Hall&zoom=17&scale=2&size=500x500&maptype=roadmap&key=AIzaSyDOhIL5sHTAm6rrVac5iCpOnEZU-7RkfK0&format=jpg&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7CEarhart+Hall'
                     }}/>
                 </View>
             </ScrollView>
@@ -155,10 +155,7 @@ const styles = {
     },
     imageStyle: {
        height: 220,
-        marginLeft: 5,
-        marginRight: 5,
-       borderWidth: 1,
-        borderColor: '#E00'
+        margin: 10
     }
    
 };

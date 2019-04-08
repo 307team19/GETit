@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eadc908c-1f83-4bbd-83dd-656b58f67d0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/GETit/src/components/OrderDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/OrderDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/src/components/Orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/Orders.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,8 +19,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/OrderDetails.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="133" column="153" selection-start-line="133" selection-start-column="153" selection-end-line="133" selection-end-column="153" />
+            <state relative-caret-position="316">
+              <caret line="133" column="278" selection-start-line="133" selection-start-column="278" selection-end-line="133" selection-end-column="278" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GETit/src/components/Orders.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3716">
+              <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -85,6 +98,7 @@
         <option value="$PROJECT_DIR$/GETit/src/components/EditRequest.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/Requests.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/RequestHistory.js" />
+        <option value="$PROJECT_DIR$/GETit/src/components/Orders.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/OrderDetails.js" />
       </list>
     </option>
@@ -208,7 +222,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54630000" />
+    <option name="totallyTimeSpent" value="55668000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="6" />
@@ -431,15 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/Orders.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/LoginPage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -460,10 +465,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/Orders.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3716">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/OrderDetails.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="133" column="153" selection-start-line="133" selection-start-column="153" selection-end-line="133" selection-end-column="153" />
+        <state relative-caret-position="316">
+          <caret line="133" column="278" selection-start-line="133" selection-start-column="278" selection-end-line="133" selection-end-column="278" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

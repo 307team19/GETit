@@ -15,8 +15,8 @@ class Orders extends Component {
     state = {
         requests: [],
         email:'',
-        collapsedAll: true,
-        collapsedMy: true
+        collapsedAll: false,
+        collapsedMy: false
     };
 
     componentWillMount() {
