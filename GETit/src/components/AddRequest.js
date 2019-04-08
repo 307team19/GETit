@@ -190,7 +190,7 @@ class AddRequest extends Component {
 
         return (
             <PaperProvider theme={paperTheme}>
-                <View style={{flexDirection: 'row', margin: 10}}>
+                <View style={{flexDirection: 'row', margin: 10}} testID="addRequestPage">
                     <TextInput
                         style={{flex: 3, margin: 10}}
                         label='Item'

@@ -157,7 +157,7 @@ class Requests extends Component {
 
         return (
 
-            <View style={{flex: 1}}>
+            <View style={{flex: 1}} testID="requestsPage">
                 <NavigationEvents onDidFocus={() => {
                     firebase.database().ref('/').once('value').then(response => {
                         this.setState({requestsObj: response.val().requests})
@@ -170,6 +170,7 @@ class Requests extends Component {
                     </Card.Content>
                 </Card>
                 <FAB
+                    testID="addRequestButton"
                     icon={"add"}
                     small
                     style={styles.fab}

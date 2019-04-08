@@ -222,7 +222,7 @@ class MyAccount extends Component {
         // console.log(this.state.user.addresses);
 
         return (
-            <PaperProvider theme={paperTheme}>
+            <PaperProvider theme={paperTheme} >
                 <NavigationEvents onDidFocus={() => {
                     const user = firebase.auth().currentUser.uid;
                     firebase.database().ref('/users/' + user + '/').once('value')
@@ -234,7 +234,7 @@ class MyAccount extends Component {
                         });
                 }}
                 />
-                <ScrollView>
+                <ScrollView testID="myAccountPage">
                     <View>
                         <TouchableOpacity
                             style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}

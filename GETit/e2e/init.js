@@ -7,6 +7,7 @@ jasmine.getEnv().addReporter(adapter);
 
 beforeAll(async () => {
   await detox.init(config);
+  // await setPermissions(['location=always']);
 });
 
 beforeEach(async () => {
