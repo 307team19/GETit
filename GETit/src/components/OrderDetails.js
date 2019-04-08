@@ -125,10 +125,13 @@ class OrderDetails extends Component {
 
         }
       
+    };
+
+    openMaps = () => {
+        Linking.openURL(`http://maps.apple.com/?address=Purdue Memorial Union`)
     }
 
-
-	render() {
+	render(){
 		return (
 			<ScrollView>
                 {this.retView("item")}
@@ -139,6 +142,7 @@ class OrderDetails extends Component {
                 {this.retView("price")}
                 {this.retView("link")}
                 <View>
+                    <TouchableOpacity onPress={this.openMaps}>
                     <Image
                         style = {styles.imageStyle}
                         source={{
@@ -147,11 +151,13 @@ class OrderDetails extends Component {
                             + this.mapKey + '&format=jpg&visual_refresh=true'
                             + '&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C' + this.state.details.address
                     }}/>
+                    </TouchableOpacity>
                 </View>
                 {this.retView("accept")}
             </ScrollView>
 		);
 	};
+
 }
 
 const styles = {
