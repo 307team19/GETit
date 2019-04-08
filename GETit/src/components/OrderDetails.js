@@ -65,8 +65,17 @@ class OrderDetails extends Component {
                 <View style={{marginLeft: '1%', marginRight: '1%' }}>
                    <Text style={{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>Price</Text>
                    <View style = {{...styles.boxStyle, marginBottom: 3, borderColor: '#007aff',}}>
-                        <Text numberOfLines={5} ellipsizeMode ={'tail'} style = {{ textAlign: 'center', fontSize: 30, margin: 3, fontWeight: 'bold'}}>${this.state.details.price}</Text>
+                       <Text numberOfLines={5} ellipsizeMode ={'tail'} style = {{ textAlign: 'center', fontSize: 30, margin: 3, fontWeight: 'bold'}}>${this.state.details.price}</Text>
                    </View>     
+                </View>
+            )
+        }else if(item == "addressField"){
+            return(
+                <View style={{marginLeft: '1%', marginRight: '1%' }}>
+                    <Text style={{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>Address</Text>
+                    <View style = {{...styles.boxStyle, marginBottom: 3, borderColor: '#007aff',}}>
+                        <Text numberOfLines={1} style = {{ textAlign: 'left', fontSize: 20, margin: 3}}>{this.state.details.address}</Text>
+                    </View>
                 </View>
             )
         }else if(item == "link"){
@@ -126,6 +135,7 @@ class OrderDetails extends Component {
                 {this.retView("description")}
                 {this.retView("instructions")}
                 {this.retView("email")}
+                {this.retView("addressField")}
                 {this.retView("price")}
                 {this.retView("link")}
                 <View>
