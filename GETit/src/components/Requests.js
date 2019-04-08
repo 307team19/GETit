@@ -53,19 +53,6 @@ class Requests extends Component {
 
 
             if (obj) {
-                // Object.keys(obj).forEach((key, index) => {
-                //
-                //         if (obj[key].completed === true && obj[key].email === this.state.email) {
-                //             console.log(obj[key].email);
-                //             DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit', obj[key].item + " is completed");
-                //             PushNotification.localNotification({
-                //                 title: "Notification from GETit", // (optional)
-                //                 message: obj[key].item + " is completed", // (required)
-                //                 foreground: true
-                //             });
-                //         }
-                //     }
-                // );
 
                 if (obj.completed === true && obj.email === this.state.email) {
                     DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit', obj.item + " is completed");
@@ -75,6 +62,16 @@ class Requests extends Component {
                         foreground: true
                     });
                 }
+
+                else if (obj.acceptedBy !== "" && obj.email === this.state.email) {
+                    DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit', obj.item + " is accepted");
+                    PushNotification.localNotification({
+                        title: "Notification from GETit", // (optional)
+                        message: obj.item + " is accepted", // (required)
+                        foreground: true
+                    });
+                }
+
             }
 
 
