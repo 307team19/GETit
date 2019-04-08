@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Alert, Linking, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {Platform, Image, Text, View, ScrollView, TouchableOpacity, Linking, Alert} from 'react-native';
 import firebase from "firebase";
 
 class OrderDetails extends Component {
@@ -8,24 +8,24 @@ class OrderDetails extends Component {
         details: {},
     };
 
-    componentWillMount() {
-        console.log(this.props.navigation.state.params.details)
-        this.setState({details: this.props.navigation.state.params.details})
-
+    componentWillMount(){
+       console.log(this.props.navigation.state.params.details) 
+       this.setState({details: this.props.navigation.state.params.details})
     }
 
-    retView = (item) => {
-        if (item == "item") {
-            return (
-                <View style={{marginLeft: '1%', marginRight: '1%'}}>
-                    <Text style={{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>Item</Text>
-                    <View style={styles.boxStyle}>
-                        <Text numberOfLines={2} ellipsizeMode={'tail'}
-                              style={{textAlign: 'left', fontSize: 20, margin: 3}}>{this.state.details.item}</Text>
-                    </View>
-                </View>
-            )
-        } else if (item == "description") {
+    mapKey = 'AIzaSyDOhIL5sHTAm6rrVac5iCpOnEZU-7RkfK0';
+
+    retView = (item) =>{
+        if(item == "item"){ 
+          return(
+          <View style={{marginLeft: '1%', marginRight: '1%' }}>
+                   <Text style={{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>Item</Text>
+                   <View style = {styles.boxStyle}>
+                        <Text numberOfLines={2} ellipsizeMode ={'tail'} style = {{textAlign: 'left', fontSize: 20, margin: 3}}>{this.state.details.item}</Text>
+                   </View>
+         </View>
+          )
+        }else if(item == "description"){
             var desc = this.state.details.description
             if (desc == "") {
                 desc = "N/A"
@@ -63,18 +63,35 @@ class OrderDetails extends Component {
                     </View>
                 </View>
             )
-        } else if (item == "price") {
-            return (
-                <View style={{marginLeft: '1%', marginRight: '1%'}}>
-                    <Text style={{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>Price</Text>
-                    <View style={{...styles.boxStyle, marginBottom: 3, borderColor: '#007aff',}}>
-                        <Text numberOfLines={5} ellipsizeMode={'tail'} style={{
-                            textAlign: 'center',
-                            fontSize: 30,
-                            margin: 3,
-                            fontWeight: 'bold'
-                        }}>${this.state.details.price}</Text>
+        }else if(item == "price"){
+            return(
+                <View style={{marginLeft: '1%', marginRight: '1%' }}>
+                   <Text style={{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>Price</Text>
+                   <View style = {{...styles.boxStyle, marginBottom: 3, borderColor: '#007aff',}}>
+                       <Text numberOfLines={5} ellipsizeMode ={'tail'} style = {{ textAlign: 'center', fontSize: 30, margin: 3, fontWeight: 'bold'}}>${this.state.details.price}</Text>
+                   </View>     
+                </View>
+            )
+        }else if(item == "addressField"){
+            return(
+                <View style={{marginLeft: '1%', marginRight: '1%' }}>
+                    <Text style={{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>Address</Text>
+                    <View style = {{...styles.boxStyle, marginBottom: 3, borderColor: '#007aff',}}>
+                        <Text numberOfLines={1} style = {{ textAlign: 'left', fontSize: 20, margin: 3}}>{this.state.details.address}</Text>
                     </View>
+                </View>
+            )
+        }else if(item == "link"){
+            if(this.state.details.link){
+               return(
+                <View style={{marginLeft: '1%', marginRight: '1%' }}>
+                   <TouchableOpacity 
+                   style = {{...styles.boxStyle, borderColor: '#0dc146', marginBottom: 3, backgroundColor: '#0dc146'}}
+                   onPress = {()=>{
+                       Linking.openURL(this.state.details.link).catch((error => alert("Link is not valid\n" + item.link)))
+                   }}>
+                        <Text numberOfLines={5} ellipsizeMode ={'tail'} style = {{ textAlign: 'center', fontSize: 30, margin: 3, fontWeight: 'bold', color: 'white'}}>Open Link</Text>
+                   </TouchableOpacity>     
                 </View>
             )
         } else if (item == "link") {
@@ -146,23 +163,47 @@ class OrderDetails extends Component {
             )
 
         }
+      
+    };
 
-    }
+    openMaps = () => {
+        if (Platform.OS === 'ios')
+        {
+            Linking.openURL(`http://maps.apple.com/?address=` + this.state.details.address);
+        }
+        else
+        {
+            Linking.openURL(`https://www.google.com/maps/search/?api=1&query=` + this.state.details.address);
+        }
+    };
 
-
-    render() {
-        return (
-            <ScrollView>
+	render() {
+		return (
+			<ScrollView>
                 {this.retView("item")}
                 {this.retView("description")}
                 {this.retView("instructions")}
                 {this.retView("email")}
+                {this.retView("addressField")}
                 {this.retView("price")}
                 {this.retView("link")}
+                <View>
+                    <TouchableOpacity onPress={this.openMaps}>
+                    <Image
+                        style = {styles.imageStyle}
+                        source={{
+                            uri: 'https://maps.googleapis.com/maps/api/staticmap?center='
+                            + this.state.details.address + '&zoom=17&scale=2&size=500x500&maptype=roadmap&key='
+                            + this.mapKey + '&format=jpg&visual_refresh=true'
+                            + '&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C' + this.state.details.address
+                    }}/>
+                    </TouchableOpacity>
+                </View>
                 {this.retView("accept")}
             </ScrollView>
-        );
-    };
+		);
+	};
+
 }
 
 const styles = {
@@ -179,7 +220,11 @@ const styles = {
         marginRight: 5,
 
     },
-
+    imageStyle: {
+       height: 220,
+        margin: 10
+    }
+   
 };
 
 export default OrderDetails;

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eadc908c-1f83-4bbd-83dd-656b58f67d0a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/GETit/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/android/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GETit/src/components/OrderDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/OrderDetails.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -15,23 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/OrderDetails.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="76" column="87" lean-forward="true" selection-start-line="76" selection-start-column="87" selection-end-line="76" selection-end-column="87" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/GETit/src/components/LoginPage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="207" lean-forward="true" selection-start-line="207" selection-end-line="207" />
+            <state relative-caret-position="367">
+              <caret line="141" column="16" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -60,6 +49,8 @@
       <find>cancel</find>
       <find>color</find>
       <find>button</find>
+      <find>touchable</find>
+      <find>this.toggle</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -85,6 +76,7 @@
         <option value="$PROJECT_DIR$/GETit/src/components/EditRequest.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/Requests.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/RequestHistory.js" />
+        <option value="$PROJECT_DIR$/GETit/src/components/Orders.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/OrderDetails.js" />
       </list>
     </option>
@@ -208,10 +200,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53512000" />
+    <option name="totallyTimeSpent" value="57917000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="826" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18604651" />
@@ -382,16 +374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/MyAccount.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="271" column="109" selection-start-line="271" selection-start-column="109" selection-end-line="271" selection-end-column="109" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/EditRequest.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -441,9 +423,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/LoginPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/Orders.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="-3716">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/MyAccount.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1013">
+          <caret line="261" lean-forward="true" selection-start-line="261" selection-end-line="261" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -452,18 +455,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/OrderDetails.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="76" column="87" lean-forward="true" selection-start-line="76" selection-start-column="87" selection-end-line="76" selection-end-column="87" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/LoginPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="207" lean-forward="true" selection-start-line="207" selection-end-line="207" />
+        <state relative-caret-position="367">
+          <caret line="141" column="16" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
