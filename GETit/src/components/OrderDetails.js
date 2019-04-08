@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, ScrollView, TouchableOpacity, Linking, Alert} from 'react-native';
+import {Image, Text, View, ScrollView, TouchableOpacity, Linking, Alert} from 'react-native';
 import firebase from "firebase";
 
 class OrderDetails extends Component {
@@ -11,7 +11,6 @@ class OrderDetails extends Component {
     componentWillMount(){
        console.log(this.props.navigation.state.params.details) 
        this.setState({details: this.props.navigation.state.params.details})
-
     }
 
     retView = (item) =>{
@@ -128,6 +127,13 @@ class OrderDetails extends Component {
                 {this.retView("price")}
                 {this.retView("link")}
                 {this.retView("accept")}
+                <View>
+                    <Image
+                        style = {styles.imageStyle}
+                        source={{
+                            uri: 'https://www.mapquestapi.com/staticmap/v5/map?key=g3ysgsJ0g5D0GS3QyLb6fU9jvo1osSAn&center=Boston,MA&size=500,500&zoom=17'
+                    }}/>
+                </View>
             </ScrollView>
 		);
 	};
@@ -147,6 +153,13 @@ const styles = {
         marginRight: 5,
        
     },
+    imageStyle: {
+       height: 220,
+        marginLeft: 5,
+        marginRight: 5,
+       borderWidth: 1,
+        borderColor: '#E00'
+    }
    
 };
 
