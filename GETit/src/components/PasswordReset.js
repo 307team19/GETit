@@ -49,7 +49,6 @@ const styles = {
 	viewStyle: {
 		width: null,
 		height: null,
-		// margin: 10,
 		padding: 12,
 		flex: 1,
 		backgroundColor: '#eeeeee'

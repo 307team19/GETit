@@ -1,15 +1,19 @@
 import React, {Component} from 'react';
-import {FlatList, Linking, Text, View, TouchableOpacity} from 'react-native';
+import {FlatList, Linking, PushNotificationIOS, Text, TouchableOpacity, View} from 'react-native';
 import {Card, FAB} from 'react-native-paper'
 import firebase from "firebase";
-import {ListItem} from 'react-native-elements'
+import PushNotification from 'react-native-push-notification'
 import {NavigationEvents} from 'react-navigation';
+import DropdownAlert from 'react-native-dropdownalert';
+import DropDownHandler from './DropDownHandler';
+
 
 class Requests extends Component {
 
     state = {
         email: '',
-        requestsObj: []
+        requestsObj: [],
+        visible: false
     };
 
     
@@ -23,11 +27,58 @@ class Requests extends Component {
                     email: response.val().email,
                     addresses: response.val().addresses,
                 });
-            });
+            })
         firebase.database().ref('/').once('value').then(response => {
             this.setState({requestsObj: response.val().requests})
         })
 
+        PushNotification.configure({
+            onNotification: function (notification) {
+                console.log('NOTIFICATION:', notification);
+                notification.finish(PushNotificationIOS.FetchResult.NoData);
+            },
+            permissions: {
+                alert: true,
+                badge: true,
+                sound: true
+            },
+            popInitialNotification: true,
+            requestPermissions: true,
+        });
+
+        firebase.database().ref('/requests/').on('child_changed', (snapshot) => {
+
+
+            const obj = snapshot.val()
+
+
+            if (obj) {
+                // Object.keys(obj).forEach((key, index) => {
+                //
+                //         if (obj[key].completed === true && obj[key].email === this.state.email) {
+                //             console.log(obj[key].email);
+                //             DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit', obj[key].item + " is completed");
+                //             PushNotification.localNotification({
+                //                 title: "Notification from GETit", // (optional)
+                //                 message: obj[key].item + " is completed", // (required)
+                //                 foreground: true
+                //             });
+                //         }
+                //     }
+                // );
+
+                if (obj.completed === true && obj.email === this.state.email) {
+                    DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit', obj.item + " is completed");
+                    PushNotification.localNotification({
+                        title: "Notification from GETit", // (optional)
+                        message: obj.item + " is completed", // (required)
+                        foreground: true
+                    });
+                }
+            }
+
+
+        })
 
     }
 
@@ -61,51 +112,57 @@ class Requests extends Component {
     }
 
     renderItem = ({item}) => (
-        
-        <Card style={{margin: 7,flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
+
+        <Card style={{margin: 7, flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
             <View>
-                <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', borderBottomColor: 'black', borderBottomWidth: 1,}}>
-                    <View style = {{flex: 0.75}}>
-                        <Text style = {{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>{item.item}</Text>
-                    </View>
-                    <View style = {{flex: 0.25, paddingTop: 8}}>
-                        <Text style = {{textAlign: 'center', fontSize: 20}}>${item.price}</Text>
-                    </View>
-                </View>
 
-
-                <View style = {{margin: 3, flex: 1}}>
-                        <Text style = {{textAlign: 'center'}} >{item.description}</Text>       
-                </View>
-
-                <View style = {{margin: 3, flex: 1}}>
-                        <Text style = {{textAlign: 'center', fontStyle: 'italic'}} >[{item.instructions}]</Text>       
-                </View>
-
-                <View style = {{ flex: 1}}>
-                <TouchableOpacity 
-                style = {this.shouldDisplayOpenLink(item)} 
-                onPress={()=>{
-                                if(item.link){
-                                    console.log("LINK: "+ item.link)
-                                    Linking.openURL(item.link).catch((error => alert("Link is not valid\n" + item.link)))
-                                }
+                <View style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
                 }}>
-                   <Text style = {styles.textStyle}>{this.shouldShowText(item)}</Text>
-                </TouchableOpacity> 
+                    <View style={{flex: 0.75}}>
+                        <Text style={{textAlign: 'left', fontSize: 30, fontWeight: 'bold'}}>{item.item}</Text>
+                    </View>
+                    <View style={{flex: 0.25, paddingTop: 8}}>
+                        <Text style={{textAlign: 'center', fontSize: 20}}>${item.price}</Text>
+                    </View>
                 </View>
 
-                <View style = {{ flex: 1}}>
-                <TouchableOpacity 
-                style = {styles.buttonStyle} 
-                onPress={()=>
-                                {
-                                    item.addresses = this.state.addresses
-                                    this.props.navigation.navigate('editRequest', {requestItem: item});
-                                }
-                }>
-                   <Text style = {styles.textStyle}>Edit</Text>
-                </TouchableOpacity> 
+
+                <View style={{margin: 3, flex: 1}}>
+                    <Text style={{textAlign: 'center'}}>{item.description}</Text>
+                </View>
+
+                <View style={{margin: 3, flex: 1}}>
+                    <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{item.instructions}]</Text>
+                </View>
+
+                <View style={{flex: 1}}>
+                    <TouchableOpacity
+                        style={this.shouldDisplayOpenLink(item)}
+                        onPress={() => {
+                            if (item.link) {
+                                console.log("LINK: " + item.link)
+                                Linking.openURL(item.link).catch((error => alert("Link is not valid\n" + item.link)))
+                            }
+                        }}>
+                        <Text style={styles.textStyle}>{this.shouldShowText(item)}</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{flex: 1}}>
+                    <TouchableOpacity
+                        style={styles.buttonStyle}
+                        onPress={() => {
+                            item.addresses = this.state.addresses
+                            this.props.navigation.navigate('editRequest', {requestItem: item});
+                        }
+                        }>
+                        <Text style={styles.textStyle}>Edit</Text>
+                    </TouchableOpacity>
                 </View>
               
                     
@@ -127,7 +184,7 @@ class Requests extends Component {
                 }
             );
 
-            keyExtractor = (item, index) => index
+            keyExtractor = (item, index) => index;
 
 
             return (
@@ -174,9 +231,11 @@ class Requests extends Component {
                     small
                     style={styles.fab}
                     onPress={() => {
+
                         this.props.navigation.navigate('addRequest', {requestItem: null});
                     }}
                 />
+
             </View>
 
         );
@@ -197,12 +256,12 @@ const styles = {
     },
 
     textStyle: {
-         alignSelf: 'center',
-         color: '#007aff',
-         fontSize: 16,
-         fontWeight: '600',
-         paddingTop: 10,
-         paddingBottom: 10,
+        alignSelf: 'center',
+        color: '#007aff',
+        fontSize: 16,
+        fontWeight: '600',
+        paddingTop: 10,
+        paddingBottom: 10,
     },
 
     buttonStyle: {

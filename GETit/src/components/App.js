@@ -14,6 +14,9 @@ import AddRequest from "./AddRequest"
 import RequestHistory from "./RequestHistory";
 import EditRequest from "./EditRequest";
 import OrderDetails from "./OrderDetails"
+import DropdownAlert from 'react-native-dropdownalert';
+import DropDownHolder from './DropDownHandler'
+
 
 const TabNavigator = createMaterialTopTabNavigator({
             orders: Orders,
@@ -108,10 +111,12 @@ class App extends Component<Props> {
     }
 
 
+
     render() {
         return (
             <View style={{flex: 1}}>
                 <AppContainer/>
+                <DropdownAlert ref={ref => DropDownHolder.setDropDown(ref)}/>
             </View>
         )
 

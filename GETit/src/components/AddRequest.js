@@ -223,7 +223,8 @@ class AddRequest extends Component {
                     }}
                 />
                 <View>
-                    <Text style = {this.shouldShowCurrLoc()} numberOfLines={2} ellipsizeMode = 'tail'>Current location: {this.state.GPSLocation}</Text>
+                    <Text style={this.shouldShowCurrLoc()} numberOfLines={2} ellipsizeMode='tail'>Current
+                        location: {this.state.GPSLocation}</Text>
                 </View>
                 <TextInput
                     style={{margin: 10}}
