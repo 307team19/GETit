@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, Text, View, ScrollView, TouchableOpacity, Linking, Alert} from 'react-native';
+import {Platform, Image, Text, View, ScrollView, TouchableOpacity, Linking, Alert} from 'react-native';
 import firebase from "firebase";
 
 class OrderDetails extends Component {
@@ -128,8 +128,15 @@ class OrderDetails extends Component {
     };
 
     openMaps = () => {
-        Linking.openURL(`http://maps.apple.com/?address=Purdue Memorial Union`)
-    }
+        if (Platform.OS === 'ios')
+        {
+            Linking.openURL(`http://maps.apple.com/?address=` + this.state.details.address);
+        }
+        else
+        {
+            Linking.openURL(`https://www.google.com/maps/search/?api=1&query=` + this.state.details.address);
+        }
+    };
 
 	render(){
 		return (
