@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {FlatList, Linking, Text, TouchableOpacity, View, ScrollView} from 'react-native';
+import {FlatList, Linking, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import firebase from "firebase";
 import {NavigationEvents, StackNavigator} from "react-navigation";
-import {Card, Button} from "react-native-paper";
+import {Card} from "react-native-paper";
 import Collapsible from 'react-native-collapsible';
 
 class Orders extends Component {
@@ -11,12 +11,13 @@ class Orders extends Component {
     static navigationOptions = {
         title: 'Orders',
     };
-    
+
     state = {
         requests: [],
-        email:'',
+        email: '',
         collapsedAll: false,
-        collapsedMy: false
+        collapsedMy: false,
+        uid: ''
     };
 
     componentWillMount() {
@@ -24,7 +25,10 @@ class Orders extends Component {
         const u = firebase.auth().currentUser.uid;
         firebase.database().ref('/users/' + u + '/').once('value')
             .then(response => {
-                this.setState({email: response.val().email,});
+                this.setState({
+                    email: response.val().email,
+                    uid: u
+                });
             });
 
         firebase.database().ref('/').once('value').then(response => {
@@ -38,13 +42,48 @@ class Orders extends Component {
             var adds = [];
             Object.keys(this.state.requests).forEach((key, index) => {
                     if (!(this.state.requests[key].email === this.state.email)) {
-                    adds.push(this.state.requests[key]);
+                        adds.push(this.state.requests[key]);
                     }
                 }
             );
 
-            keyExtractor = (item, index) => index
+            let keyExtractor = (item, index) => index;
 
+            return (
+                <View style={{flex: 1}}>
+                    <FlatList
+                        data={adds}
+                        renderItem={this.renderItem}
+                        keyExtractor={this.keyExtractor}
+                    />
+                </View>
+
+            )
+
+        } else {
+            return (
+                <View style={{flex: 1}}>
+                    <Text>NO ORDERS</Text>
+                </View>
+
+            )
+        }
+
+    };
+
+    loadMyRequests = () => {
+        console.log(this.state.uid);
+        console.log(this.state.requests);
+        if (this.state.requests) {
+            var adds = [];
+            Object.keys(this.state.requests).forEach((key, index) => {
+                    if ((this.state.requests[key].acceptedBy === this.state.uid)) {
+                        adds.push(this.state.requests[key]);
+                    }
+                }
+            );
+
+            let keyExtractor = (item, index) => index;
 
             return (
                 <View style={{flex: 1}}>
@@ -69,7 +108,7 @@ class Orders extends Component {
     };
 
     shouldDisplayOpenLink = (item) => {
-        if (item.link == '') {
+        if (item.link === '') {
             return {
                 height: 0
             }
@@ -87,15 +126,15 @@ class Orders extends Component {
             }
         }
 
-    }
+    };
 
     shouldShowText = (item) => {
-        if (item.link == '') {
+        if (item.link === '') {
             return ''
         } else {
             return 'Open Link'
         }
-    }
+    };
 
     renderItem = ({item}) => (
 
@@ -122,12 +161,12 @@ class Orders extends Component {
                 <View style={{margin: 3}}>
                     <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{item.instructions}]</Text>
                 </View>
-                <View style={{ flexDirection: 'column', padding:0}}>
+                <View style={{flexDirection: 'column', padding: 0}}>
                     <TouchableOpacity
                         style={this.shouldDisplayOpenLink(item)}
                         onPress={() => {
                             if (item.link) {
-                                console.log("LINK: " + item.link)
+                                console.log("LINK: " + item.link);
                                 Linking.openURL(item.link).catch((error => alert("Link is not valid\n" + item.link)))
                             }
                         }}>
@@ -136,7 +175,7 @@ class Orders extends Component {
                     <TouchableOpacity
                         style={styles.buttonStyle}
                         onPress={() => {
-                            this.props.navigation.navigate('orderdetails',{details: item});
+                            this.props.navigation.navigate('orderdetails', {details: item});
                         }}>
                         <Text style={styles.textStyle}>Details</Text>
                     </TouchableOpacity>
@@ -148,38 +187,30 @@ class Orders extends Component {
     );
 
     toggleExpandedAll = () => {
-        // if(this.state.collapsedMy==false){
-        //     this.setState({collapsedMy: !this.state.collapsedMy, collapsedAll: !this.state.collapsedAll})
-        // }else {
-        //     this.setState({collapsedAll: !this.state.collapsedAll});
-        // }
-        console.log("collapsedAll is "+this.state.collapsedAll);
-        console.log("collapsedMy is "+this.state.collapsedMy);
-        if(!this.state.collapsedAll){
+
+        console.log("collapsedAll is " + this.state.collapsedAll);
+        console.log("collapsedMy is " + this.state.collapsedMy);
+        if (!this.state.collapsedAll) {
             this.setState({collapsedAll: true});
-        }else{
+        } else {
             this.setState({collapsedAll: false});
         }
         // this.setState({collapsedAll: !this.state.collapsedAll});
-        console.log("collapsedAll is "+this.state.collapsedAll);
-        console.log("collapsedMy is "+this.state.collapsedMy);
+        console.log("collapsedAll is " + this.state.collapsedAll);
+        console.log("collapsedMy is " + this.state.collapsedMy);
     };
 
     toggleExpandedMy = () => {
-        // if(this.state.collapsedAll==false){
-        //     this.setState({collapsedAll: !this.state.collapsedAll, collapsedMy: !this.state.collapsedMy})
-        // }else {
-        //     this.setState({collapsedMy: !this.state.collapsedMy});
-        // }
-        console.log("collapsedAll is "+this.state.collapsedAll);
-        console.log("collapsedMy is "+this.state.collapsedMy);
-        if(this.state.collapsedMy==false){
+
+        console.log("collapsedAll is " + this.state.collapsedAll);
+        console.log("collapsedMy is " + this.state.collapsedMy);
+        if (this.state.collapsedMy === false) {
             this.setState({collapsedMy: true});
-        }else{
+        } else {
             this.setState({collapsedMy: false});
         }
-        console.log("collapsedAll is "+this.state.collapsedAll);
-        console.log("collapsedMy is "+this.state.collapsedMy);
+        console.log("collapsedAll is " + this.state.collapsedAll);
+        console.log("collapsedMy is " + this.state.collapsedMy);
     };
 
     render() {
@@ -194,30 +225,30 @@ class Orders extends Component {
                 />
                 <Card style={styles.topCard} elevation={5}>
                     <ScrollView ref="scroll">
-                            <View style={{alignItems: 'center'}, {backgroundColor:'#007aff'}}>
-                                <TouchableOpacity onPress={this.toggleExpandedAll} style={{flex:1}}>
-                                    <Text style={styles.textStyleTop}>
-                                        Available Orders
-                                    </Text>
-                                </TouchableOpacity>
-                            </View>
-                            <Collapsible collapsed={this.state.collapsedAll} align='center' style={{margin: 5}}>
-                                <Card.Content style={{flex: 1}}>
-                                    {this.loadRequests()}
-                                </Card.Content>
-                            </Collapsible>
-                            <View style={{alignItems: 'center'}, {backgroundColor:'#007aff'}}>
-                                <TouchableOpacity onPress={this.toggleExpandedMy} style={{flex:1}}>
-                                    <Text style={styles.textStyleTop}>
-                                        My Orders
-                                    </Text>
-                                </TouchableOpacity>
-                            </View>
-                            <Collapsible collapsed={this.state.collapsedMy} align='center'>
-                                <Card.Content style={{flex: 1}}>
-                                    {this.loadRequests()}
-                                </Card.Content>
-                            </Collapsible>
+                        <View style={{alignItems: 'center', backgroundColor: '#007aff'}}>
+                            <TouchableOpacity onPress={this.toggleExpandedAll} style={{flex: 1}}>
+                                <Text style={styles.textStyleTop}>
+                                    Available Orders
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                        <Collapsible collapsed={this.state.collapsedAll} align='center' style={{margin: 5}}>
+                            <Card.Content style={{flex: 1}}>
+                                {this.loadRequests()}
+                            </Card.Content>
+                        </Collapsible>
+                        <View style={{alignItems: 'center', backgroundColor: '#007aff'}}>
+                            <TouchableOpacity onPress={this.toggleExpandedMy} style={{flex: 1}}>
+                                <Text style={styles.textStyleTop}>
+                                    My Orders
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                        <Collapsible collapsed={this.state.collapsedMy} align='center'>
+                            <Card.Content style={{flex: 1}}>
+                                {this.loadMyRequests()}
+                            </Card.Content>
+                        </Collapsible>
                     </ScrollView>
                 </Card>
             </View>

@@ -19,44 +19,44 @@ import DropDownHolder from './DropDownHandler'
 
 
 const TabNavigator = createMaterialTopTabNavigator({
-            orders: Orders,
-            myaccount: MyAccount,
-            requests: Requests,
-},
-{
-            order: ['orders', 'requests', 'myaccount'],
-            swipeEnabled: true,
-            tabBarPosition: 'bottom',
-            tabBarOptions: {
-                labelStyle: {
-                    fontSize: 12,
-                },
-                style: {
-                    backgroundColor: '#1eaaf1',
-                },
-            }
+        orders: Orders,
+        myaccount: MyAccount,
+        requests: Requests,
+    },
+    {
+        order: ['orders', 'requests', 'myaccount'],
+        swipeEnabled: true,
+        tabBarPosition: 'bottom',
+        tabBarOptions: {
+            labelStyle: {
+                fontSize: 12,
+            },
+            style: {
+                backgroundColor: '#1eaaf1',
+            },
         }
+    }
 )
 
-TabNavigator.navigationOptions = ({ navigation }) => {
-  const { routeName } = navigation.state.routes[navigation.state.index];
+TabNavigator.navigationOptions = ({navigation}) => {
+    const {routeName} = navigation.state.routes[navigation.state.index];
 
-  
-  if(routeName == "requests"){
-       return {
-             headerTitle: "Currents Requests",
-       };
-  }else if(routeName == "orders"){
-      return {
-             headerTitle: "Orders",
-       };
-  }else{
-      return {
-             headerTitle: "My Account",
-      };
-  }
-  
- 
+
+    if (routeName === "requests") {
+        return {
+            headerTitle: "Currents Requests",
+        };
+    } else if (routeName === "orders") {
+        return {
+            headerTitle: "Orders",
+        };
+    } else {
+        return {
+            headerTitle: "My Account",
+        };
+    }
+
+
 };
 
 const AppNavigator = createStackNavigator(
@@ -92,7 +92,6 @@ const AppNavigator = createStackNavigator(
 );
 
 
-
 const AppContainer = createAppContainer(AppNavigator);
 
 class App extends Component<Props> {
@@ -109,7 +108,6 @@ class App extends Component<Props> {
             }
         );
     }
-
 
 
     render() {
