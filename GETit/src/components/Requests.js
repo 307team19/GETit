@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, Linking, PushNotificationIOS, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, FlatList, Linking, PushNotificationIOS, Text, TouchableOpacity, View} from 'react-native';
 import {Card, FAB} from 'react-native-paper'
 import firebase from "firebase";
 import PushNotification from 'react-native-push-notification'
@@ -48,7 +48,6 @@ class Requests extends Component {
 
 
             const obj = snapshot.val();
-
 
             if (obj) {
 
@@ -158,8 +157,24 @@ class Requests extends Component {
                     <TouchableOpacity
                         style={styles.buttonStyle}
                         onPress={() => {
-                            item.addresses = this.state.addresses
-                            this.props.navigation.navigate('editRequest', {requestItem: item});
+                            if (item.acceptedBy !== "") {
+                                Alert.alert(
+                                    'Alert!',
+                                    'The request has already been accepted. You cannot edit it now.',
+                                    [
+                                        {
+                                            text: 'OK',
+                                            onPress: () => console.log('Cancel Pressed'),
+                                            style: 'cancel',
+                                        },
+
+                                    ],
+                                    {cancelable: false},
+                                );
+                            } else {
+                                item.addresses = this.state.addresses;
+                                this.props.navigation.navigate('editRequest', {requestItem: item});
+                            }
                         }
                         }>
                         <Text style={styles.textStyle}>Edit</Text>
