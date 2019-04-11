@@ -109,7 +109,7 @@ class MyAccount extends Component {
 
     onEditPressed() {
         const {email, phoneNumber, firstName, lastName, addresses, photoURL, address, venmoUsername} = this.state;
-        if(venmoUsername === "" || phoneNumber === "") {
+        if (venmoUsername === "" || phoneNumber === "") {
             Alert.alert(
                 'Oops!',
                 'Check the phone number and venmo username',

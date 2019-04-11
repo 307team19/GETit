@@ -63,7 +63,7 @@ class CreateUser extends Component {
             this.state.phoneNumber === "" || this.state.venmoUsername === "") {
             Alert.alert(
                 'Oops!',
-                'Check the first name, last name, phone number and venmo usernname',
+                'Check the first name, last name, phone number and venmo username',
                 [
                     {
                         text: 'OK',

@@ -49,6 +49,23 @@ class SignUpForm extends Component {
 
     async onSignUpButtonPressed() {
 
+        if (this.state.email === "" || this.state.firstName === "" || this.state.lastName === "" ||
+            this.state.phoneNumber === "" || this.state.venmoUsername === "") {
+            Alert.alert(
+                'Oops!',
+                'Check the first name, last name, phone number and venmo username',
+                [
+                    {
+                        text: 'OK',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+
+                ],
+                {cancelable: false},
+            );
+            return;
+        }
 
         const {email, password, phoneNumber, firstName, lastName, venmoUsername} = this.state;
         try {
@@ -174,7 +191,9 @@ class SignUpForm extends Component {
                             label='Phone Number'
                             mode='outlined'
                             value={this.state.phoneNumber}
-                            onChangeText={textString => this.setState({phoneNumber: textString})}
+                            keyboardType='numeric'
+                            onChangeText={textString => this.setState({phoneNumber: textString.replace(/[^0-9]/g, '')})}
+
                         />
                         <TextInput
                             style={styles.textInputStyle}

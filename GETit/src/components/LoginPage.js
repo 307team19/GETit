@@ -26,8 +26,8 @@ class LoginPage extends Component {
     }
 
 
-
     state = {email: '', password: '', loggedIn: null};
+
     componentWillMount() {
 
         GoogleSignin.configure({
@@ -83,7 +83,7 @@ class LoginPage extends Component {
 
     signIn = async () => {
 
-        if(this._isMounted) {
+        if (this._isMounted) {
             try {
                 await GoogleSignin.hasPlayServices();
                 const userInfo = await GoogleSignin.signIn();
@@ -104,7 +104,6 @@ class LoginPage extends Component {
             }
         }
     };
-
 
 
     render() {
