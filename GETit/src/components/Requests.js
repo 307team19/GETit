@@ -4,7 +4,6 @@ import {Card, FAB} from 'react-native-paper'
 import firebase from "firebase";
 import PushNotification from 'react-native-push-notification'
 import {NavigationEvents} from 'react-navigation';
-import DropdownAlert from 'react-native-dropdownalert';
 import DropDownHandler from './DropDownHandler';
 
 
@@ -16,10 +15,9 @@ class Requests extends Component {
         visible: false
     };
 
-    
 
     componentWillMount() {
-        
+
         const u = firebase.auth().currentUser.uid;
         firebase.database().ref('/users/' + u + '/').once('value')
             .then(response => {
@@ -55,21 +53,27 @@ class Requests extends Component {
             if (obj) {
 
                 if (obj.completed === true && obj.email === this.state.email) {
-                    DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit', obj.item + " is completed");
+                    DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit',
+                        'Your request ' + obj.item + " is completed");
                     PushNotification.localNotification({
                         title: "Notification from GETit", // (optional)
                         message: obj.item + " is completed", // (required)
                         foreground: true
                     });
-                }
-
-                else if (obj.acceptedBy !== "" && obj.email === this.state.email) {
-                    DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit', obj.item + " is accepted");
-                    PushNotification.localNotification({
-                        title: "Notification from GETit", // (optional)
-                        message: obj.item + " is accepted", // (required)
-                        foreground: true
-                    });
+                } else if (obj.acceptedBy !== "" && obj.email === this.state.email) {
+                    const acceptorUID = obj.acceptedBy;
+                    let acceptorName = "No name";
+                    firebase.database().ref('/users/' + acceptorUID + '/').once('value')
+                        .then(response => {
+                            acceptorName = response.val().firstName;
+                            DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit',
+                                'Your request ' + obj.item + " is accepted by " + acceptorName);
+                            PushNotification.localNotification({
+                                title: "Notification from GETit", // (optional)
+                                message: obj.item + " is accepted", // (required)
+                                foreground: true
+                            });
+                        });
                 }
 
             }
@@ -79,33 +83,33 @@ class Requests extends Component {
 
     }
 
-    shouldDisplayOpenLink = (item) =>{
-     if(item.link === ''){
-		 return {
-			height: 0
-		 }
-	 }else {
-		 return {
-			flex: 1,
-            alignSelf: 'stretch',
-            backgroundColor: '#fff',
-            borderRadius: 5,
-            borderWidth: 1,
-            borderColor: '#007aff',
-            marginLeft: 5,
-            marginRight: 5,
-            marginBottom: 5,
-		 }
-	 }
+    shouldDisplayOpenLink = (item) => {
+        if (item.link === '') {
+            return {
+                height: 0
+            }
+        } else {
+            return {
+                flex: 1,
+                alignSelf: 'stretch',
+                backgroundColor: '#fff',
+                borderRadius: 5,
+                borderWidth: 1,
+                borderColor: '#007aff',
+                marginLeft: 5,
+                marginRight: 5,
+                marginBottom: 5,
+            }
+        }
 
-	};
+    };
 
-    shouldShowText = (item) =>{
-        if(item.link === ''){
-		 return ''
-	 }else {
-		 return 'Open Link'
-	 }
+    shouldShowText = (item) => {
+        if (item.link === '') {
+            return ''
+        } else {
+            return 'Open Link'
+        }
     };
 
     renderItem = ({item}) => (
@@ -161,9 +165,9 @@ class Requests extends Component {
                         <Text style={styles.textStyle}>Edit</Text>
                     </TouchableOpacity>
                 </View>
-              
-                    
-            </View> 
+
+
+            </View>
         </Card>
 
 
