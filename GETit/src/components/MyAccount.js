@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
-import {Image, Platform, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Image, Platform, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import firebase from 'firebase';
 import RNFetchBlob from 'rn-fetch-blob'
 import {GoogleSignin} from 'react-native-google-signin';
@@ -109,6 +109,22 @@ class MyAccount extends Component {
 
     onEditPressed() {
         const {email, phoneNumber, firstName, lastName, addresses, photoURL, address, venmoUsername} = this.state;
+        if(venmoUsername === "" || phoneNumber === "") {
+            Alert.alert(
+                'Oops!',
+                'Check the phone number and venmo username',
+                [
+                    {
+                        text: 'OK',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+
+                ],
+                {cancelable: false},
+            );
+            return;
+        }
         if (this.state.buttonEdit.toString().localeCompare('Edit') === 0) {
             // this.setState({disabledEmail: false});
             this.setState({
