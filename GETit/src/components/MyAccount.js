@@ -26,28 +26,12 @@ const options = {
 
 class MyAccount extends Component {
 
-
-    componentWillMount() {
-        this.setState({uid: firebase.auth().currentUser.uid});
-        const u = firebase.auth().currentUser.uid;
-        firebase.database().ref('/users/' + u + '/').once('value')
-            .then(response => {
-                this.setState({user: response.val()});
-                this.setState({email: this.state.user.email});
-                this.setState({phoneNumber: this.state.user.phoneNumber});
-                this.setState({firstName: this.state.user.firstName});
-                this.setState({lastName: this.state.user.lastName});
-                this.setState({addresses: this.state.user.addresses});
-                this.setState({photoURL: this.state.user.photoURL});
-                this.setState({address: this.state.user.address});
-            });
-    }
-
     state = {
         disabledEmail: true,
         email: '',
         buttonEdit: 'Edit',
         disabledPhNo: true,
+        disabledVenmo: true,
         phoneNumber: '',
         disabledAddr: true,
         address: '',
@@ -57,8 +41,32 @@ class MyAccount extends Component {
         user: '',
         uid: '',
         addresses: [],
-        photoURL: ''
+        photoURL: '',
+        venmoUsername: ''
     };
+
+    componentWillMount() {
+        this.setState({uid: firebase.auth().currentUser.uid});
+        const u = firebase.auth().currentUser.uid;
+        firebase.database().ref('/users/' + u + '/').once('value')
+            .then(response => {
+                this.setState({user: response.val()});
+                console.log("user is " + this.state.user);
+                this.setState({
+                    email: this.state.user.email,
+                    phoneNumber: this.state.user.phoneNumber,
+                    firstName: this.state.user.firstName,
+                    lastName: this.state.user.lastName,
+                    addresses: this.state.user.addresses,
+                    photoURL: this.state.user.photoURL,
+                    address: this.state.user.address,
+                    venmoUsername: this.state.user.venmoUsername
+                });
+
+            });
+        console.log("email after set state is " + this.state.email);
+    }
+
 
     signOut = async () => {
 
@@ -81,7 +89,6 @@ class MyAccount extends Component {
         this.props.navigation.dispatch(resetAction);
 
         firebase.auth().signOut().then(async function () {
-            console.log("inside here")
             if (provider === "password") {
 
             } else {
@@ -93,8 +100,6 @@ class MyAccount extends Component {
                     console.error(error);
                 }
             }
-
-
             //TODO: this is not reaching here cz of Revoke Access
 
         });
@@ -103,19 +108,22 @@ class MyAccount extends Component {
     };
 
     onEditPressed() {
-        const {email, phoneNumber, firstName, lastName, addresses, photoURL, address} = this.state;
+        const {email, phoneNumber, firstName, lastName, addresses, photoURL, address, venmoUsername} = this.state;
         if (this.state.buttonEdit.toString().localeCompare('Edit') === 0) {
             // this.setState({disabledEmail: false});
-            this.setState({disabledPhNo: false});
-            // this.setState({disabledAddr: false});
-            this.setState({buttonEdit: 'Accept'});
-        } else {
-            // this.setState({disabledEmail: true});
-            // this.setState({buttonEmail: 'Edit'});
-            this.setState({disabledPhNo: true});
-            // this.setState({disabledAddr: true});
-            this.setState({buttonEdit: 'Edit'});
+            this.setState({
+                disabledPhNo: false,
+                buttonEdit: 'Accept',
+                disabledVenmo: false,
 
+            });
+        } else {
+            this.setState({
+                disabledPhNo: true,
+                buttonEdit: 'Edit',
+                disabledVenmo: true,
+
+            });
 
             /*TODO FIX THIS ASAP*/
             var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/");
@@ -126,7 +134,8 @@ class MyAccount extends Component {
                 phoneNumber: phoneNumber,
                 addresses: addresses,
                 photoURL: photoURL,
-                address: address
+                address: address,
+                venmoUsername: venmoUsername
             }).then((data) => {
                 console.log('Synchronization succeeded');
             }).catch((error) => {
@@ -156,7 +165,6 @@ class MyAccount extends Component {
                     photoURL: response.uri,
                 });
 
-
                 //code for uploading to firebase storage.
 
                 const Blob = RNFetchBlob.polyfill.Blob;
@@ -165,23 +173,23 @@ class MyAccount extends Component {
                 window.Blob = Blob;
 
 
-                const uploadUri = Platform.OS === 'ios' ? (this.state.photoURL).replace('file://', '') : this.state.photoURL
-                let uploadBlob = null
-                const imageRef = firebase.storage().ref('posts').child(`${this.state.photoURL}`)
+                const uploadUri = Platform.OS === 'ios' ? (this.state.photoURL).replace('file://', '') : this.state.photoURL;
+                let uploadBlob = null;
+                const imageRef = firebase.storage().ref('posts').child(`${this.state.photoURL}`);
                 fs.readFile(uploadUri, 'base64')
                     .then((data) => {
                         return Blob.build(data, {type: `image/jpg;BASE64`})
                     })
                     .then((blob) => {
-                        uploadBlob = blob
+                        uploadBlob = blob;
                         return imageRef.put(blob, {contentType: 'image/jpg'})
                     })
                     .then(() => {
-                        uploadBlob.close()
+                        uploadBlob.close();
                         return imageRef.getDownloadURL()
                     })
                     .then((url) => {
-                        console.log("down")
+                        console.log("down");
                         console.log("users/" + firebase.auth().currentUser.uid + "/")
                         var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/");
                         userRef.set({
@@ -191,13 +199,14 @@ class MyAccount extends Component {
                             phoneNumber: this.state.phoneNumber,
                             photoURL: url,
                             addresses: this.state.addresses,
-                            address: this.state.address
+                            address: this.state.address,
+                            venmoUsername: this.state.venmoUsername
                         }).then((data) => {
                             console.log('Synchronization succeeded');
                         }).catch((error) => {
                             console.log(error)
-                        })
-                        console.log(url)
+                        });
+                        console.log(url);
                         this.setState({
                             photoURL: url,
                         });
@@ -214,10 +223,6 @@ class MyAccount extends Component {
 
 
     render() {
-
-        // console.log(this.state);
-        // console.log(this.state.user.addresses);
-
         return (
             <PaperProvider theme={paperTheme}>
                 <NavigationEvents onDidFocus={() => {
@@ -249,30 +254,33 @@ class MyAccount extends Component {
 
                         <TextInput
                             style={styles.textInputStyle}
-                            label='email'
+                            label='Email'
                             mode='outlined'
-                            // placeholder="current email"
                             disabled={this.state.disabledEmail}
                             value={this.state.email}
                             onChangeText={textString => this.setState({email: textString})}
                         />
-
                         <TextInput
                             style={styles.textInputStyle}
-                            label='phone number'
+                            label='Phone Number'
                             mode='outlined'
-                            // placeholder="current email"
                             disabled={this.state.disabledPhNo}
                             value={this.state.phoneNumber}
-                            keyboardType = 'numeric'
-
+                            keyboardType='numeric'
                             onChangeText={textString => this.setState({phoneNumber: textString.replace(/[^0-9]/g, '')})}
+                        />
+                        <TextInput
+                            style={styles.textInputStyle}
+                            label='Venmo Username'
+                            mode='outlined'
+                            disabled={this.state.disabledVenmo}
+                            value={this.state.venmoUsername}
+                            onChangeText={textString => this.setState({venmoUsername: textString})}
                         />
 
                         <TouchableOpacity
                             style={{flex: 1, width: null}}
                             onPress={() => {
-                                console.log("here text");
                                 this.props.navigation.navigate('addresses');
                             }}>
                             <TextInput
@@ -281,7 +289,6 @@ class MyAccount extends Component {
                                 pointerEvents="none"
                                 mode='outlined'
                                 onPress={() => {
-                                    console.log("here text");
                                     this.props.navigation.navigate('addresses');
                                 }}
                                 disabled={true}
@@ -292,7 +299,6 @@ class MyAccount extends Component {
 
                         <Button
                             style={styles.buttonContainedStyle}
-                            // onPress={this.onEditPressed.bind(this)}
                             onPress={() => {
                                 console.log("here text");
                                 this.props.navigation.navigate('requestHistory');

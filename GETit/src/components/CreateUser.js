@@ -26,7 +26,8 @@ class CreateUser extends Component {
         password: '',
         phoneNumber: '',
         lastName: '',
-        userInfo: ''
+        userInfo: '',
+        venmoUsername: ''
     };
 
 
@@ -50,7 +51,8 @@ class CreateUser extends Component {
             firstName: fullName[0],
             lastName: fullName[1],
             phoneNumber: pro.phoneNumber,
-            userInfo: firebase.auth().currentUser.uid
+            userInfo: firebase.auth().currentUser.uid,
+            venmoUsername: pro.venmoUsername
         });
 
 
@@ -65,13 +67,14 @@ class CreateUser extends Component {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             phoneNumber: this.state.phoneNumber,
+            venmoUsername: this.state.venmoUsername,
             addresses: {"no address": "no address"},
             address: "no address"
         }).then((data) => {
             console.log('Synchronization succeeded');
         }).catch((error) => {
             console.log(error)
-        })
+        });
 
         this.props.navigation.dispatch(resetAction);
 
@@ -111,6 +114,13 @@ class CreateUser extends Component {
                             mode='outlined'
                             value={this.state.phoneNumber}
                             onChangeText={textString => this.setState({phoneNumber: textString})}
+                        />
+                        <TextInput
+                            style={styles.textInputStyle}
+                            label='Venmo Username'
+                            mode='outlined'
+                            value={this.state.venmoUsername}
+                            onChangeText={textString => this.setState({venmoUsername: textString})}
                         />
                         <Button
                             style={styles.buttonContainedStyle}

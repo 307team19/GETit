@@ -42,6 +42,7 @@ class SignUpForm extends Component {
         phoneNumber: '',
         lastName: '',
         userInfo: '',
+        venmoUsername: ''
 
     };
 
@@ -49,7 +50,7 @@ class SignUpForm extends Component {
     async onSignUpButtonPressed() {
 
 
-        const {email, password, phoneNumber, firstName, lastName} = this.state;
+        const {email, password, phoneNumber, firstName, lastName, venmoUsername} = this.state;
         try {
             await firebase.auth().createUserWithEmailAndPassword(email, password)
         } catch (err) {
@@ -77,6 +78,7 @@ class SignUpForm extends Component {
             phoneNumber,
             firstName,
             lastName,
+            venmoUsername,
             photoURL: "https://firebasestorage.googleapis.com/v0/b/getit-a4be5.appspot.com/o/posts%2Ffile%3A%2FUsers%2Fsehajbirrandhawa%2FLibrary%2FDeveloper%2FCoreSimulator%2FDevices%2FF055FD0C-ABC6-423E-BB50-C01606FF7933%2Fdata%2FContainers%2FData%2FApplication%2FE69A3A82-C538-423F-A1DC-CCE106B25723%2FDocuments%2Fimages%2Fpurduepete.jpg?alt=media&token=e9ada70d-8b56-40d5-b114-1165820105da",
             addresses: {"no address": "no address"},
             address: "no address"
@@ -173,6 +175,13 @@ class SignUpForm extends Component {
                             mode='outlined'
                             value={this.state.phoneNumber}
                             onChangeText={textString => this.setState({phoneNumber: textString})}
+                        />
+                        <TextInput
+                            style={styles.textInputStyle}
+                            label='Venmo Username'
+                            mode='outlined'
+                            value={this.state.venmoUsername}
+                            onChangeText={textString => this.setState({venmoUsername: textString})}
                         />
                         <Button
                             style={styles.buttonContainedStyle}
