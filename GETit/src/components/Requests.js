@@ -49,7 +49,7 @@ class Requests extends Component {
         firebase.database().ref('/requests/').on('child_changed', (snapshot) => {
 
 
-            const obj = snapshot.val()
+            const obj = snapshot.val();
 
 
             if (obj) {
@@ -80,7 +80,7 @@ class Requests extends Component {
     }
 
     shouldDisplayOpenLink = (item) =>{
-     if(item.link == ''){
+     if(item.link === ''){
 		 return {
 			height: 0
 		 }
@@ -98,15 +98,15 @@ class Requests extends Component {
 		 }
 	 }
 
-	}
+	};
 
     shouldShowText = (item) =>{
-        if(item.link == ''){
+        if(item.link === ''){
 		 return ''
 	 }else {
 		 return 'Open Link'
 	 }
-    }
+    };
 
     renderItem = ({item}) => (
 
@@ -181,7 +181,7 @@ class Requests extends Component {
                 }
             );
 
-            keyExtractor = (item, index) => index;
+            let keyExtractor = (item, index) => index;
 
 
             return (
