@@ -3,7 +3,7 @@ import {FlatList, Linking, ScrollView, Text, TouchableOpacity, View} from 'react
 import firebase from "firebase";
 import {NavigationEvents, StackNavigator} from "react-navigation";
 import {Card} from "react-native-paper";
-import Collapsible from 'react-native-collapsible';
+
 
 class Orders extends Component {
 
@@ -15,8 +15,6 @@ class Orders extends Component {
     state = {
         requests: [],
         email: '',
-        collapsedAll: false,
-        collapsedMy: false,
         uid: ''
     };
 
@@ -186,32 +184,7 @@ class Orders extends Component {
 
     );
 
-    toggleExpandedAll = () => {
-
-        console.log("collapsedAll is " + this.state.collapsedAll);
-        console.log("collapsedMy is " + this.state.collapsedMy);
-        if (!this.state.collapsedAll) {
-            this.setState({collapsedAll: true});
-        } else {
-            this.setState({collapsedAll: false});
-        }
-        // this.setState({collapsedAll: !this.state.collapsedAll});
-        console.log("collapsedAll is " + this.state.collapsedAll);
-        console.log("collapsedMy is " + this.state.collapsedMy);
-    };
-
-    toggleExpandedMy = () => {
-
-        console.log("collapsedAll is " + this.state.collapsedAll);
-        console.log("collapsedMy is " + this.state.collapsedMy);
-        if (this.state.collapsedMy === false) {
-            this.setState({collapsedMy: true});
-        } else {
-            this.setState({collapsedMy: false});
-        }
-        console.log("collapsedAll is " + this.state.collapsedAll);
-        console.log("collapsedMy is " + this.state.collapsedMy);
-    };
+    
 
     render() {
 
@@ -226,29 +199,29 @@ class Orders extends Component {
                 <Card style={styles.topCard} elevation={5}>
                     <ScrollView ref="scroll">
                         <View style={{alignItems: 'center', backgroundColor: '#007aff'}}>
-                            <TouchableOpacity onPress={this.toggleExpandedAll} style={{flex: 1}}>
+                            <View style={{flex: 1}}>
                                 <Text style={styles.textStyleTop}>
                                     Available Orders
                                 </Text>
-                            </TouchableOpacity>
+                            </View>
                         </View>
-                        <Collapsible collapsed={this.state.collapsedAll} align='center' style={{margin: 5}}>
+                        <View align='center' style={{margin: 5}}>
                             <Card.Content style={{flex: 1}}>
                                 {this.loadRequests()}
                             </Card.Content>
-                        </Collapsible>
+                        </View>
                         <View style={{alignItems: 'center', backgroundColor: '#007aff'}}>
-                            <TouchableOpacity onPress={this.toggleExpandedMy} style={{flex: 1}}>
+                            <View style={{flex: 1}}>
                                 <Text style={styles.textStyleTop}>
                                     My Orders
                                 </Text>
-                            </TouchableOpacity>
+                            </View>
                         </View>
-                        <Collapsible collapsed={this.state.collapsedMy} align='center'>
+                        <View>
                             <Card.Content style={{flex: 1}}>
                                 {this.loadMyRequests()}
                             </Card.Content>
-                        </Collapsible>
+                        </View>
                     </ScrollView>
                 </Card>
             </View>
