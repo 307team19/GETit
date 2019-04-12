@@ -316,6 +316,7 @@ class MyAccount extends Component {
                         <Text style={styles.textStyleNormal}> Notifications Toggle </Text>
 
                         <Switch
+                            style={styles.switchStyle}
                             onValueChange = {null}
                             value = {null}>
                         </Switch>
@@ -370,10 +371,15 @@ const styles = {
     textStyle: {
         textAlign: 'center',
         fontWeight: 'bold',
+        fontSize: 37,
         flex: 1
     },
     textStyleNormal: {
         textAlign: 'center',
+        flex: 1
+    },
+    switchStyle: {
+        alignSelf: 'center',
         flex: 1
     },
     surface: {

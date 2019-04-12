@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eadc908c-1f83-4bbd-83dd-656b58f67d0a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/GETit/ios/GETit.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/ios/GETit.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GETit/src/components/MyAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/MyAccount.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/MyAccount.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="315" column="59" selection-start-line="315" selection-start-column="59" selection-end-line="315" selection-end-column="59" />
+            <state relative-caret-position="355">
+              <caret line="380" column="18" lean-forward="true" selection-start-line="380" selection-start-column="18" selection-end-line="380" selection-end-column="18" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -196,12 +195,12 @@
       <workItem from="1552845934993" duration="1802000" />
       <workItem from="1553191180438" duration="3472000" />
       <workItem from="1553232544951" duration="87000" />
-      <workItem from="1555102306566" duration="704000" />
+      <workItem from="1555102306566" duration="1235000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58621000" />
+    <option name="totallyTimeSpent" value="59152000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -447,8 +446,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/MyAccount.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="315" column="59" selection-start-line="315" selection-start-column="59" selection-end-line="315" selection-end-column="59" />
+        <state relative-caret-position="355">
+          <caret line="380" column="18" lean-forward="true" selection-start-line="380" selection-start-column="18" selection-end-line="380" selection-end-column="18" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
