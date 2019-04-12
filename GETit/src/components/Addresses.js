@@ -18,7 +18,8 @@ class Addresses extends Component {
         photoURL: '',
         address: '',
         addressInput: '',
-        venmoUsername: ''
+        venmoUsername: '',
+        notification: true
     };
 
     componentWillMount() {
@@ -35,7 +36,8 @@ class Addresses extends Component {
                     photoURL: this.state.user.photoURL,
                     address: this.state.user.address,
                     venmoUsername: this.state.user.venmoUsername,
-                    addressesObj: this.state.user.addresses
+                    addressesObj: this.state.user.addresses,
+                    notification: this.state.user.notification
                 });
 
             });
@@ -44,7 +46,7 @@ class Addresses extends Component {
 
     loadAddresses() {
 
-        const {email, phoneNumber, firstName, lastName, photoURL, addressesObj, venmoUsername} = this.state;
+        const {email, phoneNumber, firstName, lastName, photoURL, addressesObj, venmoUsername, notification} = this.state;
 
         var adds = [];
         Object.keys(this.state.addressesObj).forEach((key, index) => {
@@ -67,7 +69,8 @@ class Addresses extends Component {
                         addresses: addressesObj,
                         photoURL: photoURL,
                         address: item,
-                        venmoUsername
+                        venmoUsername,
+                        notification: notification
                     }).then((data) => {
                         console.log('Synchronization succeeded');
                         this.props.navigation.navigate('myaccount');

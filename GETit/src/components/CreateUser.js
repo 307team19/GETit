@@ -51,7 +51,6 @@ class CreateUser extends Component {
             lastName: fullName[1],
             phoneNumber: pro.phoneNumber,
             userInfo: firebase.auth().currentUser.uid,
-            venmoUsername: pro.venmoUsername
         });
 
 
@@ -85,7 +84,8 @@ class CreateUser extends Component {
             phoneNumber: this.state.phoneNumber,
             venmoUsername: this.state.venmoUsername,
             addresses: {"no address": "no address"},
-            address: "no address"
+            address: "no address",
+            notification: true
         }).then((data) => {
             console.log('Synchronization succeeded');
         }).catch((error) => {
