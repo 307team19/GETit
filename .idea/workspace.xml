@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/MyAccount.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="380" column="18" lean-forward="true" selection-start-line="380" selection-start-column="18" selection-end-line="380" selection-end-column="18" />
+            <state relative-caret-position="316">
+              <caret line="315" column="30" lean-forward="true" selection-start-line="315" selection-start-column="30" selection-end-line="315" selection-end-column="30" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -50,6 +50,7 @@
       <find>button</find>
       <find>touchable</find>
       <find>this.toggle</find>
+      <find>notif</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -195,12 +196,12 @@
       <workItem from="1552845934993" duration="1802000" />
       <workItem from="1553191180438" duration="3472000" />
       <workItem from="1553232544951" duration="87000" />
-      <workItem from="1555102306566" duration="1235000" />
+      <workItem from="1555102306566" duration="2565000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59152000" />
+    <option name="totallyTimeSpent" value="60482000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -446,8 +447,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/MyAccount.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="380" column="18" lean-forward="true" selection-start-line="380" selection-start-column="18" selection-end-line="380" selection-end-column="18" />
+        <state relative-caret-position="316">
+          <caret line="315" column="30" lean-forward="true" selection-start-line="315" selection-start-column="30" selection-end-line="315" selection-end-column="30" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

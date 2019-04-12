@@ -237,8 +237,11 @@ class MyAccount extends Component {
 
     }
 
+    onNotificationToggle() {
+        console.log("Notification Toggle");
+    };
 
-    render() {
+        render() {
         return (
             <PaperProvider theme={paperTheme}>
                 <NavigationEvents onDidFocus={() => {
@@ -308,7 +311,7 @@ class MyAccount extends Component {
                                     this.props.navigation.navigate('addresses');
                                 }}
                                 disabled={true}
-                                value={this.state.address}
+                                value={true}
                                 onChangeText={textString => this.setState({phoneNumber: textString})}
                             />
                         </TouchableOpacity>
@@ -317,8 +320,8 @@ class MyAccount extends Component {
 
                         <Switch
                             style={styles.switchStyle}
-                            onValueChange = {null}
-                            value = {null}>
+                            onValueChange = {this.onNotificationToggle}
+                            value = {false}>
                         </Switch>
 
                         <Button
