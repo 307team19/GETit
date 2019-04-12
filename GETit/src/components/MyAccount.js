@@ -42,7 +42,8 @@ class MyAccount extends Component {
         uid: '',
         addresses: [],
         photoURL: '',
-        venmoUsername: ''
+        venmoUsername: '',
+        notification: true
     };
 
     componentWillMount() {
@@ -60,7 +61,8 @@ class MyAccount extends Component {
                     addresses: this.state.user.addresses,
                     photoURL: this.state.user.photoURL,
                     address: this.state.user.address,
-                    venmoUsername: this.state.user.venmoUsername
+                    venmoUsername: this.state.user.venmoUsername,
+                    notification: this.state.user.notification
                 });
 
             });
@@ -108,7 +110,7 @@ class MyAccount extends Component {
     };
 
     onEditPressed() {
-        const {email, phoneNumber, firstName, lastName, addresses, photoURL, address, venmoUsername} = this.state;
+        const {email, phoneNumber, firstName, lastName, addresses, photoURL, address, venmoUsername, notification} = this.state;
         if (venmoUsername === "" || phoneNumber === "") {
             Alert.alert(
                 'Oops!',
@@ -151,7 +153,8 @@ class MyAccount extends Component {
                 addresses: addresses,
                 photoURL: photoURL,
                 address: address,
-                venmoUsername: venmoUsername
+                venmoUsername: venmoUsername,
+                notification: notification
             }).then((data) => {
                 console.log('Synchronization succeeded');
             }).catch((error) => {
