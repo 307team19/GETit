@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Alert, Image, Linking, Platform, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import firebase from "firebase";
 import call from 'react-native-phone-call';
+import Communications from 'react-native-communications';
 
 class OrderDetails extends Component {
 
@@ -203,6 +204,11 @@ class OrderDetails extends Component {
         call(args).catch(console.error);
     };
 
+    sendText = () => {
+        const number = this.state.details.phoneNumber;
+        Communications.text(number);
+    };
+
     render() {
         return (
             <ScrollView>
@@ -232,7 +238,7 @@ class OrderDetails extends Component {
                             Call user
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={this.makeCall} style={styles.buttonStyle}>
+                    <TouchableOpacity onPress={this.sendText} style={styles.buttonStyle}>
                         <Text style={styles.btnTextStyle}>
                             Text user
                         </Text>
