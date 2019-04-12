@@ -219,7 +219,8 @@ class MyAccount extends Component {
                             photoURL: url,
                             addresses: this.state.addresses,
                             address: this.state.address,
-                            venmoUsername: this.state.venmoUsername
+                            venmoUsername: this.state.venmoUsername,
+                            notification: this.state.notification
                         }).then((data) => {
                             console.log('Synchronization succeeded');
                         }).catch((error) => {
