@@ -72,6 +72,7 @@ class MyAccount extends Component {
 
     signOut = async () => {
 
+        firebase.database().ref('/requests/').off('child_changed');
         const user = firebase.auth().currentUser;
         var provider = null;
 
