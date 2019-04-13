@@ -117,7 +117,16 @@ class Requests extends Component {
          */
         console.log({item});
         console.log(this.state.requestsObj);
-        if(item.acceptedBy!=""){
+        if(item.completed==true){
+            return (
+                <View style={{alignItems: 'center'}}>
+                    <Text style={styles.textStyle}>
+                        This order is complete!
+                    </Text>
+                </View>
+            )
+        }
+        else if(item.acceptedBy!=""){
             return (
                 <View style={{alignItems: 'center'}}>
                     <Text style={styles.textStyle}>
