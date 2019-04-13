@@ -34,48 +34,12 @@ class Orders extends Component {
         })
     }
 
-    loadRequests = () => {
-        console.log(this.state.requests);
-        if (this.state.requests) {
-            var adds = [];
-            Object.keys(this.state.requests).forEach((key, index) => {
-                    if (!(this.state.requests[key].email === this.state.email) && this.state.requests[key].acceptedBy === "") {
-                        adds.push(this.state.requests[key]);
-                    }
-                }
-            );
-
-            let keyExtractor = (item, index) => index;
-
-            return (
-                <View style={{flex: 1}}>
-                    <FlatList
-                        data={adds}
-                        renderItem={this.renderItem}
-                        keyExtractor={this.keyExtractor}
-                    />
-                </View>
-
-            )
-
-        } else {
-            return (
-                <View style={{flex: 1}}>
-                    <Text>NO ORDERS</Text>
-                </View>
-
-            )
-        }
-
-    };
-
-    // loadMyRequests = () => {
-    //     console.log(this.state.uid);
+    // loadRequests = () => {
     //     console.log(this.state.requests);
     //     if (this.state.requests) {
     //         var adds = [];
     //         Object.keys(this.state.requests).forEach((key, index) => {
-    //                 if ((this.state.requests[key].acceptedBy === this.state.uid)) {
+    //                 if (!(this.state.requests[key].email === this.state.email) && this.state.requests[key].acceptedBy === "") {
     //                     adds.push(this.state.requests[key]);
     //                 }
     //             }
@@ -104,6 +68,42 @@ class Orders extends Component {
     //     }
 
     // };
+
+    loadMyRequests = () => {
+        console.log(this.state.uid);
+        console.log(this.state.requests);
+        if (this.state.requests) {
+            var adds = [];
+            Object.keys(this.state.requests).forEach((key, index) => {
+                    if ((this.state.requests[key].acceptedBy === this.state.uid)) {
+                        adds.push(this.state.requests[key]);
+                    }
+                }
+            );
+
+            let keyExtractor = (item, index) => index;
+
+            return (
+                <View style={{flex: 1}}>
+                    <FlatList
+                        data={adds}
+                        renderItem={this.renderItem}
+                        keyExtractor={this.keyExtractor}
+                    />
+                </View>
+
+            )
+
+        } else {
+            return (
+                <View style={{flex: 1}}>
+                    <Text>NO ORDERS</Text>
+                </View>
+
+            )
+        }
+
+    };
 
     shouldDisplayOpenLink = (item) => {
         if (item.link === '') {
@@ -196,60 +196,21 @@ class Orders extends Component {
                     })
                 }}
                 />
-
-                <View style = {{flexDirection: 'row'}}>
-                    <TouchableOpacity 
-                     style={{
-                            ...styles.boxStyle,
-                            borderColor: '#007aff',
-                            marginBottom: 3,
-                            backgroundColor: '#007aff',
-                            flex: 1,
-                        }}
-                    onPress =  {()=>{
-                        console.log("All orders pressed")
-                    }}>
-                         <Text numberOfLines={5} ellipsizeMode={'tail'} style={{
-                            textAlign: 'center',
-                            fontSize: 30,
-                            margin: 3,
-                            fontWeight: 'bold',
-                            color: 'white'
-                        }}>All Orders</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                     style={{
-                            ...styles.boxStyle,
-                            borderColor: '#007aff',
-                            marginBottom: 3,
-                            backgroundColor: '#007aff',
-                            flex: 1,
-                        }}
-                    
-                    onPress =  {()=>{
-                        console.log("My orders pressed")
-                    }}>
-                        <Text numberOfLines={5} ellipsizeMode={'tail'} style={{
-                            textAlign: 'center',
-                            fontSize: 30,
-                            margin: 3,
-                            fontWeight: 'bold',
-                            color: 'white'
-                        }}>My Orders</Text>
-                    </TouchableOpacity>
-
-                </View>
-
-                
                 <Card style={styles.topCard} elevation={5}>
                     <ScrollView ref="scroll">
-                    
+                        {/* <View style={{alignItems: 'center', backgroundColor: '#007aff'}}>
+                            <View style={{flex: 1}}>
+                                <Text style={styles.textStyleTop}>
+                                    Available Orders
+                                </Text>
+                            </View>
+                        </View>
                         <View align='center' style={{margin: 5}}>
                             <Card.Content style={{flex: 1}}>
                                 {this.loadRequests()}
                             </Card.Content>
-                        </View>
-                        {/* <View style={{alignItems: 'center', backgroundColor: '#007aff'}}>
+                        </View> */}
+                        <View style={{alignItems: 'center', backgroundColor: '#007aff'}}>
                             <View style={{flex: 1}}>
                                 <Text style={styles.textStyleTop}>
                                     My Orders
@@ -260,7 +221,7 @@ class Orders extends Component {
                             <Card.Content style={{flex: 1}}>
                                 {this.loadMyRequests()}
                             </Card.Content>
-                        </View> */}
+                        </View>
                     </ScrollView>
                 </Card>
             </View>
@@ -304,22 +265,6 @@ const styles = {
         marginRight: 5,
         marginBottom: 5,
     },
-
-    boxStyle: {
-        flex: 1,
-        // marginTop: 7,
-        // marginBottom: 12,
-        alignSelf: 'stretch',
-        backgroundColor: '#fff',
-        // borderRadius: 5,
-        borderWidth: 1,
-        borderColor: '#007aff',
-        // marginLeft: 5,
-        // marginRight: 5,
-    },
-        
-
-    
 
 
 };

@@ -4,6 +4,7 @@ import SignUpForm from './SignUpForm';
 import LoginPage from './LoginPage'
 import MyAccount from './MyAccount'
 import Orders from './Orders'
+import MyOrders from './MyOrders'
 import Requests from './Requests'
 import PasswordReset from './PasswordReset'
 import {createAppContainer, createMaterialTopTabNavigator, createStackNavigator} from "react-navigation";
@@ -16,6 +17,9 @@ import EditRequest from "./EditRequest";
 import OrderDetails from "./OrderDetails"
 import DropdownAlert from 'react-native-dropdownalert';
 import DropDownHolder from './DropDownHandler'
+
+
+
 
 
 const TabNavigator = createMaterialTopTabNavigator({
