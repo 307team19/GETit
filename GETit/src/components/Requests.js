@@ -111,6 +111,51 @@ class Requests extends Component {
         }
     };
 
+    retView = ({item}) => {
+        /*
+            If order has been accepted, show accepted message else show edit button
+         */
+        console.log({item});
+        console.log(this.state.requestsObj);
+        if(item.acceptedBy!=""){
+            return (
+                <View style={{alignItems: 'center'}}>
+                    <Text style={styles.textStyle}>
+                        Order has been accepted!
+                    </Text>
+                </View>
+            )
+        }else {
+            return (
+                <TouchableOpacity
+                    style={styles.buttonStyle}
+                    onPress={() => {
+                        if (item.acceptedBy !== "") {
+                            Alert.alert(
+                                'Alert!',
+                                'The request has already been accepted. You cannot edit it now.',
+                                [
+                                    {
+                                        text: 'OK',
+                                        onPress: () => console.log('Cancel Pressed'),
+                                        style: 'cancel',
+                                    },
+
+                                ],
+                                {cancelable: false},
+                            );
+                        } else {
+                            item.addresses = this.state.addresses;
+                            this.props.navigation.navigate('editRequest', {requestItem: item});
+                        }
+                    }
+                    }>
+                    <Text style={styles.textStyle}>Edit</Text>
+                </TouchableOpacity>
+            )
+        }
+    };
+
     renderItem = ({item}) => (
 
         <Card style={{margin: 7, flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
@@ -154,34 +199,8 @@ class Requests extends Component {
                 </View>
 
                 <View style={{flex: 1}}>
-                    <TouchableOpacity
-                        style={styles.buttonStyle}
-                        onPress={() => {
-                            if (item.acceptedBy !== "") {
-                                Alert.alert(
-                                    'Alert!',
-                                    'The request has already been accepted. You cannot edit it now.',
-                                    [
-                                        {
-                                            text: 'OK',
-                                            onPress: () => console.log('Cancel Pressed'),
-                                            style: 'cancel',
-                                        },
-
-                                    ],
-                                    {cancelable: false},
-                                );
-                            } else {
-                                item.addresses = this.state.addresses;
-                                this.props.navigation.navigate('editRequest', {requestItem: item});
-                            }
-                        }
-                        }>
-                        <Text style={styles.textStyle}>Edit</Text>
-                    </TouchableOpacity>
+                    {this.retView({item})}
                 </View>
-
-
             </View>
         </Card>
 
