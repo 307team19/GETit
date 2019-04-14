@@ -315,8 +315,8 @@ class MyAccount extends Component {
                                     this.props.navigation.navigate('addresses');
                                 }}
                                 disabled={true}
-                                value={true}
-                                onChangeText={textString => this.setState({phoneNumber: textString})}
+                                value={this.state.address}
+                                onChangeText={textString => this.setState({address: textString})}
                             />
                         </TouchableOpacity>
 

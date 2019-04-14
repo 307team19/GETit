@@ -117,7 +117,7 @@ class Requests extends Component {
          */
         console.log({item});
         console.log(this.state.requestsObj);
-        if(item.completed==true){
+        if (item.completed == true) {
             return (
                 <View style={{alignItems: 'center'}}>
                     <Text style={styles.textStyle}>
@@ -125,16 +125,16 @@ class Requests extends Component {
                     </Text>
                 </View>
             )
-        }
-        else if(item.acceptedBy!=""){
+        } else if (item.acceptedBy != "") {
+            let message = "Order has been accepted by\n" + item.acceptorName;
             return (
                 <View style={{alignItems: 'center'}}>
                     <Text style={styles.textStyle}>
-                        Order has been accepted!
+                        {message}
                     </Text>
                 </View>
             )
-        }else {
+        } else {
             return (
                 <TouchableOpacity
                     style={styles.buttonStyle}
@@ -163,24 +163,8 @@ class Requests extends Component {
                 </TouchableOpacity>
             )
         }
-    showAcceptedBy = (uuid) => {
-        console.log("Accepted by: " + uuid);
-        if(uuid !== "")
-        {
-            let name = "";
-            firebase.database().ref('/users/' + uuid + '/').once('value').then(function(snapshot) {
-                name = snapshot.val().firstName + " " +  snapshot.val().lastName;
-            });
-
-            return (
-                <View style={{margin: 3, flex: 1}}>
-                    <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{uuid}]</Text>
-                    <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{name}]</Text>
-                </View>
-            );
-        }
-
     };
+
 
     renderItem = ({item}) => (
 
@@ -211,7 +195,6 @@ class Requests extends Component {
                     <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{item.instructions}]</Text>
                 </View>
 
-                {this.showAcceptedBy(item.acceptedBy)}
 
                 <View style={{flex: 1}}>
                     <TouchableOpacity
@@ -318,6 +301,7 @@ const styles = {
     },
 
     textStyle: {
+        textAlign: 'center',
         alignSelf: 'center',
         color: '#007aff',
         fontSize: 16,
