@@ -1,15 +1,22 @@
 import React, {Component} from 'react';
-import {Text, View} from "react-native";
+import { Image, Text, View } from "react-native";
 
 class QRTest extends Component {
+
+	url = "http://www.barcodes4.me/barcode/qr/qr.png?size=10&value=";
+	code = "shiv.com";
 
 	render() {
 		return (
 			<View>
 				<Text>QR Test</Text>
+				<Image
+					style = {styles.imageStyle}
+					source={{
+						uri: this.url + this.code
+					}}/>
 			</View>
 		);
-
 	}
 }
 
@@ -25,6 +32,10 @@ const styles = {
 		textAlign: 'center',
 		fontWeight: 'bold',
 		flex: 1
+	},
+	imageStyle: {
+		height: 350,
+		margin: 10
 	},
 };
 

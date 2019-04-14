@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eadc908c-1f83-4bbd-83dd-656b58f67d0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GETit/src/components/QRTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GETit/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GETit/src/components/MyAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/MyAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GETit/src/components/QRTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/QRTest.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,11 +15,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GETit/src/components/OrderDetails.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="279" column="8" selection-start-line="279" selection-start-column="8" selection-end-line="282" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/QRTest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="583">
+              <caret line="37" column="18" lean-forward="true" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -33,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/GETit/src/components/MyAccount.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="529">
-              <caret line="376" column="25" lean-forward="true" selection-start-line="376" selection-start-column="25" selection-end-line="376" selection-end-column="25" />
+              <caret line="376" column="25" selection-start-line="376" selection-start-column="25" selection-end-line="376" selection-end-column="25" />
               <folding>
                 <element signature="e#650#732#0" />
                 <element signature="e#752#862#0" />
@@ -145,6 +155,7 @@
       <find>edit</find>
       <find>fireba</find>
       <find>firebase</find>
+      <find>image</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -170,9 +181,9 @@
         <option value="$PROJECT_DIR$/GETit/src/components/Orders.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/OrderDetails.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/Requests.js" />
-        <option value="$PROJECT_DIR$/GETit/src/components/QRTest.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/App.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/MyAccount.js" />
+        <option value="$PROJECT_DIR$/GETit/src/components/QRTest.js" />
       </list>
     </option>
   </component>
@@ -284,12 +295,12 @@
       <workItem from="1553191180438" duration="3472000" />
       <workItem from="1553232544951" duration="87000" />
       <workItem from="1555102306566" duration="2565000" />
-      <workItem from="1555274984608" duration="480000" />
+      <workItem from="1555274984608" duration="1204000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63835000" />
+    <option name="totallyTimeSpent" value="64559000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -493,13 +504,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/OrderDetails.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="15" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -533,7 +537,7 @@
     <entry file="file://$PROJECT_DIR$/GETit/src/components/MyAccount.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
-          <caret line="376" column="25" lean-forward="true" selection-start-line="376" selection-start-column="25" selection-end-line="376" selection-end-column="25" />
+          <caret line="376" column="25" selection-start-line="376" selection-start-column="25" selection-end-line="376" selection-end-column="25" />
           <folding>
             <element signature="e#650#732#0" />
             <element signature="e#752#862#0" />
@@ -617,10 +621,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/OrderDetails.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="279" column="8" selection-start-line="279" selection-start-column="8" selection-end-line="282" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/QRTest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="583">
+          <caret line="37" column="18" lean-forward="true" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
