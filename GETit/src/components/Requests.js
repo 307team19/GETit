@@ -12,7 +12,7 @@ class Requests extends Component {
     state = {
         email: '',
         requestsObj: [],
-        visible: false
+        visible: false,
     };
 
 
@@ -25,10 +25,10 @@ class Requests extends Component {
                     email: response.val().email,
                     addresses: response.val().addresses,
                 });
-            })
+            });
         firebase.database().ref('/').once('value').then(response => {
             this.setState({requestsObj: response.val().requests})
-        })
+        });
 
         PushNotification.configure({
             onNotification: function (notification) {
@@ -46,36 +46,47 @@ class Requests extends Component {
 
         firebase.database().ref('/requests/').on('child_changed', (snapshot) => {
 
-            const obj = snapshot.val();
-            console.log("obj.email: " + obj.email + " email: " + this.state.email );
+            let notification;
+            firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/")
+                .once('value').then(response => {
+                notification = response.val().notification;
+                if (notification) {
 
-            if (obj) {
+                    const obj = snapshot.val();
+                    console.log("obj.email: " + obj.email + " email: " + this.state.email);
 
-                if (obj.completed === true && obj.email === this.state.email) {
-                    DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit',
-                        'Your request ' + obj.item + " is completed");
-                    PushNotification.localNotification({
-                        title: "Notification from GETit", // (optional)
-                        message: obj.item + " is completed", // (required)
-                        foreground: true
-                    });
-                } else if (obj.acceptedBy !== "" && obj.email === this.state.email) {
-                    const acceptorUID = obj.acceptedBy;
-                    let acceptorName = "No name";
-                    firebase.database().ref('/users/' + acceptorUID + '/').once('value')
-                        .then(response => {
-                            acceptorName = response.val().firstName;
+                    if (obj) {
+
+                        if (obj.completed === true && obj.email === this.state.email) {
                             DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit',
-                                'Your request ' + obj.item + " is accepted by " + acceptorName);
+                                'Your request ' + obj.item + " is completed");
                             PushNotification.localNotification({
                                 title: "Notification from GETit", // (optional)
-                                message: obj.item + " is accepted", // (required)
+                                message: obj.item + " is completed", // (required)
                                 foreground: true
                             });
-                        });
+                        } else if (obj.acceptedBy !== "" && obj.email === this.state.email) {
+                            const acceptorUID = obj.acceptedBy;
+                            let acceptorName = "No name";
+                            firebase.database().ref('/users/' + acceptorUID + '/').once('value')
+                                .then(response => {
+                                    acceptorName = response.val().firstName;
+                                    DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit',
+                                        'Your request ' + obj.item + " is accepted by " + acceptorName);
+                                    PushNotification.localNotification({
+                                        title: "Notification from GETit", // (optional)
+                                        message: obj.item + " is accepted", // (required)
+                                        foreground: true
+                                    });
+                                });
+                        }
+
+                    }
                 }
 
-            }
+            });
+
+
 
 
         })
@@ -113,8 +124,7 @@ class Requests extends Component {
 
     showAcceptedBy = (name) => {
         console.log("Accepted by: " + name);
-        if(name !== "")
-        {
+        if (name !== "") {
             return (
                 <View style={{margin: 3, flex: 1}}>
                     <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{name}]</Text>

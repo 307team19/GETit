@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
-import {Alert, Image, Platform, ScrollView, Text, TouchableOpacity, View, Switch} from 'react-native';
+import {Alert, Image, Platform, ScrollView, Switch, Text, TouchableOpacity, View} from 'react-native';
 import firebase from 'firebase';
 import RNFetchBlob from 'rn-fetch-blob'
 import {GoogleSignin} from 'react-native-google-signin';
@@ -66,6 +66,7 @@ class MyAccount extends Component {
                 });
 
             });
+        console.log("notif" + this.state.notification);
 
     }
 
@@ -228,10 +229,36 @@ class MyAccount extends Component {
     }
 
     onNotificationToggle() {
-        console.log("Notification Toggle");
+
+        console.log("Notification Toggle ");
+        if (this.state.notification) {
+            firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/").
+            update({
+                notification: false,
+            }).then((data) => {
+                console.log('Synchronization succeeded');
+            }).catch((error) => {
+                console.log(error)
+            });
+            this.setState({
+                notification: false
+            })
+        } else {
+            firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/").
+            update({
+                notification: true,
+            }).then((data) => {
+                console.log('Synchronization succeeded');
+            }).catch((error) => {
+                console.log(error)
+            });
+            this.setState({
+                notification: true
+            })
+        }
     };
 
-        render() {
+    render() {
         return (
             <PaperProvider theme={paperTheme}>
                 <NavigationEvents onDidFocus={() => {
@@ -310,8 +337,8 @@ class MyAccount extends Component {
 
                         <Switch
                             style={styles.switchStyle}
-                            onValueChange = {this.onNotificationToggle}
-                            value = {false}>
+                            onValueChange={this.onNotificationToggle.bind(this)}
+                            value={this.state.notification}>
                         </Switch>
 
                         <Button
