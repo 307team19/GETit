@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Image, Text, View } from "react-native";
+import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
 
 class QRTest extends Component {
 
@@ -27,6 +27,24 @@ class QRTest extends Component {
 					source={{
 						uri: this.url + this.code
 					}}/>
+				<TouchableOpacity
+					style={{
+						...styles.boxStyle,
+						borderColor: '#5500e9',
+						margin: 10,
+						backgroundColor: '#5500e9'
+					}}
+					onPress={() => {
+						this.props.navigation.navigate('tabscreen');
+					}}>
+					<Text numberOfLines={5} ellipsizeMode={'tail'} style={{
+						textAlign: 'center',
+						fontSize: 30,
+						margin: 3,
+						fontWeight: 'bold',
+						color: 'white'
+					}}>Finish</Text>
+				</TouchableOpacity>
 			</View>
 		);
 	}
