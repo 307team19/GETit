@@ -216,10 +216,11 @@ class OrderDetails extends Component {
                                     {
                                         text: 'Yes',
                                         onPress: () => {
-                                            firebase.database().ref('/requests/' + this.state.details.unikey + "/").update({
-                                                completed: true
-                                            });
-                                            this.props.navigation.navigate('tabscreen');
+                                            this.props.navigation.navigate('qrtest', {orderDetails: this.state});
+                                            // firebase.database().ref('/requests/' + this.state.details.unikey + "/").update({
+                                            //     completed: true
+                                            // });
+                                            // this.props.navigation.navigate('tabscreen');
                                         }
                                     },
                                     {

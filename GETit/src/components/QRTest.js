@@ -4,12 +4,24 @@ import { Image, Text, View } from "react-native";
 class QRTest extends Component {
 
 	url = "http://www.barcodes4.me/barcode/qr/qr.png?size=10&value=";
-	code = "shiv.com";
+	code = "";
+
+	componentWillMount() {
+		let orderDetail = this.props.navigation.state.params.orderDetails;
+
+		console.log("Order Details: ");
+		console.log(orderDetail.details.unikey);
+		console.log(orderDetail.details.acceptedBy);
+
+		this.code = orderDetail.details.unikey + orderDetail.details.acceptedBy + ".com";
+
+		console.log("Code: " + this.code);
+
+	}
 
 	render() {
 		return (
 			<View>
-				<Text>QR Test</Text>
 				<Image
 					style = {styles.imageStyle}
 					source={{
