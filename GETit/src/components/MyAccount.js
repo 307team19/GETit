@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Provider as PaperProvider, TextInput} from 'react-native-paper';
-import {Alert, Image, Platform, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Image, Platform, ScrollView, Text, TouchableOpacity, View, Switch} from 'react-native';
 import firebase from 'firebase';
 import RNFetchBlob from 'rn-fetch-blob'
 import {GoogleSignin} from 'react-native-google-signin';
@@ -242,8 +242,11 @@ class MyAccount extends Component {
 
     }
 
+    onNotificationToggle() {
+        console.log("Notification Toggle");
+    };
 
-    render() {
+        render() {
         return (
             <PaperProvider theme={paperTheme}>
                 <NavigationEvents onDidFocus={() => {
@@ -313,10 +316,18 @@ class MyAccount extends Component {
                                     this.props.navigation.navigate('addresses');
                                 }}
                                 disabled={true}
-                                value={this.state.address}
+                                value={true}
                                 onChangeText={textString => this.setState({phoneNumber: textString})}
                             />
                         </TouchableOpacity>
+
+                        <Text style={styles.textStyleNormal}> Notifications Toggle </Text>
+
+                        <Switch
+                            style={styles.switchStyle}
+                            onValueChange = {this.onNotificationToggle}
+                            value = {false}>
+                        </Switch>
 
                         <Button
                             style={styles.buttonContainedStyle}
@@ -368,6 +379,15 @@ const styles = {
     textStyle: {
         textAlign: 'center',
         fontWeight: 'bold',
+        fontSize: 37,
+        flex: 1
+    },
+    textStyleNormal: {
+        textAlign: 'center',
+        flex: 1
+    },
+    switchStyle: {
+        alignSelf: 'center',
         flex: 1
     },
     surface: {

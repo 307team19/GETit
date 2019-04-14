@@ -111,6 +111,19 @@ class Requests extends Component {
         }
     };
 
+    showAcceptedBy = (name) => {
+        console.log("Accepted by: " + name);
+        if(name !== "")
+        {
+            return (
+                <View style={{margin: 3, flex: 1}}>
+                    <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{name}]</Text>
+                </View>
+            );
+        }
+
+    };
+
     renderItem = ({item}) => (
 
         <Card style={{margin: 7, flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
@@ -139,6 +152,8 @@ class Requests extends Component {
                 <View style={{margin: 3, flex: 1}}>
                     <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{item.instructions}]</Text>
                 </View>
+
+                {this.showAcceptedBy(item.acceptedBy)}
 
                 <View style={{flex: 1}}>
                     <TouchableOpacity
@@ -201,7 +216,6 @@ class Requests extends Component {
             );
 
             let keyExtractor = (item, index) => index;
-
 
             return (
                 <View style={{flex: 1}}>
