@@ -11,6 +11,7 @@ import ImagePicker from 'react-native-image-picker';
 
 // import {Image} from "react-native-paper/typings/components/Avatar";
 
+
 const resetAction = StackActions.reset({
     index: 0,
     actions: [NavigationActions.navigate({routeName: 'login'})],
@@ -25,6 +26,9 @@ const options = {
 };
 
 class MyAccount extends Component {
+    static navigationOptions = {
+        tabBarLabel: 'My Account'
+    };
 
     state = {
         disabledEmail: true,

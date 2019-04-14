@@ -41,7 +41,8 @@ class Orders extends Component {
         if (this.state.requests) {
             var adds = [];
             Object.keys(this.state.requests).forEach((key, index) => {
-                    if (!(this.state.requests[key].email === this.state.email) && this.state.requests[key].acceptedBy === "") {
+                    if (!(this.state.requests[key].email == this.state.email) && this.state.requests[key].acceptedBy == ""
+                        && !this.state.requests[key].completed ) {
                         adds.push(this.state.requests[key]);
                     }
                 }
