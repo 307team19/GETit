@@ -111,12 +111,18 @@ class Requests extends Component {
         }
     };
 
-    showAcceptedBy = (name) => {
-        console.log("Accepted by: " + name);
-        if(name !== "")
+    showAcceptedBy = (uuid) => {
+        console.log("Accepted by: " + uuid);
+        if(uuid !== "")
         {
+            let name = "";
+            firebase.database().ref('/users/' + uuid + '/').once('value').then(function(snapshot) {
+                name = snapshot.val().firstName + " " +  snapshot.val().lastName;
+            });
+
             return (
                 <View style={{margin: 3, flex: 1}}>
+                    <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{uuid}]</Text>
                     <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{name}]</Text>
                 </View>
             );
