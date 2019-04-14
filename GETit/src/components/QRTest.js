@@ -8,13 +8,7 @@ class QRTest extends Component {
 
 	componentWillMount() {
 		let orderDetail = this.props.navigation.state.params.orderDetails;
-
-		console.log("Order Details: ");
-		console.log(orderDetail.details.unikey);
-		console.log(orderDetail.details.acceptedBy);
-
-		this.code = orderDetail.details.unikey + orderDetail.details.acceptedBy + ".com";
-
+		this.code = orderDetail.details.unikey + ".com";
 		console.log("Code: " + this.code);
 
 	}
