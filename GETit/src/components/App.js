@@ -19,11 +19,27 @@ import DropdownAlert from 'react-native-dropdownalert';
 import DropDownHolder from './DropDownHandler'
 
 
-
+const ordersTabNavigator = createMaterialTopTabNavigator({
+        allorders: Orders,
+        myorders: MyOrders,
+    },
+    {
+        order: ['myorders', 'allorders'],
+        swipeEnabled: true,
+        tabBarOptions: {
+            labelStyle: {
+                fontSize: 12,
+            },
+            style: {
+                backgroundColor: '#1eaaf1',
+            },
+        }
+    }
+)
 
 
 const TabNavigator = createMaterialTopTabNavigator({
-        orders: Orders,
+        orders: ordersTabNavigator,
         myaccount: MyAccount,
         requests: Requests,
     },

@@ -9,7 +9,7 @@ class Orders extends Component {
 
 
     static navigationOptions = {
-        title: 'Orders',
+        title: 'My Orders',
     };
 
     state = {
@@ -34,40 +34,7 @@ class Orders extends Component {
         })
     }
 
-    // loadRequests = () => {
-    //     console.log(this.state.requests);
-    //     if (this.state.requests) {
-    //         var adds = [];
-    //         Object.keys(this.state.requests).forEach((key, index) => {
-    //                 if (!(this.state.requests[key].email === this.state.email) && this.state.requests[key].acceptedBy === "") {
-    //                     adds.push(this.state.requests[key]);
-    //                 }
-    //             }
-    //         );
-
-    //         let keyExtractor = (item, index) => index;
-
-    //         return (
-    //             <View style={{flex: 1}}>
-    //                 <FlatList
-    //                     data={adds}
-    //                     renderItem={this.renderItem}
-    //                     keyExtractor={this.keyExtractor}
-    //                 />
-    //             </View>
-
-    //         )
-
-    //     } else {
-    //         return (
-    //             <View style={{flex: 1}}>
-    //                 <Text>NO ORDERS</Text>
-    //             </View>
-
-    //         )
-    //     }
-
-    // };
+  
 
     loadMyRequests = () => {
         console.log(this.state.uid);
@@ -198,25 +165,7 @@ class Orders extends Component {
                 />
                 <Card style={styles.topCard} elevation={5}>
                     <ScrollView ref="scroll">
-                        {/* <View style={{alignItems: 'center', backgroundColor: '#007aff'}}>
-                            <View style={{flex: 1}}>
-                                <Text style={styles.textStyleTop}>
-                                    Available Orders
-                                </Text>
-                            </View>
-                        </View>
-                        <View align='center' style={{margin: 5}}>
-                            <Card.Content style={{flex: 1}}>
-                                {this.loadRequests()}
-                            </Card.Content>
-                        </View> */}
-                        <View style={{alignItems: 'center', backgroundColor: '#007aff'}}>
-                            <View style={{flex: 1}}>
-                                <Text style={styles.textStyleTop}>
-                                    My Orders
-                                </Text>
-                            </View>
-                        </View>
+                        
                         <View>
                             <Card.Content style={{flex: 1}}>
                                 {this.loadMyRequests()}

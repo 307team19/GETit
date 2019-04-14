@@ -9,13 +9,16 @@ class Orders extends Component {
 
 
     static navigationOptions = {
-        title: 'Orders',
+        title: 'Available Orders',
     };
 
     state = {
         requests: [],
         email: '',
-        uid: ''
+        uid: '',
+        myOrders: false,
+        myOrdersBack: '#1eaaf1',
+        allOrdersBack: '#007aff',
     };
 
     componentWillMount() {
@@ -34,7 +37,8 @@ class Orders extends Component {
         })
     }
 
-    loadRequests = () => {
+
+     loadRequests = () => {
         console.log(this.state.requests);
         if (this.state.requests) {
             var adds = [];
@@ -69,42 +73,6 @@ class Orders extends Component {
 
     };
 
-    // loadMyRequests = () => {
-    //     console.log(this.state.uid);
-    //     console.log(this.state.requests);
-    //     if (this.state.requests) {
-    //         var adds = [];
-    //         Object.keys(this.state.requests).forEach((key, index) => {
-    //                 if ((this.state.requests[key].acceptedBy === this.state.uid)) {
-    //                     adds.push(this.state.requests[key]);
-    //                 }
-    //             }
-    //         );
-
-    //         let keyExtractor = (item, index) => index;
-
-    //         return (
-    //             <View style={{flex: 1}}>
-    //                 <FlatList
-    //                     data={adds}
-    //                     renderItem={this.renderItem}
-    //                     keyExtractor={this.keyExtractor}
-    //                 />
-    //             </View>
-
-    //         )
-
-    //     } else {
-    //         return (
-    //             <View style={{flex: 1}}>
-    //                 <Text>NO ORDERS</Text>
-    //             </View>
-
-    //         )
-    //     }
-
-    // };
-
     shouldDisplayOpenLink = (item) => {
         if (item.link === '') {
             return {
@@ -134,12 +102,17 @@ class Orders extends Component {
         }
     };
 
+    showList =()=>{
+        if(!this.myOrders){
+            return this.loadRequests()
+        }else return this.loadMyRequests()
+    }
+
     renderItem = ({item}) => (
 
         <Card style={{margin: 3, flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
             <View>
                 <View style={{
-                    // flex: 1,
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     borderBottomColor: 'black',
@@ -196,50 +169,6 @@ class Orders extends Component {
                     })
                 }}
                 />
-
-                <View style = {{flexDirection: 'row'}}>
-                    <TouchableOpacity 
-                     style={{
-                            ...styles.boxStyle,
-                            borderColor: '#007aff',
-                            marginBottom: 3,
-                            backgroundColor: '#007aff',
-                            flex: 1,
-                        }}
-                    onPress =  {()=>{
-                        console.log("All orders pressed")
-                    }}>
-                         <Text numberOfLines={5} ellipsizeMode={'tail'} style={{
-                            textAlign: 'center',
-                            fontSize: 30,
-                            margin: 3,
-                            fontWeight: 'bold',
-                            color: 'white'
-                        }}>All Orders</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                     style={{
-                            ...styles.boxStyle,
-                            borderColor: '#007aff',
-                            marginBottom: 3,
-                            backgroundColor: '#007aff',
-                            flex: 1,
-                        }}
-                    
-                    onPress =  {()=>{
-                        console.log("My orders pressed")
-                    }}>
-                        <Text numberOfLines={5} ellipsizeMode={'tail'} style={{
-                            textAlign: 'center',
-                            fontSize: 30,
-                            margin: 3,
-                            fontWeight: 'bold',
-                            color: 'white'
-                        }}>My Orders</Text>
-                    </TouchableOpacity>
-
-                </View>
-
                 
                 <Card style={styles.topCard} elevation={5}>
                     <ScrollView ref="scroll">
@@ -249,18 +178,7 @@ class Orders extends Component {
                                 {this.loadRequests()}
                             </Card.Content>
                         </View>
-                        {/* <View style={{alignItems: 'center', backgroundColor: '#007aff'}}>
-                            <View style={{flex: 1}}>
-                                <Text style={styles.textStyleTop}>
-                                    My Orders
-                                </Text>
-                            </View>
-                        </View>
-                        <View>
-                            <Card.Content style={{flex: 1}}>
-                                {this.loadMyRequests()}
-                            </Card.Content>
-                        </View> */}
+
                     </ScrollView>
                 </Card>
             </View>
