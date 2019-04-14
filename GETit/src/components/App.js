@@ -17,6 +17,7 @@ import EditRequest from "./EditRequest";
 import OrderDetails from "./OrderDetails"
 import DropdownAlert from 'react-native-dropdownalert';
 import DropDownHolder from './DropDownHandler'
+import QRtest from './QRTest'
 
 
 const ordersTabNavigator = createMaterialTopTabNavigator({
@@ -92,6 +93,7 @@ const AppNavigator = createStackNavigator(
         addRequest: AddRequest,
         requestHistory: RequestHistory,
         editRequest: EditRequest,
+        qrtest: QRtest,
         tabscreen: TabNavigator
 
 

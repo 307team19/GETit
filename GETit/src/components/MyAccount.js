@@ -369,6 +369,16 @@ class MyAccount extends Component {
                             onPress={this.signOut}>
                             Sign Out
                         </Button>
+                        <Button
+                            style={styles.buttonContainedStyle}
+                            onPress={() => {
+                                this.props.navigation.navigate('qrtest');
+                            }}
+                        >
+                            <Text>
+                                QR Test
+                            </Text>
+                        </Button>
                     </View>
                 </ScrollView>
             </PaperProvider>
