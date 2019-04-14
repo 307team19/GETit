@@ -35,6 +35,17 @@ class Orders extends Component {
         firebase.database().ref('/').once('value').then(response => {
             this.setState({requests: response.val().requests})
         })
+
+          firebase.database().ref('/').on('child_changed', (snapshot) => {
+
+            firebase.database().ref('/').once('value').then(response => {
+            this.setState({requests: response.val().requests})
+        })
+
+            });
+
+
+        
     }
 
 
