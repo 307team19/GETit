@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import {Alert, Image, Linking, Platform, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import firebase from "firebase";
+import call from 'react-native-phone-call';
+import Communications from 'react-native-communications';
 
 class OrderDetails extends Component {
 
     state = {
         details: {},
+        number: ''
     };
 
     componentWillMount() {
@@ -193,6 +196,19 @@ class OrderDetails extends Component {
         }
     };
 
+    makeCall = () => {
+        const args={
+            number: this.state.details.phoneNumber,
+            prompt:true
+        }
+        call(args).catch(console.error);
+    };
+
+    sendText = () => {
+        const number = this.state.details.phoneNumber;
+        Communications.text(number);
+    };
+
     render() {
         return (
             <ScrollView>
@@ -216,6 +232,18 @@ class OrderDetails extends Component {
                     </TouchableOpacity>
                 </View>
                 {this.retView("accept")}
+                <View style={{flexDirection: 'row', flex: 1, paddingBottom:10}}>
+                    <TouchableOpacity onPress={this.makeCall} style={styles.buttonStyle}>
+                        <Text style={styles.btnTextStyle}>
+                            Call user
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={this.sendText} style={styles.buttonStyle}>
+                        <Text style={styles.btnTextStyle}>
+                            Text user
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </ScrollView>
         );
     };
@@ -240,6 +268,16 @@ const
         imageStyle: {
             height: 220,
             margin: 10
+        },
+        buttonStyle: {
+            alignItems: 'center',
+            fontWeight: 'bold',
+            flex: 0.5,
+        },
+        btnTextStyle: {
+            textAlign: 'center',
+            fontWeight: 'bold',
+            fontSize: 20
         }
 
     };

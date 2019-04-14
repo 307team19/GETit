@@ -46,8 +46,8 @@ class Requests extends Component {
 
         firebase.database().ref('/requests/').on('child_changed', (snapshot) => {
 
-
             const obj = snapshot.val();
+            console.log("obj.email: " + obj.email + " email: " + this.state.email );
 
             if (obj) {
 
