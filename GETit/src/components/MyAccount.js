@@ -66,7 +66,7 @@ class MyAccount extends Component {
                 });
 
             });
-        console.log("email after set state is " + this.state.email);
+
     }
 
 
@@ -146,16 +146,9 @@ class MyAccount extends Component {
 
             /*TODO FIX THIS ASAP*/
             var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/");
-            userRef.set({
-                email: email,
-                firstName: firstName,
-                lastName: lastName,
+            userRef.update({
                 phoneNumber: phoneNumber,
-                addresses: addresses,
-                photoURL: photoURL,
-                address: address,
                 venmoUsername: venmoUsername,
-                notification: notification
             }).then((data) => {
                 console.log('Synchronization succeeded');
             }).catch((error) => {
@@ -212,16 +205,8 @@ class MyAccount extends Component {
                         console.log("down");
                         console.log("users/" + firebase.auth().currentUser.uid + "/")
                         var userRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/");
-                        userRef.set({
-                            email: this.state.email,
-                            firstName: this.state.firstName,
-                            lastName: this.state.lastName,
-                            phoneNumber: this.state.phoneNumber,
+                        userRef.update({
                             photoURL: url,
-                            addresses: this.state.addresses,
-                            address: this.state.address,
-                            venmoUsername: this.state.venmoUsername,
-                            notification: this.state.notification
                         }).then((data) => {
                             console.log('Synchronization succeeded');
                         }).catch((error) => {
@@ -316,8 +301,8 @@ class MyAccount extends Component {
                                     this.props.navigation.navigate('addresses');
                                 }}
                                 disabled={true}
-                                value={true}
-                                onChangeText={textString => this.setState({phoneNumber: textString})}
+                                value={this.state.address}
+                                onChangeText={textString => this.setState({address: textString})}
                             />
                         </TouchableOpacity>
 
