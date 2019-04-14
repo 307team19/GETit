@@ -262,8 +262,7 @@ class OrderDetails extends Component {
 
 }
 
-const
-    styles = {
+const styles = {
         boxStyle: {
             flex: 1,
             marginTop: 7,

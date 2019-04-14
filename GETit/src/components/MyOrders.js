@@ -9,16 +9,13 @@ class Orders extends Component {
 
 
     static navigationOptions = {
-        title: 'Available Orders',
+        title: 'My Orders',
     };
 
     state = {
         requests: [],
         email: '',
-        uid: '',
-        myOrders: false,
-        myOrdersBack: '#1eaaf1',
-        allOrdersBack: '#007aff',
+        uid: ''
     };
 
     componentWillMount() {
@@ -37,14 +34,15 @@ class Orders extends Component {
         })
     }
 
+  
 
-     loadRequests = () => {
+    loadMyRequests = () => {
+        console.log(this.state.uid);
         console.log(this.state.requests);
         if (this.state.requests) {
             var adds = [];
             Object.keys(this.state.requests).forEach((key, index) => {
-                if (!(this.state.requests[key].email == this.state.email) && this.state.requests[key].acceptedBy == ""
-                    && !this.state.requests[key].completed ) {
+                    if ((this.state.requests[key].acceptedBy === this.state.uid)) {
                         adds.push(this.state.requests[key]);
                     }
                 }
@@ -103,17 +101,12 @@ class Orders extends Component {
         }
     };
 
-    showList =()=>{
-        if(!this.myOrders){
-            return this.loadRequests()
-        }else return this.loadMyRequests()
-    }
-
     renderItem = ({item}) => (
 
         <Card style={{margin: 3, flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
             <View>
                 <View style={{
+                    // flex: 1,
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     borderBottomColor: 'black',
@@ -170,16 +163,14 @@ class Orders extends Component {
                     })
                 }}
                 />
-                
                 <Card style={styles.topCard} elevation={5}>
                     <ScrollView ref="scroll">
-                    
-                        <View align='center' style={{margin: 5}}>
+                        
+                        <View>
                             <Card.Content style={{flex: 1}}>
-                                {this.loadRequests()}
+                                {this.loadMyRequests()}
                             </Card.Content>
                         </View>
-
                     </ScrollView>
                 </Card>
             </View>
@@ -223,22 +214,6 @@ const styles = {
         marginRight: 5,
         marginBottom: 5,
     },
-
-    boxStyle: {
-        flex: 1,
-        // marginTop: 7,
-        // marginBottom: 12,
-        alignSelf: 'stretch',
-        backgroundColor: '#fff',
-        // borderRadius: 5,
-        borderWidth: 1,
-        borderColor: '#007aff',
-        // marginLeft: 5,
-        // marginRight: 5,
-    },
-        
-
-    
 
 
 };
