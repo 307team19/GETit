@@ -222,7 +222,7 @@ class Requests extends Component {
         if (this.state.requestsObj) {
             var adds = [];
             Object.keys(this.state.requestsObj).forEach((key, index) => {
-                    if (this.state.requestsObj[key].email === this.state.email) {
+                    if (this.state.requestsObj[key].email == this.state.email && this.state.requestsObj[key].completed == false) {
                         adds.push(this.state.requestsObj[key]);
                     }
                 }
