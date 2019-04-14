@@ -163,6 +163,23 @@ class Requests extends Component {
                 </TouchableOpacity>
             )
         }
+    showAcceptedBy = (uuid) => {
+        console.log("Accepted by: " + uuid);
+        if(uuid !== "")
+        {
+            let name = "";
+            firebase.database().ref('/users/' + uuid + '/').once('value').then(function(snapshot) {
+                name = snapshot.val().firstName + " " +  snapshot.val().lastName;
+            });
+
+            return (
+                <View style={{margin: 3, flex: 1}}>
+                    <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{uuid}]</Text>
+                    <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{name}]</Text>
+                </View>
+            );
+        }
+
     };
 
     renderItem = ({item}) => (
@@ -193,6 +210,8 @@ class Requests extends Component {
                 <View style={{margin: 3, flex: 1}}>
                     <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{item.instructions}]</Text>
                 </View>
+
+                {this.showAcceptedBy(item.acceptedBy)}
 
                 <View style={{flex: 1}}>
                     <TouchableOpacity
@@ -229,7 +248,6 @@ class Requests extends Component {
             );
 
             let keyExtractor = (item, index) => index;
-
 
             return (
                 <View style={{flex: 1}}>
