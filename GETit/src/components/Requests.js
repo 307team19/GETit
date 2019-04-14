@@ -122,17 +122,60 @@ class Requests extends Component {
         }
     };
 
-    showAcceptedBy = (name) => {
-        console.log("Accepted by: " + name);
-        if (name !== "") {
+    retView = ({item}) => {
+        /*
+            If order has been accepted, show accepted message else show edit button
+         */
+        console.log({item});
+        console.log(this.state.requestsObj);
+        if (item.completed == true) {
             return (
-                <View style={{margin: 3, flex: 1}}>
-                    <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{name}]</Text>
+                <View style={{alignItems: 'center'}}>
+                    <Text style={styles.textStyle}>
+                        This order is complete!
+                    </Text>
                 </View>
-            );
-        }
+            )
+        } else if (item.acceptedBy != "") {
+            let message = "Order has been accepted by\n" + item.acceptorName;
+            return (
+                <View style={{alignItems: 'center'}}>
+                    <Text style={styles.textStyle}>
+                        {message}
+                    </Text>
+                </View>
+            )
+        } else {
+            return (
+                <TouchableOpacity
+                    style={styles.buttonStyle}
+                    onPress={() => {
+                        if (item.acceptedBy !== "") {
+                            Alert.alert(
+                                'Alert!',
+                                'The request has already been accepted. You cannot edit it now.',
+                                [
+                                    {
+                                        text: 'OK',
+                                        onPress: () => console.log('Cancel Pressed'),
+                                        style: 'cancel',
+                                    },
 
+                                ],
+                                {cancelable: false},
+                            );
+                        } else {
+                            item.addresses = this.state.addresses;
+                            this.props.navigation.navigate('editRequest', {requestItem: item});
+                        }
+                    }
+                    }>
+                    <Text style={styles.textStyle}>Edit</Text>
+                </TouchableOpacity>
+            )
+        }
     };
+
 
     renderItem = ({item}) => (
 
@@ -163,7 +206,6 @@ class Requests extends Component {
                     <Text style={{textAlign: 'center', fontStyle: 'italic'}}>[{item.instructions}]</Text>
                 </View>
 
-                {this.showAcceptedBy(item.acceptedBy)}
 
                 <View style={{flex: 1}}>
                     <TouchableOpacity
@@ -179,34 +221,8 @@ class Requests extends Component {
                 </View>
 
                 <View style={{flex: 1}}>
-                    <TouchableOpacity
-                        style={styles.buttonStyle}
-                        onPress={() => {
-                            if (item.acceptedBy !== "") {
-                                Alert.alert(
-                                    'Alert!',
-                                    'The request has already been accepted. You cannot edit it now.',
-                                    [
-                                        {
-                                            text: 'OK',
-                                            onPress: () => console.log('Cancel Pressed'),
-                                            style: 'cancel',
-                                        },
-
-                                    ],
-                                    {cancelable: false},
-                                );
-                            } else {
-                                item.addresses = this.state.addresses;
-                                this.props.navigation.navigate('editRequest', {requestItem: item});
-                            }
-                        }
-                        }>
-                        <Text style={styles.textStyle}>Edit</Text>
-                    </TouchableOpacity>
+                    {this.retView({item})}
                 </View>
-
-
             </View>
         </Card>
 
@@ -219,7 +235,7 @@ class Requests extends Component {
         if (this.state.requestsObj) {
             var adds = [];
             Object.keys(this.state.requestsObj).forEach((key, index) => {
-                    if (this.state.requestsObj[key].email === this.state.email) {
+                    if (this.state.requestsObj[key].email == this.state.email && this.state.requestsObj[key].completed == false) {
                         adds.push(this.state.requestsObj[key]);
                     }
                 }
@@ -296,6 +312,7 @@ const styles = {
     },
 
     textStyle: {
+        textAlign: 'center',
         alignSelf: 'center',
         color: '#007aff',
         fontSize: 16,

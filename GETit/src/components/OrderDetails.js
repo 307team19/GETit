@@ -8,12 +8,23 @@ class OrderDetails extends Component {
 
     state = {
         details: {},
-        number: ''
+        number: '',
+        acceptorName: ''
     };
 
     componentWillMount() {
         console.log(this.props.navigation.state.params.details)
         this.setState({details: this.props.navigation.state.params.details})
+        const u = firebase.auth().currentUser.uid;
+        firebase.database().ref('/users/' + u + '/').once('value')
+            .then(response => {
+                this.setState({
+                    acceptorName: response.val().firstName + ' ' + response.val().lastName
+                });
+                console.log("user is " + this.state.user);
+
+
+            });
     }
 
     mapKey = 'AIzaSyDOhIL5sHTAm6rrVac5iCpOnEZU-7RkfK0';
@@ -161,7 +172,8 @@ class OrderDetails extends Component {
                                         text: 'Yes',
                                         onPress: () => {
                                             firebase.database().ref('/requests/' + this.state.details.unikey + "/").update({
-                                                acceptedBy: firebase.auth().currentUser.uid
+                                                acceptedBy: firebase.auth().currentUser.uid,
+                                                acceptorName: this.state.acceptorName
                                             });
                                             this.props.navigation.navigate('tabscreen');
                                         }
