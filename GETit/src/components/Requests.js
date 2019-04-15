@@ -152,7 +152,7 @@ class Requests extends Component {
                         {message}
                     </Text>
                     
-                    
+            
                 </View>
             )
         } else {
