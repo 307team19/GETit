@@ -53,6 +53,7 @@
 		C710253C221BFF1200D3113E /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7102517221BFEF000D3113E /* libRCTCameraRoll.a */; };
 		C7102611221C0F8E00D3113E /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7102610221C0F7400D3113E /* libRNImagePicker.a */; };
 		C77A4712223E4AF8000CAF0E /* libRNCWebView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C77A470B223E4AC8000CAF0E /* libRNCWebView.a */; };
+		C7AFF3F6224764B000741DE7 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7AFF3F3224764A300741DE7 /* libRCTPushNotification.a */; };
 		C7B2D45A221EA6B900E77DF1 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B2D454221EA69700E77DF1 /* libRNFetchBlob.a */; };
 		D79BCC6333A94D7C814BA83D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D1EFC2E3DF74B02BDBBFFF7 /* Zocial.ttf */; };
 		D9EDA236DCC34298ADF3A91F /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8BC52A876D4BD394F277B7 /* libRNVectorIcons-tvOS.a */; };
@@ -398,6 +399,20 @@
 			remoteGlobalIDString = 9FD355121D3E4A2900D06170;
 			remoteInfo = RNGoogleSignin;
 		};
+		C7AFF3F2224764A300741DE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7AFF3ED224764A300741DE7 /* RCTPushNotification.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTPushNotification;
+		};
+		C7AFF3F4224764A300741DE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7AFF3ED224764A300741DE7 /* RCTPushNotification.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D05745F1DE6004600184BB4;
+			remoteInfo = "RCTPushNotification-tvOS";
+		};
 		C7B2D453221EA69700E77DF1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C7B2D429221EA69600E77DF1 /* RNFetchBlob.xcodeproj */;
@@ -464,6 +479,7 @@
 		C710250D221BFEEA00D3113E /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		C710260B221C0F5F00D3113E /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		C77A46E0223E4AC8000CAF0E /* RNCWebView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCWebView.xcodeproj; path = "../node_modules/react-native-webview/ios/RNCWebView.xcodeproj"; sourceTree = "<group>"; };
+		C7AFF3ED224764A300741DE7 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		C7B2D429221EA69600E77DF1 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFetchBlob.xcodeproj; path = "../node_modules/rn-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; };
 		CD35C9E154D946D199833851 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		CE304E7C4EF04A4C9170D126 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
@@ -489,6 +505,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7AFF3F6224764B000741DE7 /* libRCTPushNotification.a in Frameworks */,
 				C77A4712223E4AF8000CAF0E /* libRNCWebView.a in Frameworks */,
 				C7B2D45A221EA6B900E77DF1 /* libRNFetchBlob.a in Frameworks */,
 				C7102611221C0F8E00D3113E /* libRNImagePicker.a in Frameworks */,
@@ -744,6 +761,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				C7AFF3ED224764A300741DE7 /* RCTPushNotification.xcodeproj */,
 				C77A46E0223E4AC8000CAF0E /* RNCWebView.xcodeproj */,
 				C7B2D429221EA69600E77DF1 /* RNFetchBlob.xcodeproj */,
 				C710260B221C0F5F00D3113E /* RNImagePicker.xcodeproj */,
@@ -850,6 +868,15 @@
 			isa = PBXGroup;
 			children = (
 				C78309A722169DDC00FA2558 /* libRNGoogleSignin.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C7AFF3EE224764A300741DE7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C7AFF3F3224764A300741DE7 /* libRCTPushNotification.a */,
+				C7AFF3F5224764A300741DE7 /* libRCTPushNotification-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -965,10 +992,16 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = ZZS55GX5F2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = UES3CL6253;
+						DevelopmentTeam = ZZS55GX5F2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -986,6 +1019,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1024,6 +1058,10 @@
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+				},
+				{
+					ProductGroup = C7AFF3EE224764A300741DE7 /* Products */;
+					ProjectRef = C7AFF3ED224764A300741DE7 /* RCTPushNotification.xcodeproj */;
 				},
 				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
@@ -1400,6 +1438,20 @@
 			remoteRef = C78309A622169DDC00FA2558 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		C7AFF3F3224764A300741DE7 /* libRCTPushNotification.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTPushNotification.a;
+			remoteRef = C7AFF3F2224764A300741DE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C7AFF3F5224764A300741DE7 /* libRCTPushNotification-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTPushNotification-tvOS.a";
+			remoteRef = C7AFF3F4224764A300741DE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		C7B2D454221EA69700E77DF1 /* libRNFetchBlob.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1647,6 +1699,7 @@
 			baseConfigurationReference = 2439FF120D456BA5802C2096 /* Pods-GETitTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ZZS55GX5F2;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1682,6 +1735,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = ZZS55GX5F2;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
@@ -1714,7 +1768,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = UES3CL6253;
+				DEVELOPMENT_TEAM = ZZS55GX5F2;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
@@ -1723,6 +1777,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios/RNImagePicker",
 					"$(SRCROOT)/../node_modules/react-native-get-location/ios/ReactNativeGetLocationLibrary",
 					"$(SRCROOT)/../node_modules/react-native-webview/ios",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj",
 				);
 				INFOPLIST_FILE = GETit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1731,7 +1786,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = GETit222;
+				PRODUCT_BUNDLE_IDENTIFIER = GETit123132;
 				PRODUCT_NAME = GETit;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1743,7 +1798,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UES3CL6253;
+				DEVELOPMENT_TEAM = ZZS55GX5F2;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
@@ -1752,6 +1807,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios/RNImagePicker",
 					"$(SRCROOT)/../node_modules/react-native-get-location/ios/ReactNativeGetLocationLibrary",
 					"$(SRCROOT)/../node_modules/react-native-webview/ios",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj",
 				);
 				INFOPLIST_FILE = GETit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1760,7 +1816,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = GETit222;
+				PRODUCT_BUNDLE_IDENTIFIER = GETit123132;
 				PRODUCT_NAME = GETit;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

@@ -1,10 +1,9 @@
 import firebase from "firebase";
 import {Button, Provider as PaperProvider, Text, TextInput} from "react-native-paper";
 import paperTheme from "./common/paperTheme";
-import {ScrollView, View} from "react-native";
+import {Alert, ScrollView, View} from "react-native";
 import React, {Component} from "react";
 import {NavigationActions, StackActions} from "react-navigation";
-import {GoogleSignin} from "react-native-google-signin";
 
 const resetAction = StackActions.reset({
     index: 0,
@@ -26,7 +25,8 @@ class CreateUser extends Component {
         password: '',
         phoneNumber: '',
         lastName: '',
-        userInfo: ''
+        userInfo: '',
+        venmoUsername: ''
     };
 
 
@@ -42,7 +42,7 @@ class CreateUser extends Component {
         }
 
         const fullName = pro.displayName.split(" ");
-        
+
 
         this.setState({
             email: pro.email,
@@ -50,7 +50,7 @@ class CreateUser extends Component {
             firstName: fullName[0],
             lastName: fullName[1],
             phoneNumber: pro.phoneNumber,
-            userInfo: firebase.auth().currentUser.uid
+            userInfo: firebase.auth().currentUser.uid,
         });
 
 
@@ -58,6 +58,23 @@ class CreateUser extends Component {
 
 
     createUserButtonPressed() {
+        if (this.state.email === "" || this.state.firstName === "" || this.state.lastName === "" ||
+            this.state.phoneNumber === "" || this.state.venmoUsername === "") {
+            Alert.alert(
+                'Oops!',
+                'Check the first name, last name, phone number and venmo username',
+                [
+                    {
+                        text: 'OK',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+
+                ],
+                {cancelable: false},
+            );
+            return;
+        }
         var userRef = firebase.database().ref("users/" + this.state.userInfo + "/");
         userRef.set({
             email: this.state.email,
@@ -65,13 +82,15 @@ class CreateUser extends Component {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             phoneNumber: this.state.phoneNumber,
+            venmoUsername: this.state.venmoUsername,
             addresses: {"no address": "no address"},
-            address: "no address"
+            address: "no address",
+            notification: true
         }).then((data) => {
             console.log('Synchronization succeeded');
         }).catch((error) => {
             console.log(error)
-        })
+        });
 
         this.props.navigation.dispatch(resetAction);
 
@@ -101,6 +120,7 @@ class CreateUser extends Component {
                             style={styles.textInputStyle}
                             label='Email'
                             mode='outlined'
+                            disabled
                             value={this.state.email}
                             onChangeText={textString => this.setState({email: textString})}
 
@@ -110,7 +130,16 @@ class CreateUser extends Component {
                             label='Phone Number'
                             mode='outlined'
                             value={this.state.phoneNumber}
-                            onChangeText={textString => this.setState({phoneNumber: textString})}
+                            keyboardType='numeric'
+                            onChangeText={textString => this.setState({phoneNumber: textString.replace(/[^0-9]/g, '')})}
+
+                        />
+                        <TextInput
+                            style={styles.textInputStyle}
+                            label='Venmo Username'
+                            mode='outlined'
+                            value={this.state.venmoUsername}
+                            onChangeText={textString => this.setState({venmoUsername: textString})}
                         />
                         <Button
                             style={styles.buttonContainedStyle}

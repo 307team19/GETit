@@ -42,14 +42,32 @@ class SignUpForm extends Component {
         phoneNumber: '',
         lastName: '',
         userInfo: '',
+        venmoUsername: ''
 
     };
 
 
     async onSignUpButtonPressed() {
 
+        if (this.state.email === "" || this.state.firstName === "" || this.state.lastName === "" ||
+            this.state.phoneNumber === "" || this.state.venmoUsername === "") {
+            Alert.alert(
+                'Oops!',
+                'Check the first name, last name, phone number and venmo username',
+                [
+                    {
+                        text: 'OK',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
 
-        const {email, password, phoneNumber, firstName, lastName} = this.state;
+                ],
+                {cancelable: false},
+            );
+            return;
+        }
+
+        const {email, password, phoneNumber, firstName, lastName, venmoUsername} = this.state;
         try {
             await firebase.auth().createUserWithEmailAndPassword(email, password)
         } catch (err) {
@@ -77,6 +95,8 @@ class SignUpForm extends Component {
             phoneNumber,
             firstName,
             lastName,
+            venmoUsername,
+            notification: true,
             photoURL: "https://firebasestorage.googleapis.com/v0/b/getit-a4be5.appspot.com/o/posts%2Ffile%3A%2FUsers%2Fsehajbirrandhawa%2FLibrary%2FDeveloper%2FCoreSimulator%2FDevices%2FF055FD0C-ABC6-423E-BB50-C01606FF7933%2Fdata%2FContainers%2FData%2FApplication%2FE69A3A82-C538-423F-A1DC-CCE106B25723%2FDocuments%2Fimages%2Fpurduepete.jpg?alt=media&token=e9ada70d-8b56-40d5-b114-1165820105da",
             addresses: {"no address": "no address"},
             address: "no address"
@@ -84,7 +104,7 @@ class SignUpForm extends Component {
             console.log('Synchronization succeeded');
         }).catch((error) => {
             console.log(error)
-        })
+        });
 
         this.props.navigation.dispatch(resetAction);
 
@@ -97,7 +117,7 @@ class SignUpForm extends Component {
             await GoogleSignin.hasPlayServices();
             const userInfo = await GoogleSignin.signIn();
             this.setState({userInfo});
-            console.log(this.state.userInfo)
+            console.log(this.state.userInfo);
             var credential = firebase.auth.GoogleAuthProvider.credential(this.state.userInfo.idToken);
             firebase.auth().signInAndRetrieveDataWithCredential(credential)
                 .then(() => {
@@ -172,7 +192,16 @@ class SignUpForm extends Component {
                             label='Phone Number'
                             mode='outlined'
                             value={this.state.phoneNumber}
-                            onChangeText={textString => this.setState({phoneNumber: textString})}
+                            keyboardType='numeric'
+                            onChangeText={textString => this.setState({phoneNumber: textString.replace(/[^0-9]/g, '')})}
+
+                        />
+                        <TextInput
+                            style={styles.textInputStyle}
+                            label='Venmo Username'
+                            mode='outlined'
+                            value={this.state.venmoUsername}
+                            onChangeText={textString => this.setState({venmoUsername: textString})}
                         />
                         <Button
                             style={styles.buttonContainedStyle}

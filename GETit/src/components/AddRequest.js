@@ -9,7 +9,7 @@ import Geocoder from 'react-native-geocoding';
 
 class AddRequest extends Component {
 
-     static navigationOptions = {
+    static navigationOptions = {
         title: 'Add Request',
     };
 
@@ -58,15 +58,12 @@ class AddRequest extends Component {
                     this.setState(requestItem)
                 }
 
-
                 var adds = [];
                 Object.keys(this.state.addresses).forEach((key, index) => {
                         if (key !== "no address") {
                             adds.push({
                                 value: this.state.addresses[key]
                             });
-
-
                         }
                     }
                 );
@@ -95,7 +92,7 @@ class AddRequest extends Component {
                     .catch(error => {
                         const {code, message} = error;
                         console.warn(code, message);
-                    })
+                    });
 
 
                 this.setState({data: adds})
@@ -113,66 +110,44 @@ class AddRequest extends Component {
         } else {
 
             var refpush = firebase.database().ref("requests/").push()
-            var unikey = refpush.key
+            var unikey = refpush.key;
             var userRef = firebase.database().ref("requests/" + unikey + "/");
 
-            //TODO this code is creepy, edit address separately
+            var location;
 
             if (this.state.address === 'Current Location') {
-                userRef.set(
-                    {
-                        item: this.state.item,
-                        price: this.state.price,
-                        description: this.state.description,
-                        firstName: this.state.firstName,
-                        lastName: this.state.lastName,
-                        email: this.state.email,
-                        phoneNumber: this.state.phoneNumber,
-                        address: this.state.GPSLocation,
-                        link: this.state.link,
-                        instructions: this.state.instructions,
-                        unikey: unikey,
-                        completed: this.state.completed,
-                        acceptedBy: "",
-                    }
-                ).then((data) => {
-                    console.log('Synchronization succeeded');
-                    this.props.navigation.navigate('requests')
-
-                }).catch((error) => {
-                    console.log(error)
-                })
+                location = this.state.GPSLocation;
             } else {
-                userRef.set(
-                    {
-                        item: this.state.item,
-                        price: this.state.price,
-                        description: this.state.description,
-                        firstName: this.state.firstName,
-                        lastName: this.state.lastName,
-                        email: this.state.email,
-                        phoneNumber: this.state.phoneNumber,
-                        address: this.state.address,
-                        link: this.state.link,
-                        instructions: this.state.instructions,
-                        unikey: unikey,
-                        completed: this.state.completed,
-                        acceptedBy: "",
-                    }
-                ).then((data) => {
-                    console.log('Synchronization succeeded');
-                    this.props.navigation.navigate('requests')
-
-                }).catch((error) => {
-                    console.log(error)
-                })
+                location = this.state.address;
             }
+            userRef.set(
+                {
+                    item: this.state.item,
+                    price: this.state.price,
+                    description: this.state.description,
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    email: this.state.email,
+                    phoneNumber: this.state.phoneNumber,
+                    address: location,
+                    link: this.state.link,
+                    instructions: this.state.instructions,
+                    unikey: unikey,
+                    completed: this.state.completed,
+                    acceptedBy: "",
+                }
+            ).then((data) => {
+                console.log('Synchronization succeeded');
+                this.props.navigation.navigate('requests')
+            }).catch((error) => {
+                console.log(error)
+            })
         }
     };
 
     shouldShowCurrLoc = () => {
 
-        if (this.state.showCurrLoc == false) {
+        if (this.state.showCurrLoc === false) {
 
             return {
                 margin: 0, height: 0, fontSize: 16
@@ -214,7 +189,7 @@ class AddRequest extends Component {
                     containerStyle={{margin: 10}}
                     value={this.state.address}
                     onChangeText={text => {
-                        if (text == 'Current Location') {
+                        if (text === 'Current Location') {
                             this.setState({address: this.state.GPSLocation, showCurrLoc: true})
                         } else {
 
@@ -223,7 +198,8 @@ class AddRequest extends Component {
                     }}
                 />
                 <View>
-                    <Text style = {this.shouldShowCurrLoc()} numberOfLines={2} ellipsizeMode = 'tail'>Current location: {this.state.GPSLocation}</Text>
+                    <Text style={this.shouldShowCurrLoc()} numberOfLines={2} ellipsizeMode='tail'>Current
+                        location: {this.state.GPSLocation}</Text>
                 </View>
                 <TextInput
                     style={{margin: 10}}

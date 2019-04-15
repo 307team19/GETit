@@ -4,6 +4,7 @@ import SignUpForm from './SignUpForm';
 import LoginPage from './LoginPage'
 import MyAccount from './MyAccount'
 import Orders from './Orders'
+import MyOrders from './MyOrders'
 import Requests from './Requests'
 import PasswordReset from './PasswordReset'
 import {createAppContainer, createMaterialTopTabNavigator, createStackNavigator} from "react-navigation";
@@ -14,46 +15,69 @@ import AddRequest from "./AddRequest"
 import RequestHistory from "./RequestHistory";
 import EditRequest from "./EditRequest";
 import OrderDetails from "./OrderDetails"
+import DropdownAlert from 'react-native-dropdownalert';
+import DropDownHolder from './DropDownHandler'
+import QRtest from './QRTest'
 
-const TabNavigator = createMaterialTopTabNavigator({
-            orders: Orders,
-            myaccount: MyAccount,
-            requests: Requests,
-},
-{
-            order: ['orders', 'requests', 'myaccount'],
-            swipeEnabled: true,
-            tabBarPosition: 'bottom',
-            tabBarOptions: {
-                labelStyle: {
-                    fontSize: 12,
-                },
-                style: {
-                    backgroundColor: '#1eaaf1',
-                },
-            }
+
+const ordersTabNavigator = createMaterialTopTabNavigator({
+        allorders: Orders,
+        myorders: MyOrders,
+    },
+    {
+        order: ['myorders', 'allorders'],
+        swipeEnabled: true,
+        tabBarOptions: {
+            labelStyle: {
+                fontSize: 12,
+            },
+            style: {
+                backgroundColor: '#1eaaf1',
+            },
         }
+    }
 )
 
-TabNavigator.navigationOptions = ({ navigation }) => {
-  const { routeName } = navigation.state.routes[navigation.state.index];
 
-  
-  if(routeName == "requests"){
-       return {
-             headerTitle: "Currents Requests",
-       };
-  }else if(routeName == "orders"){
-      return {
-             headerTitle: "Orders",
-       };
-  }else{
-      return {
-             headerTitle: "My Account",
-      };
-  }
-  
- 
+const TabNavigator = createMaterialTopTabNavigator({
+        orders: ordersTabNavigator,
+        myaccount: MyAccount,
+        requests: Requests,
+    },
+    {
+        order: ['orders', 'requests', 'myaccount'],
+        swipeEnabled: true,
+        tabBarPosition: 'bottom',
+        tabBarOptions: {
+            labelStyle: {
+                fontSize: 12,
+            },
+            style: {
+                backgroundColor: '#1eaaf1',
+            },
+        }
+    }
+)
+
+TabNavigator.navigationOptions = ({navigation}) => {
+    const {routeName} = navigation.state.routes[navigation.state.index];
+
+
+    if (routeName === "requests") {
+        return {
+            headerTitle: "Currents Requests",
+        };
+    } else if (routeName === "orders") {
+        return {
+            headerTitle: "Orders",
+        };
+    } else {
+        return {
+            headerTitle: "My Account",
+        };
+    }
+
+
 };
 
 const AppNavigator = createStackNavigator(
@@ -69,6 +93,7 @@ const AppNavigator = createStackNavigator(
         addRequest: AddRequest,
         requestHistory: RequestHistory,
         editRequest: EditRequest,
+        qrtest: QRtest,
         tabscreen: TabNavigator
 
 
@@ -87,7 +112,6 @@ const AppNavigator = createStackNavigator(
         },
     },
 );
-
 
 
 const AppContainer = createAppContainer(AppNavigator);
@@ -112,6 +136,7 @@ class App extends Component<Props> {
         return (
             <View style={{flex: 1}}>
                 <AppContainer/>
+                <DropdownAlert ref={ref => DropDownHolder.setDropDown(ref)}/>
             </View>
         )
 
