@@ -120,7 +120,7 @@ class Requests extends Component {
         }
     };
 
-    onSuccess(e) {
+  onSuccess(e) {
     Linking
       .openURL(e.data)
       .catch(err => console.error('An error occured', err));
@@ -138,6 +138,7 @@ class Requests extends Component {
                     <Text style={styles.textStyle}>
                         This order is complete!
                     </Text>
+                   
                     
                 </View>
             )
@@ -148,6 +149,7 @@ class Requests extends Component {
                     <Text style={styles.textStyle}>
                         {message}
                     </Text>
+                    
                     
                 </View>
             )
@@ -232,6 +234,19 @@ class Requests extends Component {
                 <View style={{flex: 1}}>
                     {this.retView({item})}
                 </View>
+                <QRCodeScanner
+                        onRead={this.onSuccess.bind(this)}
+                        topContent={
+                        <Text style={styles.centerText}>
+                            Go to <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text> on your computer and scan the QR code.
+                        </Text>
+                        }
+                        bottomContent={
+                        <TouchableOpacity style={styles.buttonTouchable}>
+                            <Text style={styles.buttonText}>OK. Got it!</Text>
+                        </TouchableOpacity>
+                        }
+                />
             </View>
         </Card>
 
