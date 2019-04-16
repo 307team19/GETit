@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
+import firebase from "firebase";
 
 class QRTest extends Component {
 
@@ -10,6 +11,12 @@ class QRTest extends Component {
 		let orderDetail = this.props.navigation.state.params.orderDetails;
 		this.code = orderDetail.details.unikey + ".com";
 		console.log("Code: " + this.code);
+
+		  firebase.database().ref('/requests/'+orderDetail.details.unikey).on('child_changed', (snapshot) => {
+
+            this.props.navigation.navigate('orders');
+
+        });
 
 	}
 
