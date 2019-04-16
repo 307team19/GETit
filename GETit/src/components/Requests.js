@@ -120,14 +120,6 @@ class Requests extends Component {
         }
     };
 
-  onSuccess(e) {
-    // Linking
-    //   .openURL(e.data)
-    //   .catch(err => console.error('An error occured', err));
-
-      console.log("E.DATA: "+e.data)
-  }
-
     retView = ({item}) => {
         /*
             If order has been accepted, show accepted message else show edit button

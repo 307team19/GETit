@@ -7,7 +7,7 @@ import Orders from './Orders'
 import MyOrders from './MyOrders'
 import Requests from './Requests'
 import PasswordReset from './PasswordReset'
-import verify from './verify'
+import Verify from './Verify'
 import {createAppContainer, createMaterialTopTabNavigator, createStackNavigator} from "react-navigation";
 import {View} from 'react-native';
 import CreateUser from "./CreateUser";
@@ -18,8 +18,8 @@ import EditRequest from "./EditRequest";
 import OrderDetails from "./OrderDetails"
 import DropdownAlert from 'react-native-dropdownalert';
 import DropDownHolder from './DropDownHandler'
-import QRtest from './QRTest'
-import payment from './payment'
+import QRTest from './QRTest'
+import payment from './Payment'
 
 
 const ordersTabNavigator = createMaterialTopTabNavigator({
@@ -95,8 +95,8 @@ const AppNavigator = createStackNavigator(
         addRequest: AddRequest,
         requestHistory: RequestHistory,
         editRequest: EditRequest,
-        qrtest: QRtest,
-        verify: verify,
+        qrtest: QRTest,
+        verify: Verify,
         tabscreen: TabNavigator,
         payment: payment,
 

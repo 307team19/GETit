@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Alert, Image, Text, View } from "react-native";
 
-class payment extends Component {
+class Payment extends Component {
 
     state={
         item: {},
@@ -29,4 +29,4 @@ const styles = {
 
 };
 
-export default payment;
+export default Payment;
