@@ -7,6 +7,7 @@ import Orders from './Orders'
 import MyOrders from './MyOrders'
 import Requests from './Requests'
 import PasswordReset from './PasswordReset'
+import verify from './verify'
 import {createAppContainer, createMaterialTopTabNavigator, createStackNavigator} from "react-navigation";
 import {View} from 'react-native';
 import CreateUser from "./CreateUser";
@@ -94,6 +95,7 @@ const AppNavigator = createStackNavigator(
         requestHistory: RequestHistory,
         editRequest: EditRequest,
         qrtest: QRtest,
+        verify: verify,
         tabscreen: TabNavigator
 
 
