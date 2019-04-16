@@ -19,7 +19,7 @@ class verify extends Component {
                                     {
                                         text: 'ok',
                                         onPress: () => {
-                                         this.props.navigation.navigate('requests');
+                                         this.props.navigation.navigate('payment');
                                         }
                                     },
                                     

@@ -19,6 +19,7 @@ import OrderDetails from "./OrderDetails"
 import DropdownAlert from 'react-native-dropdownalert';
 import DropDownHolder from './DropDownHandler'
 import QRtest from './QRTest'
+import payment from './payment'
 
 
 const ordersTabNavigator = createMaterialTopTabNavigator({
@@ -96,7 +97,8 @@ const AppNavigator = createStackNavigator(
         editRequest: EditRequest,
         qrtest: QRtest,
         verify: verify,
-        tabscreen: TabNavigator
+        tabscreen: TabNavigator,
+        payment: payment,
 
 
     },
