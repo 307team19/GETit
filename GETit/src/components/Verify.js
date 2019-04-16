@@ -15,20 +15,25 @@ class Verify extends Component {
         var res = this.state.item.unikey + ".com";
         if (res == e.data) {
             Alert.alert(
-                'Alert!',
+                'Verified',
                 'Order Verified! Click OK to pay through Venmo.',
                 [
                     {
-                        text: 'ok',
+                        text: 'OK',
                         onPress: () => {
                             // this.props.navigation.navigate('payment');
-                            let link = 'venmo://paycharge?txn=pay&recipients=' + this.state.venmoUsername +
-                                '&amount=' + this.state.item.price + '&note=GETit request payment';
-                            Linking.openURL(link);
-                            firebase.database().ref('/requests/' + this.state.item.unikey + "/").update({
-                                completed: true
-                            });
-                            this.props.navigation.navigate('requests');
+
+                            firebase.database().ref("users/" + this.state.item.acceptedBy + "/")
+                                .once('value').then(response => {
+
+                                let link = 'venmo://paycharge?txn=pay&recipients=' + response.val().venmoUsername +
+                                    '&amount=' + this.state.item.price + '&note=GETit request payment';
+                                Linking.openURL(link);
+                                firebase.database().ref('/requests/' + this.state.item.unikey + "/").update({
+                                    completed: true
+                                });
+                                this.props.navigation.navigate('requests');
+                            })
                         }
                     },
 
@@ -40,7 +45,7 @@ class Verify extends Component {
                 'Order was not verified :(',
                 [
                     {
-                        text: 'ok',
+                        text: 'OK',
                         onPress: () => {
                             this.props.navigation.navigate('requests');
                         }
@@ -84,6 +89,7 @@ class Verify extends Component {
         if (this.state.focusedScreen == true) {
             return (
                 <QRCodeScanner
+
                     onRead={this.onSuccess.bind(this)}
                 />
             )
@@ -97,7 +103,7 @@ class Verify extends Component {
 
     render() {
         return (
-            <View>
+            <View style={{flex: 1}}>
                 {this.retView()}
             </View>
         );

@@ -133,7 +133,7 @@ class AddRequest extends Component {
                     link: this.state.link,
                     instructions: this.state.instructions,
                     unikey: unikey,
-                    completed: this.state.completed,
+                    completed: false,
                     acceptedBy: "",
                 }
             ).then((data) => {

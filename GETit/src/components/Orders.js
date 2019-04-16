@@ -34,28 +34,27 @@ class Orders extends Component {
 
         firebase.database().ref('/').once('value').then(response => {
             this.setState({requests: response.val().requests})
-        })
+        });
 
-          firebase.database().ref('/').on('child_changed', (snapshot) => {
+        firebase.database().ref('/').on('child_changed', (snapshot) => {
 
             firebase.database().ref('/').once('value').then(response => {
-            this.setState({requests: response.val().requests})
-        })
+                this.setState({requests: response.val().requests})
+            })
 
-            });
+        });
 
 
-        
     }
 
 
-     loadRequests = () => {
+    loadRequests = () => {
         console.log(this.state.requests);
         if (this.state.requests) {
             var adds = [];
             Object.keys(this.state.requests).forEach((key, index) => {
-                if (!(this.state.requests[key].email == this.state.email) && this.state.requests[key].acceptedBy == ""
-                    && !this.state.requests[key].completed ) {
+                    if (!(this.state.requests[key].email == this.state.email) && this.state.requests[key].acceptedBy == ""
+                        && !this.state.requests[key].completed) {
                         adds.push(this.state.requests[key]);
                     }
                 }
@@ -114,10 +113,10 @@ class Orders extends Component {
         }
     };
 
-    showList =()=>{
-        if(!this.myOrders){
+    showList = () => {
+        if (!this.myOrders) {
             return this.loadRequests()
-        }else return this.loadMyRequests()
+        } else return this.loadMyRequests()
     }
 
     renderItem = ({item}) => (
@@ -169,7 +168,6 @@ class Orders extends Component {
 
     );
 
-    
 
     render() {
 
@@ -181,10 +179,10 @@ class Orders extends Component {
                     })
                 }}
                 />
-                
+
                 <Card style={styles.topCard} elevation={5}>
                     <ScrollView ref="scroll">
-                    
+
                         <View align='center' style={{margin: 5}}>
                             <Card.Content style={{flex: 1}}>
                                 {this.loadRequests()}
@@ -247,9 +245,6 @@ const styles = {
         // marginLeft: 5,
         // marginRight: 5,
     },
-        
-
-    
 
 
 };

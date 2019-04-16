@@ -56,16 +56,7 @@ class Requests extends Component {
                     console.log("obj.email: " + obj.email + " email: " + this.state.email);
 
                     if (obj) {
-
-                        if (obj.completed === true && obj.email === this.state.email) {
-                            DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit',
-                                'Your request ' + obj.item + " is completed");
-                            PushNotification.localNotification({
-                                title: "Notification from GETit", // (optional)
-                                message: obj.item + " is completed", // (required)
-                                foreground: true
-                            });
-                        } else if (obj.acceptedBy !== "" && obj.email === this.state.email) {
+                        if (obj.acceptedBy !== "" && obj.email == this.state.email && !obj.completed) {
                             const acceptorUID = obj.acceptedBy;
                             let acceptorName = "No name";
                             firebase.database().ref('/users/' + acceptorUID + '/').once('value')

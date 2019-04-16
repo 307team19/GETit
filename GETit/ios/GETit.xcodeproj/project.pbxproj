@@ -1847,7 +1847,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = GETit123123;
+				PRODUCT_BUNDLE_IDENTIFIER = GETit123;
 				PRODUCT_NAME = GETit;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1877,7 +1877,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = GETit123123;
+				PRODUCT_BUNDLE_IDENTIFIER = GETit123;
 				PRODUCT_NAME = GETit;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
