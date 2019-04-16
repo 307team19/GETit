@@ -21,7 +21,7 @@ class Verify extends Component {
                     {
                         text: 'OK',
                         onPress: () => {
-                            // this.props.navigation.navigate('payment');
+                           
 
                             firebase.database().ref("users/" + this.state.item.acceptedBy + "/")
                                 .once('value').then(response => {
