@@ -352,7 +352,13 @@ class MyAccount extends Component {
                                 this.props.navigation.navigate('requestHistory');
                             }}
                         >
-                            <Text>
+                            <Text style={{
+                                textAlign: 'center',
+                                fontSize: 20,
+                                margin: 3,
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }}>
                                 Request History
                             </Text>
                         </Button>
@@ -360,14 +366,28 @@ class MyAccount extends Component {
                             style={styles.buttonContainedStyle}
                             onPress={this.onEditPressed.bind(this)}
                         >
-                            <Text>
+                            <Text style={{
+                                textAlign: 'center',
+                                fontSize: 20,
+                                margin: 3,
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }}>
                                 {this.state.buttonEdit}
                             </Text>
                         </Button>
                         <Button
-                            style={styles.buttonContainedStyle}
+                            style={{...styles.buttonContainedStyle, borderColor: '#f20010', backgroundColor: '#f20010'}}
                             onPress={this.signOut}>
-                            Sign Out
+                            <Text style={{
+                                textAlign: 'center',
+                                fontSize: 20,
+                                margin: 3,
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }}
+                            >Sign Out</Text>
+                            
                         </Button>
                     </View>
                 </ScrollView>
@@ -381,7 +401,7 @@ const styles = {
         height: 150,
         width: 150,
         alignItems: 'center',
-        flex: 1
+        flex: 1,
     },
     textInputStyle: {
         margin: 10,
@@ -390,7 +410,10 @@ const styles = {
     buttonContainedStyle: {
         margin: 10,
         justifyContent: 'center',
-        flex: 1
+        flex: 1,
+        borderColor: '#5500e9',
+        marginBottom: 3,
+        backgroundColor: '#5500e9'
     },
     textStyle: {
         textAlign: 'center',
