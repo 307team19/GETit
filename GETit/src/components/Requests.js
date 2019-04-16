@@ -44,8 +44,17 @@ class Requests extends Component {
             requestPermissions: true,
         });
 
+        firebase.database().ref('/').on('child_changed', (snapshot) => {
+
+            firebase.database().ref('/').once('value').then(response => {
+                this.setState({requestsObj: response.val().requests})
+            })
+
+        });
+
         firebase.database().ref('/requests/').on('child_changed', (snapshot) => {
 
+         
             let notification;
             firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/")
                 .once('value').then(response => {
