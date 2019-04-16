@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Alert, Text, View, Linking} from "react-native";
+import {Alert, Linking, Text, View} from "react-native";
 import QRCodeScanner from 'react-native-qrcode-scanner';
-import firebase from "./MyAccount";
+import firebase from "firebase";
 
 class Verify extends Component {
 
