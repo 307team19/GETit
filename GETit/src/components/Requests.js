@@ -172,6 +172,20 @@ class Requests extends Component {
         }
     };
 
+    verifyView = ({item}) => {
+        if(item.acceptedBy!=""){
+            return (
+                <TouchableOpacity
+                    style={styles.buttonStyle}
+                    onPress={() => {
+                        this.props.navigation.navigate('verify', {item: item});
+                    }}>
+                    <Text style={styles.textStyle}>Verify Order</Text>
+                </TouchableOpacity>
+            );
+        }
+    };
+
 
     renderItem = ({item}) => (
 
@@ -221,13 +235,7 @@ class Requests extends Component {
                 </View>
                 
                 <View>
-                    <TouchableOpacity
-                        style={styles.buttonStyle}
-                        onPress={() => {
-                            this.props.navigation.navigate('verify', {item: item});
-                        }}>
-                        <Text style={styles.textStyle}>Verify Order</Text>
-                    </TouchableOpacity>
+                    {this.verifyView({item})}
                 </View>
             </View>
         </Card>
