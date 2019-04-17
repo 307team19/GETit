@@ -159,9 +159,9 @@ class OrderDetails extends Component {
                     <TouchableOpacity
                         style={{
                             ...styles.boxStyle,
-                            borderColor: '#5500e9',
+                            borderColor: '#1eaaf1',
                             marginBottom: 3,
-                            backgroundColor: '#5500e9'
+                            backgroundColor: '#1eaaf1'
                         }}
                         onPress={() => {
                             Alert.alert(
@@ -203,9 +203,9 @@ class OrderDetails extends Component {
                     <TouchableOpacity
                         style={{
                             ...styles.boxStyle,
-                            borderColor: '#5500e9',
+                            borderColor: '#1eaaf1',
                             marginBottom: 3,
-                            backgroundColor: '#5500e9'
+                            backgroundColor: '#1eaaf1'
                         }}
                         onPress={() => {
                             Alert.alert(
@@ -330,16 +330,20 @@ class OrderDetails extends Component {
                 </View>
                 {this.retView("accept")}
                 {this.retView("complete")}
-                <View style={{flexDirection: 'row', flex: 1, paddingBottom: 10}}>
+                <View style={{flexDirection: 'row', flex: 1, paddingBottom: 15, paddingTop: 10}}>
                     <TouchableOpacity onPress={this.makeCall} style={styles.buttonStyle}>
-                        <Text style={styles.btnTextStyle}>
-                            Call user
-                        </Text>
+                        <Image
+                            style={styles.iconStyle}
+                            source={require('./common/baseline_call_black_18dp.png')}
+                            resizeMode='contain'
+                        />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={this.sendText} style={styles.buttonStyle}>
-                        <Text style={styles.btnTextStyle}>
-                            Text user
-                        </Text>
+                        <Image
+                            style={styles.iconStyle}
+                            source={require('./common/baseline_chat_black_18dp.png')}
+                            resizeMode='contain'
+                        />
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -362,19 +366,28 @@ const styles = {
         marginRight: 5,
 
     },
+    iconStyle: {
+        //paddingLeft:,
+        height: 30,
+        width: 30,
+        flex: 1
+    },
     imageStyle: {
         height: 220,
         margin: 10
     },
     buttonStyle: {
+        flexDirection: 'row',
         alignItems: 'center',
         fontWeight: 'bold',
         flex: 0.5,
     },
     btnTextStyle: {
-        textAlign: 'center',
+        //align: 'left',
+        textAlign: 'left',
         fontWeight: 'bold',
-        fontSize: 20
+        fontSize: 20,
+        flex: 2
     }
 
 };
