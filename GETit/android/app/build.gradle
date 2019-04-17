@@ -102,6 +102,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        missingDimensionStrategy 'react-native-camera', 'general'
     }
     splits {
         abi {
@@ -134,6 +135,18 @@ android {
 }
 
 dependencies {
+//    implementation project(':react-native-camera')
+//    implementation (project(':react-native-camera')) {
+//        exclude group: "com.google.android.gms"
+//    }
+//    implementation ("com.google.android.gms:play-services-vision:10.2.0") {
+//        force = true;
+//    }
+    implementation (project(':react-native-camera')) {
+        exclude group: "com.google.android.gms"
+        exclude group: "com.android.support"
+    }
+
     implementation project(':react-native-push-notification')
     implementation project(':react-native-get-location')
     implementation project(':react-native-webview')
@@ -153,6 +166,11 @@ dependencies {
 task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
+}
+configurations.all {
+    resolutionStrategy {
+        force 'com.android.support:support-v4:27.1.0'
+    }
 }
 
 apply plugin: 'com.google.gms.google-services'
