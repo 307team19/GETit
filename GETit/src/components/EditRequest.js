@@ -194,28 +194,30 @@ class EditRequest extends Component {
                     onChangeText={textString => this.setState({link: textString})}
                 />
                 <Button
-                    style = {{...styles.buttonContainedStyle,borderColor: '#0ed115', backgroundColor: '#0ed115'}}
-                    onPress={this.confirmChanges}>
-                    <Text style={{
-                        textAlign: 'center',
-                        fontSize: 20,
-                        margin: 3,
-                        fontWeight: 'bold',
-                        color: 'white'
-                    }}
-                    >Confirm Changes</Text>
+                 style = {{...styles.buttonContainedStyle,borderColor: '#0ed115', backgroundColor: '#0ed115'}}
+                 onPress={this.confirmChanges}>
+                 <Text style={{
+                                textAlign: 'center',
+                                fontSize: 20,
+                                margin: 3,
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }}
+                 >Confirm Changes</Text>
+                    
                 </Button>
-                <Button
-                    style = {{...styles.buttonContainedStyle,borderColor: '#f20010', backgroundColor: '#f20010'}}
-                    onPress={this.cancelRequest}>
-                    <Text style={{
-                        textAlign: 'center',
-                        fontSize: 20,
-                        margin: 3,
-                        fontWeight: 'bold',
-                        color: 'white'
-                    }}
-                    >Cancel Order</Text>
+                <Button 
+                style = {{...styles.buttonContainedStyle,borderColor: '#f20010', backgroundColor: '#f20010'}}
+                onPress={this.cancelRequest}>
+                <Text style={{
+                                textAlign: 'center',
+                                fontSize: 20,
+                                margin: 3,
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }}
+                >Cancel Order</Text>
+                    
                 </Button>
             </PaperProvider>
         );
@@ -223,7 +225,7 @@ class EditRequest extends Component {
 }
 
 const styles = {
-    buttonContainedStyle: {
+ buttonContainedStyle: {
         margin: 10,
         justifyContent: 'center',
         borderColor: '#5500e9',
@@ -231,5 +233,4 @@ const styles = {
         backgroundColor: '#5500e9'
     },
 }
-
 export default EditRequest;

@@ -133,7 +133,7 @@ class AddRequest extends Component {
                     link: this.state.link,
                     instructions: this.state.instructions,
                     unikey: unikey,
-                    completed: this.state.completed,
+                    completed: false,
                     acceptedBy: "",
                 }
             ).then((data) => {
@@ -246,6 +246,7 @@ const styles = {
         borderColor: '#5500e9',
         marginBottom: 3,
         backgroundColor: '#5500e9'
+        
     },
 };
 

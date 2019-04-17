@@ -197,6 +197,46 @@ class OrderDetails extends Component {
                     </TouchableOpacity>
                 </View>
             )
+        } else if (item === 'complete' && this.state.details.acceptedBy != "") {
+            return (
+                <View style={{marginLeft: '1%', marginRight: '1%'}}>
+                    <TouchableOpacity
+                        style={{
+                            ...styles.boxStyle,
+                            borderColor: '#5500e9',
+                            marginBottom: 3,
+                            backgroundColor: '#5500e9'
+                        }}
+                        onPress={() => {
+                            Alert.alert(
+                                'Alert!',
+                                'Are you sure you want to complete the order?',
+                                [
+                                    {
+                                        text: 'Yes',
+                                        onPress: () => {
+                                            this.props.navigation.navigate('qrtest', {orderDetails: this.state});
+                                        }
+                                    },
+                                    {
+                                        text: 'No',
+                                        onPress: () => console.log('No Pressed'),
+                                        style: 'cancel',
+                                    },
+                                ],
+                            );
+
+                        }}>
+                        <Text numberOfLines={5} ellipsizeMode={'tail'} style={{
+                            textAlign: 'center',
+                            fontSize: 30,
+                            margin: 3,
+                            fontWeight: 'bold',
+                            color: 'white'
+                        }}>Complete Order</Text>
+                    </TouchableOpacity>
+                </View>
+            );
         }
         else if (item ==='complete' && this.state.details.acceptedBy!=""){
             return (
@@ -254,9 +294,9 @@ class OrderDetails extends Component {
     };
 
     makeCall = () => {
-        const args={
+        const args = {
             number: this.state.details.phoneNumber,
-            prompt:true
+            prompt: true
         }
         call(args).catch(console.error);
     };
@@ -290,7 +330,7 @@ class OrderDetails extends Component {
                 </View>
                 {this.retView("accept")}
                 {this.retView("complete")}
-                <View style={{flexDirection: 'row', flex: 1, paddingBottom:10}}>
+                <View style={{flexDirection: 'row', flex: 1, paddingBottom: 10}}>
                     <TouchableOpacity onPress={this.makeCall} style={styles.buttonStyle}>
                         <Text style={styles.btnTextStyle}>
                             Call user
@@ -309,34 +349,34 @@ class OrderDetails extends Component {
 }
 
 const styles = {
-        boxStyle: {
-            flex: 1,
-            marginTop: 7,
-            marginBottom: 12,
-            alignSelf: 'stretch',
-            backgroundColor: '#fff',
-            borderRadius: 5,
-            borderWidth: 1,
-            borderColor: '#007aff',
-            marginLeft: 5,
-            marginRight: 5,
+    boxStyle: {
+        flex: 1,
+        marginTop: 7,
+        marginBottom: 12,
+        alignSelf: 'stretch',
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#007aff',
+        marginLeft: 5,
+        marginRight: 5,
 
-        },
-        imageStyle: {
-            height: 220,
-            margin: 10
-        },
-        buttonStyle: {
-            alignItems: 'center',
-            fontWeight: 'bold',
-            flex: 0.5,
-        },
-        btnTextStyle: {
-            textAlign: 'center',
-            fontWeight: 'bold',
-            fontSize: 20
-        }
+    },
+    imageStyle: {
+        height: 220,
+        margin: 10
+    },
+    buttonStyle: {
+        alignItems: 'center',
+        fontWeight: 'bold',
+        flex: 0.5,
+    },
+    btnTextStyle: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 20
+    }
 
-    };
+};
 
 export default OrderDetails;

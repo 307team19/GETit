@@ -380,13 +380,14 @@ class MyAccount extends Component {
                             style={{...styles.buttonContainedStyle, borderColor: '#f20010', backgroundColor: '#f20010'}}
                             onPress={this.signOut}>
                             <Text style={{
-                            textAlign: 'center',
-                            fontSize: 20,
-                            margin: 3,
-                            fontWeight: 'bold',
-                            color: 'white'
-                        }}
-                        >Sign Out</Text>
+                                textAlign: 'center',
+                                fontSize: 20,
+                                margin: 3,
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }}
+                            >Sign Out</Text>
+                            
                         </Button>
                     </View>
                 </ScrollView>
@@ -400,7 +401,7 @@ const styles = {
         height: 150,
         width: 150,
         alignItems: 'center',
-        flex: 1
+        flex: 1,
     },
     textInputStyle: {
         margin: 10,

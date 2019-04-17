@@ -5,7 +5,7 @@ import firebase from "firebase";
 import PushNotification from 'react-native-push-notification'
 import {NavigationEvents} from 'react-navigation';
 import DropDownHandler from './DropDownHandler';
-
+import QRCodeScanner from 'react-native-qrcode-scanner';
 
 class Requests extends Component {
 
@@ -54,6 +54,7 @@ class Requests extends Component {
 
         firebase.database().ref('/requests/').on('child_changed', (snapshot) => {
 
+         
             let notification;
             firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/")
                 .once('value').then(response => {
@@ -64,16 +65,7 @@ class Requests extends Component {
                     console.log("obj.email: " + obj.email + " email: " + this.state.email);
 
                     if (obj) {
-
-                        if (obj.completed === true && obj.email === this.state.email) {
-                            DropDownHandler.dropDown.alertWithType('success', 'Notification from GETit',
-                                'Your request ' + obj.item + " is completed");
-                            PushNotification.localNotification({
-                                title: "Notification from GETit", // (optional)
-                                message: obj.item + " is completed", // (required)
-                                foreground: true
-                            });
-                        } else if (obj.acceptedBy !== "" && obj.email === this.state.email) {
+                        if (obj.acceptedBy !== "" && obj.email == this.state.email && !obj.completed) {
                             const acceptorUID = obj.acceptedBy;
                             let acceptorName = "No name";
                             firebase.database().ref('/users/' + acceptorUID + '/').once('value')
@@ -140,19 +132,24 @@ class Requests extends Component {
                     <Text style={styles.textStyle}>
                         This order is complete!
                     </Text>
+                   
+                    
                 </View>
             )
         } else if (item.acceptedBy != "") {
             let message = "Order has been accepted by\n" + item.acceptorName;
             return (
-                <View style={{alignItems: 'center'}}>
+                <View sle={{alignItems: 'center'}}>
                     <Text style={styles.textStyle}>
                         {message}
                     </Text>
+                    
+            
                 </View>
             )
         } else {
             return (
+                <View>
                 <TouchableOpacity
                     style={styles.buttonStyle}
                     onPress={() => {
@@ -178,6 +175,8 @@ class Requests extends Component {
                     }>
                     <Text style={styles.textStyle}>Edit</Text>
                 </TouchableOpacity>
+                
+                </View>
             )
         }
     };
@@ -228,6 +227,16 @@ class Requests extends Component {
 
                 <View style={{flex: 1}}>
                     {this.retView({item})}
+                </View>
+                
+                <View>
+                    <TouchableOpacity
+                        style={styles.buttonStyle}
+                        onPress={() => {
+                            this.props.navigation.navigate('verify', {item: item});
+                        }}>
+                        <Text style={styles.textStyle}>Verify Order</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </Card>
@@ -338,6 +347,23 @@ const styles = {
         marginRight: 5,
         marginBottom: 5,
     },
+     centerText: {
+    flex: 1,
+    fontSize: 18,
+    padding: 32,
+    color: '#777',
+  },
+  textBold: {
+    fontWeight: '500',
+    color: '#000',
+  },
+  buttonText: {
+    fontSize: 21,
+    color: 'rgb(0,122,255)',
+  },
+  buttonTouchable: {
+    padding: 16,
+  },
 
 
 };

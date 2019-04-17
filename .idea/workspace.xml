@@ -75,7 +75,76 @@
             <state relative-caret-position="496">
               <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#650#732#0" />
+                <element signature="e#752#862#0" />
+                <element signature="e#802#859#0" />
+                <element signature="e#932#973#0" />
+                <element signature="e#988#1406#0" />
+                <element signature="n#!!block;n#componentWillMount#0;n#MyAccount#0" />
+                <element signature="e#1647#2352#0" />
+                <element signature="e#1793#2335#0" />
+                <element signature="e#2446#3657#0" />
+                <element signature="e#2623#3125#0" />
+                <element signature="e#2721#3113#0" />
+                <element signature="e#3268#3647#0" />
+                <element signature="e#3311#3327#0" />
+                <element signature="e#3333#3570#0" />
+                <element signature="e#3355#3480#0" />
+                <element signature="e#3495#3556#0" />
+                <element signature="n#!!block;n#onEditPressed#0;n#MyAccount#0" />
+                <element signature="e#3867#4291#0" />
+                <element signature="e#3996#4208#0" />
+                <element signature="e#4018#4188#0" />
+                <element signature="e#4366#4589#0" />
+                <element signature="e#4448#4577#0" />
+                <element signature="e#4595#5189#0" />
+                <element signature="e#4623#4748#0" />
+                <element signature="e#4764#4786#0" />
+                <element signature="e#4915#5018#0" />
+                <element signature="e#5035#5108#0" />
+                <element signature="e#5127#5177#0" />
+                <element signature="n#!!block;n#onImageButtonPressed#0;n#MyAccount#0" />
+                <element signature="e#5285#7865#0" />
+                <element signature="e#5325#5400#0" />
+                <element signature="e#5426#5509#0" />
+                <element signature="e#5542#5640#0" />
+                <element signature="e#5646#7855#0" />
+                <element signature="e#5666#5711#0" />
+                <element signature="e#5829#5892#0" />
+                <element signature="e#6517#6616#0" />
+                <element signature="e#6654#6798#0" />
+                <element signature="e#6832#6956#0" />
+                <element signature="e#6993#7732#0" />
+                <element signature="e#7278#7348#0" />
+                <element signature="e#7365#7462#0" />
+                <element signature="e#7481#7555#0" />
+                <element signature="e#7638#7708#0" />
+                <element signature="e#7772#7838#0" />
+                <element signature="n#!!block;n#onNotificationToggle#0;n#MyAccount#0" />
+                <element signature="e#7988#8398#0" />
+                <element signature="e#8096#8148#0" />
+                <element signature="e#8165#8238#0" />
+                <element signature="e#8257#8307#0" />
+                <element signature="e#8336#8387#0" />
+                <element signature="e#8404#8812#0" />
+                <element signature="e#8512#8563#0" />
+                <element signature="e#8580#8653#0" />
+                <element signature="e#8672#8722#0" />
+                <element signature="e#8751#8801#0" />
+                <element signature="e#8916#9439#0" />
+                <element signature="e#8952#9419#0" />
+                <element signature="e#9144#9399#0" />
+                <element signature="e#9520#10001#0" />
+                <element signature="e#9736#9957#0" />
+                <element signature="e#10027#10149#0" />
+                <element signature="e#10175#10565#0" />
+                <element signature="e#10590#11072#0" />
+                <element signature="e#11097#11512#0" />
+                <element signature="e#11538#12463#0" />
+                <element signature="e#11658#11766#0" />
+                <element signature="e#11797#12419#0" />
+                <element signature="e#12066#12182#0" />
+                <element signature="e#12581#12819#0" />
               </folding>
             </state>
           </provider>
@@ -229,7 +298,6 @@
         <option value="$PROJECT_DIR$/GETit/src/components/AddRequest.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/EditRequest.js" />
         <option value="$PROJECT_DIR$/GETit/src/components/MyAccount.js" />
-        <option value="$PROJECT_DIR$/GETit/src/components/Requests.js" />
       </list>
     </option>
   </component>
@@ -352,7 +420,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18604651" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17899929" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -537,7 +605,7 @@
         <state relative-caret-position="-3716">
           <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

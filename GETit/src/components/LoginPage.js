@@ -126,6 +126,7 @@ class LoginPage extends Component {
                             <CardSection>
 
                                 <TextInput
+                                    testID="emailID"
                                     style={styles.textInputStyle}
                                     label='Email'
                                     mode='outlined'
@@ -139,6 +140,7 @@ class LoginPage extends Component {
                             <CardSection>
 
                                 <TextInput
+                                    testID="password"
                                     style={styles.textInputStyle}
                                     label='Password'
                                     mode='outlined'
@@ -150,6 +152,7 @@ class LoginPage extends Component {
 
                             <CardSection style={{flex: 1}}>
                                 <Button
+                                    testID="loginButton"
                                     onPress={this.onLoginButtonPressed.bind(this)}
                                     style={{...styles.buttonContainedStyle, margin: 0}}
                                     mode="contained"
