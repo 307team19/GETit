@@ -193,15 +193,43 @@ class EditRequest extends Component {
                     value={this.state.link}
                     onChangeText={textString => this.setState({link: textString})}
                 />
-                <Button onPress={this.confirmChanges}>
-                    Confirm Changes
+                <Button
+                    style = {{...styles.buttonContainedStyle,borderColor: '#0ed115', backgroundColor: '#0ed115'}}
+                    onPress={this.confirmChanges}>
+                    <Text style={{
+                        textAlign: 'center',
+                        fontSize: 20,
+                        margin: 3,
+                        fontWeight: 'bold',
+                        color: 'white'
+                    }}
+                    >Confirm Changes</Text>
                 </Button>
-                <Button onPress={this.cancelRequest}>
-                    Cancel Order
+                <Button
+                    style = {{...styles.buttonContainedStyle,borderColor: '#f20010', backgroundColor: '#f20010'}}
+                    onPress={this.cancelRequest}>
+                    <Text style={{
+                        textAlign: 'center',
+                        fontSize: 20,
+                        margin: 3,
+                        fontWeight: 'bold',
+                        color: 'white'
+                    }}
+                    >Cancel Order</Text>
                 </Button>
             </PaperProvider>
         );
     };
+}
+
+const styles = {
+    buttonContainedStyle: {
+        margin: 10,
+        justifyContent: 'center',
+        borderColor: '#5500e9',
+        marginBottom: 3,
+        backgroundColor: '#5500e9'
+    },
 }
 
 export default EditRequest;

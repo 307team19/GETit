@@ -225,7 +225,14 @@ class AddRequest extends Component {
                 <Button
                     onPress={this.addRequest}
                     style={styles.buttonContainedStyle}>
-                    Add Request
+                    <Text style={{
+                        textAlign: 'center',
+                        fontSize: 20,
+                        margin: 3,
+                        fontWeight: 'bold',
+                        color: 'white'
+                    }}
+                    >Add request</Text>
                 </Button>
             </PaperProvider>
         );
@@ -236,7 +243,9 @@ const styles = {
     buttonContainedStyle: {
         margin: 10,
         justifyContent: 'center',
-        flex: 1
+        borderColor: '#5500e9',
+        marginBottom: 3,
+        backgroundColor: '#5500e9'
     },
 };
 
