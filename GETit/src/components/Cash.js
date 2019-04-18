@@ -6,12 +6,14 @@ import firebase from "./QRTest";
 
 class Cash extends Component {
 
+	requestDetails = {};
+
 	componentWillMount() {
-		let requestDetails = this.props.navigation.state.params.requestDetails;
+		this.requestDetails = this.props.navigation.state.params.requestDetails;
 		console.log("Cash");
-		console.log(requestDetails.item.price);
+		console.log(this.requestDetails.item.price);
 		console.log("Acceptor name");
-		console.log(requestDetails.item.acceptorName);
+		console.log(this.requestDetails.item.acceptorName);
 	}
 
 	render() {
@@ -20,6 +22,15 @@ class Cash extends Component {
 				<View>
 					<Text>
 						Paid
+					</Text>
+					<Text>
+						{this.requestDetails.item.price}
+					</Text>
+					<Text>
+						to
+					</Text>
+					<Text>
+						{this.requestDetails.item.acceptorName}
 					</Text>
 				</View>
 			</PaperProvider>
@@ -36,9 +47,17 @@ const styles = {
 		justifyContent: 'center',
 		flex: 1
 	},
-	textStyle: {
+	paidStyle: {
 		textAlign: 'center',
 		fontWeight: 'bold',
+		fontSize: 200,
+		flex: 1
+	},
+	cashStyle: {
+		textAlign: 'center',
+		fontWeight: 'bold',
+		fontSize: 400,
+		color:'#1eaaf1',
 		flex: 1
 	},
 };
