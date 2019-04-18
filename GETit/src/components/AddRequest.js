@@ -164,9 +164,11 @@ class AddRequest extends Component {
     render() {
 
         return (
-            <PaperProvider theme={paperTheme}>
-                <View style={{flexDirection: 'row', margin: 10}}>
+            
+            <PaperProvider theme={paperTheme} testID="addRequestPage" >
+                <View style={{flexDirection: 'row', margin: 10}} >
                     <TextInput
+                        testID="addRequestItem"
                         style={{flex: 3, margin: 10}}
                         label='Item'
                         mode='outlined'
@@ -177,6 +179,7 @@ class AddRequest extends Component {
                         style={{flex: 1, margin: 10}}
                         label='Price'
                         mode='outlined'
+                        testID="addRequestPrice"
                         value={this.state.price}
                         keyboardType='numeric'
                         maxLength={5}
@@ -224,6 +227,7 @@ class AddRequest extends Component {
                 />
                 <Button
                     onPress={this.addRequest}
+                    testID="addRequestAddButton"
                     style={styles.buttonContainedStyle}>
                     <Text style={{
                         textAlign: 'center',
@@ -235,6 +239,7 @@ class AddRequest extends Component {
                     >Add request</Text>
                 </Button>
             </PaperProvider>
+            
         );
     }
 }

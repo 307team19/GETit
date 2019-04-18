@@ -172,7 +172,7 @@ class Orders extends Component {
     render() {
 
         return (
-            <View style={{flex: 1}} testID="ordersPage">
+            <View style={{flex: 1}} testID="allOrdersPage">
                 <NavigationEvents onDidFocus={() => {
                     firebase.database().ref('/').once('value').then(response => {
                         this.setState({requests: response.val().requests})
