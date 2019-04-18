@@ -16,10 +16,10 @@ class Verify extends Component {
         if (res == e.data) {
             Alert.alert(
                 'Verified',
-                'Order Verified! Click OK to pay through Venmo.',
+                'Order Verified! Choose payment option.',
                 [
                     {
-                        text: 'OK',
+                        text: 'Pay through Venmo',
                         onPress: () => {
                            
 
