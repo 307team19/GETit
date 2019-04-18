@@ -46,7 +46,7 @@ class Verify extends Component {
                                 firebase.database().ref('/requests/' + this.state.item.unikey + "/").update({
                                     completed: true
                                 });
-                                this.props.navigation.navigate('requests');
+                                this.props.navigation.navigate('cash');
                             })
                         }
                     }
@@ -68,7 +68,6 @@ class Verify extends Component {
             );
         }
     }
-
 
     componentWillMount() {
         this.setState({item: this.props.navigation.state.params.item}, () => {

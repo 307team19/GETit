@@ -20,6 +20,7 @@ import DropdownAlert from 'react-native-dropdownalert';
 import DropDownHolder from './DropDownHandler'
 import QRTest from './QRTest'
 import payment from './Payment'
+import Cash from './Cash'
 
 
 const ordersTabNavigator = createMaterialTopTabNavigator({
@@ -99,6 +100,7 @@ const AppNavigator = createStackNavigator(
         verify: Verify,
         tabscreen: TabNavigator,
         payment: payment,
+        cash: Cash,
 
 
     },
