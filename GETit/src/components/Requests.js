@@ -293,7 +293,7 @@ class Requests extends Component {
 
         return (
 
-            <View style={{flex: 1}}>
+            <View style={{flex: 1}} testID="addRequestPage">
                 <NavigationEvents onDidFocus={() => {
                     firebase.database().ref('/').once('value').then(response => {
                         this.setState({requestsObj: response.val().requests})
@@ -309,6 +309,7 @@ class Requests extends Component {
                     icon={"add"}
                     small
                     style={styles.fab}
+                    testID="addRequestbutton"
                     onPress={() => {
 
                         this.props.navigation.navigate('addRequest', {requestItem: null});
