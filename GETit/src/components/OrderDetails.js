@@ -319,6 +319,7 @@ class OrderDetails extends Component {
                 <View>
                     <TouchableOpacity onPress={this.openMaps}>
                         <Image
+                            testID="map"
                             style={styles.imageStyle}
                             source={{
                                 uri: 'https://maps.googleapis.com/maps/api/staticmap?center='

@@ -6,7 +6,7 @@ describe('Test', () => {
 
 
 
-    it('user should be able to see order details', async () => {
+    it('user should be able to see map view of thee address', async () => {
 
         await element(by.id('emailID')).typeText('k@k.com');
         await element(by.id('password')).typeText('12345678');
@@ -18,9 +18,9 @@ describe('Test', () => {
 
         await element(by.id('0detailsButton')).tap();
         await expect(element(by.id('orderDetailsPage'))).toBeVisible();
-        await element(by.traits(['button'])).atIndex(0).tap();
-        await expect(element(by.id('allOrdersPage'))).toBeVisible();
-
+        await element(by.id('orderDetailsPage')).swipe('up');
+        await expect(element(by.id('map'))).toBeVisible();
+        
     });
 
 
