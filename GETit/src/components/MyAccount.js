@@ -276,7 +276,7 @@ class MyAccount extends Component {
                         });
                 }}
                 />
-                <ScrollView>
+                <ScrollView testID="myAccountPage">
                     <View>
                         <TouchableOpacity
                             style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
@@ -377,6 +377,7 @@ class MyAccount extends Component {
                             </Text>
                         </Button>
                         <Button
+                            testID="signOutButton"
                             style={{...styles.buttonContainedStyle, borderColor: '#f20010', backgroundColor: '#f20010'}}
                             onPress={this.signOut}>
                             <Text style={{
