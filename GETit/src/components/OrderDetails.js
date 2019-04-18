@@ -157,6 +157,7 @@ class OrderDetails extends Component {
             return (
                 <View style={{marginLeft: '1%', marginRight: '1%'}}>
                     <TouchableOpacity
+                        testID="acceptButton"
                         style={{
                             ...styles.boxStyle,
                             borderColor: '#1eaaf1',
