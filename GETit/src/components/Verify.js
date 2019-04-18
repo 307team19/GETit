@@ -39,14 +39,12 @@ class Verify extends Component {
                     {
                         text: 'Pay with Cash',
                         onPress: () => {
-
-
                             firebase.database().ref("users/" + this.state.item.acceptedBy + "/")
                                 .once('value').then(response => {
                                 firebase.database().ref('/requests/' + this.state.item.unikey + "/").update({
                                     completed: true
                                 });
-                                this.props.navigation.navigate('cash');
+                                this.props.navigation.navigate('cash', {requestDetails: this.state});
                             })
                         }
                     }
