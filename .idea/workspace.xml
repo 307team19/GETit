@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eadc908c-1f83-4bbd-83dd-656b58f67d0a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GETit/src/components/Cash.js" beforeDir="false" afterPath="$PROJECT_DIR$/GETit/src/components/Cash.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -15,84 +16,83 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GETit/src/components/OrderDetails.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="31" column="25" lean-forward="true" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GETit/src/components/RequestHistory.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GETit/src/components/SignUpForm.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GETit/src/components/QRTest.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="5" selection-start-line="9" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GETit/src/components/Verify.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="89" column="38" selection-start-line="89" selection-start-column="38" selection-end-line="89" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GETit/src/components/LoginPage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="185" column="58" selection-start-line="185" selection-start-column="54" selection-end-line="185" selection-end-column="58" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GETit/src/components/Cash.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="44" column="6" lean-forward="true" selection-start-line="44" selection-start-column="6" selection-end-line="44" selection-end-column="6" />
+            <state relative-caret-position="180">
+              <caret line="20" column="34" lean-forward="true" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="35" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GETit/src/components/MyAccount.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="425" selection-start-line="425" selection-end-line="426" />
+              <folding>
+                <element signature="e#650#732#0" />
+                <element signature="e#752#862#0" />
+                <element signature="e#802#859#0" />
+                <element signature="e#932#973#0" />
+                <element signature="e#988#1406#0" />
+                <element signature="n#!!block;n#componentWillMount#0;n#MyAccount#0" />
+                <element signature="e#1647#2352#0" />
+                <element signature="e#1793#2335#0" />
+                <element signature="e#2446#3657#0" />
+                <element signature="e#2623#3125#0" />
+                <element signature="e#2721#3113#0" />
+                <element signature="e#3268#3647#0" />
+                <element signature="e#3311#3327#0" />
+                <element signature="e#3333#3570#0" />
+                <element signature="e#3355#3480#0" />
+                <element signature="e#3495#3556#0" />
+                <element signature="n#!!block;n#onEditPressed#0;n#MyAccount#0" />
+                <element signature="e#3867#4291#0" />
+                <element signature="e#3996#4208#0" />
+                <element signature="e#4018#4188#0" />
+                <element signature="e#4366#4589#0" />
+                <element signature="e#4448#4577#0" />
+                <element signature="e#4595#5189#0" />
+                <element signature="e#4623#4748#0" />
+                <element signature="e#4764#4786#0" />
+                <element signature="e#4915#5018#0" />
+                <element signature="e#5035#5108#0" />
+                <element signature="e#5127#5177#0" />
+                <element signature="n#!!block;n#onImageButtonPressed#0;n#MyAccount#0" />
+                <element signature="e#5285#7865#0" />
+                <element signature="e#5325#5400#0" />
+                <element signature="e#5426#5509#0" />
+                <element signature="e#5542#5640#0" />
+                <element signature="e#5646#7855#0" />
+                <element signature="e#5666#5711#0" />
+                <element signature="e#5829#5892#0" />
+                <element signature="e#6517#6616#0" />
+                <element signature="e#6654#6798#0" />
+                <element signature="e#6832#6956#0" />
+                <element signature="e#6993#7732#0" />
+                <element signature="e#7278#7348#0" />
+                <element signature="e#7365#7462#0" />
+                <element signature="e#7481#7555#0" />
+                <element signature="e#7638#7708#0" />
+                <element signature="e#7772#7838#0" />
+                <element signature="n#!!block;n#onNotificationToggle#0;n#MyAccount#0" />
+                <element signature="e#7988#8398#0" />
+                <element signature="e#8096#8148#0" />
+                <element signature="e#8165#8238#0" />
+                <element signature="e#8257#8307#0" />
+                <element signature="e#8336#8387#0" />
+                <element signature="e#8404#8812#0" />
+                <element signature="e#8512#8563#0" />
+                <element signature="e#8580#8653#0" />
+                <element signature="e#8672#8722#0" />
+                <element signature="e#8751#8801#0" />
+                <element signature="e#8916#9439#0" />
+                <element signature="e#8952#9419#0" />
+                <element signature="e#9144#9399#0" />
               </folding>
             </state>
           </provider>
@@ -109,7 +109,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PhNo</find>
       <find>fname</find>
       <find>console</find>
       <find>request</find>
@@ -138,6 +137,8 @@
       <find>color</find>
       <find>font</find>
       <find>size</find>
+      <find>normal</find>
+      <find>bold</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -284,7 +285,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70438000" />
+    <option name="totallyTimeSpent" value="71357000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -520,10 +521,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/common/paperTheme.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="35" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/Verify.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="89" column="38" selection-start-line="89" selection-start-column="38" selection-end-line="89" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/LoginPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="185" column="58" selection-start-line="185" selection-start-column="54" selection-end-line="185" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/QRTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="5" selection-start-line="9" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/RequestHistory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GETit/src/components/OrderDetails.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="31" column="25" lean-forward="true" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/MyAccount.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="410" column="19" selection-start-line="410" selection-start-column="19" selection-end-line="410" selection-end-column="19" />
+        <state relative-caret-position="322">
+          <caret line="425" selection-start-line="425" selection-end-line="426" />
           <folding>
             <element signature="e#650#732#0" />
             <element signature="e#752#862#0" />
@@ -584,82 +642,14 @@
             <element signature="e#8916#9439#0" />
             <element signature="e#8952#9419#0" />
             <element signature="e#9144#9399#0" />
-            <element signature="e#9520#10001#0" />
-            <element signature="e#9736#9957#0" />
-            <element signature="e#10027#10149#0" />
-            <element signature="e#10175#10565#0" />
-            <element signature="e#10590#11072#0" />
-            <element signature="e#11097#11512#0" />
-            <element signature="e#11538#12463#0" />
-            <element signature="e#11658#11766#0" />
-            <element signature="e#11797#12419#0" />
-            <element signature="e#12066#12182#0" />
-            <element signature="e#12581#12819#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/common/paperTheme.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="35" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/Verify.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="89" column="38" selection-start-line="89" selection-start-column="38" selection-end-line="89" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/LoginPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="185" column="58" selection-start-line="185" selection-start-column="54" selection-end-line="185" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/QRTest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="5" selection-start-line="9" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/RequestHistory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GETit/src/components/OrderDetails.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="31" column="25" lean-forward="true" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GETit/src/components/Cash.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="44" column="6" lean-forward="true" selection-start-line="44" selection-start-column="6" selection-end-line="44" selection-end-column="6" />
+        <state relative-caret-position="180">
+          <caret line="20" column="34" lean-forward="true" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="35" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

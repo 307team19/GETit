@@ -18,47 +18,46 @@ class Cash extends Component {
 
 	render() {
 		return (
-			<PaperProvider theme={paperTheme}>
-				<View style = {{flex: 1, justifyContent: 'center'}}>
-					<Text>
-						Paid
-					</Text>
-					<Text>
-						{this.requestDetails.item.price}
-					</Text>
-					<Text>
-						to
-					</Text>
-					<Text>
-						{this.requestDetails.item.acceptorName}
-					</Text>
-				</View>
-			</PaperProvider>
+			<View style = {{flex: 1}}>
+				<Text style={styles.textStyleNormal}>
+					Paid
+				</Text>
+				<Text style={styles.textStyleCash}>
+					{this.requestDetails.item.price}
+				</Text>
+				<Text style={styles.textStyleNormal}>
+					to
+				</Text>
+				<Text style={styles.textStyleName}>
+					{this.requestDetails.item.acceptorName}
+				</Text>
+			</View>
 		);
 
 	}
 }
 
 const styles = {
-	textInputStyle: {
-		flex: 8
-	},
-	buttonContainedStyle: {
-		justifyContent: 'center',
-		flex: 1
-	},
-	paidStyle: {
+	textStyleNormal: {
 		textAlign: 'center',
-		fontWeight: 'bold',
-		fontSize: 200,
-		flex: 1
+		flex: 1,
+		fontSize: 40,
+		paddingBottom: 2,
 	},
-	cashStyle: {
+	textStyleCash: {
 		textAlign: 'center',
+		flex: 1,
+		fontSize: 120,
+		color: '#1eaaf1',
 		fontWeight: 'bold',
-		fontSize: 400,
-		color:'#1eaaf1',
-		flex: 1
+		paddingBottom: 2,
+	},
+	textStyleName: {
+		textAlign: 'center',
+		flex: 1,
+		fontSize: 60,
+		color: '#1eaaf1',
+		paddingBottom: 2,
 	},
 };
 
