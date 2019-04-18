@@ -47,6 +47,7 @@ class Requests extends Component {
         firebase.database().ref('/').on('child_changed', (snapshot) => {
 
             firebase.database().ref('/').once('value').then(response => {
+                console.log(" email: " + this.state.email);
                 this.setState({requestsObj: response.val().requests})
             })
 
@@ -62,7 +63,6 @@ class Requests extends Component {
                 if (notification) {
 
                     const obj = snapshot.val();
-                    console.log("obj.email: " + obj.email + " email: " + this.state.email);
 
                     if (obj) {
                         if (obj.acceptedBy !== "" && obj.email == this.state.email && !obj.completed) {
