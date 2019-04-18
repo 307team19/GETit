@@ -248,9 +248,9 @@ const styles = {
     buttonContainedStyle: {
         margin: 10,
         justifyContent: 'center',
-        borderColor: '#5500e9',
+        borderColor: '#1eaaf1',
         marginBottom: 3,
-        backgroundColor: '#5500e9'
+        backgroundColor: '#1eaaf1'
         
     },
 };
