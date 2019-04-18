@@ -119,7 +119,7 @@ class Orders extends Component {
         } else return this.loadMyRequests()
     }
 
-    renderItem = ({item}) => (
+    renderItem = ({item, index}) => (
 
         <Card style={{margin: 3, flex: 1, padding: 6, borderRadius: 10}} elevation={4}>
             <View>
@@ -155,6 +155,7 @@ class Orders extends Component {
                         <Text style={styles.textStyle}>{this.shouldShowText(item)}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
+                        testID={index + 'detailsButton'}
                         style={styles.buttonStyle}
                         onPress={() => {
                             this.props.navigation.navigate('orderdetails', {details: item});
@@ -172,7 +173,7 @@ class Orders extends Component {
     render() {
 
         return (
-            <View style={{flex: 1}} testID="ordersPage">
+            <View style={{flex: 1}} testID="allOrdersPage">
                 <NavigationEvents onDidFocus={() => {
                     firebase.database().ref('/').once('value').then(response => {
                         this.setState({requests: response.val().requests})

@@ -308,7 +308,7 @@ class OrderDetails extends Component {
 
     render() {
         return (
-            <ScrollView>
+            <ScrollView testID="orderDetailsPage">
                 {this.retView("item")}
                 {this.retView("description")}
                 {this.retView("instructions")}
