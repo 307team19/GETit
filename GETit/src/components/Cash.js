@@ -19,7 +19,7 @@ class Cash extends Component {
 	render() {
 		return (
 			<PaperProvider theme={paperTheme}>
-				<View>
+				<View style = {{flex: 1, justifyContent: 'center'}}>
 					<Text>
 						Paid
 					</Text>
