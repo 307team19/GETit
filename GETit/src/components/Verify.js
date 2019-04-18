@@ -36,7 +36,20 @@ class Verify extends Component {
                             })
                         }
                     },
+                    {
+                        text: 'Pay with Cash',
+                        onPress: () => {
 
+
+                            firebase.database().ref("users/" + this.state.item.acceptedBy + "/")
+                                .once('value').then(response => {
+                                firebase.database().ref('/requests/' + this.state.item.unikey + "/").update({
+                                    completed: true
+                                });
+                                this.props.navigation.navigate('requests');
+                            })
+                        }
+                    }
                 ],
             );
         } else {
@@ -89,7 +102,6 @@ class Verify extends Component {
         if (this.state.focusedScreen == true) {
             return (
                 <QRCodeScanner
-
                     onRead={this.onSuccess.bind(this)}
                 />
             )
@@ -99,7 +111,7 @@ class Verify extends Component {
                 <Text>VERIFY</Text>
             )
         }
-    }
+    };
 
     render() {
         return (
