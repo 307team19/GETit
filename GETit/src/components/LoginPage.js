@@ -21,7 +21,7 @@ class LoginPage extends Component {
     constructor(props) {
         super(props);
 
-        this._isMounted = false;
+        this._isMounted = true;
 // rest of your code
     }
 
@@ -82,6 +82,7 @@ class LoginPage extends Component {
     }
 
     signIn = async () => {
+        console.log("g sign in attempt")
 
         if (this._isMounted) {
             try {
